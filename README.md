@@ -16,4 +16,6 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 - [Working instructions](AGENTS.md)
 - [Current memory](MEMORY.md)
+- [Certification roadmap and research findings](CERTIFICATION_ROADMAP.md)
 - [Session notes](sessions/)
+
