@@ -50,3 +50,9 @@ This repository preserves context so future tasks can continue without relying o
 - Session: sessions/2026-09-23-continuous-ai-curriculum.md.
 
 - Latest assistant recommendation: AI-500 before Databricks GenAI; target AI-103 Jan-Feb 2027, AI-300 Mar-May, AI-500 Jun-Sep, Databricks GenAI Oct 2027-Mar 2028. Provisional windows, not user-confirmed bookings. Full timetable in roadmap/curriculum.
+
+## DataCertPrep review
+
+- User owns www.datacert-prep.com and MatthieudeLaMettrie/DataCertPrep; requested content/curriculum/SEO analysis on 2026-09-23.
+- Audit: sessions/2026-09-23-datacertprep-content-seo-audit-01a0cb68.md. Broad curriculum structures and file coverage are strong, but sampled AWS/Fabric/dbt inaccuracies, Copilot domain mapping, biased answer design and SEO defects need attention. No product changes were made.
+- Fresh HTTP checks confirmed scoring-copy repairs and GH-300 update are deployed; do not repeat stale crawl findings as current defects. Sandbox tools failed with Windows 1907; approved escalated PowerShell worked.

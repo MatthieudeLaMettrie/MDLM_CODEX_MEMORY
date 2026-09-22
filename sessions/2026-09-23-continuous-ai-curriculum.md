@@ -40,3 +40,5 @@ Standing repository instructions authorize commit/push. This note precedes publi
 The user asked for a recommendation in table format and to save all of it. Added an explicitly labelled recommended timetable: dbt now-Oct 2026, SnowPro Oct-Nov, AI-103 Jan-Feb 2027, AI-300 Mar-May, AI-500 Jun-Sep, Databricks GenAI Oct 2027-Mar 2028, then the Snowflake Advanced renewal before actual expiry. These are assistant planning windows, not confirmed exam bookings.
 
 A fetch found remote commit 28a6787 with an unrelated DataCertPrep audit note and memory section. Preserve that content when reconciling; do not overwrite it.
+
+Resolved the concurrent MEMORY.md overlap by retaining the latest certification section and preserving the complete remote DataCertPrep review section and audit file. Local Markdown links and staged whitespace checks passed before the curriculum commit; repeat whitespace/conflict checks on the merge before publication.
