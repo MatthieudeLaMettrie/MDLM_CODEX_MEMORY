@@ -1,6 +1,6 @@
 # Data and AI certification roadmap
 
-Updated: 2026-09-22 (Australia/Sydney)
+Updated: 2026-09-23 (Australia/Sydney)
 
 ## Purpose and decision status
 
@@ -19,21 +19,47 @@ User reports:
 
 User explicitly wants dbt preparation in a separate task and this discussion focused on certification strategy. The separate task is "dbt certification preparation and debugging", ID 01a0c682-332f-7fa2-8a8a-ae93f9dad156.
 
-User explicitly confirmed AI-500 immediately after AI-103, with no intervening certification. Later the user proposed using a SnowPro Advanced exam for the next Snowflake renewal, choosing Data Engineer or Architect.
+The 2026-09-23 user update inserts AI-300 between AI-103 and the AI-500 / Databricks GenAI stage, superseding the earlier direct sequence. The prior SnowPro Advanced renewal proposal remains for 2028.
 
 ## Current roadmap: latest state takes precedence
 
-| Target period | Credential or activity | Status | Rationale |
+Authoritative user update (2026-09-23): **after dbt, SnowPro GenAI -> AI-103 -> AI-300 -> AI-500 / Databricks GenAI**.
+
+Study this as one continuous AI curriculum. Full resources, lab guidance and master notebook structure: [AI_STUDY_CURRICULUM.md](AI_STUDY_CURRICULUM.md).
+
+| Sequence | Credential or activity | Status | Rationale |
 |---|---|---|---|
-| Sep-Oct 2026 | dbt Analytics Engineering | Optional completion; already underway | Finish if a short readiness check shows the remaining effort is modest. Useful transformation/testing skills, but not essential to the AI architect objective. Do not displace Snowflake renewal. |
-| Oct-Nov 2026 | SnowPro Specialty: Gen AI | Recommended near-term priority | Add Snowflake AI capability and renew active Core before January 2027 under current policy. Verify exact current exam version when booking. |
-| Jan-Feb 2027 | AI-103: Azure AI Apps and Agents Developer Associate | User-accepted core sequence | Current Foundry application/agent skills and the prerequisite credential for the AI-500 Expert certification. |
-| Mar-Sep 2027 | AI-500: Multi-Agent AI Solutions Expert | Explicit user commitment after AI-103 | Main AI specialization. Prepare with a substantial implementation; exam timing depends on readiness. Currently listed as beta in sources checked. |
-| Late 2027-early 2028 | Databricks GenAI Engineer Associate OR ML Associate | Conditional, not locked | GenAI for actual Databricks RAG/agent projects; ML for predictive modelling. Do not take both merely to expand the badge list. |
-| Before actual Snowflake expiry in 2028 | SnowPro Advanced: Architect OR Data Engineer | User proposed upgrade at renewal; final choice pending | Architect is the preferred target for architecture ownership; DE is the practical alternative for pipeline-heavy work. Recheck renewal policy and allow a retake buffer. |
-| Later | Other qualifications | Unscheduled | Add only when a concrete role, client, or responsibility justifies the opportunity cost. |
+| Current | dbt Analytics Engineering | Underway; precedes the requested AI curriculum | Detailed debugging and readiness work remains in its separate task. |
+| 1 | SnowPro Specialty: Gen AI | Locked next stage after dbt | Build GenAI concepts through Cortex; protect the January 2027 Core renewal deadline. |
+| 2 | AI-103 | Locked | Apply common concepts to Foundry apps and agents; prerequisite credential for AI-500 Expert. |
+| 3 | AI-300 | Locked, reinstated by user | Operate applications through CI/CD, Azure ML/Foundry, evaluation, monitoring and rollback. |
+| 4 / 5 | AI-500 / Databricks GenAI | Locked final stage as written by user | Detailed learning order lists AI-500 then Databricks GenAI; exact final scheduling/choice within the pair remains unspecified. |
+| Before actual Snowflake expiry in 2028 | SnowPro Advanced: Architect OR Data Engineer | Earlier renewal proposal retained; final choice pending | Match exam to architecture or engineering responsibilities. |
+| Later | Other qualifications | Unscheduled | Add only for a concrete role, client or responsibility. |
+
+Earlier calendar targets are provisional: no replacement exam dates were supplied, and adding AI-300 changes the direct AI-103-to-AI-500 schedule. Snowflake renewal dates remain a constraint.
 
 The date of the 2028 Snowflake deadline depends on the actual 2026 renewal event, not automatically January 2029. Passing Specialty in Oct-Nov 2026 would normally place the next two-year expiry around Oct-Nov 2028.
+
+
+## Recommended timetable (2026-09-23)
+
+Assistant recommendation requested by user; windows are provisional, not bookings. This implements the user's continuous curriculum with AI-500 before Databricks GenAI.
+
+| Timeframe | Certification | Recommendation and usefulness | Practical checkpoint |
+|---|---|---|---|
+| Now-Oct 2026 | dbt Analytics Engineering | Finish current preparation if ready; do not let it jeopardize Snowflake renewal | Diagnose project failures independently |
+| Oct-Nov 2026 | SnowPro Specialty: Gen AI | First AI stage; learn Cortex and renew active Core before Jan 2027 under current policy | Cortex retrieval/agent application with evaluation |
+| Jan-Feb 2027 | AI-103 | Build on AI-102; develop Foundry applications and agents | Working Foundry app with tools and grounding |
+| Mar-May 2027 | AI-300 | Keep in sequence for production ML/GenAI engineering | CI/CD, deployment, evaluation, monitoring and rollback |
+| Jun-Sep 2027 | AI-500 | Main architecture milestone; extend operational foundations into multi-agent delivery | Justified orchestration, permissions, approvals and measured reliability |
+| Oct 2027-Mar 2028 | Databricks GenAI Engineer Associate | Transfer the conceptual stack to a second AI delivery platform | Databricks RAG with lifecycle, serving and governance |
+| Before actual Snowflake expiry in 2028 | SnowPro Advanced Architect or DE | Prefer Architect for architecture ownership; choose DE for pipeline-heavy work. Combine advancement and renewal | Experience and readiness aligned to chosen scope |
+
+Keep GH-600, Databricks DE Professional/ML, AI security, AZ-104/AZ-305, AWS/GCP and AICD outside the scheduled core unless a concrete need changes priorities. Do not add exams between these stages. Dates can move with readiness; protect the actual Snowflake expiry and leave a retake buffer.
+
+This sequence invests more study time than the earlier shortened plan. Its rationale is integrated capability: build -> operate -> architect -> implement on another platform. Reuse one project and one concept notebook to manage that opportunity cost. It does not imply guaranteed salary or job outcomes.
+
 
 ## Snowflake: Advanced Architect versus Data Engineer
 
@@ -54,7 +80,7 @@ No need to schedule both Advanced exams for the same renewal objective.
 | Option | Added value | Decision |
 |---|---|---|
 | DE Professional | Production pipelines, streaming, cost/performance, governance, observability, CI/CD and deployment | Best additional DE option if Databricks engineering is central. No longer the default scheduled next exam once a Snowflake Advanced upgrade is planned. |
-| GenAI Engineer Associate | Databricks-specific retrieval, agents, evaluation, serving and AI lifecycle tooling | Move forward for multi-platform GenAI consulting or actual Databricks AI delivery. Conceptual overlap with Azure AI studies, but meaningful platform-specific value. |
+| GenAI Engineer Associate | Databricks-specific retrieval, agents, evaluation, serving and AI lifecycle tooling | Included in the user-locked AI-500 / Databricks GenAI final stage; detailed learning order follows AI-500. Reuse concepts and learn platform-specific implementations. |
 | ML Associate | Feature engineering, training, tuning, evaluation, selection and deployment | Useful expansion into predictive ML: forecasting, classification, recommendation or anomaly detection. Pair with a modelling project. |
 | ML Professional | Enterprise ML pipelines, distributed training, automated retraining, monitoring and rollout | Later, after production ML experience. Not a default next step. |
 
@@ -62,7 +88,6 @@ Snowflake Advanced DE and Databricks DE Professional are not equivalent or mutua
 
 ## Conditional and deferred qualifications
 
-- AI-300: defer exam, not skills. Adds Azure ML training/registration/deployment/drift/retraining, infrastructure automation and GenAIOps. Revisit for responsibility over predictive ML and AI platform operations. Study relevant evaluation, observability and infrastructure topics during AI-500 work.
 - GH-600: optional for supervising coding agents in GitHub delivery workflows. Lower priority than core delivery objectives.
 - AZ-104 -> AZ-305: retain for broader Azure infrastructure architecture. AI-500 does not replace networking, identity, resilience and cloud-design breadth. Azure Administrator Associate is required for Azure Solutions Architect Expert.
 - SC-500: conditional on cloud/AI security implementation responsibility; broader than agent security alone.
@@ -86,7 +111,7 @@ Recruiter reports and example job listings support continued relevance of data e
 
 Decision rule:
 1. Protect near-term renewal deadlines.
-2. Keep AI-103 -> AI-500 as explicitly requested.
+2. Keep the latest locked sequence: SnowPro GenAI -> AI-103 -> AI-300 -> AI-500 / Databricks GenAI.
 3. Prefer incremental skills and usable project evidence over duplicative exams.
 4. Select the next platform exam from actual work opportunities.
 5. Retain time for delivery, architecture writing, networking and role progression.
@@ -172,8 +197,7 @@ Market sources:
 - Confirm study capacity and actual 2026 Snowflake pass/expiry dates.
 - Maintain PL-300, DP-600 and DP-700 through eligible renewal assessments.
 - Keep detailed dbt practice in its separate task.
-- After AI-103, proceed directly to AI-500 as requested.
-- Select Databricks AI/ML only when projects justify it.
+- After AI-103, complete AI-300 before the AI-500 / Databricks GenAI stage as requested on 2026-09-23.
+- Use AI_STUDY_CURRICULUM.md for the continuous curriculum and master notebook; ML remains outside the locked sequence.
 - Reassess Snowflake Architect vs DE well before the 2028 expiry.
 - Obtain current role, experience, location and responsibilities before personal salary advice.
-
