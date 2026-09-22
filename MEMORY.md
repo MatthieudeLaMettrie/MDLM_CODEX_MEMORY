@@ -2,27 +2,29 @@
 
 Last updated: 2026-09-22
 
-## Purpose
+## Purpose and repository
 
-This repository maintains durable context and session notes so future tasks can continue work without relying on chat history.
-
-## Repository
+This repository preserves context so future tasks can continue without relying on chat history.
 
 - GitHub: https://github.com/MatthieudeLaMettrie/MDLM_CODEX_MEMORY
-- `AGENTS.md` defines the required start-of-task and end-of-task continuity workflow.
-- `MEMORY.md` holds concise, lasting context and current priorities.
-- `sessions/` holds dated records of substantive work, validation, and handoffs.
+- AGENTS.md defines the continuity and publication workflow.
+- MEMORY.md holds lasting context and priorities.
+- sessions/ holds dated session summaries.
+- README.md explains the setup from repository creation and GitHub Desktop to commits, pushes, and continuity, with diagrams.
 
-## Decisions
+## Decisions and preferences
 
-- Read this file and the three most recent session notes before starting work.
-- Update memory and session notes after substantive work.
-- Keep durable facts here and detailed work history in session notes.
-- Use the user's local date (Australia/Sydney) for session filenames.
-- Exclude secrets and verify remembered state against the repository.
+- Read this file and the three most recent session notes before work.
+- Record every session, including explanations and planning, before final responses. Update durable memory whenever lasting facts change.
+- The user explicitly authorized committing and pushing session records and requested artifacts in this repository by default. Do not repeatedly ask for routine confirmation; tool permissions and later user overrides still apply.
+- Use Australia/Sydney dates and unique note filenames for separate tasks.
+- Notes are faithful summaries, not verbatim chat exports. This instruction-driven workflow is not a background capture service.
+- Prefer beginner-friendly explanations with diagrams. Explain the full setup beginning with repository creation and GitHub Desktop.
+- Exclude secrets and preserve unrelated changes.
 
-## Current state and next steps
+## Current state
 
-- Initial continuity files have been prepared; see `sessions/2026-09-22-initial-setup.md`.
-- No application code or test suite exists yet.
-- No further project objectives have been specified. Confirm current Git status and remote state when resuming.
+- Initial continuity files were committed and pushed to main as 06b7251; local and remote hashes matched.
+- README.md documents the setup and ongoing workflow.
+- sessions/2026-09-22-setup-guide-and-session-policy.md records this conversation's explanations and expanded recording policy.
+- No application code or test suite exists. No further project objective has been specified.
