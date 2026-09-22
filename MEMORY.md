@@ -1,6 +1,6 @@
 # Project memory
 
-Last updated: 2026-09-22
+Last updated: 2026-09-23
 
 ## Purpose and repository
 
@@ -43,3 +43,9 @@ This repository preserves context so future tasks can continue without relying o
 - Earlier categorical rankings and claims about vendor neutrality, certificate rarity, automatic commercial value and complete exam equivalence were corrected. Do not revive superseded plans as commitments.
 - Salary research uses 2026 Australian/Sydney base-pay benchmarks, excluding super/bonuses. Location is an assumption; personal salary needs role/experience context.
 - Session record: sessions/2026-09-22-certification-roadmap.md.
+
+## DataCertPrep review
+
+- User owns www.datacert-prep.com and MatthieudeLaMettrie/DataCertPrep; requested content/curriculum/SEO analysis on 2026-09-23.
+- Audit: sessions/2026-09-23-datacertprep-content-seo-audit-01a0cb68.md. Broad curriculum structures and file coverage are strong, but sampled AWS/Fabric/dbt inaccuracies, Copilot domain mapping, biased answer design and SEO defects need attention. No product changes were made.
+- Fresh HTTP checks confirmed scoring-copy repairs and GH-300 update are deployed; do not repeat stale crawl findings as current defects. Sandbox tools failed with Windows 1907; approved escalated PowerShell worked.
