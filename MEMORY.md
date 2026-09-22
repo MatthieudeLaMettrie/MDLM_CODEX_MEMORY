@@ -10,7 +10,7 @@ This repository preserves context so future tasks can continue without relying o
 - AGENTS.md defines the continuity and publication workflow.
 - MEMORY.md holds lasting context and priorities.
 - sessions/ holds dated session summaries.
-- README.md explains the setup from repository creation and GitHub Desktop to commits, pushes, and continuity, with diagrams.
+- VISUAL_GUIDE.md explains the setup from repository creation and GitHub Desktop to commits, pushes, and continuity, with diagrams.
 
 ## Decisions and preferences
 
@@ -25,6 +25,6 @@ This repository preserves context so future tasks can continue without relying o
 ## Current state
 
 - Initial continuity files were committed and pushed to main as 06b7251; local and remote hashes matched.
-- README.md documents the setup and ongoing workflow.
+- VISUAL_GUIDE.md documents the setup and ongoing workflow; README.md prominently links to it.
 - sessions/2026-09-22-setup-guide-and-session-policy.md records this conversation's explanations and expanded recording policy.
 - No application code or test suite exists. No further project objective has been specified.

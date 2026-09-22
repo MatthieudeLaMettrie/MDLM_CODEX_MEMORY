@@ -31,3 +31,11 @@ Date: 2026-09-22 (Australia/Sydney)
 This note is prepared before its commit and push. Git history and the final response provide publication evidence; the note alone does not establish push success.
 
 Future tasks should follow AGENTS.md and save and push their session records under the user's standing authorization. No further project objective has been specified.
+
+## Follow-up: guide visibility
+
+- The user reported that the visual guide was not in the repository.
+- Fetched origin/main and verified that README.md existed on GitHub and its blob hash matched the local file (12665532ab08eb6fa896ed88c3f5a3e296b8d717). GitHub's default branch was main. The guide had been embedded in README.md; there was no separate guide file.
+- Moved the complete guide content into an explicitly named VISUAL_GUIDE.md and made README.md a landing page with a prominent link. Updated memory to point to the new location.
+- The precise cause of the user's view discrepancy was not observed. The naming change makes the guide directly discoverable without assuming a browser or synchronization problem.
+- Validate the staged changes and verify the push before reporting completion. This follow-up is written before those operations.
