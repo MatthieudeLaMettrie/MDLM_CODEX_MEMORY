@@ -28,7 +28,7 @@ This repository preserves context so future tasks can continue without relying o
 - VISUAL_GUIDE.md documents the setup and ongoing workflow; README.md prominently links to it.
 - sessions/2026-09-22-setup-guide-and-session-policy.md records this conversation's explanations and expanded recording policy.
 - RUNTIME_STUDY_GUIDE.html is a standalone, offline study guide covering runtimes, Node.js/npm/npx, JavaScript and Python execution environments, examples and a self-check quiz; linked from README.md. HTML structure and interaction logic validated; browser visual preview was blocked by URL policy.
-- No application test suite exists. Current planning objective: Data / AI architect certification and career development.
+- The dbt collector includes nine offline tests. Current planning objective: Data / AI architect certification and career development.
 
 ## Certification and career planning
 
@@ -57,3 +57,12 @@ This repository preserves context so future tasks can continue without relying o
 - User owns www.datacert-prep.com and MatthieudeLaMettrie/DataCertPrep; requested content/curriculum/SEO analysis on 2026-09-23.
 - Audit: sessions/2026-09-23-datacertprep-content-seo-audit-01a0cb68.md. Broad curriculum structures and file coverage are strong, but sampled AWS/Fabric/dbt inaccuracies, Copilot domain mapping, biased answer design and SEO defects need attention. No product changes were made.
 - Fresh HTTP checks confirmed scoring-copy repairs and GH-300 update are deployed; do not repeat stale crawl findings as current defects. Sandbox tools failed with Windows 1907; approved escalated PowerShell worked.
+
+## dbt preparation materials
+
+- Published materials live under [dbt/README.md](dbt/README.md); learner entry point is [dbt/dbt-study-guide/START_HERE.md](dbt/dbt-study-guide/START_HERE.md).
+- User completed courses and built projects; debugging is the weak spot and exam readiness is unassessed. Start with Cases 1–3, then tailor practice. Withhold answers until an attempt or request for help. Treat 7–10 days as a flexible window, not a readiness assumption.
+- User chose a local Python collection workflow and guide writing/refinement in this task, without local AI installation. On 2026-09-22, public collection saved 1,558/1,573 discovered URLs; 15 gaps remain. Filtered study library contains 1,300 documents in 712 regenerable packets.
+- Curated guide cites 34 official references and contains twenty original debugging cases plus a readiness plan. Official exam page listed dbt 1.11 when checked on 2026-09-22; live docs include later versions. Examples have not been warehouse-tested; enrolled dbt Learn lessons/transcripts were not collected.
+- Git includes authored content, collector, nine tests, reading index, source metadata and historical coverage. Raw downloaded pages, generated packets and imports stay local and can be regenerated. No AI service or recurring automation configured.
+- Task: 01a0c682-332f-7fa2-8a8a-ae93f9dad156. Publication session: sessions/2026-09-23-dbt-learning-guide-01a0c682.md. Keep broader roadmap decisions in their existing strategic records.

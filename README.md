@@ -14,6 +14,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 ## Study guides
 
+- [dbt learning guide, debugging workbook and Python workflow](dbt/README.md) — source-linked reference, twenty exercises with answers withheld, and an adaptable readiness plan.
+
 - [JavaScript and Python runtimes: Node.js, npm and npx](RUNTIME_STUDY_GUIDE.html) — download/open the HTML file in a browser for diagrams, examples, runtime comparisons and an interactive quiz. Works offline and includes print styling.
 
 ## Project records

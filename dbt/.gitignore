@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+dbt-learning-flow/data/pages/
+dbt-learning-flow/data/manifest.json
+dbt-learning-flow/data/llms.txt
+dbt-learning-flow/data/discovery.json
+dbt-learning-flow/guide/packets/
+dbt-learning-flow/guide/packets.json
+dbt-learning-flow/guide/chapters/
+dbt-learning-flow/guide/answers/
+dbt-learning-flow/guide/generation-report.json
+dbt-learning-flow/imports/

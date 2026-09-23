@@ -1,0 +1,1034 @@
+[
+  {
+    "url": "https://docs.getdbt.com/category/accounts.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/available-flags.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/behavior-change-flags.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/cost-optimizations.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/dbt-v1.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/documentation.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/environments.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/general-configs.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/general-properties.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/git.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/jinja.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/jinja-reference.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/list-of-commands.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/models.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/project-configs.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/projects.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/runs.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/seeds.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/setting-flags.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/snapshots.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/tests.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/troubleshooting.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/category/warehouse.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/dbt-v-2.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/metrics.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/adapter-creation.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/analyst",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/api.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/beginner.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/best-practices.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/billing.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/ci.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/cli.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/dbt-insights.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/dbt.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/duck-db.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/git.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/redshift",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/reference.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/static-analysis.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/troubleshooting.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/dbt-state.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/quickstart",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/dbt-platform",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/wizard.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/ap-is.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/cost-insights.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/cost-savings.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/ide.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/models-built.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/sao.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/upgrade.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/big-query.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/orchestration",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/ai.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/semantic-layer.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/agents.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/dbt-wizard.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/platform.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/snowflake.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/databricks.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/dbt-v-1.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/migration.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/webhooks.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/scheduler.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/big-frames.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/cll.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/configuration.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/copilot.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/cost-optimization.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/cost-optimizations.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/cost-reduction.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/cost-reductions.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/dbt-charts.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/dremio.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/gcp.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/google.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/governance.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/iceberg.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/intelligence.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/jan-1-2020.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/jan-1-2021.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/jinja.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/local-development.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/mcp.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/privacy.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/sql.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/studio.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/tenancy.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-0-5-0.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-01.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-02.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-03.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-04.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-05.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-06.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-07.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-08.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-09.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-10.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-11.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-12.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-13.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-14.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-15.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-16.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-18.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-19.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-20.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-21.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-22.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-23.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-24.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-25.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-26.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-27.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-28.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-29.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-30.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-31.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-32.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-33.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-34.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-35.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-36.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-37.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-38.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-39.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-40.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/tags/v-1-1-41.md",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/archive",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/adedamola-onabanjo",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/alex-noonan",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/amy-chen",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/anders-swanson",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/andrew-escay",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/anna-lee",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/arthur-marcon",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/barr-yaron",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/benn-stancil",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/bennie-regenold",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/benoit-perigaud",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/brian-jan",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/brittany-krauth",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/bruno-lima",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/callie-white",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/callum-mccann",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/carol-ohms",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/charlie-summers",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/chenyu-li",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/christian-vanbellen",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/christine-berger",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/christophe-oudar",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/colin-rogers",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/dave-connors",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/david-krevitt",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/devon-fulcher",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/donny-flynn",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/doug-beatty",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/doug-guthrie",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/emily-riederer",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/ernesto-ongaro",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/euan-johnston",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/faith-mckenna",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/filip-byren",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/grace-goheen",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/gwen-windflower",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/ian-fahey",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/izzy-erekson",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/jade-milaney",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/jason-ganz",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/jeremy-cohen",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/jerrie-kumalah-kenney",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/jess-williams",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/jialuo-chen",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/joao-antunes",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/joe-markiewicz",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/joel-labes",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/jonathan-neo",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/jordan-stein",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/kira-furuichi",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/kshitij-aranke",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/kyle-dempsey",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/lauren-benezra",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/lauren-craigie",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/lucas-bergodias",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/luis-leon",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/mark-wan",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/matt-winkler",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/michelle-ark",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/mikael-thorup",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/mila-page",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/mirna-wong",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/nate-sooter",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/noah-kennedy",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/pat-kearns",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/pedro-brito-de-sa",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/randy-pettus",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/rastislav-zdechovan",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/ross-turk",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/roxi-dahlke",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/sam-harting",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/sanjana-sen",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/santiago-jauregui",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/sean-mcintyre",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/sebastian-stan",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/seth-rosen",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/simo-tumelius",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/simon-podhajsky",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/stephen-thibeault",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/sterling-paramore",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/steve-dowling",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/sung-chung",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/taylor-dunlap",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/toby-mao",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/wasila-quader",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/yannick-misteli",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/yu-ishikawa",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/page/2",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/page/3",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/page/4",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/page/5",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/page/6",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/page/7",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/ai",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/analytics",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/analytics-craft",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/analytics-craft/page/2",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/analytics-craft/page/3",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/analytics-craft/page/4",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/ap-is",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/azure",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/big-query",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/catalogs",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/context-engineering",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/data-ecosystem",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/data-ecosystem/page/2",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/dbt-cloud",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/dbt-core",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/dbt-platform",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/dbt-product-updates",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/dbt-server",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/dbt-tutorials",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/docs",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/fintech",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/iceberg",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/integrations",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/llm",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/mcp",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/microsoft",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/semantic-layer",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/snowflake-ml",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/sql-magic",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/synapse",
+    "reason": "Navigation/listing page; retained in collection"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/tags/table-formats",
+    "reason": "Navigation/listing page; retained in collection"
+  }
+]

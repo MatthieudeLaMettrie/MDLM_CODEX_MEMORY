@@ -1,0 +1,22 @@
+{
+  "collected": 1558,
+  "discovered": 1573,
+  "unsuccessful": 15,
+  "study_documents": 1300,
+  "source_packets": 712,
+  "core_source_references": 34,
+  "practice_cases": 20,
+  "core_words_approx": 3939,
+  "offline_tests_passed": 9,
+  "missing_local_links": [],
+  "missing_archived_core_sources": [],
+  "unbalanced_code_fences": [],
+  "limitations": [
+    "No warehouse execution of teaching examples",
+    "No enrolled dbt Learn lessons collected",
+    "Live documentation is not version-pinned",
+    "Source membership checks do not prove every claim in a citation"
+  ],
+  "answers": "Withheld; no answer key created for the twenty cases",
+  "verification_scope": "Historical local collection verification, 2026-09-22. Raw source pages and generated packets are excluded from Git; regenerate with the workflow."
+}

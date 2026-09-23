@@ -1,0 +1,138 @@
+{
+  "generated_at": "2026-09-22T05:43:04.263259+00:00",
+  "discovered_current": 1573,
+  "statuses": {
+    "ok": 1558,
+    "error": 15
+  },
+  "discovery": {
+    "checked_at": "2026-09-22T05:42:51.627575+00:00",
+    "issues": [],
+    "count": 1573
+  },
+  "uncollected": [
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/tags/dbt-mcp.md",
+      "title": "2 docs tagged with \"dbt MCP\"",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:43:00.752058+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/tags/amazon.md",
+      "title": "One doc tagged with \"Amazon\"",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:42:58.267786+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/tags/athena.md",
+      "title": "One doc tagged with \"Athena\"",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:42:59.451748+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/tags/canvas.md",
+      "title": "One doc tagged with \"Canvas\"",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:43:00.162379+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/tags/model.md",
+      "title": "One doc tagged with \"Model\"",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:43:01.910245+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/tags/teradata.md",
+      "title": "One doc tagged with \"Teradata\"",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:43:04.159586+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/terms/hover-terms.md",
+      "title": "hover-terms",
+      "in_current_inventory": true,
+      "error": "Redirect outside the documentation host: https://www.getdbt.com/blog",
+      "attempted_at": "2026-09-22T05:43:04.221296+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/blog/authors/claire-carroll.md",
+      "title": "/blog/authors/claire-carroll",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:42:52.097342+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/blog/authors/elias-defaria.md",
+      "title": "/blog/authors/elias-defaria",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:42:52.587804+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/blog/authors/jonathan-natkins.md",
+      "title": "/blog/authors/jonathan-natkins",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:42:53.105042+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/blog/authors/josh-fell.md",
+      "title": "/blog/authors/josh-fell",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:42:53.628030+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/blog/authors/nathaniel-burren.md",
+      "title": "/blog/authors/nathaniel-burren",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:42:54.101622+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/blog/authors/viraj-parekh.md",
+      "title": "/blog/authors/viraj-parekh",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:42:54.589504+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/dbt-cloud/api-v2.md",
+      "title": "/dbt-cloud/api-v2",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:42:55.094980+00:00"
+    },
+    {
+      "status": "error",
+      "url": "https://docs.getdbt.com/dbt-cloud/api-v3.md",
+      "title": "/dbt-cloud/api-v3",
+      "in_current_inventory": true,
+      "error": "HTML has no usable main content or is a soft 404",
+      "attempted_at": "2026-09-22T05:42:55.592238+00:00"
+    }
+  ],
+  "removed_from_inventory": [],
+  "lesson_inventory": [],
+  "limitation": "Coverage refers to discovered docs URLs, not every website or enrolled lesson."
+}

@@ -1,0 +1,1 @@
+date,case_id,topic,minutes,confidence,hints_used,diagnosis_0_to_2,evidence_0_to_2,repair_0_to_2,verification_0_to_2,misconception,retest_date,retest_result
