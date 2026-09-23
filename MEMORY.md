@@ -51,6 +51,7 @@ This repository preserves context so future tasks can continue without relying o
 - Session: sessions/2026-09-23-continuous-ai-curriculum.md.
 
 - Latest assistant recommendation: AI-500 before Databricks GenAI; target AI-103 Jan-Feb 2027, AI-300 Mar-May, AI-500 Jun-Sep, Databricks GenAI Oct 2027-Mar 2028. Provisional windows, not user-confirmed bookings. Full timetable in roadmap/curriculum.
+- Accepted change, 2026-09-23: SnowPro Specialty: Gen AI *preparation* (Cortex study/labs) now starts in parallel with dbt, Now-Oct 2026, instead of only after dbt finishes; exam-sitting order is unchanged (dbt exam first, then SnowPro exam, widened to Oct-Dec 2026). Rationale: dbt debugging readiness is unscored, so slippage there would otherwise compress the SnowPro exam window against the Jan 2027 Core renewal deadline. Raised in the roadmap-review session and accepted the same day; see sessions/2026-09-23-roadmap-review-opinion.md and the updated table in CERTIFICATION_ROADMAP.md.
 
 ## DataCertPrep review
 

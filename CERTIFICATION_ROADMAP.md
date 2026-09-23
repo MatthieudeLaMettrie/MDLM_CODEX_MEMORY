@@ -29,8 +29,9 @@ Study this as one continuous AI curriculum. Full resources, lab guidance and mas
 
 | Sequence | Credential or activity | Status | Rationale |
 |---|---|---|---|
-| Current | dbt Analytics Engineering | Underway; precedes the requested AI curriculum | Detailed debugging and readiness work remains in its separate task. |
-| 1 | SnowPro Specialty: Gen AI | Locked next stage after dbt | Build GenAI concepts through Cortex; protect the January 2027 Core renewal deadline. |
+| Current | dbt Analytics Engineering | Underway; primary focus | Detailed debugging and readiness work remains in its separate task. |
+| Current (parallel) | SnowPro Specialty: Gen AI - study/prep only | Added 2026-09-23; runs alongside dbt rather than strictly after it | dbt debugging readiness is unscored, so starting Cortex study now protects the January 2027 Core renewal deadline against dbt slippage. Exam is still sat after dbt, per the locked order below. |
+| 1 | SnowPro Specialty: Gen AI - sit exam | Locked next stage after dbt | Build GenAI concepts through Cortex; protect the January 2027 Core renewal deadline. |
 | 2 | AI-103 | Locked | Apply common concepts to Foundry apps and agents; prerequisite credential for AI-500 Expert. |
 | 3 | AI-300 | Locked, reinstated by user | Operate applications through CI/CD, Azure ML/Foundry, evaluation, monitoring and rollback. |
 | 4 / 5 | AI-500 / Databricks GenAI | Locked final stage as written by user | Detailed learning order lists AI-500 then Databricks GenAI; exact final scheduling/choice within the pair remains unspecified. |
@@ -48,8 +49,8 @@ Assistant recommendation requested by user; windows are provisional, not booking
 
 | Timeframe | Certification | Recommendation and usefulness | Practical checkpoint |
 |---|---|---|---|
-| Now-Oct 2026 | dbt Analytics Engineering | Finish current preparation if ready; do not let it jeopardize Snowflake renewal | Diagnose project failures independently |
-| Oct-Nov 2026 | SnowPro Specialty: Gen AI | First AI stage; learn Cortex and renew active Core before Jan 2027 under current policy | Cortex retrieval/agent application with evaluation |
+| Now-Oct 2026 | dbt Analytics Engineering (primary) + SnowPro Specialty: Gen AI (parallel prep, exam not yet sat) | Finish dbt preparation if ready; do not let it jeopardize Snowflake renewal. Start SnowPro Cortex study and labs in parallel now, added 2026-09-23, so dbt slippage does not compress the exam-sitting window against the Jan 2027 Core deadline | dbt: diagnose project failures independently. SnowPro: Cortex concepts studied and labs started, not yet exam-ready |
+| Oct-Dec 2026 | SnowPro Specialty: Gen AI (sit exam) | Sit the exam once dbt is done, drawing on prep already completed in parallel; window widened to Dec to keep a buffer before Jan 2027 Core expiry | Cortex retrieval/agent application with evaluation; exam passed with margin before Core expiry |
 | Jan-Feb 2027 | AI-103 | Build on AI-102; develop Foundry applications and agents | Working Foundry app with tools and grounding |
 | Mar-May 2027 | AI-300 | Keep in sequence for production ML/GenAI engineering | CI/CD, deployment, evaluation, monitoring and rollback |
 | Jun-Sep 2027 | AI-500 | Main architecture milestone; extend operational foundations into multi-agent delivery | Justified orchestration, permissions, approvals and measured reliability |
@@ -57,6 +58,8 @@ Assistant recommendation requested by user; windows are provisional, not booking
 | Before actual Snowflake expiry in 2028 | SnowPro Advanced Architect or DE | Prefer Architect for architecture ownership; choose DE for pipeline-heavy work. Combine advancement and renewal | Experience and readiness aligned to chosen scope |
 
 Keep GH-600, Databricks DE Professional/ML, AI security, AZ-104/AZ-305, AWS/GCP and AICD outside the scheduled core unless a concrete need changes priorities. Do not add exams between these stages. Dates can move with readiness; protect the actual Snowflake expiry and leave a retake buffer.
+
+**Parallel-track update (2026-09-23):** the exam-sitting order remains dbt then SnowPro Specialty then AI-103, unchanged from the locked sequence. What changed is when SnowPro Specialty *preparation* begins: it now starts alongside dbt instead of waiting until dbt is finished, because dbt debugging readiness is unscored and a delay there would otherwise squeeze the SnowPro exam into a short window before the Jan 2027 Core renewal deadline. This was raised as a risk in the 2026-09-23 roadmap review (sessions/2026-09-23-roadmap-review-opinion.md) and accepted by the user the same day.
 
 This sequence invests more study time than the earlier shortened plan. Its rationale is integrated capability: build -> operate -> architect -> implement on another platform. Reuse one project and one concept notebook to manage that opportunity cost. It does not imply guaranteed salary or job outcomes.
 
@@ -195,6 +198,7 @@ Market sources:
 
 - Confirm exact issuer/title of existing "Gen AI" qualification.
 - Confirm study capacity and actual 2026 Snowflake pass/expiry dates.
+- Begin SnowPro Specialty: Gen AI (Cortex) study/labs now, in parallel with dbt, per the 2026-09-23 parallel-track update.
 - Maintain PL-300, DP-600 and DP-700 through eligible renewal assessments.
 - Keep detailed dbt practice in its separate task.
 - After AI-103, complete AI-300 before the AI-500 / Databricks GenAI stage as requested on 2026-09-23.
