@@ -59,6 +59,8 @@ This repository preserves context so future tasks can continue without relying o
 - Audit: sessions/2026-09-23-datacertprep-content-seo-audit-01a0cb68.md. Broad curriculum structures and file coverage are strong, but sampled AWS/Fabric/dbt inaccuracies, Copilot domain mapping, biased answer design and SEO defects need attention. No product changes were made.
 - Fresh HTTP checks confirmed scoring-copy repairs and GH-300 update are deployed; do not repeat stale crawl findings as current defects. Sandbox tools failed with Windows 1907; approved escalated PowerShell worked.
 
+- Browser design follow-up completed: strong desktop styling; confirmed mobile header overflow (509px on 390px viewport) and squeezed DP-700 domain rows. Prioritize responsive fixes, clearer start-practice hierarchy and catalogue search. Evidence and scope are in the audit note and design-review/mobile-course-390.png; no product changes made.
+
 ## dbt preparation materials
 
 - Published materials live under [dbt/README.md](dbt/README.md); learner entry point is [dbt/dbt-study-guide/START_HERE.md](dbt/dbt-study-guide/START_HERE.md).

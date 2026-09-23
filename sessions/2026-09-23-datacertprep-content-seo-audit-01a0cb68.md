@@ -32,3 +32,23 @@ Sandboxed shell, Node and browser tools failed with CreateProcessWithLogonW erro
 - Fresh live sitemap returned HTTP 200 and contained 47 practice and 47 flashcard URLs whose routes require login. robots.txt returned 200 and advertises the sitemap.
 - Fresh AI-103 article returned 200 and retained the claim that the exam shifts entirely to generative AI; the official blueprint contradicts that simplification.
 - Review date: 2026-09-23 Australia/Sydney. No DataCertPrep files or production data were changed.
+
+## Follow-up: browser design review
+
+User explicitly requested a design review in the browser. Browser access worked this turn. Inspected the live homepage, certification catalogue, DP-700 course, public sample questions, pricing and article catalogue at desktop 1440x1000 and mobile 390x844, including dark and light themes. Restored the original dark theme, normal viewport and homepage afterward. No product code or content was changed.
+
+### Observed design findings
+
+- Strong foundation: consistent navy/cyan/purple styling, clear desktop headings, recognizable main buttons and orderly card layouts. A full visual rebrand is unnecessary.
+- High priority: mobile header does not collapse. At a 390px viewport, document width was 509px; Pricing spans approximately x381-425 and Sign in x441-509. Logo/tagline wrap heavily. Implement a compact mobile header and menu; eliminate horizontal page scrolling.
+- High priority: DP-700 study-domain rows retain a horizontal arrangement on mobile, squeezing the first title into six lines and pushing the allocation percentage offscreen. Stack domain name and resource links. Screenshot evidence: design-review/mobile-course-390.png.
+- Homepage hero consumes most of a mobile screen, with primary action near the bottom; large six-card update section precedes discovery and product demonstration. Shorten mobile headline/padding, show a real question or product preview and move detailed updates lower.
+- Catalogue has 47 offerings and provider anchors but no search or meaningful role/level filters. Add exam-code/name search and compact filters.
+- DP-700 course presents seven competing resource/enrollment actions; Pro actions look faded/disabled, particularly on white. Establish one primary start-practice action, group secondary resources and make locked states explicit with readable colors. No numerical WCAG contrast audit was performed.
+- Public sample questions display the correct answer immediately; offer answer reveal or selectable questions so prospects can experience self-testing.
+- Pricing cards explain the offer but their buttons sit at different vertical positions and currency is not explicitly identified near the monthly price. Align desktop actions and clarify currency and actual billing/cancellation terms.
+- Article catalogue is a long uniform two-column list of text cards. Category pills appear as noninteractive spans in DOM/accessibility inspection. Add functional topic filters/search and a featured/starting-point guide.
+
+### Scope and next steps
+
+This was an unauthenticated visual and interaction review, not a complete accessibility, performance, conversion or authenticated learning-flow test. Prioritize mobile navigation/domain layout, then course action hierarchy and catalogue search, followed by homepage/product demonstration and editorial polish. Live site now reports 10,847 questions; do not reuse older counts or assume prior content findings remain unchanged after deployments.
