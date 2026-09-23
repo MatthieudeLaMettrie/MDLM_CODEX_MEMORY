@@ -12,6 +12,10 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 - How GitHub, your local folder, GitHub Desktop, and Codex fit together.
 - How session notes and memory carry context into the next task.
 
+## Study guides
+
+- [JavaScript and Python runtimes: Node.js, npm and npx](RUNTIME_STUDY_GUIDE.html) — download/open the HTML file in a browser for diagrams, examples, runtime comparisons and an interactive quiz. Works offline and includes print styling.
+
 ## Project records
 
 - [Working instructions](AGENTS.md)

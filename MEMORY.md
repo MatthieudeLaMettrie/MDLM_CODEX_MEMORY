@@ -27,7 +27,8 @@ This repository preserves context so future tasks can continue without relying o
 - Initial continuity files were committed and pushed to main as 06b7251; local and remote hashes matched.
 - VISUAL_GUIDE.md documents the setup and ongoing workflow; README.md prominently links to it.
 - sessions/2026-09-22-setup-guide-and-session-policy.md records this conversation's explanations and expanded recording policy.
-- No application code or test suite exists. Current planning objective: Data / AI architect certification and career development.
+- RUNTIME_STUDY_GUIDE.html is a standalone, offline study guide covering runtimes, Node.js/npm/npx, JavaScript and Python execution environments, examples and a self-check quiz; linked from README.md. HTML structure and interaction logic validated; browser visual preview was blocked by URL policy.
+- No application test suite exists. Current planning objective: Data / AI architect certification and career development.
 
 ## Certification and career planning
 
