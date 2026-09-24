@@ -14,6 +14,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 ## Study guides
 
+- [SnowPro Specialty: Gen AI (GES-C02) study guide and practice set](snowpro-genai/README.md) — official-blueprint coverage, syntax and billing sheets, a lab, 28 original questions, and Snowflake documentation links.
+
 - [Gmail/Google Workspace: receive information@frenchexpatsinvestment.com in the existing inbox](EMAIL_ALIAS_GUIDE.md) — step-by-step alias setup and delivery test.
 
 - [dbt learning guide, debugging workbook and Python workflow](dbt/README.md) — source-linked reference, twenty exercises with answers withheld, and an adaptable readiness plan.
