@@ -1,6 +1,6 @@
 # SnowPro Specialty: Gen AI (GES-C02)
 
-Start with [the study guide](STUDY_GUIDE.md), then take [the original practice set](PRACTICE_EXAM.md) closed-book. Use [the official documentation index](OFFICIAL_DOC_INDEX.md) to investigate misses. This material was prepared on 2026-09-24 from the official Snowflake C02 study guide dated 2026-04-30 and current Snowflake documentation. It is an independent study aid, not an official Snowflake exam or a guarantee of a pass.
+Start with [the study guide](STUDY_GUIDE.md), follow the [course companion and four-week route](COURSE_COMPANION.md), then take [the original practice set](PRACTICE_EXAM.md) closed-book. Use [the official documentation index](OFFICIAL_DOC_INDEX.md) to investigate misses. This material was prepared on 2026-09-24 from the official Snowflake C02 study guide dated 2026-04-30, the supplied five-page Snowflake GenAI course datasheet, and current Snowflake documentation. It is an independent study aid, not an official Snowflake exam or a guarantee of a pass.
 
 ## Exam map
 
@@ -19,6 +19,8 @@ The question counts approximate the blueprint with a 28-question set. The guide'
 2. Build the small lab in the guide using a Snowflake account, keeping costs and privileges in view. Examples here were checked against documentation but have **not** been run in a Snowflake account.
 3. Attempt all 28 questions before opening the answer key. For each miss, write the product choice, exact syntax or privilege, billing unit, and the linked documentation page.
 4. Revisit Snowflake's official study guide and current docs just before booking. Snowflake products, names, pricing, availability, and privilege rules change.
+
+The [course companion](COURSE_COMPANION.md) turns the two-day GenAI syllabus into 13 study units, a flexible four-week sequence, labs, a capstone, and ten closed-book checks. Its topic map is our interpretation; the course datasheet does not define C02 exam weights or promise exam coverage.
 
 The source PDF is available from the user's supplied [Snowflake certification page](https://learn.snowflake.com/en/certifications/snowpro-GenAI-C02/?pdf_name=SnowProGenAIStudyGuideC02.pdf). The local downloaded PDF was read for its blueprint and links; it is not copied into this repository because the guide says it is for internal use only.
 

@@ -2,6 +2,8 @@
 
 Prepared 2026-09-24. Blueprint: Snowflake's *SnowPro Specialty: Gen AI Exam Study Guide*, last updated 2026-04-30, supplied as `SnowProGenAIStudyGuideC02.pdf`. Official documentation is the source of truth for syntax and current behavior. This guide prioritizes the exam blueprint while flagging changes in live docs. Product labels and charges can change before the test; recheck the [pricing](https://docs.snowflake.com/en/user-guide/snowflake-cortex/pricing) and [AI cost governance](https://docs.snowflake.com/en/user-guide/snowflake-cortex/governance-and-availability/ai-cost-management-and-governance) pages before booking.
 
+For a module-by-module route based on the supplied Snowflake GenAI course datasheet, use the [course companion](COURSE_COMPANION.md). It adds guided labs, a capstone, and a distinction between the broader course syllabus and this exam blueprint.
+
 ## One-page memory sheet
 
 | Need | Snowflake choice | Key distinction |
