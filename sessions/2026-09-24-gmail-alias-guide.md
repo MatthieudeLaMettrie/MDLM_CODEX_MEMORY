@@ -17,3 +17,7 @@ User asked for a clear, reusable GitHub record of how to receive messages sent t
 ## Validation and next step
 
 Official Google sources were checked for domain types, user aliases, MX activation, and forwarding. The user can confirm whether their custom-domain inbox is managed in Google Workspace and then follow the matching path in the guide. Review the repository diff and publish the session record and guide under standing authorization.
+
+## Same-day correction
+
+The user clarified that the desired new address is `information@frenchexpatsinvestment.com`, on the **same domain** as the existing account. Updated the guide, README link, and MEMORY.md accordingly. The prior `information@fei.com`/secondary-domain procedure above describes the original request and is superseded. The current guide now uses only the same-domain user-alias steps, an external delivery test, optional Send mail as setup, and a fallback for mail hosted outside Workspace. No live Admin console or DNS changes were made.

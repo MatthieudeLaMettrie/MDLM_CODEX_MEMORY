@@ -14,7 +14,7 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 ## Study guides
 
-- [Gmail/Google Workspace: receive information@fei.com in the existing inbox](EMAIL_ALIAS_GUIDE.md) — step-by-step alias setup and delivery test.
+- [Gmail/Google Workspace: receive information@frenchexpatsinvestment.com in the existing inbox](EMAIL_ALIAS_GUIDE.md) — step-by-step alias setup and delivery test.
 
 - [dbt learning guide, debugging workbook and Python workflow](dbt/README.md) — source-linked reference, twenty exercises with answers withheld, and an adaptable readiness plan.
 
