@@ -28,6 +28,7 @@ This repository preserves context so future tasks can continue without relying o
 - VISUAL_GUIDE.md documents the setup and ongoing workflow; README.md prominently links to it.
 - sessions/2026-09-22-setup-guide-and-session-policy.md records this conversation's explanations and expanded recording policy.
 - RUNTIME_STUDY_GUIDE.html is a standalone, offline study guide covering runtimes, Node.js/npm/npx, JavaScript and Python execution environments, examples and a self-check quiz; linked from README.md. HTML structure and interaction logic validated; browser visual preview was blocked by URL policy.
+- EMAIL_ALIAS_GUIDE.md explains how to receive information@fei.com in the existing matthieu@frenchexpatsinvestment.com Gmail inbox using a Google Workspace secondary domain and user alias, with a fallback for externally hosted email. Actual account type and configuration have not been checked.
 - The dbt collector includes nine offline tests. Current planning objective: Data / AI architect certification and career development.
 
 ## Certification and career planning
