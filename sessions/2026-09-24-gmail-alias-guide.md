@@ -21,3 +21,7 @@ Official Google sources were checked for domain types, user aliases, MX activati
 ## Same-day correction
 
 The user clarified that the desired new address is `information@frenchexpatsinvestment.com`, on the **same domain** as the existing account. Updated the guide, README link, and MEMORY.md accordingly. The prior `information@fei.com`/secondary-domain procedure above describes the original request and is superseded. The current guide now uses only the same-domain user-alias steps, an external delivery test, optional Send mail as setup, and a fallback for mail hosted outside Workspace. No live Admin console or DNS changes were made.
+
+## Outlook follow-up
+
+User asked how to select between Matthieu and "info" as the sending address in Outlook. The documented alias is `information@frenchexpatsinvestment.com`; actual `info@...` would be a distinct alias and must be substituted if that is what they created. Added Outlook instructions to the guide. Google's official GWSMO documentation supports sending from a verified custom alias via Outlook's From field after Gmail Send mail as setup. Microsoft documents how to reveal From in classic and new Outlook. Standard Outlook Gmail/IMAP connections may show only accounts, so no universal alias-sending claim was made. The user's Outlook connection type has not been checked. No live settings changed.

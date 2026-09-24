@@ -30,6 +30,17 @@ From an email account outside this Google Workspace account, send a message to `
 
 Receiving messages at the alias does not automatically make it the default **From** address. In Matthieu's Gmail, open **Settings → See all settings → Accounts and Import → Send mail as → Add another email address**. Enter `information@frenchexpatsinvestment.com`, follow the confirmation steps, then choose it in the **From** field when writing or replying. You can set it as the default From address if desired. Send a test to an external account to check how the sender appears.
 
+## Choose the sender in Outlook
+
+These steps use the full alias recorded in this guide, `information@frenchexpatsinvestment.com`. If you actually created `info@frenchexpatsinvestment.com`, use that exact address instead.
+
+1. First complete the **Send mail as** setup in Gmail above. Google requires that custom From address to be added and confirmed before using it with **Google Workspace Sync for Microsoft Outlook (GWSMO)**.
+2. In Outlook, start a new message or reply. Look for **From** above the **To** field. If it is hidden, in **classic Outlook** select **Options → From**; in **new Outlook** select **Options → Show From**.
+3. If you use **GWSMO**, select `matthieu@frenchexpatsinvestment.com` or `information@frenchexpatsinvestment.com` in **From**. Google says you can send from a verified alias in Outlook with GWSMO. If the alias is not listed, try entering the full address in the From field, then send a test message to an external account. Do not assume a reply will automatically choose the address to which the incoming message was sent.
+4. Check the received test message's **From** and **Reply-To** addresses. If they show Matthieu's primary address when you chose the alias, review the Gmail Send mail as setup and your Outlook connection type.
+
+If Outlook is connected to Gmail as a standard Google/IMAP account instead of GWSMO, Microsoft's **From** menu normally selects an *account*, and a Workspace alias is not a separate account. Simply creating a receiving alias in Google Admin does not guarantee an Outlook sender choice. Microsoft's and Google's help pages do not document a universal alias-sending procedure for every Outlook/Gmail connection type. In that case, use Gmail's verified **From** selector for reliable alias sending, or confirm the supported Outlook setup with your Workspace administrator. Do not add the alias as a separate mailbox unless it has its own login.
+
 ## If this custom-domain address is hosted outside Google Workspace
 
 If you read `matthieu@frenchexpatsinvestment.com` in Gmail but its mail is actually hosted by another provider, create the alias or forwarding address in that provider's control panel instead. Route `information@frenchexpatsinvestment.com` to the existing mailbox there. Gmail's **Forwarding** setting sends mail *out of* Gmail; it does not create a new incoming address for your domain.
@@ -37,3 +48,6 @@ If you read `matthieu@frenchexpatsinvestment.com` in Gmail but its mail is actua
 ## Official reference
 
 - [Google Workspace: add or delete an alternate email address](https://support.google.com/a/answer/33327)
+- [Google Workspace: work with messages in Outlook using GWSMO](https://support.google.com/a/users/answer/158095)
+- [Gmail: send emails from a different address or alias](https://support.google.com/mail/answer/22370)
+- [Microsoft: change the account used to send email in Outlook](https://support.microsoft.com/en-us/outlook/change-the-account-used-to-send-email-messages)
