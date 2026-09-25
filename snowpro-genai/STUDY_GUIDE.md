@@ -6,6 +6,8 @@ For a module-by-module route based on the supplied Snowflake GenAI course datash
 
 For current coverage of all listed AI Functions, the complete access path, model RBAC, guardrails, cost-view changes, and Snowflake ML, use the [AI/ML deep dive](AI_ML_DEEP_DIVE.md) and its [documentation atlas](AI_ML_DOC_ATLAS.md).
 
+For account/trial activation, role grants, model and regional checks, and a RAG walkthrough, use [Enable Cortex AI and build a RAG lab](ENABLE_CORTEX_AND_RAG.md).
+
 ## One-page memory sheet
 
 | Need | Snowflake choice | Key distinction |

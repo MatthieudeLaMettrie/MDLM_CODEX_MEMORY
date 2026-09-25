@@ -1,5 +1,7 @@
 # SnowPro Specialty: Gen AI (GES-C02)
 
+For a hands-on path from account/trial activation and role grants through a working retrieval-augmented generation example, use [Enable Cortex AI and build a RAG lab](ENABLE_CORTEX_AND_RAG.md).
+
 Start with [the study guide](STUDY_GUIDE.md), follow the [course companion and four-week route](COURSE_COMPANION.md), then take [the original practice set](PRACTICE_EXAM.md) closed-book. For the full AI Function, governance, cost and ML treatment, read the [AI/ML deep dive](AI_ML_DEEP_DIVE.md). Use the [310-page AI/ML documentation atlas](AI_ML_DOC_ATLAS.md) and the [C02 PDF link index](OFFICIAL_DOC_INDEX.md) to investigate misses. This material began on 2026-09-24 from the official Snowflake C02 study guide dated 2026-04-30, the supplied Snowflake GenAI course datasheet, and current Snowflake documentation. It is an independent study aid, not an official Snowflake exam or a guarantee of a pass.
 
 ## Exam map
