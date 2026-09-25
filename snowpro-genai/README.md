@@ -1,6 +1,6 @@
 # SnowPro Specialty: Gen AI (GES-C02)
 
-Start with [the study guide](STUDY_GUIDE.md), follow the [course companion and four-week route](COURSE_COMPANION.md), then take [the original practice set](PRACTICE_EXAM.md) closed-book. Use [the official documentation index](OFFICIAL_DOC_INDEX.md) to investigate misses. This material was prepared on 2026-09-24 from the official Snowflake C02 study guide dated 2026-04-30, the supplied five-page Snowflake GenAI course datasheet, and current Snowflake documentation. It is an independent study aid, not an official Snowflake exam or a guarantee of a pass.
+Start with [the study guide](STUDY_GUIDE.md), follow the [course companion and four-week route](COURSE_COMPANION.md), then take [the original practice set](PRACTICE_EXAM.md) closed-book. For the full AI Function, governance, cost and ML treatment, read the [AI/ML deep dive](AI_ML_DEEP_DIVE.md). Use the [310-page AI/ML documentation atlas](AI_ML_DOC_ATLAS.md) and the [C02 PDF link index](OFFICIAL_DOC_INDEX.md) to investigate misses. This material began on 2026-09-24 from the official Snowflake C02 study guide dated 2026-04-30, the supplied Snowflake GenAI course datasheet, and current Snowflake documentation. It is an independent study aid, not an official Snowflake exam or a guarantee of a pass.
 
 ## Exam map
 
@@ -21,6 +21,8 @@ The question counts approximate the blueprint with a 28-question set. The guide'
 4. Revisit Snowflake's official study guide and current docs just before booking. Snowflake products, names, pricing, availability, and privilege rules change.
 
 The [course companion](COURSE_COMPANION.md) turns the two-day GenAI syllabus into 13 study units, a flexible four-week sequence, labs, a capstone, and ten closed-book checks. Its topic map is our interpretation; the course datasheet does not define C02 exam weights or promise exam coverage.
+
+The [AI/ML deep dive](AI_ML_DEEP_DIVE.md) was checked on 2026-09-25 against the two user-supplied Snowflake documentation entry points and their linked official references. The [atlas](AI_ML_DOC_ATLAS.md) inventories the official Cortex, CoCo and Snowflake ML section indexes (111 + 76 + 94 pages), plus 29 linked ML Function and SQL reference pages. It can be regenerated with `python build_ai_ml_doc_atlas.py`. It is a page inventory; the deep dive is the synthesized learning material.
 
 The source PDF is available from the user's supplied [Snowflake certification page](https://learn.snowflake.com/en/certifications/snowpro-GenAI-C02/?pdf_name=SnowProGenAIStudyGuideC02.pdf). The local downloaded PDF was read for its blueprint and links; it is not copied into this repository because the guide says it is for internal use only.
 

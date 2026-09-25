@@ -1,6 +1,6 @@
 # Project memory
 
-Last updated: 2026-09-24
+Last updated: 2026-09-25
 
 ## Purpose and repository
 
@@ -41,6 +41,7 @@ This repository preserves context so future tasks can continue without relying o
 - Notebook topics: models, RAG, agents, lifecycle, governance, evaluation, monitoring, tools and deployment; compare Snowflake, Azure and Databricks without assuming feature equivalence.
 - A flexible four-week SnowPro GenAI programme is now in [snowpro-genai/COURSE_COMPANION.md](snowpro-genai/COURSE_COMPANION.md), based on the user's five-page Snowflake GenAI instructor-led course datasheet (26F15): 13 units, labs, capstone, and ten retrieval checks. It maps course topics to C02 without treating the broader syllabus as the exam blueprint. A cross-vendor master notebook remains open.
 - SnowPro GES-C02 study materials live under [snowpro-genai/README.md](snowpro-genai/README.md): four-domain guide, course companion, 28 original questions, staged-document/Search/Analyst/Agent mini-lab, 130 official resource-link entries extracted from the supplied 2026-04-30 PDF, and a mapped official AI and Agents Learning Track. Domain weights are 18/38/29/15. Live account labs and Snowflake SQL execution remain to be done. The supplied training catalog URL was session-gated, so stable public Snowflake course pages were used. The third-party BigDataPrep article agreed with the weights, but its exam mechanics were not independently verified.
+- On 2026-09-25, added [snowpro-genai/AI_ML_DEEP_DIVE.md](snowpro-genai/AI_ML_DEEP_DIVE.md) for all 15 current AI Functions, privilege/model governance, guardrails, cost views, observability, and the broader Snowflake ML lifecycle. [snowpro-genai/AI_ML_DOC_ATLAS.md](snowpro-genai/AI_ML_DOC_ATLAS.md) inventories 310 reachable official pages (281 section-index pages plus 29 ML/SQL references); it is a heading-level inventory, not a deep review of every page. Regeneration scripts are in the same folder. SQL has not been executed in a Snowflake account. Session: sessions/2026-09-25-snowflake-ai-ml-doc-deep-dive.md.
 - Consolidated strategy/research: [CERTIFICATION_ROADMAP.md](CERTIFICATION_ROADMAP.md). New exact dates are not confirmed; do not impose the previous schedule unchanged.
 - User holds SnowPro Core (expires Jan 2027), PL-300, AI-102, DP-600, DP-700, Databricks DE Associate and an unspecified Gen AI credential. Do not guess its issuer.
 - Goal: hands-on Data / AI architect. Balance delivery, market opportunities and study opportunity cost.
