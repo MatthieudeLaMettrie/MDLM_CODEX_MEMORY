@@ -9,6 +9,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date
 from pathlib import Path
 import re
+import sys
 import time
 from urllib.request import Request, urlopen
 
@@ -18,6 +19,11 @@ ROOTS = [
     ("Snowflake CoCo", "https://docs.snowflake.com/en/user-guide/cortex-code/llms.txt"),
     ("Snowflake ML", "https://docs.snowflake.com/en/developer-guide/snowflake-ml/llms.txt"),
 ]
+BROWSE_ROOTS = {
+    ROOTS[0][1]: "https://docs.snowflake.com/en/guides-overview-ai-features",
+    ROOTS[1][1]: "https://docs.snowflake.com/en/user-guide/cortex-code/cortex-code",
+    ROOTS[2][1]: "https://docs.snowflake.com/en/developer-guide/snowflake-ml/overview",
+}
 EXTRAS = [
     (
         "AI/ML overview and ML Functions",
@@ -51,6 +57,29 @@ EXTRAS = [
 LINK = re.compile(r"^- \[([^]]+)\]\((https://docs\.snowflake\.com/[^)]+)\)$", re.M)
 HEADING = re.compile(r"^##? (.+)$", re.M)
 OUTPUT = Path(__file__).with_name("AI_ML_DOC_ATLAS.md")
+DOC_LINK = re.compile(r"(?<=\]\()(https://docs\.snowflake\.com/[^)]+)(?=\))")
+
+
+def browser_url(source_url: str) -> str:
+    """Turn Snowflake's machine-readable source URL into a reader-facing page URL."""
+    if source_url in BROWSE_ROOTS:
+        return BROWSE_ROOTS[source_url]
+    if source_url.endswith(".md"):
+        return source_url[:-3]
+    return source_url
+
+
+def rewrite_existing_links() -> None:
+    """Fix links in the saved inventory without re-fetching hundreds of source pages."""
+    content = OUTPUT.read_text(encoding="utf-8")
+    content = DOC_LINK.sub(lambda match: browser_url(match.group(1)), content)
+    content = content.replace("[Official section index]", "[Browse Snowflake documentation]")
+    content = content.replace(
+        "The first three sections come from live official section indexes; the final two add ML Function and SQL reference pages linked by the user's entry points. Run `python build_ai_ml_doc_atlas.py` to refresh.",
+        "The first three sections come from live official section indexes; the final two add ML Function and SQL reference pages linked by the user's entry points. The table links open normal documentation pages; the `llms.txt` and `.md` URLs are used only to build the inventory. Run `python build_ai_ml_doc_atlas.py` to refresh.",
+    )
+    OUTPUT.write_text(content, encoding="utf-8")
+    print(f"Rewrote reader-facing links in {OUTPUT} without re-fetching pages")
 
 
 def fetch(url: str) -> str:
@@ -102,23 +131,28 @@ def main() -> None:
         f"Generated {date.today().isoformat()} from Snowflake's official `llms.txt` section indexes.",
         "This is a **page inventory**, not a claim that every page is examined in depth or that every detail is on the GES-C02 exam.",
         "Each entry was fetched to check availability and read its Markdown headings. Use the [deep-dive guide](AI_ML_DEEP_DIVE.md) for the synthesized study notes.",
-        "The first three sections come from live official section indexes; the final two add ML Function and SQL reference pages linked by the user's entry points. Run `python build_ai_ml_doc_atlas.py` to refresh.",
+        "The first three sections come from live official section indexes; the final two add ML Function and SQL reference pages linked by the user's entry points. The table links open normal documentation pages; the `llms.txt` and `.md` URLs are used only to build the inventory. Run `python build_ai_ml_doc_atlas.py` to refresh.",
         "",
         "| Collection | Indexed pages |",
         "| --- | ---: |",
     ]
-    lines += [f"| [{group}]({index_url}) | {len(entries)} |" for group, index_url, entries in groups]
+    lines += [f"| [{group}]({browser_url(index_url)}) | {len(entries)} |" for group, index_url, entries in groups]
     lines += ["", f"Unique pages: **{len(urls)}**. Fetch failures: **{sum(bool(v[1]) for v in metadata.values())}**.", ""]
     for group, index_url, entries in groups:
-        lines += [f"## {group}", "", f"[Official section index]({index_url})", "", "| Page | First section headings | Fetch |", "| --- | --- | --- |"]
+        lines += [f"## {group}", "", f"[Browse Snowflake documentation]({browser_url(index_url)})", "", "| Page | First section headings | Fetch |", "| --- | --- | --- |"]
         for title, url in entries:
             headings, error = metadata[url]
             status = "OK" if error is None else f"Error: {cell(error)}"
-            lines.append(f"| [{cell(title)}]({url}) | {cell('; '.join(headings[:3]))} | {status} |")
+            lines.append(f"| [{cell(title)}]({browser_url(url)}) | {cell('; '.join(headings[:3]))} | {status} |")
         lines.append("")
     OUTPUT.write_text("\n".join(lines), encoding="utf-8")
     print(f"Wrote {OUTPUT}: {len(urls)} unique pages; {sum(bool(v[1]) for v in metadata.values())} fetch failures")
 
 
 if __name__ == "__main__":
-    main()
+    if sys.argv[1:] == ["--rewrite-links"]:
+        rewrite_existing_links()
+    elif len(sys.argv) == 1:
+        main()
+    else:
+        raise SystemExit("Usage: python build_ai_ml_doc_atlas.py [--rewrite-links]")
