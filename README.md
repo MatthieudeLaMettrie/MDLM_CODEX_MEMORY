@@ -18,6 +18,10 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 - [Azure Foundry SDK, Azure AI Search, and RAG study course](AZURE_FOUNDRY_RAG_STUDY_COURSE.md) — architecture, current Python agent calls, labs, and evaluation exercises.
 
+- [GCP Agent Search, Gemini, ADK, and RAG study course](GCP_AGENT_SEARCH_RAG_STUDY_COURSE.md) — current naming, grounded Gemini and agent calls, labs, and evaluation.
+
+- [AWS Bedrock Knowledge Bases, AgentCore, and RAG study course](AWS_BEDROCK_RAG_STUDY_COURSE.md) — managed and customer-managed paths, current agent integration, labs, and evaluation.
+
 - [Gmail/Google Workspace: receive information@frenchexpatsinvestment.com in the existing inbox](EMAIL_ALIAS_GUIDE.md) — step-by-step alias setup and delivery test.
 
 - [dbt learning guide, debugging workbook and Python workflow](dbt/README.md) — source-linked reference, twenty exercises with answers withheld, and an adaptable readiness plan.
