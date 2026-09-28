@@ -1,6 +1,6 @@
 # Project memory
 
-Last updated: 2026-09-25
+Last updated: 2026-09-28
 
 ## Purpose and repository
 
@@ -32,6 +32,8 @@ This repository preserves context so future tasks can continue without relying o
 - The dbt collector includes nine offline tests. Current planning objective: Data / AI architect certification and career development.
 
 ## Certification and career planning
+
+- Azure Foundry/RAG study module: [AZURE_FOUNDRY_RAG_STUDY_COURSE.md](AZURE_FOUNDRY_RAG_STUDY_COURSE.md). It covers Azure AI Search, Foundry IQ versus Fabric IQ, current Foundry 2.x Python agent calls, indexing/retrieval, labs, and evaluation. Documentation-based; no Azure deployment was made.
 
 - Authoritative user update, 2026-09-23: after dbt, **SnowPro GenAI -> AI-103 -> AI-300 -> AI-500 / Databricks GenAI**.
 - AI-300 is reinstated as a locked stage. This explicitly supersedes the earlier "AI-103 directly to AI-500" and "defer AI-300" decisions.
