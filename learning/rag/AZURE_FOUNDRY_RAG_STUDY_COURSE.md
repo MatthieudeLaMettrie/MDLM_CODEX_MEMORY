@@ -1,6 +1,6 @@
 # Azure Foundry SDK, Azure AI Search, and RAG: study course
 
-Checked against Microsoft documentation on 2026-09-28. This module supports the Azure stage of the [continuous AI curriculum](AI_STUDY_CURRICULUM.md). Work through the labs with a small collection of documents you are permitted to index. Code is a documented starting point; it has not been run against your Azure subscription.
+Checked against Microsoft documentation on 2026-09-28. This module supports the Azure stage of the [continuous AI curriculum](../certifications/AI_STUDY_CURRICULUM.md). Work through the labs with a small collection of documents you are permitted to index. Code is a documented starting point; it has not been run against your Azure subscription.
 
 ## Outcome
 

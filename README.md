@@ -4,7 +4,7 @@ Project memory and session records for continuing work across Codex tasks.
 
 ## Visual guide
 
-**[Open the visual guide: from GitHub setup to session continuity](VISUAL_GUIDE.md)**
+**[Open the visual guide: from GitHub setup to session continuity](guides/continuity/VISUAL_GUIDE.md)**
 
 The guide contains three diagrams, step-by-step setup instructions, and a glossary:
 
@@ -16,22 +16,32 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 - [SnowPro Specialty: Gen AI (GES-C02) study guide and practice set](snowpro-genai/README.md) — official-blueprint coverage, syntax and billing sheets, a lab, 28 original questions, and Snowflake documentation links.
 
-- [Azure Foundry SDK, Azure AI Search, and RAG study course](AZURE_FOUNDRY_RAG_STUDY_COURSE.md) — architecture, current Python agent calls, labs, and evaluation exercises.
+- [Azure Foundry SDK, Azure AI Search, and RAG study course](learning/rag/AZURE_FOUNDRY_RAG_STUDY_COURSE.md) — architecture, current Python agent calls, labs, and evaluation exercises.
 
-- [GCP Agent Search, Gemini, ADK, and RAG study course](GCP_AGENT_SEARCH_RAG_STUDY_COURSE.md) — current naming, grounded Gemini and agent calls, labs, and evaluation.
+- [GCP Agent Search, Gemini, ADK, and RAG study course](learning/rag/GCP_AGENT_SEARCH_RAG_STUDY_COURSE.md) — current naming, grounded Gemini and agent calls, labs, and evaluation.
 
-- [AWS Bedrock Knowledge Bases, AgentCore, and RAG study course](AWS_BEDROCK_RAG_STUDY_COURSE.md) — managed and customer-managed paths, current agent integration, labs, and evaluation.
+- [AWS Bedrock Knowledge Bases, AgentCore, and RAG study course](learning/rag/AWS_BEDROCK_RAG_STUDY_COURSE.md) — managed and customer-managed paths, current agent integration, labs, and evaluation.
 
-- [Gmail/Google Workspace: receive information@frenchexpatsinvestment.com in the existing inbox](EMAIL_ALIAS_GUIDE.md) — step-by-step alias setup and delivery test.
+- [Gmail/Google Workspace: receive information@frenchexpatsinvestment.com in the existing inbox](guides/email/EMAIL_ALIAS_GUIDE.md) — step-by-step alias setup and delivery test.
 
 - [dbt learning guide, debugging workbook and Python workflow](dbt/README.md) — source-linked reference, twenty exercises with answers withheld, and an adaptable readiness plan.
 
-- [JavaScript and Python runtimes: Node.js, npm and npx](RUNTIME_STUDY_GUIDE.html) — download/open the HTML file in a browser for diagrams, examples, runtime comparisons and an interactive quiz. Works offline and includes print styling.
+- [JavaScript and Python runtimes: Node.js, npm and npx](guides/programming/RUNTIME_STUDY_GUIDE.html) — download/open the HTML file in a browser for diagrams, examples, runtime comparisons and an interactive quiz. Works offline and includes print styling.
 
 ## Project records
 
 - [Working instructions](AGENTS.md)
 - [Current memory](MEMORY.md)
-- [Certification roadmap and research findings](CERTIFICATION_ROADMAP.md)
-- [Locked continuous AI curriculum and resources](AI_STUDY_CURRICULUM.md)
+- [Certification roadmap and research findings](learning/certifications/CERTIFICATION_ROADMAP.md)
+- [Locked continuous AI curriculum and resources](learning/certifications/AI_STUDY_CURRICULUM.md)
+- [French Expats Investment ETF data project](projects/fei/ETF_DATA_FEI_PROJECT.md)
 - [Session notes](sessions/)
+
+## Folder map
+
+- `learning/rag/` — Azure, GCP, and AWS RAG courses.
+- `learning/certifications/` — AI curriculum and certification roadmap.
+- `guides/` — continuity, email, and programming guides.
+- `projects/` — project-specific records.
+- `dbt/` and `snowpro-genai/` — existing subject collections.
+- `sessions/` — dated session records.

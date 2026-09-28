@@ -10,7 +10,7 @@ This repository preserves context so future tasks can continue without relying o
 - AGENTS.md defines the continuity and publication workflow.
 - MEMORY.md holds lasting context and priorities.
 - sessions/ holds dated session summaries.
-- VISUAL_GUIDE.md explains the setup from repository creation and GitHub Desktop to commits, pushes, and continuity, with diagrams.
+- guides/continuity/VISUAL_GUIDE.md explains the setup from repository creation and GitHub Desktop to commits, pushes, and continuity, with diagrams.
 
 ## Decisions and preferences
 
@@ -24,29 +24,31 @@ This repository preserves context so future tasks can continue without relying o
 
 ## Current state
 
+- Repository layout (2026-09-28): root keeps README.md, MEMORY.md, and AGENTS.md; standalone guides and records are organized under `learning/rag/`, `learning/certifications/`, `guides/`, and `projects/`. Existing `dbt/`, `snowpro-genai/`, and `sessions/` remain in place. README.md is the navigation entry point.
+
 - Initial continuity files were committed and pushed to main as 06b7251; local and remote hashes matched.
-- VISUAL_GUIDE.md documents the setup and ongoing workflow; README.md prominently links to it.
+- guides/continuity/VISUAL_GUIDE.md documents the setup and ongoing workflow; README.md prominently links to it.
 - sessions/2026-09-22-setup-guide-and-session-policy.md records this conversation's explanations and expanded recording policy.
-- RUNTIME_STUDY_GUIDE.html is a standalone, offline study guide covering runtimes, Node.js/npm/npx, JavaScript and Python execution environments, examples and a self-check quiz; linked from README.md. HTML structure and interaction logic validated; browser visual preview was blocked by URL policy.
-- EMAIL_ALIAS_GUIDE.md explains how to receive information@frenchexpatsinvestment.com in the existing matthieu@frenchexpatsinvestment.com Gmail inbox using a same-domain Google Workspace user alias, and how to choose the sender in Outlook when using GWSMO. It distinguishes standard Outlook Gmail connections, where alias sending is not universally documented. The user corrected the new address from information@fei.com; actual account and Outlook configuration have not been checked.
+- guides/programming/RUNTIME_STUDY_GUIDE.html is a standalone, offline study guide covering runtimes, Node.js/npm/npx, JavaScript and Python execution environments, examples and a self-check quiz; linked from README.md. HTML structure and interaction logic validated; browser visual preview was blocked by URL policy.
+- guides/email/EMAIL_ALIAS_GUIDE.md explains how to receive information@frenchexpatsinvestment.com in the existing matthieu@frenchexpatsinvestment.com Gmail inbox using a same-domain Google Workspace user alias, and how to choose the sender in Outlook when using GWSMO. It distinguishes standard Outlook Gmail connections, where alias sending is not universally documented. The user corrected the new address from information@fei.com; actual account and Outlook configuration have not been checked.
 - The dbt collector includes nine offline tests. Current planning objective: Data / AI architect certification and career development.
 
 ## Certification and career planning
 
-- Azure Foundry/RAG study module: [AZURE_FOUNDRY_RAG_STUDY_COURSE.md](AZURE_FOUNDRY_RAG_STUDY_COURSE.md). It covers Azure AI Search, Foundry IQ versus Fabric IQ, current Foundry 2.x Python agent calls, indexing/retrieval, labs, and evaluation. Documentation-based; no Azure deployment was made.
-- Matching GCP and AWS RAG modules: [GCP_AGENT_SEARCH_RAG_STUDY_COURSE.md](GCP_AGENT_SEARCH_RAG_STUDY_COURSE.md) and [AWS_BEDROCK_RAG_STUDY_COURSE.md](AWS_BEDROCK_RAG_STUDY_COURSE.md). GCP covers Agent Search (formerly Vertex AI Search), Gemini grounding and ADK; AWS covers Bedrock Knowledge Bases and AgentCore Gateway. Both have code, labs, and evaluation; neither was run in a cloud account.
+- Azure Foundry/RAG study module: [AZURE_FOUNDRY_RAG_STUDY_COURSE.md](learning/rag/AZURE_FOUNDRY_RAG_STUDY_COURSE.md). It covers Azure AI Search, Foundry IQ versus Fabric IQ, current Foundry 2.x Python agent calls, indexing/retrieval, labs, and evaluation. Documentation-based; no Azure deployment was made.
+- Matching GCP and AWS RAG modules: [GCP_AGENT_SEARCH_RAG_STUDY_COURSE.md](learning/rag/GCP_AGENT_SEARCH_RAG_STUDY_COURSE.md) and [AWS_BEDROCK_RAG_STUDY_COURSE.md](learning/rag/AWS_BEDROCK_RAG_STUDY_COURSE.md). GCP covers Agent Search (formerly Vertex AI Search), Gemini grounding and ADK; AWS covers Bedrock Knowledge Bases and AgentCore Gateway. Both have code, labs, and evaluation; neither was run in a cloud account.
 
 - Authoritative user update, 2026-09-23: after dbt, **SnowPro GenAI -> AI-103 -> AI-300 -> AI-500 / Databricks GenAI**.
 - AI-300 is reinstated as a locked stage. This explicitly supersedes the earlier "AI-103 directly to AI-500" and "defer AI-300" decisions.
 - Detailed user learning order places AI-500 before Databricks GenAI; preserve the slash in the short form because exact scheduling/choice within that final pair was not separately confirmed. Do not silently make Databricks GenAI conditional on projects again.
-- Study as one continuous curriculum, reusing universal concepts and one master AI notebook across vendors. Full resource/lab guidance: [AI_STUDY_CURRICULUM.md](AI_STUDY_CURRICULUM.md).
+- Study as one continuous curriculum, reusing universal concepts and one master AI notebook across vendors. Full resource/lab guidance: [AI_STUDY_CURRICULUM.md](learning/certifications/AI_STUDY_CURRICULUM.md).
 - Primary sources: official SnowPro/Databricks guides, Microsoft AI-103/300/500 study guides and corresponding T00 courses; practical Cortex, Foundry/Azure ML and Databricks labs. SnowPro target split about 40% exam study / 60% labs; AI-300 requires a working CI/CD-to-rollback chain.
 - Notebook topics: models, RAG, agents, lifecycle, governance, evaluation, monitoring, tools and deployment; compare Snowflake, Azure and Databricks without assuming feature equivalence.
 - A flexible four-week SnowPro GenAI programme is now in [snowpro-genai/COURSE_COMPANION.md](snowpro-genai/COURSE_COMPANION.md), based on the user's five-page Snowflake GenAI instructor-led course datasheet (26F15): 13 units, labs, capstone, and ten retrieval checks. It maps course topics to C02 without treating the broader syllabus as the exam blueprint. A cross-vendor master notebook remains open.
 - SnowPro GES-C02 study materials live under [snowpro-genai/README.md](snowpro-genai/README.md): four-domain guide, course companion, 28 original questions, staged-document/Search/Analyst/Agent mini-lab, 130 official resource-link entries extracted from the supplied 2026-04-30 PDF, and a mapped official AI and Agents Learning Track. Domain weights are 18/38/29/15. Live account labs and Snowflake SQL execution remain to be done. The supplied training catalog URL was session-gated, so stable public Snowflake course pages were used. The third-party BigDataPrep article agreed with the weights, but its exam mechanics were not independently verified.
 - On 2026-09-25, added [snowpro-genai/AI_ML_DEEP_DIVE.md](snowpro-genai/AI_ML_DEEP_DIVE.md) for all 15 current AI Functions, privilege/model governance, guardrails, cost views, observability, and the broader Snowflake ML lifecycle. [snowpro-genai/AI_ML_DOC_ATLAS.md](snowpro-genai/AI_ML_DOC_ATLAS.md) inventories 310 reachable official pages (281 section-index pages plus 29 ML/SQL references); it is a heading-level inventory, not a deep review of every page. Its links now open normal Snowflake documentation pages; machine-readable `llms.txt`/`.md` URLs remain internal to the generator. Regeneration scripts are in the same folder. SQL has not been executed in a Snowflake account. Sessions: sessions/2026-09-25-snowflake-ai-ml-doc-deep-dive.md and sessions/2026-09-25-atlas-reader-links.md.
 - [snowpro-genai/ENABLE_CORTEX_AND_RAG.md](snowpro-genai/ENABLE_CORTEX_AND_RAG.md) now gives the missing account/trial activation, roles/model governance, and end-to-end Cortex Search RAG lab, with PDF extension and troubleshooting. It was checked against current official docs on 2026-09-25 but not run in a Snowflake account. Session: sessions/2026-09-25-cortex-enablement-rag.md.
-- Consolidated strategy/research: [CERTIFICATION_ROADMAP.md](CERTIFICATION_ROADMAP.md). New exact dates are not confirmed; do not impose the previous schedule unchanged.
+- Consolidated strategy/research: [CERTIFICATION_ROADMAP.md](learning/certifications/CERTIFICATION_ROADMAP.md). New exact dates are not confirmed; do not impose the previous schedule unchanged.
 - User holds SnowPro Core (expires Jan 2027), PL-300, AI-102, DP-600, DP-700, Databricks DE Associate and an unspecified Gen AI credential. Do not guess its issuer.
 - Goal: hands-on Data / AI architect. Balance delivery, market opportunities and study opportunity cost.
 - Preserve Snowflake renewal: Specialty before Core expiry; use actual renewal date for 2028 deadline. Advanced Architect or DE considered for 2028; final choice pending and policy must be rechecked.

@@ -78,10 +78,10 @@ This setup saves **session summaries**, not automatic verbatim chat exports. A t
 
 ## 4. Where to look
 
-- [Working instructions](AGENTS.md)
-- [Current project memory](MEMORY.md)
-- [Initial setup record](sessions/2026-09-22-initial-setup.md)
-- [This conversation's explanations and session policy](sessions/2026-09-22-setup-guide-and-session-policy.md)
+- [Working instructions](../../AGENTS.md)
+- [Current project memory](../../MEMORY.md)
+- [Initial setup record](../../sessions/2026-09-22-initial-setup.md)
+- [This conversation's explanations and session policy](../../sessions/2026-09-22-setup-guide-and-session-policy.md)
 
 ## 5. Useful words
 
