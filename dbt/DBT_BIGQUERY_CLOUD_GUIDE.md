@@ -212,6 +212,66 @@ dbt build --target prod --profiles-dir <secure-profile-directory>
 
 The `--target prod` flag selects the `prod` output in `profiles.yml`; it is the critical switch between the development and production datasets. A manual `dbt build --target prod` is possible on a machine with production credentials, but routine production execution should use a controlled runner so code version, identity, schedule, logs, and retries are repeatable. See dbt's [profile and target documentation](https://docs.getdbt.com/docs/local/profiles.yml).
 
+### Small reference lists as dbt Core seeds
+
+For a short, relatively static action list, create `seeds/actions.csv` in the dbt project:
+
+```csv
+action
+Vue Page
+Vue Article
+Download Doc
+Lead Doc
+Contact
+Newsletter
+Commentaire
+Action
+```
+
+The first line is the **column header**; the last `Action` is a data value, matching the supplied list. If the last `Action` was accidental, remove that final line. Use a simple lowercase header to make BigQuery SQL easier to write.
+
+From the directory containing `dbt_project.yml`, with the external profile described above:
+
+```bash
+dbt seed --select actions --target dev --profiles-dir <secure-profile-directory>
+```
+
+This creates a table named `actions` in the development target dataset. Check it in BigQuery:
+
+```sql
+select * from `fei-website-f16b0.dbt_fei_mdelamettrie.actions`;
+```
+
+In a model, use `{{ ref('actions') }}` rather than `source()` because the CSV is managed by dbt. For a production Core runner, commit the CSV, merge it to the production branch, and run `dbt seed --select actions --target prod` before models that depend on it. A production job that runs `dbt build --target prod` can also include selected seeds in the build graph; an explicit seed step makes the load order clear. Keep personal or sensitive event-level data out of Git-backed seeds. See dbt's [seed guide](https://docs.getdbt.com/docs/build/seeds) and [`dbt seed` command](https://docs.getdbt.com/reference/commands/seed).
+
+To assert that the **model** `fei_source_test` has no null `action` values, add `models/Bronze/fei_source_test.yml`:
+
+```yaml
+version: 2
+
+models:
+  - name: fei_source_test
+    columns:
+      - name: action
+        data_tests:
+          - not_null
+```
+
+The `name:` under `models:` must match the SQL model's filename without `.sql`. The column name must match the output column; use `Action` if that is the actual name in the model. To test the **seed itself**, add a separate file such as `seeds/actions.yml`:
+
+```yaml
+version: 2
+
+seeds:
+  - name: actions
+    columns:
+      - name: action
+        data_tests:
+          - not_null
+```
+
+Run `dbt build --select fei_source_test --target dev` to build the model and run its tests, or `dbt test --select fei_source_test --target dev` to test an already built model. For the seed, run `dbt build --select actions --target dev` after creating the CSV. Add `--profiles-dir <secure-profile-directory>` to each command when the profile is outside dbt's default search path. A `not_null` test only checks for SQL `NULL`; it does not reject an empty string. See dbt's [data test guide](https://docs.getdbt.com/docs/build/data-tests).
+
 ## Troubleshooting from this setup
 
 | Error or symptom | Cause | Check or fix |

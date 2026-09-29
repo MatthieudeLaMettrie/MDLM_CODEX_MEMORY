@@ -18,6 +18,10 @@ Follow-up: the user asked to use Bronze, Silver, and Gold folders instead of sta
 
 Follow-up: the user asked to retain staging/intermediate/marts and `stg_`/`int_`/`dim_`/`fct_` terminology as well, and to explain how dbt Core reaches production. Added a side-by-side vocabulary map and a Core-only promotion/runner procedure, including an external `profiles.yml` example with separate `dev`/`prod` BigQuery targets. This is documentation, not a live Core deployment; no production runner was configured or executed.
 
+Follow-up: the user supplied an `Action` list and clarified they want it as a dbt Core seed. Added `seeds/actions.csv` example contents to the guide, with one header and eight values (the trailing `Action` was treated as a value). Documented the dev/prod `dbt seed` commands and `ref('actions')`. The CSV was not written to the separate private `dbt_cert` project; the user asked how to do it, and the guide provides the exact file contents.
+
+Follow-up: the user asked for a `not_null` test on the model's Action column. Added a model properties YAML example for `fei_source_test` and an optional seed properties YAML example, with build/test commands and the distinction between SQL NULL and empty string. The model's actual output columns were not inspected in this task.
+
 ## Decisions, limits, and next steps
 
 - Develop and test in Studio, commit and sync code to the deployment branch, then run the production deploy job. Studio's Defer selector is not a production environment switch.
