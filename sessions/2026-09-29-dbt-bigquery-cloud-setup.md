@@ -32,6 +32,8 @@ Follow-up: the user requested a very simple macro to count rows, supplying place
 
 Follow-up: the user asked how to see the row-count result. Clarified that the count SQL belongs in a new model (`fei_row_count.sql`), because referencing `fei_source_test` from itself would create a cycle. In Studio, Preview shows the count in Results; `dbt run --select fei_row_count` materializes it for a BigQuery query. The actual count was not observed.
 
+Follow-up: the user's `count_records_fei_source_test` view failed in BigQuery with `CREATE VIEW columns must be named, but column 1 has no name`. The compiled SELECT likely contained an unaliased count expression. Advised adding `as row_count` after `{{ count_macro() }}`; this fix has not yet been rerun in the observed session.
+
 
 ## Decisions, limits, and next steps
 
