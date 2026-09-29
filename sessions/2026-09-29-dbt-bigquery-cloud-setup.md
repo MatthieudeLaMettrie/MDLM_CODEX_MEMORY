@@ -40,6 +40,8 @@ Later verification from the user's dbt Studio screenshot: Preview of `models/Bro
 
 Spark follow-up: the user supplied BigQuery Studio notebook code creating a `DataprocSparkSession` and attempting to read `fei-website-f16b0.DBT_FEI_PROD.fei_source_test`. Added a setup section covering API enablement, IAM, notebook steps, read code, view handling, cost, and cleanup. Corrected `.option("view", ...)` to `.option("table", ...)` plus `.option("viewsEnabled", "true")` for the dbt view. The user's word-count comment was identified as sample code needing a real `word` column. This Spark code was not executed or verified against the user's project.
 
+Further follow-up: the user asked whether BigQuery Studio offers PySpark IntelliSense. Official Google documentation confirms as-you-type code completion and hover documentation in BigQuery Studio notebooks, plus optional Gemini PySpark generation. Recorded method/column discovery with `df.`, `spark.read.`, `df.printSchema()`, and `df.columns`, and noted Spark Connect does not support SparkContext/RDD APIs.
+
 
 ## Decisions, limits, and next steps
 

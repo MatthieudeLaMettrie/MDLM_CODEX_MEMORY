@@ -394,6 +394,8 @@ df.show(20, truncate=False)
 
 5. When finished, run `spark.stop()` or terminate the active session in the notebook UI. A BigQuery Studio notebook can have one active Spark session. Interactive Spark and notebook runtime usage are billable. [Session cleanup](https://docs.cloud.google.com/bigquery/docs/use-spark#end_the_spark_session).
 
+**Code help in the notebook:** BigQuery Studio provides code completion as you type and documentation when you hover over a class or method. For example, type `df.` or `spark.read.` to inspect available methods; use `df.printSchema()` and `df.columns` to discover the actual columns. For more directed help, use **+ Code → generate** and ask Gemini for a PySpark operation on a named table. Gemini code completion/generation is a separate feature that might need project enablement and IAM. The session uses Spark Connect, which supports most DataFrame, Column, and functions APIs but not `SparkContext` or RDD APIs; in the [Spark SQL API reference](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/index.html), look for “Supports Spark Connect.” [Google's notebook code-help and Spark Connect guidance](https://docs.cloud.google.com/bigquery/docs/use-spark#write_and_run_pyspark_code_in_your_bigquery_studio_notebook).
+
 This is a documented setup and corrected code example, **not an observed successful Spark run** in this project. If the read fails, check the production object and region first, then the session identity's BigQuery permissions and whether view reads are enabled.
 
 Add dated entries here when new behavior is observed. For each entry, record the symptom, exact cause, fix, and how it was verified. Keep credentials and private key material out of this file.
