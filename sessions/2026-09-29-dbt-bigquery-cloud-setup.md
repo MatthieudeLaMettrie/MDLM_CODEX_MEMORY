@@ -46,6 +46,8 @@ Screenshot follow-up: the user showed the autocomplete popup after typing `spark
 
 CSV/Sheets follow-up: the user asked if `spark.read.format('csv').load('')` can read CSV or Google Sheets. Documented a real Cloud Storage `gs://` path for remote Spark CSV reads, and a BigQuery Drive external table followed by a native BigQuery snapshot for Sheet data before the Spark BigQuery connector reads it. This workflow was not executed in the user's project.
 
+Script follow-up: added `dbt/examples/read_google_sheet_with_spark.py`, which creates a Sheets external table from a supplied URL, refreshes a native table in a user-selected scratch dataset, and reads it with Spark Connect. Added `dbt/examples/read_ga4_or_looker_source_with_spark.py`, which reads an existing GA4 `analytics_<property_id>.events_YYYYMMDD` export or the BigQuery table/view used by a Looker Studio report. Updated the guide with setup and limitations. Both scripts were AST syntax-checked; no cloud reads or table creation were run.
+
 
 ## Decisions, limits, and next steps
 
