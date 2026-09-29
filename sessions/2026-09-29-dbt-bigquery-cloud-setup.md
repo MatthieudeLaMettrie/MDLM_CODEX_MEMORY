@@ -34,6 +34,8 @@ Follow-up: the user asked how to see the row-count result. Clarified that the co
 
 Follow-up: the user's `count_records_fei_source_test` view failed in BigQuery with `CREATE VIEW columns must be named, but column 1 has no name`. The compiled SELECT likely contained an unaliased count expression. Advised adding `as row_count` after `{{ count_macro() }}`; this fix has not yet been rerun in the observed session.
 
+Follow-up: Studio Preview of the count model failed with BigQuery `Unexpected keyword LIMIT` at line 10. Given the user's earlier SQL included a trailing semicolon and dbt Studio automatically applies a Preview row limit, the likely cause is a semicolon before the appended LIMIT. Recommended removing the final semicolon and inspecting Compiled code if the error persists; no rerun was observed.
+
 
 ## Decisions, limits, and next steps
 

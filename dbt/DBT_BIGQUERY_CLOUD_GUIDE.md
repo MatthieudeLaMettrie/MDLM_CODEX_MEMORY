@@ -349,6 +349,7 @@ To see the number immediately in dbt Studio, open `fei_row_count.sql`, click **P
 | `valid dbt project was not found` at `dbt deps` | Deployment could not find `dbt_project.yml` in the cloned branch at the configured path | Commit and sync the project; inspect the production branch; set Project subdirectory to the actual relative folder, or blank for a root file |
 | Studio build succeeds but deployment does not | Studio uses workspace code and development credentials; deploy job uses committed code and production credentials | Check commit/branch/path first, then production BigQuery credentials and location |
 | `CREATE VIEW columns must be named, but column 1 has no name` | A computed expression such as `{{ count_macro() }}` has no output column alias | Write `{{ count_macro() }} as row_count` in the model SELECT list, save, and rerun the model |
+| Studio Preview: `Unexpected keyword LIMIT` | Likely a trailing SQL semicolon before Studio adds its Preview row limit | Remove the final `;` from the model query and Preview again; if it persists, inspect the **Compiled code** tab around the reported line |
 
 The session established that the repository's `main` branch contained `dbt_project.yml` **at its root**. Clearing the mistaken `dbt_cert` Project subdirectory resolved the project-discovery issue, according to the user's report. A completed production `dbt build` and its BigQuery output have not yet been independently verified in this record.
 
