@@ -36,6 +36,8 @@ Follow-up: the user's `count_records_fei_source_test` view failed in BigQuery wi
 
 Follow-up: Studio Preview of the count model failed with BigQuery `Unexpected keyword LIMIT` at line 10. Given the user's earlier SQL included a trailing semicolon and dbt Studio automatically applies a Preview row limit, the likely cause is a semicolon before the appended LIMIT. Recommended removing the final semicolon and inspecting Compiled code if the error persists; no rerun was observed.
 
+Later verification from the user's dbt Studio screenshot: Preview of `models/Bronze/count_records_fei_source_test.sql` succeeded and returned one row, `Number_of_Records = 1562`. The model uses `{{ count_macro() }} as Number_of_Records` from `{{ ref('fei_source_test') }}` and has no trailing semicolon. The project tree also showed the macro, `seeds/actions.csv`, and `models/Bronze/fei_source_test.yml`. Studio was on branch `MatthieudeLaMettrie-patch-1`, with a GitHub pull request action visible; the screenshot does not verify a seed load, tests, merge, or production build. A separate supplied image showed personal Google account details and was not included in repository records.
+
 
 ## Decisions, limits, and next steps
 

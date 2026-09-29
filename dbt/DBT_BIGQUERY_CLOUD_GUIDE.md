@@ -328,16 +328,18 @@ Create `macros/count_macro.sql`:
 {% endmacro %}
 ```
 
-Use it in a **new** model file, for example `models/Gold/fei_row_count.sql`:
+The working project uses a separate model, `models/Bronze/count_records_fei_source_test.sql`:
 
 ```sql
-select {{ count_macro() }} as row_count
+select {{ count_macro() }} as Number_of_Records
 from {{ ref('fei_source_test') }}
 ```
 
 The macro generates the SQL expression `count(*)`; the model supplies the table through `ref()`. A macro does not execute a query by itself. dbt Jinja block syntax uses `{% macro ... %}` and `{% endmacro %}`, while `{{ count_macro() }}` inserts its output into SQL. See dbt's [Jinja and macros guide](https://docs.getdbt.com/docs/build/jinja-macros).
 
-To see the number immediately in dbt Studio, open `fei_row_count.sql`, click **Preview**, and read the single `row_count` cell in the **Results** tab. To persist it as a view or table, run `dbt run --select fei_row_count`, then query the resulting relation in the development BigQuery dataset. Keep this SQL in a new model: putting `{{ ref('fei_source_test') }}` inside `fei_source_test.sql` itself would create a circular dependency. See dbt's [Studio Preview documentation](https://docs.getdbt.com/docs/platform/studio-ide/ide-user-interface).
+To see the number immediately in dbt Studio, open `count_records_fei_source_test.sql`, click **Preview**, and read the single `Number_of_Records` cell in the **Results** tab. The user-provided screenshot from 2026-09-29 shows a successful Preview returning **1,562**. This count reflects the data at that time. The working SQL has an output alias and no trailing semicolon. To persist it as a view or table, run `dbt run --select count_records_fei_source_test`, then query the resulting relation in the development BigQuery dataset. Keep this SQL in a new model: putting `{{ ref('fei_source_test') }}` inside `fei_source_test.sql` itself would create a circular dependency. See dbt's [Studio Preview documentation](https://docs.getdbt.com/docs/platform/studio-ide/ide-user-interface).
+
+The successful Preview was shown in Studio on branch `MatthieudeLaMettrie-patch-1`. The screenshot also showed `seeds/actions.csv` and `models/Bronze/fei_source_test.yml` in the project tree, but did not show a seed load, data-test run, merged pull request, or production build.
 
 ## Troubleshooting from this setup
 
@@ -349,7 +351,7 @@ To see the number immediately in dbt Studio, open `fei_row_count.sql`, click **P
 | `valid dbt project was not found` at `dbt deps` | Deployment could not find `dbt_project.yml` in the cloned branch at the configured path | Commit and sync the project; inspect the production branch; set Project subdirectory to the actual relative folder, or blank for a root file |
 | Studio build succeeds but deployment does not | Studio uses workspace code and development credentials; deploy job uses committed code and production credentials | Check commit/branch/path first, then production BigQuery credentials and location |
 | `CREATE VIEW columns must be named, but column 1 has no name` | A computed expression such as `{{ count_macro() }}` has no output column alias | Write `{{ count_macro() }} as row_count` in the model SELECT list, save, and rerun the model |
-| Studio Preview: `Unexpected keyword LIMIT` | Likely a trailing SQL semicolon before Studio adds its Preview row limit | Remove the final `;` from the model query and Preview again; if it persists, inspect the **Compiled code** tab around the reported line |
+| Studio Preview: `Unexpected keyword LIMIT` | A trailing SQL semicolon before Studio adds its Preview row limit was the likely cause in the earlier failing query | The later Preview succeeded with no final `;`; if this error recurs, inspect the **Compiled code** tab around the reported line |
 
 The session established that the repository's `main` branch contained `dbt_project.yml` **at its root**. Clearing the mistaken `dbt_cert` Project subdirectory resolved the project-discovery issue, according to the user's report. A completed production `dbt build` and its BigQuery output have not yet been independently verified in this record.
 
