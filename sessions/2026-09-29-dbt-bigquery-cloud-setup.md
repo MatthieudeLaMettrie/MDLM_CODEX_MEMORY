@@ -44,6 +44,8 @@ Further follow-up: the user asked whether BigQuery Studio offers PySpark Intelli
 
 Screenshot follow-up: the user showed the autocomplete popup after typing `spark.` and asked about its members. Explained that these are SparkSession members: session construction/retrieval, data access, configuration/catalog, artifact distribution, operation tags, Connect client, and specialized progress/file helpers. For transformations, use completion after `df.` instead.
 
+CSV/Sheets follow-up: the user asked if `spark.read.format('csv').load('')` can read CSV or Google Sheets. Documented a real Cloud Storage `gs://` path for remote Spark CSV reads, and a BigQuery Drive external table followed by a native BigQuery snapshot for Sheet data before the Spark BigQuery connector reads it. This workflow was not executed in the user's project.
+
 
 ## Decisions, limits, and next steps
 
