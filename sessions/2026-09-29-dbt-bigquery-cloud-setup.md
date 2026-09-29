@@ -22,6 +22,8 @@ Follow-up: the user supplied an `Action` list and clarified they want it as a db
 
 Follow-up: the user asked for a `not_null` test on the model's Action column. Added a model properties YAML example for `fei_source_test` and an optional seed properties YAML example, with build/test commands and the distinction between SQL NULL and empty string. The model's actual output columns were not inspected in this task.
 
+Correction: the user ran `dbt seed --select actions --target dev` in dbt Cloud Studio/Fusion 2.0.6 and got `InvalidConfig (dbt1005): target 'dev' not found in profile 'user'`. The preceding command had been given for an external Core profile and was unsuitable for Studio. Updated the guide to give Studio commands without `--target`; Studio uses its generated profile and user development credentials. External Core commands may use `--target dev/prod` only when those outputs exist in the external `profiles.yml`. The seed has not yet been shown loading successfully.
+
 ## Decisions, limits, and next steps
 
 - Develop and test in Studio, commit and sync code to the deployment branch, then run the production deploy job. Studio's Defer selector is not a production environment switch.

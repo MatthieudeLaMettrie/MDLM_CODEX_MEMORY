@@ -166,6 +166,8 @@ The Studio **“Defer to: DEV”** selector affects dependency resolution during
 
 dbt Core executes transformations but does not host a scheduler or deployment environment. In a Core-only setup, Git distributes code, a `profiles.yml` target selects the BigQuery destination, and an external runner (for example, a CI pipeline or scheduled VM/container) invokes dbt. Pushing Git code and building BigQuery objects are separate operations.
 
+**Choose commands for the environment where they run.** The `--target dev` and `--target prod` examples below apply only to an external dbt Core profile that actually defines outputs with those names. In dbt Cloud Studio, use the command bar **without** those flags; Studio uses its own generated profile and development credentials. On 2026-09-29, a Studio/Fusion `dbt seed --select actions --target dev` failed with `target 'dev' not found in profile 'user'`. The fix in Studio is `dbt seed --select actions`, not a change to the BigQuery dataset.
+
 ### Prepare the runner
 
 1. Keep `dbt_project.yml` and models committed on the production branch. A local development run can use uncommitted files; a production runner should check out a specific commit from the approved branch.
@@ -230,7 +232,13 @@ Action
 
 The first line is the **column header**; the last `Action` is a data value, matching the supplied list. If the last `Action` was accidental, remove that final line. Use a simple lowercase header to make BigQuery SQL easier to write.
 
-From the directory containing `dbt_project.yml`, with the external profile described above:
+In the **dbt Cloud Studio** command bar, run:
+
+```bash
+dbt seed --select actions
+```
+
+This uses the Studio development dataset from **Your profile → Credentials**. For **dbt Core on your own machine** with the external `dev` profile defined above, run from the directory containing `dbt_project.yml`:
 
 ```bash
 dbt seed --select actions --target dev --profiles-dir <secure-profile-directory>
@@ -270,7 +278,7 @@ seeds:
           - not_null
 ```
 
-Run `dbt build --select fei_source_test --target dev` to build the model and run its tests, or `dbt test --select fei_source_test --target dev` to test an already built model. For the seed, run `dbt build --select actions --target dev` after creating the CSV. Add `--profiles-dir <secure-profile-directory>` to each command when the profile is outside dbt's default search path. A `not_null` test only checks for SQL `NULL`; it does not reject an empty string. See dbt's [data test guide](https://docs.getdbt.com/docs/build/data-tests).
+In **Studio**, use `dbt build --select fei_source_test` to build the model and run its tests, or `dbt test --select fei_source_test` to test an already built model. For the seed, use `dbt build --select actions` after creating the CSV. In **external dbt Core**, append `--target dev` or `--target prod` only when that target is defined in the external profile; add `--profiles-dir <secure-profile-directory>` when the profile is outside dbt's default search path. A `not_null` test only checks for SQL `NULL`; it does not reject an empty string. See dbt's [data test guide](https://docs.getdbt.com/docs/build/data-tests).
 
 ## Troubleshooting from this setup
 
