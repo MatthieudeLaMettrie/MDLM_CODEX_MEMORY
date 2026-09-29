@@ -96,6 +96,31 @@ models:
 
 Create the `models/Bronze`, `models/Silver`, and `models/Gold` folders yourself. Folder capitalization must match the configuration.
 
+### Bronze, Silver, and Gold model layout
+
+This project can use the medallion names instead of `staging`, `intermediate`, and `marts`. They describe the transformation stages; dbt only requires that model files live under `model-paths` and that folder-specific YAML configuration matches the actual paths.
+
+```text
+models/
+├── Bronze/
+│   ├── sources.yml
+│   └── br_fei_traffic.sql
+├── Silver/
+│   └── sl_fei_traffic_clean.sql
+└── Gold/
+    └── gd_traffic_summary.sql
+```
+
+| Folder | Role | Reference pattern |
+| --- | --- | --- |
+| Bronze | One source-aligned model per raw table; basic renaming, casting, and source checks | `{{ source('fei_sources', 'FEI_TRAFFIC_NAMED') }}` |
+| Silver | Clean, deduplicate, standardize, and combine Bronze models for reuse | `{{ ref('br_fei_traffic') }}` |
+| Gold | Business-ready tables/views and aggregates for reporting | `{{ ref('sl_fei_traffic_clean') }}` |
+
+The raw BigQuery table stays in `FEI_ADMIN_PORTAL`; a Bronze model is a dbt-built view or table over it. Folder names alone do **not** create separate BigQuery datasets. With the current settings, all three layers build into the target dataset for that environment: `dbt_fei_mdelamettrie` in development or `DBT_FEI_PROD` in production. If separate Bronze/Silver/Gold datasets are needed later, design explicit `+schema` settings and check dbt's default custom-schema naming behavior before deployment.
+
+`fei_source_test.sql` is the current proof-of-connection model. It can be renamed to a descriptive Bronze model once downstream models use `ref()` to express dependencies. Folder names and model names need not match one another.
+
 In Studio, save the files and run:
 
 ```bash

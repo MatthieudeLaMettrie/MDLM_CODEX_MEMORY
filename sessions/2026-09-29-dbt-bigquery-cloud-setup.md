@@ -14,6 +14,8 @@ The production environment `dbt_Prod_FEI` was configured with Service Account JS
 
 The user requested a Markdown or HTML record in `MDLM_CODEX_MEMORY` for these insights and future additions. Added the living guide at `dbt/DBT_BIGQUERY_CLOUD_GUIDE.md`, linked it from both READMEs, and updated durable memory.
 
+Follow-up: the user asked to use Bronze, Silver, and Gold folders instead of staging, intermediate, and marts. Confirmed this is a valid dbt model layout and expanded the living guide with folder roles, `source()`/`ref()` flow, and the distinction between code folders and BigQuery datasets. The preference was recorded in durable memory.
+
 ## Decisions, limits, and next steps
 
 - Develop and test in Studio, commit and sync code to the deployment branch, then run the production deploy job. Studio's Defer selector is not a production environment switch.
