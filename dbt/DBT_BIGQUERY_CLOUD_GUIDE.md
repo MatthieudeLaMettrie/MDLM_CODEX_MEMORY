@@ -328,7 +328,7 @@ Create `macros/count_macro.sql`:
 {% endmacro %}
 ```
 
-Use it in a model query:
+Use it in a **new** model file, for example `models/Gold/fei_row_count.sql`:
 
 ```sql
 select {{ count_macro() }} as row_count
@@ -336,6 +336,8 @@ from {{ ref('fei_source_test') }}
 ```
 
 The macro generates the SQL expression `count(*)`; the model supplies the table through `ref()`. A macro does not execute a query by itself. dbt Jinja block syntax uses `{% macro ... %}` and `{% endmacro %}`, while `{{ count_macro() }}` inserts its output into SQL. See dbt's [Jinja and macros guide](https://docs.getdbt.com/docs/build/jinja-macros).
+
+To see the number immediately in dbt Studio, open `fei_row_count.sql`, click **Preview**, and read the single `row_count` cell in the **Results** tab. To persist it as a view or table, run `dbt run --select fei_row_count`, then query the resulting relation in the development BigQuery dataset. Keep this SQL in a new model: putting `{{ ref('fei_source_test') }}` inside `fei_source_test.sql` itself would create a circular dependency. See dbt's [Studio Preview documentation](https://docs.getdbt.com/docs/platform/studio-ide/ide-user-interface).
 
 ## Troubleshooting from this setup
 

@@ -30,6 +30,8 @@ Follow-up: the user asked whether one YAML per model or one YAML per directory i
 
 Follow-up: the user requested a very simple macro to count rows, supplying placeholder `{macro count_macro}` / `{endmacro}` syntax. Added a valid dbt Jinja `count_macro()` that emits `count(*)` and a model example selecting from `ref('fei_source_test')`. This is an instructional snippet; it has not been added to the private `dbt_cert` project or executed there.
 
+Follow-up: the user asked how to see the row-count result. Clarified that the count SQL belongs in a new model (`fei_row_count.sql`), because referencing `fei_source_test` from itself would create a cycle. In Studio, Preview shows the count in Results; `dbt run --select fei_row_count` materializes it for a BigQuery query. The actual count was not observed.
+
 
 ## Decisions, limits, and next steps
 
