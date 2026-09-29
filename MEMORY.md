@@ -1,6 +1,6 @@
 # Project memory
 
-Last updated: 2026-09-28
+Last updated: 2026-09-29
 
 ## Purpose and repository
 
@@ -71,6 +71,8 @@ This repository preserves context so future tasks can continue without relying o
 - Browser design follow-up completed: strong desktop styling; confirmed mobile header overflow (509px on 390px viewport) and squeezed DP-700 domain rows. Prioritize responsive fixes, clearer start-practice hierarchy and catalogue search. Evidence and scope are in the audit note and design-review/mobile-course-390.png; no product changes made.
 
 ## dbt preparation materials
+
+- A living hands-on guide at [dbt/DBT_BIGQUERY_CLOUD_GUIDE.md](dbt/DBT_BIGQUERY_CLOUD_GUIDE.md) records the 2026-09-29 dbt Cloud + BigQuery setup for `TEST_ANALYTICS`: source `FEI_ADMIN_PORTAL.FEI_TRAFFIC_NAMED`, development dataset `dbt_fei_mdelamettrie`, production dataset `DBT_FEI_PROD`, BigQuery location `australia-southeast1`, and the Git deployment workflow. The connected private `dbt_cert` repository has `dbt_project.yml` at its root on `main`; Project subdirectory must be blank. The user reported this corrected project discovery. A completed production build remains unverified. Do not store service account keys in Git.
 
 - Published materials live under [dbt/README.md](dbt/README.md); learner entry point is [dbt/dbt-study-guide/START_HERE.md](dbt/dbt-study-guide/START_HERE.md).
 - User completed courses and built projects; debugging is the weak spot and exam readiness is unassessed. Start with Cases 1–3, then tailor practice. Withhold answers until an attempt or request for help. Treat 7–10 days as a flexible window, not a readiness assumption.

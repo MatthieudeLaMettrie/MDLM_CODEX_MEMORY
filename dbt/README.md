@@ -2,6 +2,8 @@
 
 **[Start the learning guide](dbt-study-guide/START_HERE.md)**
 
+**[dbt Cloud + BigQuery setup and deployment field guide](DBT_BIGQUERY_CLOUD_GUIDE.md)** — a living record of this project's development and production setup, Git workflow, and resolved errors.
+
 - [Core reference](dbt-study-guide/CORE_GUIDE.md): source-linked explanations across the exam domains, emphasizing troubleshooting.
 - [Twenty debugging exercises](dbt-study-guide/PRACTICE.md): attempt before requesting hints; no answer key included.
 - [Readiness plan](dbt-study-guide/READINESS.md): adapt the suggested 7–10 days to measured gaps.

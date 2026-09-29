@@ -14,6 +14,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 ## Study guides
 
+- [dbt Cloud with BigQuery: setup and deployment](dbt/DBT_BIGQUERY_CLOUD_GUIDE.md) — living field guide for connections, datasets, Git project paths, production jobs, and troubleshooting.
+
 - [SnowPro Specialty: Gen AI (GES-C02) study guide and practice set](snowpro-genai/README.md) — official-blueprint coverage, syntax and billing sheets, a lab, 28 original questions, and Snowflake documentation links.
 
 - [Azure Foundry SDK, Azure AI Search, and RAG study course](learning/rag/AZURE_FOUNDRY_RAG_STUDY_COURSE.md) — architecture, current Python agent calls, labs, and evaluation exercises.
