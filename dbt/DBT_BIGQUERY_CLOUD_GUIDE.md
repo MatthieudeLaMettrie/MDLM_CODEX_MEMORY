@@ -280,6 +280,34 @@ seeds:
 
 In **Studio**, use `dbt build --select fei_source_test` to build the model and run its tests, or `dbt test --select fei_source_test` to test an already built model. For the seed, use `dbt build --select actions` after creating the CSV. In **external dbt Core**, append `--target dev` or `--target prod` only when that target is defined in the external profile; add `--profiles-dir <secure-profile-directory>` when the profile is outside dbt's default search path. A `not_null` test only checks for SQL `NULL`; it does not reject an empty string. See dbt's [data test guide](https://docs.getdbt.com/docs/build/data-tests).
 
+To combine `not_null` with `accepted_values` for the model, keep one `models:` block and indent `arguments:` under `accepted_values:`. This version allows all eight values supplied for the seed:
+
+```yaml
+version: 2
+
+models:
+  - name: fei_source_test
+    columns:
+      - name: action
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - Vue Page
+                  - Vue Article
+                  - Download Doc
+                  - Lead Doc
+                  - Contact
+                  - Newsletter
+                  - Commentaire
+                  - Action
+```
+
+If the model should contain **only** `Action` and `Contact`, set `values: ['Action', 'Contact']` instead. The test will fail on any of the other six listed actions, which may be exactly what a filtered model intends. The test is case sensitive for string values in BigQuery.
+
+The `orders` example with two separately named tests uses `config.where` to limit rows by date. Only copy that pattern if this model has a real date column. For example, with a DATE column named `event_date`, a BigQuery filter for yesterday is `where: "event_date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)"`. Replace `event_date` with the model's actual date column, and use `DATE(timestamp_column)` if the source field is a TIMESTAMP. The PostgreSQL expression `current_date - interval '1 day'` should not be copied into BigQuery-specific YAML.
+
 ## Troubleshooting from this setup
 
 | Error or symptom | Cause | Check or fix |

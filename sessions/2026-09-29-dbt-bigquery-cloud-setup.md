@@ -24,6 +24,8 @@ Follow-up: the user asked for a `not_null` test on the model's Action column. Ad
 
 Correction: the user ran `dbt seed --select actions --target dev` in dbt Cloud Studio/Fusion 2.0.6 and got `InvalidConfig (dbt1005): target 'dev' not found in profile 'user'`. The preceding command had been given for an external Core profile and was unsuitable for Studio. Updated the guide to give Studio commands without `--target`; Studio uses its generated profile and user development credentials. External Core commands may use `--target dev/prod` only when those outputs exist in the external `profiles.yml`. The seed has not yet been shown loading successfully.
 
+Follow-up: the user supplied a partially indented model test YAML combining `not_null` and `accepted_values`, plus a separate dbt documentation example for date-filtered order status tests. Expanded the guide with one correctly nested `models:` block, all eight action values, the semantics of restricting values to `Action`/`Contact`, and a BigQuery `DATE_SUB` filter example conditional on a real date column. The model's actual values and date column were not verified.
+
 ## Decisions, limits, and next steps
 
 - Develop and test in Studio, commit and sync code to the deployment branch, then run the production deploy job. Studio's Defer selector is not a production environment switch.
