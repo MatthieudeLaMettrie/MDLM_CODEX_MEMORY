@@ -48,6 +48,8 @@ CSV/Sheets follow-up: the user asked if `spark.read.format('csv').load('')` can 
 
 Script follow-up: added `dbt/examples/read_google_sheet_with_spark.py`, which creates a Sheets external table from a supplied URL, refreshes a native table in a user-selected scratch dataset, and reads it with Spark Connect. Added `dbt/examples/read_ga4_or_looker_source_with_spark.py`, which reads an existing GA4 `analytics_<property_id>.events_YYYYMMDD` export or the BigQuery table/view used by a Looker Studio report. Updated the guide with setup and limitations. Both scripts were AST syntax-checked; no cloud reads or table creation were run.
 
+Session API clarification: Google documents `DataprocSparkSession.builder.getOrCreate()` as sufficient for a default BigQuery Studio interactive Spark Connect session. The `dataproc_v1.Session` message is needed only for explicit session configuration. Batch jobs and BigQuery Spark stored procedures instead create a standard PySpark `SparkSession` inside the workload.
+
 
 ## Decisions, limits, and next steps
 
