@@ -28,7 +28,6 @@ Follow-up: the user supplied a partially indented model test YAML combining `not
 
 Follow-up: the user asked whether one YAML per model or one YAML per directory is best practice. Reviewed current dbt examples supporting both. Added a pragmatic convention to the guide: use a short folder-level YAML for a small layer, then split to co-located per-model property YAML as documentation/tests grow; keep source and seed property files separate and avoid duplicate model declarations. No dbt project files were changed in the private `dbt_cert` repository.
 
-Follow-up: the user asked whether a normal Gmail account can access Google Admin. Explained the distinction: `admin.google.com` requires a managed Google Workspace/Cloud Identity admin account; a personal Gmail account can access Google Cloud Console and IAM resources when granted the necessary project roles. The user's actual admin roles were not inspected.
 
 ## Decisions, limits, and next steps
 
