@@ -50,6 +50,8 @@ Script follow-up: added `dbt/examples/read_google_sheet_with_spark.py`, which cr
 
 Session API clarification: Google documents `DataprocSparkSession.builder.getOrCreate()` as sufficient for a default BigQuery Studio interactive Spark Connect session. The `dataproc_v1.Session` message is needed only for explicit session configuration. Batch jobs and BigQuery Spark stored procedures instead create a standard PySpark `SparkSession` inside the workload.
 
+Visualization follow-up: the user showed a successful Spark session and `df` read cell but an empty "Choose a dataframe" visualization selector. Explained that the remote Spark Connect DataFrame is likely not discoverable by this UI, while Google's documented selector workflow uses a SQL cell's notebook DataFrame. Suggested `df_viz = df.limit(500).toPandas()` for a bounded local sample, or a BigQuery SQL cell selecting up to 500 rows, followed by rerunning/reopening the visualization cell. No live UI interaction or conversion was performed.
+
 
 ## Decisions, limits, and next steps
 
