@@ -42,6 +42,8 @@ Spark follow-up: the user supplied BigQuery Studio notebook code creating a `Dat
 
 Further follow-up: the user asked whether BigQuery Studio offers PySpark IntelliSense. Official Google documentation confirms as-you-type code completion and hover documentation in BigQuery Studio notebooks, plus optional Gemini PySpark generation. Recorded method/column discovery with `df.`, `spark.read.`, `df.printSchema()`, and `df.columns`, and noted Spark Connect does not support SparkContext/RDD APIs.
 
+Screenshot follow-up: the user showed the autocomplete popup after typing `spark.` and asked about its members. Explained that these are SparkSession members: session construction/retrieval, data access, configuration/catalog, artifact distribution, operation tags, Connect client, and specialized progress/file helpers. For transformations, use completion after `df.` instead.
+
 
 ## Decisions, limits, and next steps
 
