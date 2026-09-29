@@ -26,6 +26,8 @@ Correction: the user ran `dbt seed --select actions --target dev` in dbt Cloud S
 
 Follow-up: the user supplied a partially indented model test YAML combining `not_null` and `accepted_values`, plus a separate dbt documentation example for date-filtered order status tests. Expanded the guide with one correctly nested `models:` block, all eight action values, the semantics of restricting values to `Action`/`Contact`, and a BigQuery `DATE_SUB` filter example conditional on a real date column. The model's actual values and date column were not verified.
 
+Follow-up: the user asked whether one YAML per model or one YAML per directory is best practice. Reviewed current dbt examples supporting both. Added a pragmatic convention to the guide: use a short folder-level YAML for a small layer, then split to co-located per-model property YAML as documentation/tests grow; keep source and seed property files separate and avoid duplicate model declarations. No dbt project files were changed in the private `dbt_cert` repository.
+
 ## Decisions, limits, and next steps
 
 - Develop and test in Studio, commit and sync code to the deployment branch, then run the production deploy job. Studio's Defer selector is not a production environment switch.

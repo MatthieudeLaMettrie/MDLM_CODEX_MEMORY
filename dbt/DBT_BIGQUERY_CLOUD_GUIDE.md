@@ -308,6 +308,16 @@ If the model should contain **only** `Action` and `Contact`, set `values: ['Acti
 
 The `orders` example with two separately named tests uses `config.where` to limit rows by date. Only copy that pattern if this model has a real date column. For example, with a DATE column named `event_date`, a BigQuery filter for yesterday is `where: "event_date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)"`. Replace `event_date` with the model's actual date column, and use `DATE(timestamp_column)` if the source field is a TIMESTAMP. The PostgreSQL expression `current_date - interval '1 day'` should not be copied into BigQuery-specific YAML.
 
+### One model YAML or one folder YAML?
+
+Both are valid. dbt discovers model property `.yml` files under the configured model path; the filename does not have to match the SQL filename. The `models: - name:` value must match the model name.
+
+- For a small Bronze folder, one `models/Bronze/models.yml` containing a `models:` list for several models is easy to manage.
+- As models gain descriptions, column tests, contracts, or versions, co-locate `fei_source_test.sql` and `fei_source_test.yml` (one YAML per model) to make reviews and ownership clearer.
+- Keep `sources.yml` for source definitions and `seeds/actions.yml` for seed properties. Do not declare the same model in two different YAML files.
+
+There is no performance benefit to either file layout. For this small project, start with one YAML file per folder if it remains short; split into per-model files when the folder file becomes hard to scan. dbt's [staging example](https://docs.getdbt.com/best-practices/how-we-structure/2-staging) shows co-located per-model YAML, while its [quickstart](https://docs.getdbt.com/guides/bigquery?step=1) shows multiple models in a shared `schema.yml`.
+
 ## Troubleshooting from this setup
 
 | Error or symptom | Cause | Check or fix |
