@@ -38,6 +38,8 @@ Follow-up: Studio Preview of the count model failed with BigQuery `Unexpected ke
 
 Later verification from the user's dbt Studio screenshot: Preview of `models/Bronze/count_records_fei_source_test.sql` succeeded and returned one row, `Number_of_Records = 1562`. The model uses `{{ count_macro() }} as Number_of_Records` from `{{ ref('fei_source_test') }}` and has no trailing semicolon. The project tree also showed the macro, `seeds/actions.csv`, and `models/Bronze/fei_source_test.yml`. Studio was on branch `MatthieudeLaMettrie-patch-1`, with a GitHub pull request action visible; the screenshot does not verify a seed load, tests, merge, or production build. A separate supplied image showed personal Google account details and was not included in repository records.
 
+Spark follow-up: the user supplied BigQuery Studio notebook code creating a `DataprocSparkSession` and attempting to read `fei-website-f16b0.DBT_FEI_PROD.fei_source_test`. Added a setup section covering API enablement, IAM, notebook steps, read code, view handling, cost, and cleanup. Corrected `.option("view", ...)` to `.option("table", ...)` plus `.option("viewsEnabled", "true")` for the dbt view. The user's word-count comment was identified as sample code needing a real `word` column. This Spark code was not executed or verified against the user's project.
+
 
 ## Decisions, limits, and next steps
 

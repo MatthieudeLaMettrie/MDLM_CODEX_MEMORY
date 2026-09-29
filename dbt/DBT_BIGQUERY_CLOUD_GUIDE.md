@@ -357,6 +357,45 @@ The session established that the repository's `main` branch contained `dbt_proje
 
 ## Further findings
 
+### Use Spark in a BigQuery Studio notebook
+
+BigQuery Studio Python notebooks can start a **Managed Service for Apache Spark** interactive session through Spark Connect. This is a separate execution engine from BigQuery SQL and from dbt Cloud jobs. Use it when a PySpark DataFrame workflow is useful; the dbt production model must already exist before the notebook can read it. [Google's notebook guide](https://docs.cloud.google.com/bigquery/docs/use-spark) documents this workflow.
+
+1. In Google Cloud project `fei-website-f16b0`, verify billing and enable the **Managed Service for Apache Spark (Dataproc)**, **BigQuery**, and **Cloud Storage** APIs. You can use **APIs & Services → Library** in the console; API enablement requires `serviceusage.services.enable`. Use a Cloud Storage bucket as required by Google's notebook setup guide. [Prerequisites](https://docs.cloud.google.com/bigquery/docs/use-spark#before_you_begin).
+2. Give the notebook user `roles/dataproc.editor` and `roles/bigquery.studioUser`, plus `roles/iam.serviceAccountUser` on the session service account. Give that service account `roles/dataproc.worker`; for this read, it also needs BigQuery Data Viewer on `DBT_FEI_PROD` and BigQuery User on the job project. These are separate from the dbt Cloud service account grants. [Notebook IAM](https://docs.cloud.google.com/bigquery/docs/use-spark#before_you_begin); [Spark BigQuery IAM](https://docs.cloud.google.com/managed-spark/docs/guides/query-bigquery-tables#grant_iam_roles).
+3. In **BigQuery Studio**, use the **+** menu to create a **Notebook** (or choose **Query using Spark**). Select a notebook/runtime and session region compatible with the `australia-southeast1` BigQuery dataset. Confirm that `fei-website-f16b0.DBT_FEI_PROD.fei_source_test` actually exists; a dbt Studio Preview on a feature branch does not create a production object.
+4. Run these cells. `fei_source_test` was configured as a dbt **view**, so `viewsEnabled` is required. The Spark BigQuery connector reads a named object with `table`, even if that object is a view; `option("view", ...)` is not the documented object selector. [Connector view documentation](https://github.com/GoogleCloudDataproc/spark-bigquery-connector#reading-from-views).
+
+```python
+from google.cloud.dataproc_spark_connect import DataprocSparkSession
+from google.cloud.dataproc_v1 import Session
+import pyspark.sql.connect.functions as f
+
+session = Session()
+spark = (
+    DataprocSparkSession.builder
+    .appName("BigQueryPySparkExample")
+    .dataprocSessionConfig(session)
+    .getOrCreate()
+)
+
+df = (
+    spark.read.format("bigquery")
+    .option("table", "fei-website-f16b0.DBT_FEI_PROD.fei_source_test")
+    .option("viewsEnabled", "true")
+    .load()
+)
+
+df.printSchema()
+df.show(20, truncate=False)
+```
+
+`df.show()` prints up to 20 rows in the notebook output; it does not write a BigQuery table. Spark's DataFrame transformations are lazy until an action such as `show()` runs. Reading a BigQuery view can materialize it temporarily and incur BigQuery query costs. If the production model is a physical table instead, omit `viewsEnabled`. The commented word-count example from the original snippet requires a real `word` column; inspect `df.printSchema()` and substitute an existing text column before using `f.split` and `f.explode`.
+
+5. When finished, run `spark.stop()` or terminate the active session in the notebook UI. A BigQuery Studio notebook can have one active Spark session. Interactive Spark and notebook runtime usage are billable. [Session cleanup](https://docs.cloud.google.com/bigquery/docs/use-spark#end_the_spark_session).
+
+This is a documented setup and corrected code example, **not an observed successful Spark run** in this project. If the read fails, check the production object and region first, then the session identity's BigQuery permissions and whether view reads are enabled.
+
 Add dated entries here when new behavior is observed. For each entry, record the symptom, exact cause, fix, and how it was verified. Keep credentials and private key material out of this file.
 
 ## References
