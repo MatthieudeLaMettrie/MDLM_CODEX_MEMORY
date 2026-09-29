@@ -318,6 +318,25 @@ Both are valid. dbt discovers model property `.yml` files under the configured m
 
 There is no performance benefit to either file layout. For this small project, start with one YAML file per folder if it remains short; split into per-model files when the folder file becomes hard to scan. dbt's [staging example](https://docs.getdbt.com/best-practices/how-we-structure/2-staging) shows co-located per-model YAML, while its [quickstart](https://docs.getdbt.com/guides/bigquery?step=1) shows multiple models in a shared `schema.yml`.
 
+### First macro: count rows
+
+Create `macros/count_macro.sql`:
+
+```sql
+{% macro count_macro() %}
+    count(*)
+{% endmacro %}
+```
+
+Use it in a model query:
+
+```sql
+select {{ count_macro() }} as row_count
+from {{ ref('fei_source_test') }}
+```
+
+The macro generates the SQL expression `count(*)`; the model supplies the table through `ref()`. A macro does not execute a query by itself. dbt Jinja block syntax uses `{% macro ... %}` and `{% endmacro %}`, while `{{ count_macro() }}` inserts its output into SQL. See dbt's [Jinja and macros guide](https://docs.getdbt.com/docs/build/jinja-macros).
+
 ## Troubleshooting from this setup
 
 | Error or symptom | Cause | Check or fix |

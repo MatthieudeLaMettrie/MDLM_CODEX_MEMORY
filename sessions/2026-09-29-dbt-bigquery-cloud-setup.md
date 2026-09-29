@@ -28,6 +28,8 @@ Follow-up: the user supplied a partially indented model test YAML combining `not
 
 Follow-up: the user asked whether one YAML per model or one YAML per directory is best practice. Reviewed current dbt examples supporting both. Added a pragmatic convention to the guide: use a short folder-level YAML for a small layer, then split to co-located per-model property YAML as documentation/tests grow; keep source and seed property files separate and avoid duplicate model declarations. No dbt project files were changed in the private `dbt_cert` repository.
 
+Follow-up: the user requested a very simple macro to count rows, supplying placeholder `{macro count_macro}` / `{endmacro}` syntax. Added a valid dbt Jinja `count_macro()` that emits `count(*)` and a model example selecting from `ref('fei_source_test')`. This is an instructional snippet; it has not been added to the private `dbt_cert` project or executed there.
+
 
 ## Decisions, limits, and next steps
 
