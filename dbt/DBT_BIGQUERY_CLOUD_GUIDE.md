@@ -121,6 +121,29 @@ The raw BigQuery table stays in `FEI_ADMIN_PORTAL`; a Bronze model is a dbt-buil
 
 `fei_source_test.sql` is the current proof-of-connection model. It can be renamed to a descriptive Bronze model once downstream models use `ref()` to express dependencies. Folder names and model names need not match one another.
 
+### The equivalent staging / intermediate / marts vocabulary
+
+Keep both vocabularies in mind. They describe broadly similar progression, but are not rigid one-to-one translations:
+
+| Medallion term | Common dbt term | Typical file names and purpose |
+| --- | --- | --- |
+| Bronze | `staging` | `stg_fei__traffic.sql`: source-aligned, mostly one model per source table; select, rename, cast, and document fields |
+| Silver | `intermediate` | `int_traffic_enriched.sql`: deduplicate, join, and apply reusable business logic |
+| Gold | `marts` | `dim_visitor.sql`, `fct_traffic.sql`: business entities, facts, dimensions, and reporting aggregates |
+
+`stg_`, `int_`, `dim_`, and `fct_` are **model naming conventions**, not dbt commands. You can keep `Bronze/Silver/Gold` as the actual folders and use these prefixes where they clarify a model's role:
+
+```text
+models/
+├── Bronze/stg_fei__traffic.sql
+├── Silver/int_traffic_enriched.sql
+└── Gold/
+    ├── dim_visitor.sql
+    └── fct_traffic.sql
+```
+
+For a small project, one Bronze source model and one Gold reporting model may be sufficient; add Silver when reusable cleaning or joins justify it. dbt's [project structure guidance](https://docs.getdbt.com/best-practices/how-we-structure/2-staging) uses staging as the source-facing layer.
+
 In Studio, save the files and run:
 
 ```bash
@@ -138,6 +161,56 @@ dbt build --select fei_source_test
 5. Verify that the job completed and the view or table appeared in `DBT_FEI_PROD`.
 
 The Studio **“Defer to: DEV”** selector affects dependency resolution during development. It does not switch the Studio command bar into the production environment.
+
+## 5. Running production with dbt Core instead of dbt Cloud jobs
+
+dbt Core executes transformations but does not host a scheduler or deployment environment. In a Core-only setup, Git distributes code, a `profiles.yml` target selects the BigQuery destination, and an external runner (for example, a CI pipeline or scheduled VM/container) invokes dbt. Pushing Git code and building BigQuery objects are separate operations.
+
+### Prepare the runner
+
+1. Keep `dbt_project.yml` and models committed on the production branch. A local development run can use uncommitted files; a production runner should check out a specific commit from the approved branch.
+2. Install compatible `dbt-core` and `dbt-bigquery` versions on the runner and keep them pinned together. Make sure the runner starts in the directory containing `dbt_project.yml` (the root of the current `dbt_cert` repository).
+3. Give the runner an identity with permission to run BigQuery jobs, read `FEI_ADMIN_PORTAL`, and write to `DBT_FEI_PROD`. Supply credentials through the runner's secret store or workload identity. Never commit a JSON key. Keep the production BigQuery job location at `australia-southeast1`.
+4. Configure a `profiles.yml` **outside the Git repository**. Its top-level key must match `profile:` in `dbt_project.yml`; this project currently says `profile: 'default'`. Example using an externally supplied key-file path:
+
+```yaml
+default:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: fei-website-f16b0
+      dataset: dbt_fei_mdelamettrie
+      keyfile: "{{ env_var('DBT_BIGQUERY_KEYFILE') }}"
+      location: australia-southeast1
+      threads: 4
+    prod:
+      type: bigquery
+      method: service-account
+      project: fei-website-f16b0
+      dataset: DBT_FEI_PROD
+      keyfile: "{{ env_var('DBT_BIGQUERY_KEYFILE') }}"
+      location: australia-southeast1
+      threads: 4
+```
+
+The example assumes `DBT_BIGQUERY_KEYFILE` points to a key file mounted outside the repository. Use separate development and production identities when available; the runner may inject different key paths for each environment. A keyless identity method needs its own adapter-specific profile settings.
+
+### Promote and execute
+
+1. On a development machine, work on a branch and run `dbt build --target dev --profiles-dir <secure-profile-directory>`.
+2. Commit the tested code and merge it into the production branch. `git push` publishes code; it does not execute dbt.
+3. Have the production runner check out the approved commit, provide its credentials and profile, then run these commands from the project root:
+
+```bash
+dbt deps --target prod --profiles-dir <secure-profile-directory>
+dbt build --target prod --profiles-dir <secure-profile-directory>
+```
+
+4. Schedule or trigger that runner through your chosen orchestrator, preserve logs and artifacts, and alert on a nonzero exit code. Verify the model output in `DBT_FEI_PROD`.
+
+The `--target prod` flag selects the `prod` output in `profiles.yml`; it is the critical switch between the development and production datasets. A manual `dbt build --target prod` is possible on a machine with production credentials, but routine production execution should use a controlled runner so code version, identity, schedule, logs, and retries are repeatable. See dbt's [profile and target documentation](https://docs.getdbt.com/docs/local/profiles.yml).
 
 ## Troubleshooting from this setup
 
@@ -162,3 +235,5 @@ Add dated entries here when new behavior is observed. For each entry, record the
 - [dbt deployment environments and jobs](https://docs.getdbt.com/docs/deploy/deployments)
 - [dbt Studio interface and defer selector](https://docs.getdbt.com/docs/platform/studio-ide/ide-user-interface)
 - [dbt BigQuery OAuth and Workload Identity Federation](https://docs.getdbt.com/docs/platform/manage-access/set-up-bigquery-oauth)
+- [dbt profiles, targets, and production execution](https://docs.getdbt.com/docs/local/profiles.yml)
+- [dbt staging structure and model naming](https://docs.getdbt.com/best-practices/how-we-structure/2-staging)

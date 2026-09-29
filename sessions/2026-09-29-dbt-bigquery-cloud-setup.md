@@ -16,6 +16,8 @@ The user requested a Markdown or HTML record in `MDLM_CODEX_MEMORY` for these in
 
 Follow-up: the user asked to use Bronze, Silver, and Gold folders instead of staging, intermediate, and marts. Confirmed this is a valid dbt model layout and expanded the living guide with folder roles, `source()`/`ref()` flow, and the distinction between code folders and BigQuery datasets. The preference was recorded in durable memory.
 
+Follow-up: the user asked to retain staging/intermediate/marts and `stg_`/`int_`/`dim_`/`fct_` terminology as well, and to explain how dbt Core reaches production. Added a side-by-side vocabulary map and a Core-only promotion/runner procedure, including an external `profiles.yml` example with separate `dev`/`prod` BigQuery targets. This is documentation, not a live Core deployment; no production runner was configured or executed.
+
 ## Decisions, limits, and next steps
 
 - Develop and test in Studio, commit and sync code to the deployment branch, then run the production deploy job. Studio's Defer selector is not a production environment switch.
