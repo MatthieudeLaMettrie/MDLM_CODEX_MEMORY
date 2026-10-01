@@ -26,5 +26,6 @@ An end-to-end field guide based on the FEI RSS connection setup on 1 October 202
 | `sql/03_validate_data.sql` | Inspect configuration and verify loaded rows |
 | `sql/04_reader_access.sql` | Optional read access for analysts |
 | `sql/05_bronze_silver_gold.sql` | Optional transformation example with explicit assumptions |
+| `sql/06_use_fei_database.sql` | Grant access to FEI when changing the destination database |
 
 The key-generation script contains instructions, not keys. Keep generated credentials outside Git and outside shared or synced folders.

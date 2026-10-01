@@ -1,6 +1,6 @@
 # Google Sheets to Snowflake using Fivetran
 
-Last reviewed: 1 October 2026. Written for Windows PowerShell, Snowsight, and the Fivetran web interface. This is a reusable setup guide and an account of the FEI RSS incident. Script templates require the checks described below.
+Last reviewed: 2 October 2026. Written for Windows PowerShell, Snowsight, and the Fivetran web interface. This is a reusable setup guide and an account of the FEI RSS incident. Script templates require the checks described below.
 
 ## 1. What the pipeline does
 
@@ -139,6 +139,26 @@ Open the private-key file locally and paste its contents only into the Fivetran 
 
 Click **Load Virtual Warehouses**, select the warehouse, and **Save & Test**. Use the test's specific error to isolate the next issue. Choose processing location and timezone deliberately for operational needs; they do not repair incorrect credentials. The successful destination overview should show **Connected** and **KEY_PAIR**.
 
+### Changing the destination database to FEI
+
+Changing only the Database field from `FIVETRAN_DATABASE` to `FEI` can fail because the setup granted database permissions specifically on `FIVETRAN_DATABASE`. Those grants do not extend to another database. Your personal session can see `FEI` as `ACCOUNTADMIN`, while Fivetran authenticates as `FIVETRAN_USER` and uses `FIVETRAN_ROLE`.
+
+For the existing `FEI` database, run this in Snowsight:
+
+```sql
+USE ROLE ACCOUNTADMIN;
+
+GRANT USAGE, MONITOR, CREATE SCHEMA
+ON DATABASE FEI
+TO ROLE FIVETRAN_ROLE;
+```
+
+These are the database privileges used in [Fivetran's setup guide](https://fivetran.com/docs/destinations/snowflake/setup-guide). A standalone copy is in [06_use_fei_database.sql](sql/06_use_fei_database.sql).
+
+Then set **Database = FEI**, keep **Role = FIVETRAN_ROLE**, and click **Save & Test**. Keep the same user, warehouse, and matching key pair: the keys authenticate the user rather than selecting its database. Changing the database field does not move existing tables from the old database. Confirm the connection's behavior and discover its new target before querying it.
+
+If the connection uses a pre-existing schema in `FEI`, inspect its permissions separately; database-level rights alone do not grant access to every existing schema/table. Missing FEI database grants are the likely explanation for the user's reported failure, but the exact failed-test message and successful retry have not been supplied.
+
 ## 9. Start ingestion and prove the data arrived
 
 Open **Connections**, select the Google Sheets connection, ensure it is unpaused, and start the initial sync or click **Sync now**. Open its status details and wait for a completed sync with a recorded time. The destination being Connected proves access, while the connection being Active indicates it can run; neither is a row-count check.
@@ -168,6 +188,7 @@ The Transformations screenshot shows an optional metadata Quickstart offering. G
 | KEY_PAIR test fails | Check key pair match, PEM format, encryption toggle/passphrase, registered user, and account |
 | Warehouse list empty after login works | Check warehouse existence, role assignment, warehouse USAGE, and selected/default role |
 | Permission test fails | Inspect grants and target schema ownership; an existing schema can need additional grants |
+| Changing Database to FEI fails | Grant USAGE, MONITOR, CREATE SCHEMA on FEI to FIVETRAN_ROLE, keep that role selected, and retest; inspect the exact error if it persists |
 | Destination Connected but no rows | Check source status, pause state, completed-sync time, range contents, and table location |
 | Active connection with blank Last synced | Check running sync details; completion and SQL verification are still needed |
 | PUBLIC empty | Search all schemas with the discovery SQL |

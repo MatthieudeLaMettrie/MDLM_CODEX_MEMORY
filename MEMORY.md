@@ -1,6 +1,6 @@
 # Project memory
 
-Last updated: 2026-10-01
+Last updated: 2026-10-02
 
 ## Purpose and repository
 
@@ -23,6 +23,8 @@ This repository preserves context so future tasks can continue without relying o
 - Exclude secrets and preserve unrelated changes.
 
 ## Current state
+
+- Fivetran FEI destination follow-up (2026-10-02): guide now explains database-scoped grants and includes sql/06_use_fei_database.sql granting USAGE, MONITOR, CREATE SCHEMA on FEI to FIVETRAN_ROLE. User reported changing only Database failed; exact error/retry unverified. Existing matching key pair can authenticate the same user. Documentation update only.
 
 - Google Sheets to Snowflake (2026-10-01): [complete Fivetran package](guides/data-engineering/google-sheets-snowflake-fivetran/README.md) includes architecture, RSA key generation reasons/process, a local PowerShell generator, five Snowflake SQL scripts, troubleshooting, and screenshot evidence. Destination verified Connected with KEY_PAIR, FIVETRAN_DATABASE and FIVETRAN_USER on AWS ap_southeast_2. Source google_sheets.fei_rss_fivetran later shown Active with a six-hour schedule, but Last synced remains blank in supplied evidence; data arrival, actual schema/table, and row counts unverified. Scripts syntax-reviewed; no cloud SQL or key generation executed by Codex.
 
