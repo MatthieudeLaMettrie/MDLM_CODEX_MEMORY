@@ -14,6 +14,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 ## Study guides
 
+- [Google Sheets to Snowflake using Fivetran](guides/data-engineering/google-sheets-snowflake-fivetran/README.md) — complete connection guide, public/private key generation, Snowflake scripts, validation, troubleshooting, and FEI RSS session evidence.
+
 - [dbt Cloud with BigQuery: setup and deployment](dbt/DBT_BIGQUERY_CLOUD_GUIDE.md) — living field guide for connections, datasets, Git project paths, production jobs, and troubleshooting.
 
 - [SnowPro Specialty: Gen AI (GES-C02) study guide and practice set](snowpro-genai/README.md) — official-blueprint coverage, syntax and billing sheets, a lab, 28 original questions, and Snowflake documentation links.
@@ -43,7 +45,7 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 - `learning/rag/` — Azure, GCP, and AWS RAG courses.
 - `learning/certifications/` — AI curriculum and certification roadmap.
-- `guides/` — continuity, email, and programming guides.
+- `guides/` — continuity, email, programming, and data engineering guides.
 - `projects/` — project-specific records.
 - `dbt/` and `snowpro-genai/` — existing subject collections.
 - `sessions/` — dated session records.

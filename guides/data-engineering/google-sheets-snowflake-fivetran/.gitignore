@@ -1,0 +1,7 @@
+# Generated credentials must never become guide artifacts.
+*.pem
+*.p8
+*.key
+*.pub
+assign_public_key.sql
+keys/
