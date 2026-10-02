@@ -14,6 +14,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 ## Study guides
 
+- [API authentication: passwords, keys, Bearer tokens, OAuth, cookies and Key Vault](guides/api/API_AUTHENTICATION_STUDY_GUIDE.md) — comparisons, sanitized MyTurn/Supabase and Fabric/Azure examples, diagrams, troubleshooting and practice questions.
+
 - [Google Sheets to Snowflake using Fivetran](guides/data-engineering/google-sheets-snowflake-fivetran/README.md) — complete connection guide, public/private key generation, Snowflake scripts, validation, troubleshooting, and FEI RSS session evidence.
 
 - [dbt Cloud with BigQuery: setup and deployment](dbt/DBT_BIGQUERY_CLOUD_GUIDE.md) — living field guide for connections, datasets, Git project paths, production jobs, and troubleshooting.
