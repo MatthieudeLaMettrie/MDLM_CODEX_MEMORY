@@ -23,6 +23,7 @@ The code is educational and syntax-checked, not tested against live accounts. In
 9. [Choosing and troubleshooting a method](#9-choosing-and-troubleshooting-a-method)
 10. [Practice questions and answers](#10-practice-questions-and-answers)
 11. [Python helpers: os and sys](#11-python-helpers-os-and-sys)
+12. [PAT, Bearer, API key and public/private key compared](#12-pat-bearer-api-key-and-publicprivate-key-compared)
 
 ## 1. The three questions
 
@@ -707,3 +708,56 @@ Run with `python ingest.py --provider claude`. This reads configuration only; it
 - Why does the API still return 401 when the variable exists? **Existence does not prove the value is valid or sent correctly.**
 - What does `sys.executable` reveal? **Which Python interpreter is running.**
 - Is `sys.path` where secrets belong? **No; it is the module import search path.**
+
+## 12. PAT, Bearer, API key and public/private key compared
+
+These terms describe different layers and can overlap. A **PAT** describes an issued credential; **Bearer** describes possession-based use; a **JWT** describes a token format; a **key pair** provides cryptographic proof. OAuth obtains authorization, and Key Vault stores secrets.
+
+| Term | What it describes | How it works | Example |
+|---|---|---|---|
+| PAT | Provider-issued credential, commonly tied to a personal account | Present the secret; provider checks owner access and token restrictions | GitHub token restricted to one repository |
+| Bearer token | Possession-based credential, commonly sent with the Bearer HTTP scheme | Holder presents token without proving possession of a separate cryptographic key | `Authorization: Bearer <access-token-or-PAT>` |
+| API key | Provider-defined application/service credential or identifier | Send using the documented key header, signature scheme or other contract | Foundry key in `x-api-key` |
+| Private key | Secret half of an asymmetric cryptographic pair | Locally signs a proof; in other protocols can decrypt data | Snowflake/Fivetran private signing key |
+| Public key | Shareable half of the cryptographic pair | Verifies matching signatures; in other protocols can encrypt to the key owner | Public key registered on a Snowflake user |
+| JWT | Token format containing claims | Receiving service validates protection and expected claims; decoding alone proves nothing | Supabase user access token |
+| OAuth | Authorization framework | Supported flow issues access tokens for requested/approved access | Google Sheets user consent |
+| Key Vault | Secret storage service | Authorized application retrieves a stored secret | Store `github-read-pat` by name |
+
+### The central difference: present a secret versus prove key possession
+
+With a Bearer token, the client sends the credential itself. Someone who obtains it can potentially use it within the service's other controls. With asymmetric authentication, the client typically keeps the private key and sends a signed assertion or proof. The service verifies that proof against a trusted public key. **The private key is not sent as an API password.** A stolen private key is still a serious compromise; stronger custody matters.
+
+```mermaid
+flowchart LR
+    A[Client holds PAT or access token] -->|Presents token| B[API checks credential and authorization]
+    C[Client holds private key] -->|Signs locally| D[Signed proof]
+    D --> E[Service verifies trusted public key]
+    E --> F[Service checks authorization]
+```
+
+Bearer is more than the header spelling: possession is sufficient to use the credential without separate key-possession proof. [Bearer definition](https://www.rfc-editor.org/rfc/rfc6750.html). Snowflake key-pair authentication registers the public key and uses the private key through its supported client authentication flow; keys do not themselves grant extra data roles. [Snowflake key-pair authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth).
+
+### They can appear together
+
+- **GitHub:** a PAT can be sent using `Authorization: Bearer …`. It is both a PAT and a bearer credential. Its owner's access and chosen token permissions constrain it. [GitHub PATs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+- **OAuth with a certificate/private key:** the application proves its identity to obtain an access token, then calls a resource API using that token. Proof at token issuance does not automatically make the issued token proof-bound.
+- **Signed JWT:** an issuer can sign an access token with a private key and an API can verify it with the issuer's public key. The caller may still use that JWT as Bearer; it need not possess the issuer's private key. JWTs can also use symmetric protection or encryption, so JWT does not imply a particular public/private-key algorithm. [JWT specification](https://www.rfc-editor.org/rfc/rfc7519.html).
+
+### A public API key is not a cryptographic public key
+
+Supabase's `sb_publishable_…` key is a public application API key; it is not the public half of an asymmetric key pair. A user's access JWT supplies signed-in identity separately. Supabase secret/service-role keys have elevated privileges and must remain private. The word “public” therefore has different meanings in “publishable API key” and “public signing key.” [Supabase key types](https://supabase.com/docs/guides/getting-started/api-keys).
+
+Likewise, a cloud provider's “API key” may just be a secret string. It is not necessarily an RSA/ECDSA private key. Some request-signing systems use a shared symmetric secret (HMAC), which is another design rather than an asymmetric public/private pair.
+
+### Apply it to your projects
+
+| Your connection | Credential | Transmission or proof | Storage |
+|---|---|---|---|
+| GitHub repository script | PAT | Bearer REST header | Vault or protected credential store |
+| MyTurn login via Supabase | Password → user session token | MyTurn's accepted Bearer/cookie contract | Password in protected storage; session managed securely |
+| Claude on Foundry using keys | Resource API key | Documented `x-api-key` header | Key Vault |
+| Fivetran → Snowflake KEY_PAIR | Private signing key | Supported Snowflake key-pair flow | Connector's protected credential storage; public key on Snowflake user |
+| Google Sheets as a person | OAuth access token | API's accepted access-token transport | Refresh credentials in protected cache/store |
+
+For a new connection, ask: **Who does this represent? How was it issued? What must be sent or proven? What permissions apply? How does it expire or get revoked?** The credential's label alone does not answer all five questions.
