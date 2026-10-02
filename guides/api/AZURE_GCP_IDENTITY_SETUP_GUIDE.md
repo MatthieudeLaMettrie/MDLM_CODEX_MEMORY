@@ -2,6 +2,8 @@
 
 Part 2 of the [API authentication study guide](API_AUTHENTICATION_STUDY_GUIDE.md) · checked 2 October 2026
 
+Next: [Part 3 — Personal Access Tokens (PATs)](PERSONAL_ACCESS_TOKENS_GUIDE.md), including how vault storage differs from the token's identity and permissions.
+
 This guide takes you from cloud-console setup to a small connection check. It covers Azure Key Vault, Entra service principals and managed identity, GCP service accounts, and user OAuth. All names and identifiers below are examples. Commands are instructions for you to run after replacing placeholders; no cloud resources, roles, keys or OAuth clients were created during preparation of this guide.
 
 ## Contents

@@ -14,6 +14,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 ## Study guides
 
+- [Personal Access Tokens (PATs): what, how and why](guides/api/PERSONAL_ACCESS_TOKENS_GUIDE.md) — credential/transport distinctions, GitHub setup, Azure DevOps/GitLab examples, Databricks considerations, alternatives, rotation and practice questions.
+
 - [Azure and GCP identity setup: Key Vault, service principals, service accounts and OAuth](guides/api/AZURE_GCP_IDENTITY_SETUP_GUIDE.md) — step-by-step console setup, permissions, local and hosted authentication, Google Sheets OAuth, connection checks and troubleshooting.
 
 - [API authentication: passwords, keys, Bearer tokens, OAuth, cookies and Key Vault](guides/api/API_AUTHENTICATION_STUDY_GUIDE.md) — comparisons, sanitized MyTurn/Supabase and Fabric/Azure examples, diagrams, troubleshooting and practice questions.
