@@ -2,6 +2,8 @@
 
 Study reference · 2 October 2026 · Python, MyTurn/Supabase, Microsoft Fabric and Azure
 
+Continue with [Part 2: step-by-step Azure Key Vault, service principal, GCP service account and OAuth setup](AZURE_GCP_IDENTITY_SETUP_GUIDE.md) for cloud-console configuration and connection checks.
+
 All examples use environment variables or placeholders. The supplied password and private service keys are deliberately excluded. Rotate those exposed credentials, update their consumers, and invalidate affected sessions as appropriate. A Supabase **publishable** key is designed to be public; it is different from a private service key.
 
 The code is educational and syntax-checked, not tested against live accounts. Install only the packages needed for a section: `requests`, `azure-identity`, `azure-keyvault-secrets`, or `azure-communication-email`. `notebookutils` belongs to the Fabric runtime.

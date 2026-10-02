@@ -24,6 +24,8 @@ This repository preserves context so future tasks can continue without relying o
 
 ## Current state
 
+- Azure/GCP identity setup (2026-10-02): [Part 2 cloud setup guide](guides/api/AZURE_GCP_IDENTITY_SETUP_GUIDE.md) adds portal steps for Key Vault/RBAC/secrets, local CLI user, Entra service principal, hosted managed identity and Fabric; GCP service account/IAM, ADC impersonation/host identity, federation overview, JSON-key fallback, Google Sheets OAuth and Secret Manager. Includes safe connection probes and limits. Documentation/offline validation only; no cloud resources, credentials, permissions or clients created.
+
 - API guide follow-up (2026-10-02): section 11 explains Python standard-library `os` and `sys`, environment configuration, path handling, interpreter diagnostics, CLI arguments/argparse and notebook differences. Examples remain offline documentation.
 
 - API authentication guide (2026-10-02): [Markdown study guide](guides/api/API_AUTHENTICATION_STUDY_GUIDE.md) covers credential issuance, request transport and storage separately; Basic, keys, Bearer/JWT, OAuth/OIDC, cookies, managed identity, Key Vault, and sanitized MyTurn/Fabric/Foundry/AOAI/ACS examples. Highlights inline-key precedence and Fabric execution-identity limits. Documentation and offline checks only; no login, credential testing, rotation or cloud changes performed. Exposed private credentials should be rotated; values were excluded from artifacts.

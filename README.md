@@ -14,6 +14,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 ## Study guides
 
+- [Azure and GCP identity setup: Key Vault, service principals, service accounts and OAuth](guides/api/AZURE_GCP_IDENTITY_SETUP_GUIDE.md) — step-by-step console setup, permissions, local and hosted authentication, Google Sheets OAuth, connection checks and troubleshooting.
+
 - [API authentication: passwords, keys, Bearer tokens, OAuth, cookies and Key Vault](guides/api/API_AUTHENTICATION_STUDY_GUIDE.md) — comparisons, sanitized MyTurn/Supabase and Fabric/Azure examples, diagrams, troubleshooting and practice questions.
 
 - [Google Sheets to Snowflake using Fivetran](guides/data-engineering/google-sheets-snowflake-fivetran/README.md) — complete connection guide, public/private key generation, Snowflake scripts, validation, troubleshooting, and FEI RSS session evidence.
