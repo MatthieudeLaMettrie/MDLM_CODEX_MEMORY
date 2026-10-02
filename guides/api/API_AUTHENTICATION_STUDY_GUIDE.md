@@ -18,6 +18,7 @@ The code is educational and syntax-checked, not tested against live accounts. In
 8. [Azure Foundry, Azure OpenAI and ACS](#8-azure-foundry-azure-openai-and-acs)
 9. [Choosing and troubleshooting a method](#9-choosing-and-troubleshooting-a-method)
 10. [Practice questions and answers](#10-practice-questions-and-answers)
+11. [Python helpers: os and sys](#11-python-helpers-os-and-sys)
 
 ## 1. The three questions
 
@@ -602,3 +603,101 @@ Try these without looking at the answers:
 - **Refresh:** explain what must be updated after replacing a Supabase session and why sharing refresh work across executors can race.
 
 Completion target: explain each layer, select a documented authentication method, keep its secrets outside source control, and distinguish login success from successful authorized API access.
+
+## 11. Python helpers: os and sys
+
+Both modules come with Python's standard library: use `import os` and `import sys`; no `pip install` is needed. In this guide they support configuration and runtime diagnostics. `requests` sends the HTTP requests.
+
+| Module | Role | Useful examples |
+|---|---|---|
+| `os` | Interface to the operating-system environment | Read configuration with `os.environ` / `os.getenv`; inspect working directory with `os.getcwd()` |
+| `os.path` | File-path operations | Join folders, test existence; do not use it to construct API URLs |
+| `sys` | Interface to the running Python interpreter | Interpreter location/version, script arguments, import search paths, exit status |
+
+### os: supply configuration from the environment
+
+```python
+import os
+
+SUPABASE_URL = os.environ["SUPABASE_URL"]  # Missing variable raises KeyError.
+PROVIDER = os.getenv("PROVIDER", "claude")  # Default when absent.
+API_KEY = os.getenv("FOUNDRY_API_KEY")      # None when absent.
+if not API_KEY:
+    raise RuntimeError("FOUNDRY_API_KEY is missing or empty")
+```
+
+Environment values are strings. A present empty variable does not activate `getenv`'s default. Convert numbers explicitly, e.g. `timeout = int(os.getenv("API_TIMEOUT", "60"))`. Never use `bool("false")` to parse a setting: a nonempty string is truthy. Reading a variable neither contacts Key Vault nor authenticates a request. [Python os documentation](https://docs.python.org/3/library/os.html).
+
+For a nonsecret local PowerShell example, set configuration **before** launching Python:
+
+```powershell
+$env:PROVIDER = "claude"
+python ingest.py
+```
+
+The launched process inherits that configuration. Your existing Fabric notebook is a separate runtime; setting a variable in local PowerShell does not configure it. Environment variables can contain secrets but are not a vault. Avoid printing `os.environ` or entering real keys into saved example commands.
+
+### File paths: what does RESOURCES mean?
+
+`RESOURCES` in your original `SECRETS_FILE = f"{RESOURCES}/secrets.json"` is a variable that earlier code must define. It is not built into Python. Relative file paths resolve from the working directory, which may differ between a terminal and notebook.
+
+```python
+import os
+
+resources = os.environ["RESOURCES"]
+secrets_file = os.path.join(resources, "secrets.json")
+file_exists = os.path.isfile(secrets_file)  # Boolean; does not read the secret.
+working_directory = os.getcwd()
+```
+
+`os.path.join` follows the host's file-path conventions. It does not establish that a file is readable, trusted or safely stored. [Python os.path documentation](https://docs.python.org/3/library/os.path.html).
+
+The guide's helper instead uses `pathlib`, which offers path objects:
+
+```python
+from pathlib import Path
+
+secrets_file = Path(resources) / "secrets.json"
+```
+
+For an ordinary saved `.py` script, `Path(__file__).resolve().parent` locates its folder. Notebooks usually do not define `__file__`; use an explicitly configured runtime path there. A Fabric resource may require its documented mount/filesystem interface rather than a local Windows path. [Python pathlib documentation](https://docs.python.org/3/library/pathlib.html).
+
+### sys: diagnose the interpreter and script execution
+
+```python
+import sys
+
+print("Python version:", sys.version.split()[0])
+print("Interpreter:", sys.executable)
+print("Platform:", sys.platform)
+```
+
+`sys.executable` helps explain why a package installed for one Python is missing in another. `sys.path` controls module lookup; it differs from the operating system's `PATH`. Prefer installing into the correct environment over appending arbitrary folders to `sys.path`.
+
+For `python ingest.py claude`, `sys.argv[0]` is the script name and `sys.argv[1]` is `claude`. Notebook arguments may belong to the kernel launcher. Do not pass passwords/tokens as command-line arguments or print the complete argument list. In a CLI, `sys.exit(1)` signals failure; it raises `SystemExit`. In a notebook, use a normal exception for configuration failure. [Python sys documentation](https://docs.python.org/3/library/sys.html).
+
+Use `argparse` when your script needs named options and validation:
+
+```python
+import argparse
+import os
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--provider", choices=["claude", "aoai"], default="claude")
+args = parser.parse_args()  # CLI script, not a notebook cell.
+provider = args.provider
+key_name = "FOUNDRY_API_KEY" if provider == "claude" else "AOAI_API_KEY"
+api_key = os.getenv(key_name)
+if not api_key:
+    parser.error(f"Set {key_name} through your configured secret delivery mechanism")
+```
+
+Run with `python ingest.py --provider claude`. This reads configuration only; it makes no API call. [Python argparse documentation](https://docs.python.org/3/library/argparse.html).
+
+### Quick self-check
+
+- Does `import os` install a package? **No; it loads a standard-library module.**
+- Why does `os.environ["API_KEY"]` fail before the request? **The required variable is absent.**
+- Why does the API still return 401 when the variable exists? **Existence does not prove the value is valid or sent correctly.**
+- What does `sys.executable` reveal? **Which Python interpreter is running.**
+- Is `sys.path` where secrets belong? **No; it is the module import search path.**

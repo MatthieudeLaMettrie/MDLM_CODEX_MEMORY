@@ -9,3 +9,7 @@ Official documentation checked: IETF, Supabase and SSR source, Microsoft Learn a
 Earlier AGY note reports Supabase password-login success and non-JSON Bearer response from /api/listings/filter-options. Cookie success and /api/listings behavior remain unverified. No live API calls, login, secret retrieval, email, cloud changes or credential rotation executed for this task.
 
 Validation: Python fenced examples compiled without execution; guide structure, internal heading anchors, local navigation links and Git whitespace checked. Placeholder-only artifacts and staged changes reviewed before publication. Memory category and session also recorded in MDLM_AGY_MEMORY under standing instructions.
+
+## Follow-up: os and sys
+
+User requested adding os/sys libraries. Added section 11 and its contents link: standard-library imports, os.environ versus os.getenv, string/default semantics, PowerShell configuration inheritance, RESOURCES and os.path/pathlib, sys.executable/version/platform, sys.path versus PATH, sys.argv/sys.exit and argparse. Connects examples to API configuration and explains notebook/runtime differences. Official Python documentation checked; all fenced Python examples compile and heading links resolve; Git whitespace checked. No secrets read or API calls executed.

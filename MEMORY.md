@@ -24,6 +24,8 @@ This repository preserves context so future tasks can continue without relying o
 
 ## Current state
 
+- API guide follow-up (2026-10-02): section 11 explains Python standard-library `os` and `sys`, environment configuration, path handling, interpreter diagnostics, CLI arguments/argparse and notebook differences. Examples remain offline documentation.
+
 - API authentication guide (2026-10-02): [Markdown study guide](guides/api/API_AUTHENTICATION_STUDY_GUIDE.md) covers credential issuance, request transport and storage separately; Basic, keys, Bearer/JWT, OAuth/OIDC, cookies, managed identity, Key Vault, and sanitized MyTurn/Fabric/Foundry/AOAI/ACS examples. Highlights inline-key precedence and Fabric execution-identity limits. Documentation and offline checks only; no login, credential testing, rotation or cloud changes performed. Exposed private credentials should be rotated; values were excluded from artifacts.
 
 - Fivetran FEI destination follow-up (2026-10-02): guide now explains database-scoped grants and includes sql/06_use_fei_database.sql granting USAGE, MONITOR, CREATE SCHEMA on FEI to FIVETRAN_ROLE. User reported changing only Database failed; exact error/retry unverified. Existing matching key pair can authenticate the same user. Documentation update only.
