@@ -123,6 +123,8 @@ This is a generic API that supports `X-API-Key`. Other APIs use `api-key`, `apik
 headers = {"Authorization": f"Bearer {access_token}"}
 ```
 
+**JWT definition:** A JWT (JSON Web Token) is an open standard (RFC 7519) used to securely transmit digitally signed information—called claims—between parties in a compact, URL‑safe format. It consists of three parts (header, payload, signature) and is widely used for stateless authentication in APIs and web applications.
+
 Bearer tokens may be opaque strings or JWTs. An API key may also be transported as Bearer if the provider documents that convention. The header alone does not reveal how the credential was issued. Avoid putting tokens in URLs, logs or notebook outputs. [Bearer-token specification](https://www.rfc-editor.org/rfc/rfc6750.html).
 
 Common JWT claims are `iss` (issuer), `aud` (audience), `exp` (expiry), `sub` (subject), and provider-specific scopes/roles. Decoding a JWT only reads its contents: it does not verify the signature or authorize a request. Receiving servers must validate it with the issuer's trusted keys and expected claims.
