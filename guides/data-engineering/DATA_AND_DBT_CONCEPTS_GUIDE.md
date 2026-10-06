@@ -521,6 +521,67 @@ models/
 
 Per-model files keep code and documentation together and reduce unrelated edits/conflicts. Grouped files are convenient when short. Neither layout changes query performance or makes freshness checks automatic. The current dbt staging guide illustrates per-model YAML and a shared source file; this recommendation is an organisational choice, not a mandatory dbt rule. [dbt staging structure](https://docs.getdbt.com/best-practices/how-we-structure/2-staging).
 
+## 6. dbt layers versus Bronze, Silver and Gold
+
+Using Bronze/Silver/Gold is valid. There is no universally best folder vocabulary. dbt recommends staging/intermediate/marts as a starting point, while explicitly allowing documented, consistent alternatives. For a new dbt project, my recommendation is to use that vocabulary inside the codebase and document how its outputs fit the wider medallion architecture. This is advice, not a requirement to rename the user's existing project. [dbt structure overview](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview).
+
+The two patterns describe overlapping concerns:
+
+- **Medallion layers** describe data becoming progressively more usable across the platform: raw Bronze, cleaned/conformed Silver, business-ready Gold. Ingestion into Bronze may happen before dbt starts. [Fabric medallion architecture](https://learn.microsoft.com/en-us/fabric/onelake/onelake-medallion-lakehouse-architecture).
+- **dbt layers** describe transformation responsibilities: staging standardizes individual sources, intermediate breaks complicated transformations into understandable steps, and marts publish business entities for consumers. [dbt staging](https://docs.getdbt.com/best-practices/how-we-structure/2-staging), [dbt intermediate](https://docs.getdbt.com/best-practices/how-we-structure/3-intermediate), [dbt marts](https://docs.getdbt.com/best-practices/how-we-structure/4-marts).
+
+### A useful mapping, not an exact equivalence
+
+| Pipeline part | Responsibility and example | Typical medallion placement |
+| --- | --- | --- |
+| Raw ingested source | Preserve source orders for traceability/reprocessing; ingestion is commonly outside dbt | Bronze |
+| Staging | Rename `OrderID` to `order_id`, cast dates, standardize status; generally one staging model per source table | Usually Silver |
+| Intermediate | Sum payments to order grain, combine reusable transformations | Often Silver; placement depends on whether outputs are preparation steps or published business products |
+| Marts | Publish `fct_orders` and `dim_customers` for reporting | Usually Gold |
+
+This mapping is an architectural interpretation, not a mandatory dbt mapping. In particular, **staging is not automatically Bronze**: renaming and casting source data already transforms it. A project can name a source wrapper `Bronze`, but should explain whether it preserves raw data or represents the first dbt transformation step.
+
+### One simple orders example
+
+An ingestion tool lands unchanged orders in Bronze. A dbt source declaration points to that existing table; it does not create or load it. `stg_shop__orders` standardizes names/types. `int_payments_summed_to_orders` prepares one payment total per order. `fct_orders` joins these into a tested, consumer-facing model with one row per order.
+
+```text
+Raw orders and payments [Bronze; ingestion]
+  -> stg_shop__orders / stg_shop__payments [Silver; dbt staging]
+  -> int_payments_summed_to_orders [Silver; dbt intermediate]
+  -> fct_orders [Gold; dbt mart]
+  -> dashboard
+```
+
+Gold does not have to be aggregated: an order-level fact table can be Gold if it is ready for consumers. Likewise, an intermediate aggregation does not become Gold just because it groups rows. Its purpose, grain, quality guarantees and intended consumers determine placement.
+
+### Recommended starting structure
+
+```text
+models/
+  staging/
+    shop/
+      _shop_sources.yml
+      stg_shop__orders.sql
+      stg_shop__orders.yml
+  intermediate/
+    sales/
+      int_payments_summed_to_orders.sql
+      int_payments_summed_to_orders.yml
+  marts/
+    sales/
+      fct_orders.sql
+      fct_orders.yml
+      dim_customers.sql
+      dim_customers.yml
+```
+
+Organize staging by source system and downstream models by business domain as the project grows. Use intermediate models when complexity or reuse justifies them; a simple staging-to-mart flow is valid, and not every path needs three transformations. [dbt intermediate guidance](https://docs.getdbt.com/best-practices/how-we-structure/3-intermediate).
+
+For the existing small Bronze/Silver/Gold learning project, keep the naming if it helps, document each folder's responsibilities, and retain informative `stg_`, `int_`, `fct_` and `dim_` prefixes where appropriate. Folder names alone do not configure warehouse schemas, access control, materialization or data quality. Choose those explicitly. Avoid duplicating the same model under both naming systems simply to satisfy a diagram.
+
+The practices that matter most are clear model responsibilities and row grain, reusable definitions, dependable tests/documentation/freshness, traceable raw inputs, and a consistent dependency flow. Choose views, tables or incremental materializations according to workload; the layer name alone should not dictate them.
+
 ## How the column choices fit together
 
 For an orders pipeline, these can legitimately differ:

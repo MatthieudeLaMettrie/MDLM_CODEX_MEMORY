@@ -64,3 +64,9 @@ Checked current primary dbt freshness/source/model config and property reference
 Explained loaded_at_field as an existing timestamp column/expression in the checked source/model, MAX-based age calculation, source/model renames, ingestion versus business clocks, and why freshness does not create columns. Recommended a hybrid growing-project layout: sources per source system, shared defaults in dbt_project.yml, model properties beside SQL; short folder/group files remain valid for the small learning project. No migration was selected by the user.
 
 Updated durable memory and reviewed examples/diff/whitespace. Examples are documentation only, not compiled or warehouse-tested; the user's current runtime/adapter capabilities have not been inspected. No live dbt project, model or warehouse changes made. Publish guide and records under standing authorization.
+
+## Follow-up: dbt structure versus medallion layers
+
+User asked whether Bronze/Silver/Gold is wrong for dbt and what absolute best practice is. Checked official dbt structure/staging/intermediate/marts guidance and Microsoft Fabric medallion documentation. Added section 6 with an approximate mapping, orders example and suggested project tree. Explained raw sources typically map to Bronze, staging and preparation models often to Silver, consumer marts to Gold; staging is not automatically raw Bronze, and Gold need not be aggregated.
+
+Recommended staging/intermediate/marts for new dbt codebases plus a documented platform mapping. Preserved the user's existing Bronze/Silver/Gold preference; no migration requested or executed. Intermediate steps are optional where not needed. Recorded principles around grain, responsibilities, tests, freshness and explicit physical configuration. Documentation review and Git whitespace checks only; no live dbt or warehouse execution. Publish guide, memory clarification and this note to current main under standing authorization.
