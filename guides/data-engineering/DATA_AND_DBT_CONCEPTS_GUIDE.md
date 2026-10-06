@@ -1,6 +1,6 @@
 # Data, web development and dbt: practical concepts
 
-Checked against official documentation on 6 October 2026. Examples are educational and have not been executed against a warehouse. SQL dialects and dbt adapter/version support differ.
+Checked against official documentation on 6 October 2026; Databricks catalog architecture added on 7 October 2026. Examples are educational and have not been executed against a warehouse. SQL dialects and dbt adapter/version support differ.
 
 ## 1. Indexing, partitioning and clustering
 
@@ -581,6 +581,95 @@ Organize staging by source system and downstream models by business domain as th
 For the existing small Bronze/Silver/Gold learning project, keep the naming if it helps, document each folder's responsibilities, and retain informative `stg_`, `int_`, `fct_` and `dim_` prefixes where appropriate. Folder names alone do not configure warehouse schemas, access control, materialization or data quality. Choose those explicitly. Avoid duplicating the same model under both naming systems simply to satisfy a diagram.
 
 The practices that matter most are clear model responsibilities and row grain, reusable definitions, dependable tests/documentation/freshness, traceable raw inputs, and a consistent dependency flow. Choose views, tables or incremental materializations according to workload; the layer name alone should not dictate them.
+
+## 7. Databricks catalogs: environments, domains and layers
+
+In Unity Catalog, a **catalog** is a named container and governance boundary for schemas. Schemas contain tables and other objects, such as views, volumes and functions. A **metastore** holds catalogs and their governance metadata. A catalog is not a compute cluster or SQL warehouse; compute accesses its registered data objects. [Catalog overview](https://learn.microsoft.com/en-us/azure/databricks/catalogs/).
+
+The table address has three parts:
+
+```text
+catalog.schema.table
+rmn_prod.gold.dim_customers
+```
+
+Think of the catalog as a labelled filing cabinet, schemas as drawers, and tables as files. The real catalog also supports ownership and access rules. Naming a cabinet `prod` does not automatically configure those rules or create data.
+
+### Comparing the user's options
+
+Assume RMN is a business domain or substantial business unit; its expansion was not supplied. Also assume `staging` in the environment list means a pre-production environment, rather than the dbt transformation layer.
+
+| Layout | Assessment | Main trade-off |
+| --- | --- | --- |
+| `prod.rmn.dim_customers`, `uat.rmn.dim_customers`, `dev.rmn.dim_customers` | Good simple starting point: catalogs separate environments, schemas organize domains | A shared production catalog groups ownership/governance across domains; add schema naming conventions if layers are needed |
+| `rmn.prod.dim_customers`, `rmn.uat.dim_customers`, `rmn.dev.dim_customers` | Technically valid: one domain catalog, environment schemas | Catalog-wide grants and ownership span multiple environments; catalog workspace bindings cannot independently bind each environment schema |
+| `rmn_prod.gold.dim_customers`, `rmn_uat.gold.dim_customers`, `rmn_dev.gold.dim_customers` | Recommended here when RMN warrants a domain-level governance boundary | More catalogs to administer, in exchange for environment and domain separation |
+
+Databricks' architecture guidance supports environment-based and combined domain/environment catalogs. The choice depends on ownership and isolation needs; the hybrid layout here is a recommendation, not a universal requirement. Use schemas for small projects or teams that do not need their own catalog boundary. [Catalog architecture guidance](https://learn.microsoft.com/en-us/azure/databricks/lakehouse-architecture/deployment-guide/unity-catalog).
+
+### Recommended scaffold for RMN
+
+```text
+Unity Catalog metastore
+├── rmn_dev                  catalog: development
+│   ├── bronze               schema: raw/ingested inputs
+│   ├── silver               schema: cleaned/conformed data
+│   └── gold                 schema: business-ready data
+│       ├── dim_customers
+│       └── fact_sales
+├── rmn_uat                  catalog: user acceptance testing
+│   ├── bronze
+│   ├── silver
+│   └── gold
+│       ├── dim_customers
+│       └── fact_sales
+└── rmn_prod                 catalog: production
+    ├── bronze
+    ├── silver
+    └── gold
+        ├── dim_customers
+        └── fact_sales
+```
+
+Choose a consistent `fact_` or `fct_` convention. The same table names across environments describe separate objects; catalog creation does not automatically copy data, definitions or privileges. Promote versioned code through Dev → UAT → Prod and parameterize the destination catalog. Non-production data can be synthetic, masked or a controlled subset rather than a complete copy of production.
+
+```sql
+-- Production dashboard query:
+SELECT customer_id, customer_name
+FROM rmn_prod.gold.dim_customers;
+
+-- Equivalent query against UAT data:
+SELECT customer_id, customer_name
+FROM rmn_uat.gold.dim_customers;
+```
+
+For a small centralized platform, the user's first layout is also a sensible choice. Include layer information in schema names if needed:
+
+```text
+prod.rmn_bronze.orders_raw
+prod.rmn_silver.orders
+prod.rmn_gold.dim_customers
+prod.rmn_gold.fact_sales
+
+uat.rmn_gold.dim_customers
+dev.rmn_gold.dim_customers
+```
+
+There are three namespace levels; `prod.rmn.gold.dim_customers` is not a four-level catalog/schema/subschema/table address. Combine dimensions in a name, such as `rmn_gold`, or move domain and environment into the catalog name, such as `rmn_prod`.
+
+### The isolation must be configured
+
+Use group ownership for production catalogs/schemas, appropriate table/schema privileges, and a controlled service principal for production jobs. Table reads normally require `USE CATALOG`, `USE SCHEMA` and `SELECT`; the two USE privileges do not themselves grant table reads. Avoid giving developers broad production write privileges. An inherited `SELECT` grant at `rmn` catalog level would span its `prod`, `uat` and `dev` schemas, explaining the second layout's administrative risk. Schema-level grants can still provide separation when carefully managed. [Unity Catalog best practices](https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/best-practices).
+
+If there are separate workspaces, configure workspace-catalog bindings so `rmn_prod` is accessible only from approved production workspaces, or explicitly permit read-only access from another approved workspace. Standard catalogs are ordinarily accessible from workspaces attached to the same metastore, subject to permissions, until bindings restrict them. Bindings operate on the catalog, which is why separate environment catalogs help. [Workspace-catalog binding](https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/access-control/workspace-catalog-binding).
+
+Configure storage destinations as well: distinct catalog names alone do not prove that externally registered tables reference distinct storage paths. Keep production write targets separate from non-production targets. These are architecture recommendations; no tenant, catalog, schema, workspace binding or permissions were created in this task.
+
+### Keep environment and transformation stage separate
+
+**Dev/UAT/Prod answers where a version of the system runs. Bronze/Silver/Gold answers how refined the data is. dbt staging/intermediate/marts answers what a transformation does.** A `staging` environment can contain all three medallion layers, and a production catalog can contain dbt staging outputs.
+
+dbt code can retain `models/staging`, `models/intermediate` and `models/marts`, while configured outputs land in `rmn_prod.silver` and `rmn_prod.gold`. Raw Bronze ingestion commonly precedes dbt. Folder names do not automatically set output catalogs or schemas; configure deployment targets and schema naming deliberately. The physical schemas need not correspond one-to-one to the code folders.
 
 ## How the column choices fit together
 

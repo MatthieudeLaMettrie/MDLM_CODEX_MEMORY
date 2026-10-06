@@ -1,6 +1,7 @@
 # Data and dbt concepts explained
 
 Date: 2026-10-06 (Australia/Sydney)
+Continued: 2026-10-07 (Australia/Sydney)
 Task identifier: 01a10e90-69e7-7212-a132-a2f1bff48763
 
 ## Request
@@ -70,3 +71,11 @@ Updated durable memory and reviewed examples/diff/whitespace. Examples are docum
 User asked whether Bronze/Silver/Gold is wrong for dbt and what absolute best practice is. Checked official dbt structure/staging/intermediate/marts guidance and Microsoft Fabric medallion documentation. Added section 6 with an approximate mapping, orders example and suggested project tree. Explained raw sources typically map to Bronze, staging and preparation models often to Silver, consumer marts to Gold; staging is not automatically raw Bronze, and Gold need not be aggregated.
 
 Recommended staging/intermediate/marts for new dbt codebases plus a documented platform mapping. Preserved the user's existing Bronze/Silver/Gold preference; no migration requested or executed. Intermediate steps are optional where not needed. Recorded principles around grain, responsibilities, tests, freshness and explicit physical configuration. Documentation review and Git whitespace checks only; no live dbt or warehouse execution. Publish guide, memory clarification and this note to current main under standing authorization.
+
+## Follow-up 2026-10-07: Databricks catalogs and scaffold
+
+User asked what a catalog is and compared PROD catalog/RMN schema with RMN catalog/PROD-UAT-STAGING schemas. Read continuity files and verified clean main; researched official Azure Databricks catalog definitions, architecture guidance, Unity Catalog best practices and workspace bindings. Added section 7 to the existing concepts guide.
+
+Explained metastore/catalog/schema/table hierarchy and three-part names. Assumed RMN represents a domain without inventing its expansion. Recommended combined domain/environment catalogs (`rmn_dev`, `rmn_uat`, `rmn_prod`) with medallion schemas for domain ownership and environment isolation; preserved environment-only catalogs as a simpler valid design. Domain-only catalog/environment schemas remains technically valid with narrower grants, but catalog-wide privileges and workspace bindings span environments. Distinguished staging environment from dbt staging transformations, and physical schemas from code folders. Included trees, comparison and illustrative SQL, code promotion and configured access/storage isolation.
+
+Updated memory with advice and assumptions. Documentation/diff/whitespace review only; examples not executed. No Databricks resources, grants, identities or bindings created; no user-approved architecture implementation. Publish this continuing note and task-owned documentation under standing authorization. Git output and final response provide publication evidence.

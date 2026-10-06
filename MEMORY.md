@@ -1,6 +1,6 @@
 # Project memory
 
-Last updated: 2026-10-06
+Last updated: 2026-10-07
 
 ## Purpose and repository
 
@@ -94,6 +94,7 @@ This repository preserves context so future tasks can continue without relying o
 - RSS Production failure was caused by old `main` using `FEI_RSS_TABLE` and a source `Date` test; the physical Drive-backed table had different case and later hit Drive credential denial. Working native source was promoted via dbt_cert PR #3, merged at `572760f`. A later PROD query screenshot returned 1,562 rows from `fei_source_test`, but a full post-merge job log is unverified. Draft PR #4 adds an unrun row-count snapshot and analysis. See [session](sessions/2026-09-30-dbt-source-checks-pending.md) and the [rewritten AGY guide](https://github.com/MatthieudeLaMettrie/MDLM_AGY_MEMORY/blob/main/categories/data-engineering/dbt-bigquery-cloud.md).
 - The user prefers `models/Bronze`, `models/Silver`, and `models/Gold` as the dbt layer structure. Bronze wraps sources, Silver cleans and combines, Gold serves reporting. These are code folders; separate BigQuery datasets require explicit schema configuration. The living guide has the mapping and examples.
 - Layer clarification (2026-10-06): concept guide section 6 recommends staging/intermediate/marts for new dbt codebases with a documented medallion mapping; raw ingestion is typically Bronze, staging/intermediate often Silver, and consumer marts Gold. Existing folder preference remains valid; no rename/migration approved. These are approximate mappings, and intermediate steps are optional.
+- Databricks catalog follow-up (2026-10-07): concept guide section 7 compares environment catalogs with domain catalogs/environment schemas. Recommends `rmn_dev`, `rmn_uat`, `rmn_prod` with bronze/silver/gold schemas if RMN is a substantial domain; `dev/uat/prod` catalogs plus domain/layer schemas remain a simpler alternative. RMN meaning unconfirmed. Separates environments, medallion layers and dbt folders; discusses grants/workspace bindings. Advice only, no implementation selected or live changes made.
 - The guide also preserves conventional `stg_`, `int_`, `dim_`, and `fct_` naming alongside Bronze/Silver/Gold. It documents Core-only production: merge committed code, run a pinned dbt Core + BigQuery adapter on an external runner, select `prod` in an external `profiles.yml` with `--target prod`, and schedule/monitor that runner outside dbt Cloud.
 - A small action-category reference list supplied by the user is suitable for a dbt Core seed at `seeds/actions.csv`; the guide records the eight values, including a final `Action` value, and explains `dbt seed --select actions --target dev/prod` and `ref('actions')`. The final `Action` may have been accidental and should be removed from the CSV if so.
 - The user also wants a `not_null` data test for `action` in a model YAML file. The guide has `models/Bronze/fei_source_test.yml` using `data_tests: [not_null]`, plus an optional `seeds/actions.yml` test. Confirm the actual model output column and exact model name before copying.
