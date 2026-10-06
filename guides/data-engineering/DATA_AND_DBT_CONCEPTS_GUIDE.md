@@ -95,6 +95,22 @@ Cross join cardinality is N × M. Full join cardinality depends on the condition
 
 React is a library for building interfaces from components. Next.js is a framework built on React, adding application structure, routing, server capabilities and tooling. A Next.js page still contains React components. [React introduction](https://react.dev/learn), [Next.js introduction](https://nextjs.org/docs).
 
+### Explain it like I am 10
+
+Imagine building a LEGO toy shop.
+
+**React is your box of reusable building pieces.** You make a product card, a search box and an “Add to basket” button. These are called components. React helps the pieces react to your actions: click the button and the basket number changes.
+
+**Next.js is a building kit that uses those React pieces and includes extra equipment and instructions.** It helps arrange the shop into pages, gives each page an address such as `/toys` or `/basket`, and can prepare page content on a server before sending it to the visitor. A server is another computer doing work for the website. [Next.js overview](https://nextjs.org/docs).
+
+You can build with React and choose the other equipment yourself, or use Next.js to get more of it together. Learning Next.js still involves learning React.
+
+For an exam-practice website, React makes the question card, answer buttons and changing score. Next.js can organise the `/courses`, `/practice` and `/results` pages and prepare public course information before someone opens it. Both approaches can build the site; the choice concerns the surrounding application tools.
+
+**Preparing a page:** client rendering is like receiving pieces and building the display on your computer. Server rendering is like receiving a display already assembled by another computer; browser code can then make it interactive. Next.js supports several combinations of server, static and client rendering. React also has server-rendering capabilities. [Server and Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components).
+
+The [linked freeCodeCamp article](https://www.freecodecamp.org/news/next-vs-react/) dates from 3 April 2023. Its library/framework comparison is useful, but several claims need qualification: Next.js is a full-stack React framework, React is not inherently limited to client rendering, server rendering is not always faster, and authentication still needs an implementation or an authentication library/provider. [Next.js overview](https://nextjs.org/docs), [authentication guide](https://nextjs.org/docs/app/guides/authentication).
+
 ```mermaid
 flowchart BT
   J[JavaScript or TypeScript] --> R[React: components, state, UI]
@@ -263,6 +279,37 @@ This replaces `loaded_at_field`; do not configure both. Ensure “success” mea
 4. With no row timestamp, usable metadata or audit record, there is no reliable temporal signal. Add instrumentation. Counts/checksums can detect some changes but cannot prove how recent data is. An unchanged reference table may be healthy; monitor successful synchronizations or adjust its SLA rather than requiring new rows every hour.
 
 A recent maximum timestamp proves only that at least one recent value exists. It does not prove complete delivery for every store, partition or business day. Pair freshness with completeness/volume checks when that matters. Source results are available in `sources.json`; configured checks must actually be scheduled. [Freshness artifact](https://docs.getdbt.com/reference/artifacts/sources-json).
+
+### Does dbt create a timestamp automatically?
+
+**Freshness checks do not add a timestamp column to the source. A source table does not always need its own timestamp column, but the check needs a meaningful time signal.** It can come from a column/expression, adapter-supported metadata or a custom audit query. [Freshness configuration](https://docs.getdbt.com/reference/resource-configs/freshness).
+
+You can explicitly write a dbt model that adds a column:
+
+```sql
+-- BigQuery example: models/Bronze/orders.sql
+{{ config(materialized='table') }}
+
+select
+    order_id,
+    status,
+    current_timestamp() as dbt_processed_at
+from {{ source('raw', 'orders') }}
+```
+
+When materialized as a table, the timestamp is stored in the model output. It does not alter the original source table. Rebuilding this table restamps every output row; an incremental model stamps the rows processed according to its selection and write strategy. A view evaluates `current_timestamp()` when queried instead of preserving a build-time stamp. [Materializations](https://docs.getdbt.com/docs/build/materializations).
+
+**Example:** the source stopped receiving orders on Monday. You run the model on Friday. The generated `dbt_processed_at` says Friday, even though the source data is still from Monday. That timestamp can measure transformation processing; it cannot establish source arrival freshness. This is a consequence of the SQL above, not a mechanism for recovering an unknown original load time.
+
+Choose the clock deliberately:
+
+| Question | Appropriate signal |
+| --- | --- |
+| When did these rows arrive in the warehouse? | An ingestion timestamp captured by the loader |
+| When did dbt process these rows? | An explicitly generated and materialized `dbt_processed_at` |
+| When did the last successful source synchronization complete, even with no changed rows? | A trustworthy loader audit/heartbeat timestamp |
+
+For a source without any timestamp, prefer a loader timestamp or successful-load audit. Metadata can be an alternative where supported; Snowflake's `LAST_ALTERED` can move for reasons other than new data. Neither configuring `loaded_at_field: _loaded_at` nor running a freshness check creates that column. Without a column, usable metadata or audit signal, dbt cannot infer the original arrival date. [Freshness configuration](https://docs.getdbt.com/reference/resource-configs/freshness), [Snowflake metadata limitation](https://docs.getdbt.com/reference/resource-configs/snowflake-configs).
 
 ## How the column choices fit together
 
