@@ -54,3 +54,13 @@ User asked whether React could be the dashboard frontend with Fabric Warehouse G
 Added two architecture diagrams and a bounded sales-query/JSON example. Distinguished the analytical data store from the application API: browser-to-custom API uses HTTPS; custom server-to-Warehouse uses a SQL driver, TDS and Entra identity. Explained Fabric's managed GraphQL API as an alternative to writing a custom service, its SPA/PKCE user sign-in and permissions, optional Next.js server routes, and Power BI embedding. Recommended evaluating managed GraphQL for suitable read-only internal queries and a custom API for tailored metrics/caching/access rules. Not a user-approved implementation choice.
 
 Kept application secrets server-side and explained that a shared service principal does not automatically convey each user's identity to the database. Advised Gold aggregates, bounded queries and data-as-of time. Updated the existing guide and memory; examples are conceptual, not executed. No Fabric workspace, Entra app, permissions or React app was created or changed. Diff and whitespace reviewed before publication.
+
+## Follow-up: freshness placement and YAML layout
+
+User requested more explanation of freshness: model SQL versus model YAML, all configuration locations, loaded_at_field selection, and per-model versus per-stage YAML best practice.
+
+Checked current primary dbt freshness/source/model config and property references, v2 command/upgrade docs and staging structure guidance. Extended the existing guide with source YAML defaults/table overrides, source project defaults, v2 model YAML and SQL examples, config precedence, version boundaries, and view/ephemeral limitations. Distinguished age thresholds from build_after orchestration settings and file location from the resource being checked.
+
+Explained loaded_at_field as an existing timestamp column/expression in the checked source/model, MAX-based age calculation, source/model renames, ingestion versus business clocks, and why freshness does not create columns. Recommended a hybrid growing-project layout: sources per source system, shared defaults in dbt_project.yml, model properties beside SQL; short folder/group files remain valid for the small learning project. No migration was selected by the user.
+
+Updated durable memory and reviewed examples/diff/whitespace. Examples are documentation only, not compiled or warehouse-tested; the user's current runtime/adapter capabilities have not been inspected. No live dbt project, model or warehouse changes made. Publish guide and records under standing authorization.

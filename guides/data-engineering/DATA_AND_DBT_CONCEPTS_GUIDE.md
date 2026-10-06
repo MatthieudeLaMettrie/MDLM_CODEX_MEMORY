@@ -394,6 +394,133 @@ Choose the clock deliberately:
 
 For a source without any timestamp, prefer a loader timestamp or successful-load audit. Metadata can be an alternative where supported; Snowflake's `LAST_ALTERED` can move for reasons other than new data. Neither configuring `loaded_at_field: _loaded_at` nor running a freshness check creates that column. Without a column, usable metadata or audit signal, dbt cannot infer the original arrival date. [Freshness configuration](https://docs.getdbt.com/reference/resource-configs/freshness), [Snowflake metadata limitation](https://docs.getdbt.com/reference/resource-configs/snowflake-configs).
 
+### Where freshness configuration lives
+
+**Distinguish the resource from the file:** a source is an existing raw table declared under `sources:`; a model is a transformation defined by SQL and documented under `models:`. A source declaration can live in the same YAML as model properties, but the `sources:` and `models:` keys still target different resources. Merely calling `source()` from a SQL model does not put that source's freshness policy on the model. [Source declarations](https://docs.getdbt.com/docs/build/sources).
+
+| Resource and engine | Property YAML | dbt_project.yml | Model SQL config() |
+| --- | --- | --- | --- |
+| Source freshness, current syntax | Yes, under sources/source/table config | Yes, under sources with + configs and correct resource path | No; a model SQL config applies to the model |
+| Model age checks in dbt v2 | Yes, under models/model config | Yes, under models with + configs | Yes |
+| Conventional dbt v1 source freshness | Yes | Yes with supported source config syntax | Does not add built-in model-age checks |
+
+The currently documented source/model age-check feature uses `dbt freshness` in v2. Conventional v1 uses `dbt source freshness` for sources; use a custom/package data test if you need model-age validation there. `freshness.build_after`, used in eligible dbt platform orchestration, is a scheduling setting and should not be confused with warning/error age thresholds. A reported Fusion/version label alone should not be treated as proof that every current v2 feature is enabled. [Freshness command](https://docs.getdbt.com/reference/commands/freshness), [v2 upgrade](https://docs.getdbt.com/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
+
+**Source YAML example — v1.10+ syntax, also used in current v2:**
+
+```yaml
+# models/staging/commerce/_commerce_sources.yml
+version: 2
+
+sources:
+  - name: commerce
+    schema: raw_commerce
+    config:
+      loaded_at_field: _loaded_at
+      freshness:
+        warn_after: {count: 2, period: hour}
+        error_after: {count: 4, period: hour}
+    tables:
+      - name: customers
+      - name: orders
+        config:
+          freshness:
+            warn_after: {count: 1, period: hour}
+            error_after: {count: 2, period: hour}
+```
+
+Both tables inherit the load column. Customers use the source-level thresholds; orders override them with stricter thresholds. Use common source-level settings only when they actually fit every inherited table. Set `freshness: null` for a table intentionally excluded. Freshness moved under `config` in v1.9, and `loaded_at_field` in v1.10; older tutorials have different nesting. [Freshness reference](https://docs.getdbt.com/reference/resource-configs/freshness).
+
+**Project defaults example:**
+
+```yaml
+# dbt_project.yml (fragment; demo is the project's actual name)
+sources:
+  demo:
+    +freshness:
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+```
+
+This sets defaults for sources in `demo`; it does not declare the sources themselves. Resource paths can narrow the scope; include relevant subfolders when required by the source's YAML location. [Source configurations](https://docs.getdbt.com/reference/source-configs).
+
+**Model property YAML example — dbt v2 age checks:**
+
+```yaml
+# models/marts/fct_orders.yml
+version: 2
+
+models:
+  - name: fct_orders
+    config:
+      loaded_at_field: _loaded_at
+      freshness:
+        warn_after: {count: 3, period: hour}
+        error_after: {count: 6, period: hour}
+```
+
+Here `_loaded_at` must be in the output of `fct_orders`. A source can be fresh while a materialized mart is stale because its dbt job did not run. Check the source before transformations and critical outputs after transformations. [Freshness command](https://docs.getdbt.com/reference/commands/freshness).
+
+**Equivalent model SQL configuration — dbt v2:**
+
+```sql
+-- models/marts/fct_orders.sql
+{{ config(
+    materialized='table',
+    loaded_at_field='_loaded_at',
+    freshness={
+        'warn_after': {'count': 3, 'period': 'hour'},
+        'error_after': {'count': 6, 'period': 'hour'}
+    }
+) }}
+
+select order_id, _loaded_at
+from {{ ref('stg_commerce__orders') }}
+```
+
+This is an alternative to setting the same model freshness rule in YAML. Model config precedence is SQL `config()` over model YAML `config` over project defaults; avoid duplicating a rule across locations. Most-specific folder/model paths win within the project configuration. [Model configurations](https://docs.getdbt.com/reference/model-configs).
+
+Model defaults can also go under `models: demo: marts:` in `dbt_project.yml`, with `+loaded_at_field` and `+freshness`. Apply a shared field only when every affected model outputs it. In v2, views/external models need a field or query, ephemeral models do not support freshness, and eligible materialized models can use supported adapter metadata when a field/query is absent. [Freshness reference](https://docs.getdbt.com/reference/resource-configs/freshness).
+
+### What loaded_at_field actually means
+
+It is the name of an existing timestamp column, or a SQL expression yielding timestamps, in the resource being checked. dbt normally takes its MAX, not the age of each individual row. It is not the name of the YAML file, the model name, a new column definition, or an instruction to create a timestamp.
+
+If raw data has `_loaded_at` and staging renames it `ingested_at`, source freshness uses `_loaded_at`; model freshness on staging uses `ingested_at`. The name must exist at the checked layer. For example, at 12:00, row load times of 08:00, 09:00 and 11:30 give a latest load of 11:30 and age of 30 minutes. This can pass even though many older rows remain, which is normal for historical data.
+
+Prefer the loader's accurate arrival/synchronization timestamp when the SLA concerns ingestion. Use application `updated_at` or event time only when their business clock is what you intend to measure. A BigQuery DATE can be expressed as `CAST(order_date AS TIMESTAMP)`, but midnight precision cannot support meaningful minute-level arrival monitoring. Check timestamp type, timezone and null/future values. An ingestion clock measures row arrival, while a successful synchronization audit can establish that a healthy no-change sync occurred. Do not set `loaded_at_field` to `current_timestamp()` just to pass. [Source configurations](https://docs.getdbt.com/reference/source-configs), [Sources](https://docs.getdbt.com/docs/build/sources).
+
+### One YAML per model or per stage?
+
+Both are valid. The YAML filename is organisational; `models: - name:` links the declaration to the SQL model name. A file called `staging.yml` can document several models. One model's property declaration should not be duplicated across several YAML files. These are property files containing tests/descriptions as well as configs, rather than only configuration files. [Model properties](https://docs.getdbt.com/reference/model-properties), [Configs and properties](https://docs.getdbt.com/reference/configs-and-properties).
+
+For a small learning project, the existing short folder-level files remain reasonable. For growth, prefer a hybrid:
+
+- Source declarations/freshness: one source YAML per source system, listing its tables.
+- Shared settings such as staging-as-view: `dbt_project.yml` folder defaults.
+- Model tests/descriptions and individual freshness overrides: YAML beside the corresponding SQL, especially for substantial models and marts.
+- Small, closely related models can stay together when that is clearer; avoid one enormous YAML for an entire growing stage.
+
+```text
+dbt_project.yml
+models/
+  staging/
+    commerce/
+      _commerce_sources.yml
+      stg_commerce__orders.sql
+      stg_commerce__orders.yml
+      stg_commerce__customers.sql
+      stg_commerce__customers.yml
+  intermediate/
+    int_orders_enriched.sql
+    int_orders_enriched.yml
+  marts/
+    fct_orders.sql
+    fct_orders.yml
+```
+
+Per-model files keep code and documentation together and reduce unrelated edits/conflicts. Grouped files are convenient when short. Neither layout changes query performance or makes freshness checks automatic. The current dbt staging guide illustrates per-model YAML and a shared source file; this recommendation is an organisational choice, not a mandatory dbt rule. [dbt staging structure](https://docs.getdbt.com/best-practices/how-we-structure/2-staging).
+
 ## How the column choices fit together
 
 For an orders pipeline, these can legitimately differ:
