@@ -125,6 +125,12 @@ For an exam site, React builds answer buttons and the changing score; Next.js co
 
 ### Explain it like I am 10
 
+**Kitchen analogy:** React is the set of reusable recipes and tools for assembling the dishes customers see. A recipe is like a component: you can reuse it with different ingredients, just as one product-card component can display different products. When the order changes, React helps update the dish you present.
+
+Next.js is an organised restaurant kitchen built around those React recipes and tools. It adds systems for directing orders to the right station (page routing), preparing parts of a meal before delivery (server/static rendering), and running work behind the counter (server code). You still use React to assemble the dishes. The developer is the cook who writes the recipes and decides what happens; neither tool automatically creates the finished restaurant.
+
+For a pizza shop: React builds the pizza customiser and updates the displayed price when you add cheese. Next.js organises `/menu` and `/order`, can prepare the menu page before delivery, and runs the server code you write to receive the order. These are roles in the analogy, not exclusive capabilities.
+
 Imagine building a LEGO toy shop.
 
 **React is your box of reusable building pieces.** You make a product card, a search box and an “Add to basket” button. These are called components. React helps the pieces react to your actions: click the button and the basket number changes.
