@@ -657,6 +657,28 @@ dev.rmn_gold.dim_customers
 
 There are three namespace levels; `prod.rmn.gold.dim_customers` is not a four-level catalog/schema/subschema/table address. Combine dimensions in a name, such as `rmn_gold`, or move domain and environment into the catalog name, such as `rmn_prod`.
 
+### Does this duplicate everything? Dev versus Prod tables
+
+**The structure is deliberately repeated, but a complete copy of all data and infrastructure is not required.** `rmn_dev.gold.dim_customers` and `rmn_prod.gold.dim_customers` are separate table objects. They can have the same columns and even identical rows, but they have different purposes, write targets, access rules and deployment lifecycles. Neither automatically updates the other.
+
+| Aspect | `rmn_dev.gold.dim_customers` | `rmn_prod.gold.dim_customers` |
+| --- | --- | --- |
+| Purpose | Build and test changes | Serve trusted business reporting |
+| Code | May contain an experimental change | Approved deployed version |
+| Input data | Synthetic, masked subset, controlled snapshot, or approved real data | Production inputs appropriate to the workload |
+| Refresh | Often on demand; can be scheduled | Operational schedule/freshness target |
+| Change process | Developers can rebuild their authorized test outputs | Controlled release and production job writes |
+
+Illustrative example: Prod has 5 million customers with columns `customer_id`, `customer_name`, `country`. Dev has a representative 10,000-row masked sample. A developer adds `customer_segment` to the Dev model and tests the classification. Prod retains its existing schema and results until the approved code is deployed and the production pipeline runs. UAT can exercise that candidate release before production. Those numbers are examples, not capacity recommendations.
+
+**Promote the tested code, then run it against the appropriate production inputs.** A normal transformation release does not replace Prod with the 10,000-row Dev output. One Git project can supply all environments through different target configuration; do not maintain manually copied, independently edited SQL files for each catalog. The release lifecycle and scaled-down non-production environments align with [Databricks developer guidance](https://learn.microsoft.com/en-us/azure/databricks/developers/best-practices).
+
+There is some overhead: separate materialized test outputs consume storage, and test runs consume compute. But catalog/schema repetition alone does not imply three full datasets, three always-running compute services, or three independently maintained codebases. Start with **Dev + Prod** for a small project; add UAT when a separate acceptance/integration stage is useful. Build only relevant test tables, use representative inputs including edge cases, and clean up temporary outputs. Larger-scale performance tests may still need production-like volumes.
+
+Where permitted, a non-production pipeline can read approved shared inputs and write its own outputs, reducing duplicated ingestion. This trades some input isolation/reproducibility for less copying and requires compatible permissions/bindings and sensitive-data controls. An independent test snapshot is useful when stable input is needed. Supported Delta shallow clones are another option for selected experiments: they reference existing data files instead of initially copying all files, while providing a distinct table target. They do not anonymize data; compatibility and lifecycle requirements must be checked before use. [Delta clone documentation](https://learn.microsoft.com/en-us/azure/databricks/delta/clone).
+
+The label **Gold** describes readiness for that environment's consumers. A Dev Gold table is the candidate business model under test; the label does not certify it as approved production data. If a Dev object is only a view of a Prod table, it is not an independent writable copy of that data.
+
 ### The isolation must be configured
 
 Use group ownership for production catalogs/schemas, appropriate table/schema privileges, and a controlled service principal for production jobs. Table reads normally require `USE CATALOG`, `USE SCHEMA` and `SELECT`; the two USE privileges do not themselves grant table reads. Avoid giving developers broad production write privileges. An inherited `SELECT` grant at `rmn` catalog level would span its `prod`, `uat` and `dev` schemas, explaining the second layout's administrative risk. Schema-level grants can still provide separation when carefully managed. [Unity Catalog best practices](https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/best-practices).
