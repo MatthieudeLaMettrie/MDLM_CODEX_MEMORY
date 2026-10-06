@@ -95,6 +95,34 @@ Cross join cardinality is N × M. Full join cardinality depends on the condition
 
 React is a library for building interfaces from components. Next.js is a framework built on React, adding application structure, routing, server capabilities and tooling. A Next.js page still contains React components. [React introduction](https://react.dev/learn), [Next.js introduction](https://nextjs.org/docs).
 
+### What they are, why use them, and five simple examples each
+
+Both are free software tools developers use when writing website code. JavaScript is a programming language; React is a collection of ready-made code tools (a library); Next.js is a larger application toolkit (a framework) built around React. Neither automatically creates a finished website.
+
+**React helps you build what people see and interact with on a page.** Developers write small reusable pieces called components, such as buttons, menus and question cards. React helps keep the display consistent when information changes. Use it when a site has many interactive or repeated pieces; a simple static page may need only HTML and CSS. [React introduction](https://react.dev/learn).
+
+Five simple React examples:
+
+1. **Like button:** click a heart and the count changes from 4 to 5.
+2. **Shopping basket:** add a $10 toy and the displayed total increases by $10.
+3. **Quiz:** select an answer and the page displays “Correct!” or “Try again.”
+4. **Searchable list:** type “cat” and a local list shows only items containing “cat”.
+5. **Repeated product cards:** write one product-card component and reuse it for 20 products, each with its own name, picture and price.
+
+**Next.js helps you assemble and run a whole website using React.** It supplies conventions and tools for page addresses, shared page layouts, preparing content and running server code. Use it when you want these website-level tools together rather than assembling the surrounding stack yourself. [Next.js introduction](https://nextjs.org/docs).
+
+Five simple Next.js examples:
+
+1. **Pages with addresses:** organise Home at `/`, About at `/about` and Contact at `/contact`.
+2. **Individual product pages:** use one page design to show a teddy bear at `/products/teddy` and a toy car at `/products/car`.
+3. **A shared header:** put the same logo and menu above every page using a shared layout; React builds that header.
+4. **A prepared blog page:** prepare an article's content before delivering it to the visitor, so the initial page already contains the article text.
+5. **A contact form with server handling:** React builds the form; a Next.js server handler runs the developer's code to accept its submitted message and send it to storage or an email service. The developer still implements storage/email and validation.
+
+The examples overlap deliberately: every Next.js application uses React for its interface. These are jobs that each tool helps with, not exclusive capabilities. Other libraries/frameworks can supply comparable website features.
+
+For an exam site, React builds answer buttons and the changing score; Next.js connects that interface to `/courses` and `/practice` pages and the server code. You choose either **React with other supporting tools** or **React through Next.js**. React can build a complete interface, not merely isolated buttons, and is not limited to browser rendering.
+
 ### Explain it like I am 10
 
 Imagine building a LEGO toy shop.

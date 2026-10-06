@@ -36,3 +36,9 @@ User requested pushing to the same repository, an explanation of React/Next.js a
 - Clarified that freshness checks do not create source columns. The table need not contain a timestamp if supported metadata or an audit query provides one. A real time signal remains necessary.
 - Added an explicit BigQuery table model using current_timestamp() as dbt_processed_at, explaining table/view/incremental timing and why a Friday transformation can stamp Monday's stale source rows as Friday. This measures processing rather than source arrival.
 - Updated the existing guide and durable memory. SQL examples reviewed, not executed; no live warehouse or source schema changes made. Reviewed Git diff and whitespace before publishing the follow-up under standing authorization.
+
+## Follow-up: concrete React and Next.js examples
+
+User still did not understand the comparison and requested definitions, reasons for using each, and five very simple examples per tool. Interpreted “React vs React” as React versus Next.js from the immediate conversation context and stated the assumption.
+
+Added a plain explanation that both are code tools, JavaScript is the language, React builds reusable interactive interfaces, and Next.js provides the surrounding website framework using React. Added exactly five React examples (like count, basket total, quiz feedback, local filtering, reused product cards) and five Next.js examples (page addresses, product routes, shared layout, prepared blog content, server-handled contact form). Explicitly explained overlap and developer responsibilities, avoiding an exclusive frontend/backend or browser/server split. Updated this same guide; no application code or live service changes. Reviewed the diff and whitespace before publication. No additional durable memory change needed.
