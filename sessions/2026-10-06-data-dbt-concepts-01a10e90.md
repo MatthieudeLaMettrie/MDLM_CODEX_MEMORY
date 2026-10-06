@@ -46,3 +46,11 @@ Added a plain explanation that both are code tools, JavaScript is the language, 
 ## Follow-up: kitchen analogy
 
 User asked to define React and Next.js using a kitchen analogy. Added React as reusable recipes/tools for assembling visible dishes, and Next.js as an organised restaurant kitchen using those React tools plus order routing, preparation and server work. Used a pizza customiser versus menu/order pages and order handling as the concrete example. Kept the developer as the cook and clarified the complementary roles. Documentation only; no durable memory change needed. Reviewed the diff and whitespace before committing and pushing the same guide and session note.
+
+## Follow-up: React dashboard and Fabric Gold
+
+User asked whether React could be the dashboard frontend with Fabric Warehouse Gold as backend, and whether the connection is just an API. Checked current official Fabric connectivity, GraphQL overview/setup/React authentication, Warehouse security and Power BI embedding documentation.
+
+Added two architecture diagrams and a bounded sales-query/JSON example. Distinguished the analytical data store from the application API: browser-to-custom API uses HTTPS; custom server-to-Warehouse uses a SQL driver, TDS and Entra identity. Explained Fabric's managed GraphQL API as an alternative to writing a custom service, its SPA/PKCE user sign-in and permissions, optional Next.js server routes, and Power BI embedding. Recommended evaluating managed GraphQL for suitable read-only internal queries and a custom API for tailored metrics/caching/access rules. Not a user-approved implementation choice.
+
+Kept application secrets server-side and explained that a shared service principal does not automatically convey each user's identity to the database. Advised Gold aggregates, bounded queries and data-as-of time. Updated the existing guide and memory; examples are conceptual, not executed. No Fabric workspace, Entra app, permissions or React app was created or changed. Diff and whitespace reviewed before publication.

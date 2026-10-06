@@ -166,6 +166,55 @@ flowchart BT
 
 In the Next.js App Router, pages/layouts are Server Components by default. Interactive pieces use Client Components, typically marked with `'use client'`. Client Components can also be prerendered on the server and then hydrated in the browser; “client” does not mean browser-only initial rendering. React is not inherently restricted to browser rendering. [Next.js Server and Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components).
 
+### React dashboard with Fabric Gold data
+
+Yes: React can build a dashboard whose data comes from the Gold layer in a Fabric Warehouse. The Warehouse is the analytical data store. An API/service supplies the application backend that accepts browser requests, checks access and returns data.
+
+Two useful architectures are:
+
+```mermaid
+flowchart LR
+    R[React dashboard in browser] -->|HTTPS request| A[Custom API: Next.js, Python or .NET]
+    A -->|SQL driver and Entra authentication| W[Fabric Warehouse: Gold tables/views]
+    W -->|Query results| A
+    A -->|JSON| R
+```
+
+```mermaid
+flowchart LR
+    R[React dashboard and Entra user sign-in] -->|HTTPS GraphQL request| G[Fabric API for GraphQL]
+    G --> W[Fabric Warehouse: selected Gold tables/views]
+    W --> G
+    G -->|JSON response| R
+```
+
+**Custom API:** React requests a business endpoint such as `/api/sales?month=2026-10`. A Next.js route handler, Python FastAPI service or .NET API validates the user and filter, queries a curated Gold view, and returns a small JSON result. The server connects through Fabric's SQL/TDS endpoint using a compatible SQL driver and Microsoft Entra authentication. That server-to-warehouse connection is SQL, whereas browser-to-server traffic is HTTPS. Fabric supports Entra user and service-principal identities; SQL username/password authentication is not supported. [Warehouse connectivity](https://learn.microsoft.com/en-us/fabric/data-warehouse/connectivity).
+
+For example, a parameterized server query might select daily totals:
+
+```sql
+select sale_date, sum(revenue) as revenue
+from gold.sales_daily
+where sale_date >= @start_date
+  and sale_date < @end_date
+group by sale_date
+order by sale_date;
+```
+
+The illustrative `gold.sales_daily` is an authored Gold table/view, not a built-in Fabric object. The API turns the result into an array such as `[{"date":"2026-10-01","revenue":12500}]`. React uses those values to draw the chart. Use driver parameters, not concatenated user input, and keep query scope bounded.
+
+**Fabric API for GraphQL:** create a GraphQL API item, expose selected Gold objects, register the React application in Microsoft Entra, configure SPA user sign-in, and grant API/data access. Fabric generates the data API, so you can avoid writing a custom CRUD service for supported objects. Microsoft provides a React integration walkthrough. With SSO, callers require both GraphQL execution permission and appropriate data-source permissions. Browser sign-in uses an appropriate SPA flow such as PKCE, without a client secret. [GraphQL overview](https://learn.microsoft.com/en-us/fabric/data-engineering/api-graphql-overview), [React connection walkthrough](https://learn.microsoft.com/en-us/fabric/data-engineering/connect-apps-api-graphql).
+
+**Where Next.js fits:** it can host the React dashboard and its custom server API in one application. Next.js is optional: React can call a separately hosted Python/.NET/Node service, or the managed GraphQL API. Calling Fabric's GraphQL API directly from the browser still uses a backend service; Fabric provides it.
+
+**Access control:** keep service-principal secrets and database tokens used by the server out of React bundles. A browser can hold its signed-in user's short-lived access token for an authorized API call, but must not contain an application client secret. Grant only necessary Gold data access. If a custom API queries as one shared service principal, Fabric sees that identity rather than automatically seeing each dashboard user; enforce user/tenant data access in the API or design delegated access. Hiding rows in a React chart is not authorization. [Fabric Warehouse security](https://learn.microsoft.com/en-us/fabric/data-warehouse/security), [GraphQL application authentication](https://learn.microsoft.com/en-us/fabric/data-engineering/connect-apps-api-graphql).
+
+**Another option:** embed a Power BI report inside React, backed by a semantic model over Gold data, if Power BI already supplies the desired charts, measures and interactions. This has its own authentication and capacity/licensing requirements. [Power BI embedding](https://learn.microsoft.com/en-us/power-bi/developer/embedded/embed-sample-for-customers).
+
+For a read-only internal dashboard, evaluate managed GraphQL first if its generated schema and permitted query patterns fit. Choose a custom API for tailored metrics, caching or application-specific access rules; use Gold aggregates/views to avoid returning millions of detail rows. Warehouse is an analytical source, so benchmark realistic query load, add caching where useful, and display data-as-of time. No universal response-time or live-data guarantee follows from using an API.
+
+Kitchen continuation: React displays the menu and order status; the API is the waiter carrying requests and results; Fabric Gold is the pantry of prepared, curated data. Next.js can supply both the React interface framework and the server that handles the requests.
+
 ## 4. Incremental options in dbt
 
 Incremental models preserve an existing table and process selected data on later runs, reducing repeated transformation work. They are useful when rebuilding all history is expensive; a small table may be simpler to rebuild.
