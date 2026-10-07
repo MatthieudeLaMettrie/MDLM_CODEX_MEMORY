@@ -575,7 +575,21 @@ With ordinary case-sensitive string comparison, the example behaves as follows:
 | `Property` | No |
 | `NULL` | No |
 
-The model description says the raw category string may hold several values. Inspect real values before assuming exact IN membership counts all tagged articles. Delimited strings and JSON/array values need different parsing; do not introduce a substring search that would also match an unrelated value such as InvestingNews. Normalize category membership upstream or choose a format-specific predicate after verifying the stored format. A few actual category values were requested to tailor that step; they are not yet available in this record.
+The model description says the raw category string may hold several values. Delimited strings and JSON/array values need different parsing; do not introduce a substring search that would also match an unrelated value such as InvestingNews. Normalize category membership upstream or choose a format-specific predicate when actual values require it.
+
+You subsequently supplied 26 category entries, including null, Investing, Shares, Banking, Property, Managed Funds and Exchange Traded Funds. None of the supplied non-null entries is a combined multi-category value. This supports the exact `IN ('Investing', 'Shares')` filter above; no splitting or regex is needed for those values. The list does not establish article counts or independently prove every warehouse row follows the same format. Null categories are excluded from this selected-category metric.
+
+To verify per-category counts directly in a dbt SQL preview:
+
+```sql
+select Categories, count(distinct URL) as articles
+from {{ ref('fei_rss_source_brz') }}
+where Categories in ('Investing', 'Shares')
+group by Categories
+order by Categories
+```
+
+For one combined count, omit Categories from SELECT and remove GROUP BY/ORDER BY. The metric returns that combined distinct-URL count when no grouping is requested; do not assume adding subgroup distinct counts always equals the combined distinct count if the same URL can occur in both groups.
 
 After parsing and semantic validation, query the new metric with `dbt sl query --metrics articles_published_selected_categories` in a supported platform environment. Compare with direct SQL `COUNT(DISTINCT URL)` filtered by `Categories IN ('Investing', 'Shares')`. This is configuration guidance, not evidence of a successful live query.
 
