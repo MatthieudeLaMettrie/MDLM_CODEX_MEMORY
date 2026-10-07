@@ -540,6 +540,45 @@ where Date_Published >= date_sub(current_date('Australia/Sydney'), interval 6 da
   and Publisher in ('Publisher A', 'Publisher B')
 ```
 
+#### Selected categories: use the semantic name and entity prefix
+
+You adapted the publisher example to `articles_published_selected_categories` with `Dimension('Categories')`. Using the categories dimension is appropriate, but the supplied semantic definition requires **`Dimension('article__categories')`**:
+
+| Name | Role |
+|---|---|
+| `Categories` | Physical column in the SQL model |
+| `categories` | Semantic dimension name declared under that column |
+| `article` | Primary entity declared on URL |
+| `article__categories` | Qualified semantic dimension reference used by the filter |
+
+Add the following entry under your existing model's `metrics:` list:
+
+```yaml
+- name: articles_published_selected_categories
+  label: Articles Published — Selected Categories
+  type: simple
+  agg: count_distinct
+  expr: URL
+  filter: |
+    {{ Dimension('article__categories') }} IN ('Investing', 'Shares')
+```
+
+This simple metric is independent of any metric named `articles_published`; its name is a label for the calculation, not a required physical column. It needs URL plus the declared categories dimension. It counts distinct URLs where the whole category value equals either Investing or Shares. [Semantic dimension names and entity scope](https://docs.getdbt.com/docs/build/dimensions), [simple metric filters](https://docs.getdbt.com/docs/build/simple).
+
+With ordinary case-sensitive string comparison, the example behaves as follows:
+
+| Stored Categories value | Matches the IN filter? |
+|---|---|
+| `Investing` | Yes |
+| `Shares` | Yes |
+| `Investing, Shares` | No: this is a different whole string |
+| `Property` | No |
+| `NULL` | No |
+
+The model description says the raw category string may hold several values. Inspect real values before assuming exact IN membership counts all tagged articles. Delimited strings and JSON/array values need different parsing; do not introduce a substring search that would also match an unrelated value such as InvestingNews. Normalize category membership upstream or choose a format-specific predicate after verifying the stored format. A few actual category values were requested to tailor that step; they are not yet available in this record.
+
+After parsing and semantic validation, query the new metric with `dbt sl query --metrics articles_published_selected_categories` in a supported platform environment. Compare with direct SQL `COUNT(DISTINCT URL)` filtered by `Categories IN ('Investing', 'Shares')`. This is configuration guidance, not evidence of a successful live query.
+
 #### For a historical rolling chart
 
 Use the cumulative definition already explained in lesson 9 rather than a filter relative to today:
