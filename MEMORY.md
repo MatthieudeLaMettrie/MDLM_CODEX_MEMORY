@@ -51,6 +51,8 @@ This repository preserves context so future tasks can continue without relying o
 
 ## Certification and career planning
 
+- [Power BI semantic-model agent setup](guides/data-engineering/POWER_BI_SEMANTIC_MODEL_AGENTS_GUIDE.md), checked 2026-10-07: Desktop-authored models can be published and attached to Fabric data agents; Fabric-native model creation is an alternative. Reports and agents query the hosted model. Model-specific DAX guidance belongs in Prep for AI; Read suffices for agent-driven queries. Covers capacity/region/settings, both authoring paths, testing/RLS, current versus standard Copilot Studio harnesses and preview Foundry Fabric IQ integration. Documentation only; no tenant/model/agent configured. Fabric data agent, Copilot Studio agent and Foundry agent are distinct components; do not infer Foundry implementation or production use from creation of a Fabric data agent alone.
+
 - Recruiter-response context (2026-10-07): user confirmed personally creating the Precision Data Partners newsletter data agent. NSW Government and PDP agent production/pilot status and enterprise adoption remain unconfirmed; Metcash agent work is described as evaluation in the supplied resume. Suggested examples must not become verified deployment claims. Session: sessions/2026-10-07-agentic-developer-recruiter-response-01a114eb.md.
 
 - Azure Foundry/RAG study module: [AZURE_FOUNDRY_RAG_STUDY_COURSE.md](learning/rag/AZURE_FOUNDRY_RAG_STUDY_COURSE.md). It covers Azure AI Search, Foundry IQ versus Fabric IQ, current Foundry 2.x Python agent calls, indexing/retrieval, labs, and evaluation. Documentation-based; no Azure deployment was made.
