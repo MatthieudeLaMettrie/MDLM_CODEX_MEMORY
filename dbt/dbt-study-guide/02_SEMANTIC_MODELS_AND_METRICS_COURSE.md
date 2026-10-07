@@ -437,6 +437,56 @@ dbt sl query --metrics articles_published --group-by metric_time__day --where "{
 
 Expected French article count across all dates: **2**. The dimension reference is a semantic expression resolved by MetricFlow, not a physical SQL column containing double underscores.
 
+### Choose categories and dates in the command
+
+Keep an unfiltered article-count metric when the category selection should change for each query. If `articles_published` is absent from your active project, add this entry to the existing model's `metrics:` list; if it exists, reuse it rather than declaring it twice:
+
+```yaml
+- name: articles_published
+  label: Articles Published
+  type: simple
+  agg: count_distinct
+  expr: URL
+```
+
+Save changed YAML and run `dbt parse` before querying. The following single-line commands use your supplied entity `article`, categorical dimension `categories` and time dimension `date_published`.
+
+Choose categories at query time:
+
+```shell
+dbt sl query --metrics articles_published --where "{{ Dimension('article__categories') }} IN ('Investing', 'Shares')"
+```
+
+Replace the values with any required category labels, such as `('Property', 'Banking')`. This returns one combined distinct-URL count. Add `--group-by article__categories` for one row per category.
+
+Choose a date range, across all categories:
+
+```shell
+dbt sl query --metrics articles_published --where "{{ TimeDimension('article__date_published', 'day') }} >= '2026-10-01' AND {{ TimeDimension('article__date_published', 'day') }} < '2026-10-08'"
+```
+
+This includes 1–7 October 2026 at day granularity: the lower bound is inclusive and the next-day upper bound is exclusive. These bounds follow the declared publication-day dimension; they do not establish a new timezone for an underlying timestamp.
+
+Combine categories and dates:
+
+```shell
+dbt sl query --metrics articles_published --where "{{ Dimension('article__categories') }} IN ('Investing', 'Shares') AND {{ TimeDimension('article__date_published', 'day') }} >= '2026-10-01' AND {{ TimeDimension('article__date_published', 'day') }} < '2026-10-08'"
+```
+
+For a daily count per selected category, add `--group-by metric_time__day,article__categories`. Grouping changes the output detail; it is not required to filter those dimensions.
+
+For today's Sydney calendar date plus the six preceding dates in BigQuery:
+
+```shell
+dbt sl query --metrics articles_published --where "{{ TimeDimension('article__date_published', 'day') }} >= DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 6 DAY) AND {{ TimeDimension('article__date_published', 'day') }} < DATE_ADD(CURRENT_DATE('Australia/Sydney'), INTERVAL 1 DAY)"
+```
+
+Use the same date interpretation as the model. A DATE column already contains a calendar date; a timestamp's publication-day derivation needs separate timezone consideration. This command filters relative to today; it is not the cumulative historical rolling-series definition in lesson 9.
+
+**Query filters narrow a metric's existing definition; they do not replace its YAML filter.** If `articles_published_selected_categories` still fixes Investing/Shares in YAML, requesting Property at query time leaves no matching articles because both restrictions apply. Use the unfiltered metric to choose arbitrary categories. You may still add a date filter to the fixed category metric when you want Investing/Shares within a particular period.
+
+Use `--where` for these platform commands. The current command reference marks `--start-time` and `--end-time` unavailable for dbt platform/dbt v2; inspect `dbt sl query --help` for the installed runtime. Use `Dimension()` for categories and `TimeDimension()` for dates. [Query/filter command reference](https://docs.getdbt.com/docs/build/metricflow-commands), [metric definition filters](https://docs.getdbt.com/docs/build/simple). These examples have not been executed against the user's live project.
+
 ### Compare against direct BigQuery SQL
 
 Replace the relation below with the actual development relation shown by your dbt build. `PROJECT.DATASET` is a placeholder.
