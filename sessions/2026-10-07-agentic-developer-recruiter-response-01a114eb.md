@@ -3,6 +3,14 @@
 Date: 2026-10-07 (Australia/Sydney)
 Task identifier: 01a114eb-3d00-72d0-b756-1739bbcdafaa
 
+## Final recruiter wording follow-up
+
+User returned from the technical discussion to request natural, human wording answering the original recruiter questions. The preceding draft request was interrupted before tools or a final answer; this follow-up completes it.
+
+Prepared a short email with two numbered answers. First identifies PDP newsletter data-agent creation as the clearest confirmed personal build, describes its Fabric/data/semantic/newsletter scope from the resume, and mentions NSW reporting-copilot development and Metcash evaluation. Two visible rollout-stage placeholders remain for PDP and NSW because production/pilot status and enterprise adoption have not been confirmed. The response must tell the user to replace these before sending, rather than inventing deployments from the prior technical guide. Second offers first-person wording expressing comfort with hands-on development/configuration/testing/integration and working under a senior developer/architect within the team's standards. This remains draft language for the user, not a newly verified career preference.
+
+Validation: checked durable context and this session's resume/PD findings, inspected repository state, and reviewed the wording against confirmed versus unknown facts. No external research, source-document edits, or recruiter message sending. Only this session note is changed; publication is verified before the final response.
+
 ## Fabric IQ and cross-platform follow-up
 
 User asked what Fabric IQ is and which GCP, Snowflake and Databricks tools serve comparable roles. They proposed model -> grounded data agent -> marketing/sales instructions -> Foundry/Copilot Studio through Fabric IQ -> testing, saying they had used the general workflow before.
