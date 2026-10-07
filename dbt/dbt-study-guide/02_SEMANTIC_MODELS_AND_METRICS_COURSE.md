@@ -337,6 +337,70 @@ Here the metric references a measure, which defines the aggregation. The newest 
 
 File names such as `semantic.yml`, `_gold.yml` or a per-model filename are organizational choices. Place them in configured model paths. Extend an existing model property entry instead of declaring that model twice.
 
+### Worked example: your actual `rss_articles` definition
+
+You later supplied the model YAML, which establishes the formulas that the screenshot alone could not reveal. Your underlying model is `fei_rss_source_brz`; the semantic name is `rss_articles`. Its physical columns include `URL`, `Date_Published`, `Categories` and the `Content` referenced by the length expression. Their live types and data have not been inspected.
+
+For a simple metric, read **`agg(expr)`**: evaluate the expression on each relevant input row, then apply the aggregation for the requested group. MetricFlow constructs warehouse SQL when the metric is queried. The YAML defines the calculation; building the SQL model does not automatically store a new metric column.
+
+| Your metric | YAML aggregation and expression | Equivalent basic SQL calculation |
+|---|---|---|
+| `articles_published` | `agg: count_distinct`, `expr: URL` | `COUNT(DISTINCT URL)` |
+| `avg_article_length` | `agg: average`, `expr: length(Content)` | `AVG(LENGTH(Content))` |
+
+The ungrouped query is equivalent in meaning to the following dbt SQL. MetricFlow's generated SQL may use subqueries and different aliases.
+
+```sql
+select
+    count(distinct URL) as articles_published,
+    avg(length(Content)) as avg_article_length
+from {{ ref('fei_rss_source_brz') }}
+```
+
+In the BigQuery console, replace the Jinja `ref` with the actual fully qualified warehouse relation. In a dbt SQL preview, `ref` resolves that model's relation under the current environment.
+
+**Count:** each distinct non-null URL contributes once. Repeated URLs do not increase this count; null URLs are excluded. No date filter in your metric means that, without a query filter, it covers all qualifying rows in that relation.
+
+**Average:** calculate each row's content length, add the non-null lengths, and divide by their number. For BigQuery STRING content this measures characters, including stored spaces, punctuation and HTML markup. BYTES content measures bytes. It is not a word count or automatically a cleaned-body count. Null content is excluded from the mean; an empty string contributes a length of zero. [BigQuery LENGTH](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#length), [BigQuery aggregate behavior](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#avg).
+
+For three unique article rows with lengths **100**, **300** and **NULL**:
+
+- Articles published = **3**.
+- Average article length = `(100 + 300) / 2` = **200 characters**.
+
+If an extra copy of the first row exists, the distinct article count stays **3**, while the average becomes `(100 + 300 + 100) / 3` = **166.67**. The average is over rows with content; it is not automatically deduplicated by the article entity. Declaring `article` primary does not clean the data. Your URL tests are commented out, so they currently do not check the assumed key grain. Verify one row per URL and consider enabling those tests.
+
+#### Query the definitions
+
+In a supported, configured platform development environment:
+
+```shell
+dbt parse
+dbt sl query --metrics articles_published,avg_article_length
+dbt sl query --metrics articles_published,avg_article_length --group-by metric_time__day
+dbt sl query --metrics articles_published,avg_article_length --group-by article__categories
+```
+
+Your `agg_time_dimension: date_published` points to the semantic time dimension whose physical column is `Date_Published`. It tells MetricFlow which clock to use **when you request time grouping**. It does not itself group every query by day or restrict results to today. `granularity: day` gives the native time grain. [dbt time dimensions](https://docs.getdbt.com/docs/build/dimensions), [query commands](https://docs.getdbt.com/docs/build/metricflow-commands).
+
+Assuming `Date_Published` is a DATE column, the daily query is equivalent to:
+
+```sql
+select
+    Date_Published as publication_day,
+    count(distinct URL) as articles_published,
+    avg(length(Content)) as avg_article_length
+from {{ ref('fei_rss_source_brz') }}
+group by Date_Published
+order by Date_Published
+```
+
+For a TIMESTAMP column, normalize to the agreed business date before grouping (see lesson 10); merely grouping a timestamp would keep distinct times separate. Query discovery and generated SQL remain the evidence for your runtime's exact behavior.
+
+Your categories dimension groups the **whole stored string**. For example, `Finance,Property` is one category value; the YAML does not split it into separate Finance and Property memberships. Model individual categories and define overlap/counting rules if you need that behavior. For a daily-and-category breakdown, request `--group-by metric_time__day,article__categories`.
+
+These explanations follow your supplied configuration and official documentation. They do not establish actual metric values in your warehouse; no live queries were run.
+
 ## Lesson 8 — Query and reconcile your metrics
 
 ### Discover before querying
