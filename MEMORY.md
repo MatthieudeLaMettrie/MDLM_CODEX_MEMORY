@@ -51,6 +51,8 @@ This repository preserves context so future tasks can continue without relying o
 
 ## Certification and career planning
 
+- Recruiter-response context (2026-10-07): user confirmed personally creating the Precision Data Partners newsletter data agent. NSW Government and PDP agent production/pilot status and enterprise adoption remain unconfirmed; Metcash agent work is described as evaluation in the supplied resume. Suggested examples must not become verified deployment claims. Session: sessions/2026-10-07-agentic-developer-recruiter-response-01a114eb.md.
+
 - Azure Foundry/RAG study module: [AZURE_FOUNDRY_RAG_STUDY_COURSE.md](learning/rag/AZURE_FOUNDRY_RAG_STUDY_COURSE.md). It covers Azure AI Search, Foundry IQ versus Fabric IQ, current Foundry 2.x Python agent calls, indexing/retrieval, labs, and evaluation. Documentation-based; no Azure deployment was made.
 - Matching GCP and AWS RAG modules: [GCP_AGENT_SEARCH_RAG_STUDY_COURSE.md](learning/rag/GCP_AGENT_SEARCH_RAG_STUDY_COURSE.md) and [AWS_BEDROCK_RAG_STUDY_COURSE.md](learning/rag/AWS_BEDROCK_RAG_STUDY_COURSE.md). GCP covers Agent Search (formerly Vertex AI Search), Gemini grounding and ADK; AWS covers Bedrock Knowledge Bases and AgentCore Gateway. Both have code, labs, and evaluation; neither was run in a cloud account.
 
