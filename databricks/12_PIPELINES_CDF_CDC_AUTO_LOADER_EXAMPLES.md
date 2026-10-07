@@ -139,6 +139,20 @@ This cookbook intentionally uses `CREATE TABLE` without replacement for its fake
 
 ## 4. Use case A — Auto Loader for new POS files
 
+### Storage can be Azure, AWS or Google Cloud
+
+Auto Loader supports Amazon S3, Google Cloud Storage and ADLS, as well as Unity Catalog volume paths. The Azure examples in this course are not a restriction to Azure storage. [Supported Auto Loader sources](https://learn.microsoft.com/en-us/azure/databricks/ingestion/cloud-object-storage/auto-loader/)
+
+| Provider | Example source directory | Common workspace pairing |
+|---|---|---|
+| AWS Amazon S3 | `s3://retail-landing/orders/` | Databricks on AWS |
+| Google Cloud Storage | `gs://retail-landing/orders/` | Databricks on Google Cloud |
+| Azure ADLS Gen2 | `abfss://landing@retailstorage.dfs.core.windows.net/orders/` | Azure Databricks |
+
+These are illustrative paths, not configured buckets. The source files can use the same agreed JSON/CSV/Parquet contract; storage access needs the appropriate cloud identity, grants and network route. A UC external volume can expose a supported registered storage directory through `/Volumes/...`. Merely changing the path does not provision credentials or file discovery notifications.
+
+Cross-cloud capabilities require checking the actual workspace/compute and UC storage integration. In particular, Azure Databricks documents an **S3 external location with read-only access**. That can provide source reads; place writable checkpoint/schema state and destinations in supported writable storage. This does not establish that every workspace can register every cloud's bucket with identical UC/file-events support. A direct Azure-to-GCS configuration was not established in this follow-up. [Azure Databricks S3 external-location setup](https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/s3/s3-external-location-manual)
+
 ### Deliver two files
 
 Create/upload `orders_001.json` under:
