@@ -14,6 +14,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 ## Study guides
 
+- [Databricks data engineering: 00–09 numbered course](databricks/README.md) — 16 lessons, executable development lab, ETL and medallion architecture, Delta/PySpark troubleshooting, Azure Synapse integration, bundles and orchestration, 28 incident exercises, capstone and official references.
+
 - [02 — dbt semantic models and metrics: practical course](dbt/dbt-study-guide/02_SEMANTIC_MODELS_AND_METRICS_COURSE.md) — FEI RSS examples, 16 lessons, both YAML specifications, reproducible BigQuery lab, queries, debugging and capstone. Follow the [00 → 06 numbered learning path](dbt/dbt-study-guide/README.md) for the full dbt sequence.
 
 - [Data and dbt concepts: indexing, joins, React/Next.js, incremental strategies and freshness](guides/data-engineering/DATA_AND_DBT_CONCEPTS_GUIDE.md) — use cases, SQL/YAML examples, diagrams and platform distinctions.
@@ -57,5 +59,5 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 - `learning/certifications/` — AI curriculum and certification roadmap.
 - `guides/` — continuity, email, programming, and data engineering guides.
 - `projects/` — project-specific records.
-- `dbt/` and `snowpro-genai/` — existing subject collections.
+- `dbt/`, `snowpro-genai/` and `databricks/` — numbered subject study collections.
 - `sessions/` — dated session records.

@@ -1,0 +1,27 @@
+bundle:
+  name: operational-data-study-lab
+  engine: direct
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    description: Existing dedicated Unity Catalog catalog ending in _dev
+    default: training_dev
+  input_file:
+    description: Uploaded fixture CSV in this catalog's lab_files volume
+    default: /Volumes/training_dev/ops/lab_files/order_events.csv
+  existing_cluster_id:
+    description: Existing compatible classic compute with UC and volume access
+
+sync:
+  paths:
+    - ../notebooks
+
+targets:
+  dev:
+    default: true
+    mode: development
+    workspace:
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}

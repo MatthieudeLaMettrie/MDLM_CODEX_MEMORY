@@ -1,0 +1,51 @@
+resources:
+  jobs:
+    operational_pipeline:
+      name: operational-data-study-lab
+      max_concurrent_runs: 1
+      parameters:
+        - name: batch_id
+          default: B1
+      tasks:
+        - task_key: bronze
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../../notebooks/operational_pipeline.py
+            base_parameters:
+              catalog: ${var.catalog}
+              input_file: ${var.input_file}
+              batch_id: '{{job.parameters.batch_id}}'
+              stage: bronze
+        - task_key: silver
+          depends_on:
+            - task_key: bronze
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../../notebooks/operational_pipeline.py
+            base_parameters:
+              catalog: ${var.catalog}
+              input_file: ${var.input_file}
+              batch_id: '{{job.parameters.batch_id}}'
+              stage: silver
+        - task_key: gold
+          depends_on:
+            - task_key: silver
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../../notebooks/operational_pipeline.py
+            base_parameters:
+              catalog: ${var.catalog}
+              input_file: ${var.input_file}
+              batch_id: '{{job.parameters.batch_id}}'
+              stage: gold
+        - task_key: validate
+          depends_on:
+            - task_key: gold
+          existing_cluster_id: ${var.existing_cluster_id}
+          notebook_task:
+            notebook_path: ../../notebooks/operational_pipeline.py
+            base_parameters:
+              catalog: ${var.catalog}
+              input_file: ${var.input_file}
+              batch_id: '{{job.parameters.batch_id}}'
+              stage: validate

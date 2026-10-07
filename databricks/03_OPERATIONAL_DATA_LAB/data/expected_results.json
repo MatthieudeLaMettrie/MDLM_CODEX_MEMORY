@@ -1,0 +1,31 @@
+{
+  "B1": {
+    "bronze_lines": 8, "quarantine_lines": 3,
+    "state_rows": 4, "active_orders": 4, "active_amount": "215.00",
+    "gold": [
+      ["2026-10-01", "S01", "Sydney", 2, "150.00"],
+      ["2026-10-01", "S02", "Newcastle", 1, "40.00"],
+      ["2026-10-01", "S99", "Unknown", 1, "25.00"]
+    ]
+  },
+  "B2": {
+    "bronze_lines": 13, "quarantine_lines": 3,
+    "state_rows": 5, "active_orders": 4, "active_amount": "270.00",
+    "gold": [
+      ["2026-10-01", "S01", "Sydney", 1, "120.00"],
+      ["2026-10-01", "S02", "Newcastle", 1, "45.00"],
+      ["2026-10-01", "S99", "Unknown", 1, "25.00"],
+      ["2026-10-02", "S02", "Newcastle", 1, "80.00"]
+    ]
+  },
+  "B3": {
+    "bronze_lines": 16, "quarantine_lines": 3,
+    "state_rows": 5, "active_orders": 4, "active_amount": "270.00",
+    "gold": [
+      ["2026-10-01", "S01", "Sydney", 1, "120.00"],
+      ["2026-10-01", "S02", "Newcastle", 1, "45.00"],
+      ["2026-10-01", "S99", "Unknown", 1, "25.00"],
+      ["2026-10-02", "S02", "Newcastle", 1, "80.00"]
+    ]
+  }
+}

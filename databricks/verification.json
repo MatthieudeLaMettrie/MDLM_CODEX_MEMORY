@@ -1,0 +1,41 @@
+{
+  "prepared_date": "2026-10-07",
+  "timezone": "Australia/Sydney",
+  "task_id": "01a114d2-e84c-7300-8f56-42147cce9849",
+  "status": "local-validation-passed-cloud-execution-unverified",
+  "local_validation": {
+    "python_version": "3.14.4",
+    "yaml_parser": "PyYAML 6.0.3 from an existing isolated temporary directory; no project dependency installed",
+    "markdown_files_checked": 11,
+    "relative_links_checked": 81,
+    "markdown_fences": "balanced",
+    "python_files_ast_checked": 3,
+    "python_documentation_blocks_ast_checked": 8,
+    "yaml_files_checked_with_duplicate_key_rejection": 2,
+    "yaml_documentation_blocks_checked": 1,
+    "json_files_parsed": 2,
+    "bundle_file_references_and_task_sequence": "passed local checks; not CLI schema validation",
+    "learning_path": "00-09 assets, 16 lessons and 28 cases checked",
+    "fixture_oracle": "passed expected counts, Decimal amounts, day/store attribution, reverse ordering, exact/stale re-delivery, tombstone and contradiction checks",
+    "git_whitespace": "passed before publication"
+  },
+  "source_review": {
+    "method": "Official Microsoft Azure Databricks, Azure Synapse/ADF and Apache Spark pages accessed through web research",
+    "scope": "Selected topic and syntax review, not a complete documentation crawl",
+    "retrieval_limit": "Azure bundles/settings timed out; official search entry and related resources/sharing/modes/run-as/CLI pages were used"
+  },
+  "cloud_validation": {
+    "spark_notebook_execution": "not performed",
+    "databricks_bundle_schema_validation": "not performed",
+    "databricks_deployment_or_job_run": "not performed",
+    "azure_or_synapse_execution": "not performed",
+    "live_source_or_workspace_inspection": "not performed"
+  },
+  "limitations": [
+    "Fixture oracle verifies synthetic arithmetic and ordering assumptions, not Spark parsing or Delta transactions",
+    "Python AST and YAML parsing establish syntax only",
+    "The bundle is a guarded development scaffold for existing classic compute, not a production deployment",
+    "Optional streaming, declarative CDC and external integration examples require their stated prerequisites",
+    "Performance improvements require representative runtime measurements"
+  ]
+}
