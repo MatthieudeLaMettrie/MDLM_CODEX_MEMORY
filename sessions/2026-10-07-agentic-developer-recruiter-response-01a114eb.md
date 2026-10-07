@@ -3,6 +3,14 @@
 Date: 2026-10-07 (Australia/Sydney)
 Task identifier: 01a114eb-3d00-72d0-b756-1739bbcdafaa
 
+## Technical summary added to recruiter draft
+
+User requested that the recruiter reply also include the technical material from the generated Markdown guide in the supplied MDLM_CODEX_MEMORY GitHub repository. Created guides/email/AGENTIC_DEVELOPER_RECRUITER_REPLY.md containing the two human-worded answers plus a technical context section and a direct GitHub link to the model-agent guide.
+
+The summary covers Desktop/Fabric model authorship, DAX measures and Prep for AI, Fabric data-agent configuration/publication, instruction layers, Fabric IQ/MCP orchestration, evaluation and trace reconciliation, identity/RLS/capacity/region/licensing, Fabric/M365/Copilot Studio/Foundry deployment destinations and versioned release/operation. Includes the GCP/Snowflake/Databricks functional comparison requested in the underlying guide. These are documented patterns, not new first-person claims of executing every step for every client. PDP/NSW rollout-stage and personal-scope placeholders remain explicit, Metcash remains evaluation, and no recruiter message was sent.
+
+Validation: read current memory/recent sessions and the existing technical source guide, checked the working tree and reviewed the draft against confirmed contribution versus unconfirmed rollout. No new cloud research or live setup was necessary for this transformation of the existing guide. Publish only the new draft and continuing session note, preserving unrelated work.
+
 ## Final recruiter wording follow-up
 
 User returned from the technical discussion to request natural, human wording answering the original recruiter questions. The preceding draft request was interrupted before tools or a final answer; this follow-up completes it.
