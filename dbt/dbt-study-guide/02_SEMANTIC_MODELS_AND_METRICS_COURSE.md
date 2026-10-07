@@ -339,7 +339,9 @@ File names such as `semantic.yml`, `_gold.yml` or a per-model filename are organ
 
 ### Worked example: your actual `rss_articles` definition
 
-You later supplied the model YAML, which establishes the formulas that the screenshot alone could not reveal. Your underlying model is `fei_rss_source_brz`; the semantic name is `rss_articles`. Its physical columns include `URL`, `Date_Published`, `Categories` and the `Content` referenced by the length expression. Their live types and data have not been inspected.
+For four further metrics using the supplied BigQuery schema, see [09 — Four additional RSS metrics](09_RSS_ADDITIONAL_METRICS.md): total/max body length, average title length and distinct articles missing categories.
+
+You later supplied the model YAML, which establishes the formulas that the screenshot alone could not reveal. Your underlying model is `fei_rss_source_brz`; the semantic name is `rss_articles`. The BigQuery schema screenshot supplied on 8 October shows nullable `Date_Published` as DATE and `URL`, `Categories`, `Content` and `Article_Title` as STRING. Actual rows and uniqueness have not been inspected.
 
 For a simple metric, read **`agg(expr)`**: evaluate the expression on each relevant input row, then apply the aggregation for the requested group. MetricFlow constructs warehouse SQL when the metric is queried. The YAML defines the calculation; building the SQL model does not automatically store a new metric column.
 

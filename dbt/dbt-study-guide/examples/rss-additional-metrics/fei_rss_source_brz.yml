@@ -1,0 +1,115 @@
+# Reference copy of the user-supplied model property file plus four new RSS metrics.
+# Merge into the real dbt project; do not duplicate existing model declarations.
+version: 2
+
+models:
+  - name: fei_source_test
+    description: "{{ doc('fei_source_test_doc') }}"
+    columns:
+      - name: action
+        data_tests:
+          - not_null
+          # - accepted_values:
+          #     arguments:
+          #       values: ['Action', 'Contact']
+
+  - name: count_records_fei_source_test
+    description: "{{doc ('count_records_fei_doc')}}"
+
+  - name: fei_rss_source_brz
+    description: "{{doc('rss_fei_source_doc')}}"
+    semantic_model:
+      enabled: true
+      name: rss_articles
+    agg_time_dimension: date_published
+
+    columns:
+      - name: URL
+        description: Article URL; natural key and primary entity.
+        # data_tests:
+        #   - not_null
+        #   - unique:
+        #       config:
+        #         severity: warn
+        entity:
+          name: article
+          type: primary
+
+      - name: Date_Published
+        granularity: day
+        dimension:
+          name: date_published
+          type: time
+
+      - name: Categories
+        description: Raw category string; may hold several values.
+        dimension:
+          name: categories
+          type: categorical
+
+    metrics:
+      - name: articles_published
+        label: Articles Published
+        description: Number of articles
+        type: simple
+        agg: count_distinct
+        expr: URL
+
+      - name: avg_article_length
+        label: Average Article Length (chars)
+        description: Character length of the article body
+        type: simple
+        agg: average
+        expr: length(Content)
+
+      - name: articles_published_last_7_days
+        label: Articles Published — Last 7 Days
+        type: simple
+        agg: count_distinct
+        expr: URL
+        filter: |
+          {{ TimeDimension('article__date_published', 'day') }}
+            >= DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 6 DAY)
+          AND {{ TimeDimension('article__date_published', 'day') }}
+            < DATE_ADD(CURRENT_DATE('Australia/Sydney'), INTERVAL 1 DAY)
+
+      - name: articles_published_selected_categories
+        label: Articles Published — Selected Categories
+        type: simple
+        agg: count_distinct
+        expr: URL
+        filter: |
+          {{ Dimension('article__categories') }}
+            IN ('Investing', 'Shares')
+
+      - name: total_article_content_chars
+        label: Total Article Content (chars)
+        description: Sum of stored body character lengths across selected model rows.
+        type: simple
+        agg: sum
+        expr: length(Content)
+
+      - name: max_article_length
+        label: Longest Article Length (chars)
+        description: Maximum stored body character length across selected model rows.
+        type: simple
+        agg: max
+        expr: length(Content)
+
+      - name: avg_article_title_length
+        label: Average Article Title Length (chars)
+        description: Average stored title character length across selected model rows.
+        type: simple
+        agg: average
+        expr: length(Article_Title)
+
+      - name: articles_missing_categories
+        label: Articles Missing Categories
+        description: Distinct non-null URLs on rows with null, empty or whitespace-only categories.
+        type: simple
+        agg: count_distinct
+        expr: |
+          CASE
+            WHEN Categories IS NULL OR TRIM(Categories) = '' THEN URL
+            ELSE NULL
+          END
