@@ -119,6 +119,8 @@ If no full body is collected, “average article length” may really be “aver
 
 ## Lesson 4 — Entities, dimensions, measures and metrics
 
+For the Power BI star-schema comparison and complete aggregation/entity/dimension tables, see [10 — Aggregations, entities and star schemas](10_AGGREGATIONS_ENTITIES_AND_STAR_SCHEMAS.md).
+
 | Component | Plain definition | FEI example |
 |---|---|---|
 | Entity | Identifies a business object; also describes join paths | Article, publisher |
@@ -807,6 +809,8 @@ An article count of zero can mean no qualifying articles. A missing average mean
 If stale source data is rebuilt today, the metrics can still describe stale business data. Display an appropriate data-as-of signal separately. See the [existing freshness guide](../../guides/data-engineering/DATA_AND_DBT_CONCEPTS_GUIDE.md).
 
 ## Lesson 11 — Join semantic models without inflating results
+
+For separate FACT_Sales/DIM_Products-style models and complete latest YAML, follow [guide 10's sales/product example](10_AGGREGATIONS_ENTITIES_AND_STAR_SCHEMAS.md#7-keep-facts-and-dimensions-separate-complete-yaml-example).
 
 Suppose article rows contain a stable `publisher_id`, and `dim_publishers` has one row per publisher with `country` and `publisher_name`.
 

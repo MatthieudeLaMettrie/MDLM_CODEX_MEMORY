@@ -2,7 +2,7 @@
 
 Prepared 22 September 2026. Designed for someone who has completed dbt courses and built projects, with extra emphasis on debugging and evidence of readiness.
 
-Organized into a numbered learning path on 7 October 2026, with RSS additions on 8 October. Open the [folder overview](README.md) for the complete **00 → 09** sequence. For semantic models and metrics specifically, start with [02 — the course](02_SEMANTIC_MODELS_AND_METRICS_COURSE.md), then work through [03 — the BigQuery lab](03_SEMANTIC_MODELS_LAB/README.md) alongside its lessons. Use [07 — publication](07_PUBLISH_TO_BUSINESS_USERS.md) and [08 — tool connections](08_CONNECT_SEMANTIC_LAYER_TO_TOOLS.md) when preparing the business-user interface; [09 — additional RSS metrics](09_RSS_ADDITIONAL_METRICS.md) extends your supplied model.
+Organized into a numbered learning path on 7 October 2026, with supplements on 8 October. Open the [folder overview](README.md) for the complete **00 → 10** sequence. For semantic models and metrics specifically, start with [02 — the course](02_SEMANTIC_MODELS_AND_METRICS_COURSE.md), then work through [03 — the BigQuery lab](03_SEMANTIC_MODELS_LAB/README.md) alongside its lessons. Use [07 — publication](07_PUBLISH_TO_BUSINESS_USERS.md) and [08 — tool connections](08_CONNECT_SEMANTIC_LAYER_TO_TOOLS.md) when preparing the business-user interface; [09 — additional RSS metrics](09_RSS_ADDITIONAL_METRICS.md) extends your supplied model. [10 — star schemas and calculations](10_AGGREGATIONS_ENTITIES_AND_STAR_SCHEMAS.md) connects this to your Power BI experience.
 
 ## Start with an attempt
 

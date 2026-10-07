@@ -1,0 +1,68 @@
+version: 2
+models:
+  - name: fct_sales_semantic_demo
+    semantic_model:
+      enabled: true
+      name: sales_demo
+    agg_time_dimension: sale_date
+    columns:
+      - name: Sale_Line_Key
+        data_tests: [not_null, unique]
+        entity:
+          name: sale_line
+          type: primary
+      - name: Product_Key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_products_semantic_demo')
+                field: Product_Key
+        entity:
+          name: product
+          type: foreign
+      - name: Sale_Date
+        granularity: day
+        dimension:
+          name: sale_date
+          type: time
+    metrics:
+      - name: demo_sales_revenue
+        label: Sales Revenue
+        type: simple
+        agg: sum
+        expr: Sales_Amount
+      - name: demo_units_sold
+        label: Units Sold
+        type: simple
+        agg: sum
+        expr: Quantity
+      - name: demo_distinct_sales_orders
+        label: Sales Orders
+        type: simple
+        agg: count_distinct
+        expr: Order_Key
+      - name: demo_average_order_value
+        label: Average Order Value
+        type: ratio
+        numerator: demo_sales_revenue
+        denominator: demo_distinct_sales_orders
+
+  - name: dim_products_semantic_demo
+    semantic_model:
+      enabled: true
+      name: products_demo
+    columns:
+      - name: Product_Key
+        data_tests: [not_null, unique]
+        entity:
+          name: product
+          type: primary
+      - name: Product_Name
+        dimension:
+          name: product_name
+          type: categorical
+      - name: Category
+        dimension:
+          name: category
+          type: categorical

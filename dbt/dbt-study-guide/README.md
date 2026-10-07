@@ -16,6 +16,7 @@
 | **07** | [Publish metrics to business users](07_PUBLISH_TO_BUSINESS_USERS.md) | After lesson 12, connect Power BI or Excel/Google Sheets; provide category/date controls and publish a tested consumer experience |
 | **08** | [Connect the Semantic Layer to six interfaces](08_CONNECT_SEMANTIC_LAYER_TO_TOOLS.md) | Locate definitions/data; follow the common setup and the Power BI, Excel, Google Sheets, Tableau, Data Studio or React/API steps |
 | **09** | [Four additional RSS metrics](09_RSS_ADDITIONAL_METRICS.md) | Extend your supplied model with total/max body length, average title length and missing-category article count; reconcile nulls and duplicates |
+| **10** | [Aggregations, entities and star schemas](10_AGGREGATIONS_ENTITIES_AND_STAR_SCHEMAS.md) | Map your Power BI fact/dimension approach to semantic entities; choose aggregation/metric types and try the separate sales/products example |
 
 The numbers describe the default learning sequence. Use references whenever you need them. The lab starts after course lesson 5 and accompanies lessons 6–10; you do not have to finish all 16 lessons before trying it.
 
