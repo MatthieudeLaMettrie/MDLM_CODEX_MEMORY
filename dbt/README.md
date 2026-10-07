@@ -1,6 +1,6 @@
 # dbt learning and certification preparation
 
-**[Start the numbered learning path: 00 → 07](dbt-study-guide/README.md)**
+**[Start the numbered learning path: 00 → 08](dbt-study-guide/README.md)**
 
 **[02 — Semantic models and metrics: full practical course](dbt-study-guide/02_SEMANTIC_MODELS_AND_METRICS_COURSE.md)** — 16 lessons using your FEI RSS lineage, latest and legacy YAML, a [03 — BigQuery lab](dbt-study-guide/03_SEMANTIC_MODELS_LAB/README.md), troubleshooting, 20 exercises and a capstone.
 
@@ -12,6 +12,7 @@
 - [05 — Readiness plan](dbt-study-guide/05_READINESS.md): adapt the suggested 7–10 days to measured gaps.
 - [06 — Official references](dbt-study-guide/06_SOURCES.md): source provenance for the core guide.
 - [07 — Publish metrics to business users](dbt-study-guide/07_PUBLISH_TO_BUSINESS_USERS.md): Power BI and spreadsheet category/date filtering, deployment, sharing and alternatives.
+- [08 — Connect the Semantic Layer to six interfaces](dbt-study-guide/08_CONNECT_SEMANTIC_LAYER_TO_TOOLS.md): storage locations and step-by-step Power BI, Excel, Google Sheets, Tableau, Data Studio and React/API setup.
 - [Collection workflow](dbt-learning-flow/README.md): repeatable Python collector with Markdown/HTML support.
 - [Public reading index](dbt-learning-flow/guide/START_HERE.md) and [coverage report](dbt-learning-flow/data/coverage.json).
 

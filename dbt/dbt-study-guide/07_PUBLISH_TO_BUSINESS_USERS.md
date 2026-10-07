@@ -2,6 +2,8 @@
 
 Checked against official documentation on 7 October 2026. Read after lesson 12 of the [semantic models and metrics course](02_SEMANTIC_MODELS_AND_METRICS_COURSE.md). This guide uses your `rss_articles` example and your chosen interfaces: Power BI and Excel/Google Sheets. It is a publication guide; no account, connector or report has been configured here.
 
+Continue with [08 — Connect the Semantic Layer to six interfaces](08_CONNECT_SEMANTIC_LAYER_TO_TOOLS.md) for numbered setup steps, storage locations, Tableau, Data Studio and a React/backend API example.
+
 ## 1. What the marketing specialist receives
 
 Publish an **RSS Content Performance** report or spreadsheet query template. You maintain the model and formulas; the marketer chooses categories and dates through visible controls.

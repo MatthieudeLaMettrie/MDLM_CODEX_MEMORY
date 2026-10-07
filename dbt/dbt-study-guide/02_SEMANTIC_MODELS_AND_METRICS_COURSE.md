@@ -837,6 +837,8 @@ An SCD publisher dimension with multiple historical rows also needs validity int
 
 For the marketing specialist's category/date filtering workflow, follow [07 — Publish metrics to business users](07_PUBLISH_TO_BUSINESS_USERS.md). It covers your chosen tools, Power BI and Excel/Google Sheets, with deployment, connector setup, consumer sharing and aggregation checks.
 
+Then use [08 — Connect the Semantic Layer to six interfaces](08_CONNECT_SEMANTIC_LAYER_TO_TOOLS.md) for the common deployment setup, storage explanation and Power BI, Excel, Google Sheets, Tableau, Data Studio and custom React/API steps.
+
 A **metric definition** says how to calculate a number. A **saved query** says which metrics, groupings and filters to request together. An **export** persists that query's result into a warehouse relation when executed.
 
 Example saved query, using the lab metric and dimension:
