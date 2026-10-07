@@ -2,6 +2,8 @@
 
 [Learning path](README.md) · [Operational-data lab](03_OPERATIONAL_DATA_LAB/README.md) · [Azure integration](05_AZURE_INTEGRATION.md)
 
+For external locations versus external/managed tables, storage ownership, use cases and table setup, read [13 — Managed and external storage](13_MANAGED_AND_EXTERNAL_STORAGE_GUIDE.md).
+
 **A volume is a named, governed place for files in cloud storage.** You can put a CSV, JSON document, PDF or library artifact in it and give users/jobs permission to read or write those files through Unity Catalog. Its files have paths such as `/Volumes/training_dev/ops/lab_files/order_events.csv`.
 
 Read this supplementary guide **before the upload step in lab 03**. It is numbered 10 so the original 00–09 files keep their existing names. Official documentation checked **7 October 2026**; setup examples were reviewed but not executed in your workspace. No storage, volume or permission was created for you.

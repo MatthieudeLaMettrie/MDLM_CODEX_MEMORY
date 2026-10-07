@@ -115,7 +115,7 @@ def main():
     course = (HERE / "02_COURSE_COMPANION.md").read_text(encoding="utf-8")
     lessons = [int(n) for n in re.findall(r"^## Lesson (\d+)\b", course, re.M)]
     assert lessons == list(range(1, 17)), lessons
-    for number in range(13):
+    for number in range(14):
         assert len(list(HERE.glob(f"{number:02d}_*"))) == 1, number
     print(json.dumps(counts, indent=2))
     print("YAML duplicate-key parsing:", "passed" if yaml else "SKIPPED; install/provide PyYAML")

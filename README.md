@@ -16,7 +16,7 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 - [Agents over Power BI semantic models: Desktop and Fabric setup](guides/data-engineering/POWER_BI_SEMANTIC_MODEL_AGENTS_GUIDE.md) — both authoring paths, architecture diagrams, Prep for AI, Fabric IQ, instruction templates, permissions, Copilot Studio/Foundry connections, production deployment, and GCP/Snowflake/Databricks equivalents.
 
-- [Databricks data engineering: 00–12 numbered course](databricks/README.md) — 16 lessons, executable development lab, ETL and medallion architecture, Delta/PySpark troubleshooting, Azure Synapse integration, bundles/orchestration, Unity Catalog volumes, Lakeflow/DLT pipelines, fake-table CDF/CDC/Auto Loader examples, 28 incident exercises and capstone.
+- [Databricks data engineering: 00–13 numbered course](databricks/README.md) — 16 lessons, executable development lab, ETL and medallion architecture, Delta/PySpark troubleshooting, Azure Synapse integration, bundles/orchestration, Unity Catalog volumes and managed/external storage, Lakeflow/DLT pipelines, fake-table CDF/CDC/Auto Loader examples, 28 incident exercises and capstone.
 
 - [02 — dbt semantic models and metrics: practical course](dbt/dbt-study-guide/02_SEMANTIC_MODELS_AND_METRICS_COURSE.md) — FEI RSS examples, 16 lessons, both YAML specifications, reproducible BigQuery lab, queries, debugging and capstone. Follow the [00 → 06 numbered learning path](dbt/dbt-study-guide/README.md) for the full dbt sequence.
 

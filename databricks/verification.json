@@ -1,13 +1,14 @@
 {
   "prepared_date": "2026-10-07",
+  "last_documentation_update": "2026-10-08",
   "timezone": "Australia/Sydney",
   "task_id": "01a114d2-e84c-7300-8f56-42147cce9849",
   "status": "local-validation-passed-cloud-execution-unverified",
   "local_validation": {
     "python_version": "3.14.4",
     "yaml_parser": "PyYAML 6.0.3 from an existing isolated temporary directory; no project dependency installed",
-    "markdown_files_checked": 14,
-    "relative_links_checked": 104,
+    "markdown_files_checked": 15,
+    "relative_links_checked": 112,
     "markdown_fences": "balanced",
     "python_files_ast_checked": 3,
     "python_documentation_blocks_ast_checked": 17,
@@ -15,7 +16,7 @@
     "yaml_documentation_blocks_checked": 1,
     "json_files_parsed": 2,
     "bundle_file_references_and_task_sequence": "passed local checks; not CLI schema validation",
-    "learning_path": "00-12 assets, 16 lessons and 28 cases checked",
+    "learning_path": "00-13 assets, 16 lessons and 28 cases checked",
     "supplementary_fake_fixtures": "JSON/SQL message fixtures checked locally: file totals 245/270, latest-state 240 across 5,040 delivery permutations, wrong-metric totals 530/405 and quality-example 165; not Spark execution",
     "fixture_oracle": "passed expected counts, Decimal amounts, day/store attribution, reverse ordering, exact/stale re-delivery, tombstone and contradiction checks",
     "git_whitespace": "passed before publication"

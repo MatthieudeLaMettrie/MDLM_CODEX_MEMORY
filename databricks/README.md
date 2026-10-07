@@ -19,10 +19,11 @@ Prepared **7 October 2026** using current official documentation. The teaching e
 | **10** | [Unity Catalog volumes](10_UNITY_CATALOG_VOLUMES_GUIDE.md) | Understand volumes, choose managed/external, create/upload/read files and set permissions |
 | **11** | [Lakeflow pipelines and DLT](11_LAKEFLOW_PIPELINES_AND_DLT_GUIDE.md) | Map legacy DLT APIs, define streaming/materialized datasets, validate quality and reason about refresh/recovery |
 | **12** | [Pipelines, CDF, CDC and Auto Loader examples](12_PIPELINES_CDF_CDC_AUTO_LOADER_EXAMPLES.md) | Work through fake order tables, file deliveries, corrections, deletes, stale events and expected reconciliations |
+| **13** | [Managed and external storage](13_MANAGED_AND_EXTERNAL_STORAGE_GUIDE.md) | Distinguish locations, credentials, tables and volumes; choose ownership/lifecycle and set up each approach |
 
 Use 04–06 alongside the related lessons. The default path is numbered so the order is also visible in the GitHub file listing. References are available whenever you need them.
 
-Read **10** before the volume/upload setup in lab **03** if volumes are new to you. Read **11** alongside **04**, then use **12** for concrete pattern comparisons and fake-table exercises. These are supplementary practical guides; existing 00–09 filenames remain stable.
+Read **10** before the volume/upload setup in lab **03** if volumes are new to you. Read **11** alongside **04**, then use **12** for concrete pattern comparisons and fake-table exercises. Use **13** to choose managed/external storage and understand external-location setup. These are supplementary practical guides; existing 00–09 filenames remain stable.
 
 ## What the course covers
 
