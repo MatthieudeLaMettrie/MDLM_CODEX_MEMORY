@@ -31,6 +31,27 @@ flowchart LR
 
 This is the direct Semantic Layer route. Querying an ordinary BigQuery table uses a different route, described in section 6. [Supported integrations](https://docs.getdbt.com/docs/platform-integrations/avail-sl-integrations).
 
+### Where calculations run: DirectQuery versus Import
+
+Checked **8 October 2026**. When you query a dbt metric, the Semantic Layer interprets the definitions and generates SQL; the connected warehouse executes that SQL. For your RSS project, BigQuery evaluates operations such as `COUNT(DISTINCT URL)` and `AVG(LENGTH(Content))` for the requested filters and grouping. A dbt build creates/updates model relations; it does not automatically precompute every possible metric selection. Query-time results can be cached or explicitly exported. [dbt architecture](https://docs.getdbt.com/docs/use-dbt-semantic-layer/sl-architecture).
+
+For example, when the marketer selects Investing/Shares and a publication period, Power BI requests that selection, dbt produces the appropriate warehouse query, and the returned results populate the cards/chart. Changing the selection requests another result, subject to caches and refresh behavior.
+
+| Connection route | Power BI mode | What Power BI stores | Calculation responsibility |
+|---|---|---|---|
+| Direct dbt Semantic Layer connector | **DirectQuery** | Model/report metadata; result caches can exist, without importing the full source relation | dbt definitions generate SQL; the warehouse calculates the selected metrics |
+| Ordinary warehouse connector, loading article rows | **Import** | An imported, compressed data snapshot in the Power BI semantic model | Report-time measures calculate over imported rows using Power BI's engine |
+| Ordinary warehouse connector, querying article rows | **DirectQuery**, where supported | Model metadata and relevant caches | Power BI defines the measures and may push calculations into source SQL; it does not invoke dbt YAML automatically |
+| Ordinary connector, loading exported dbt metric results | **Import**, where supported | A snapshot of precomputed results at the exported grain | dbt/warehouse calculates at export time; later report aggregation/filtering happens in Power BI |
+
+The direct dbt connector's native path is **DirectQuery**. It remains preview and requires a custom connector/ODBC driver, with an On-premises Data Gateway for Power BI Service. dbt also describes a selected-column Import workaround for a valid query shape; that produces a snapshot and subsequent calculations bypass the Semantic Layer. It does not preserve arbitrary query-time metric behavior. [dbt Power BI connector](https://docs.getdbt.com/docs/platform-integrations/semantic-layer/power-bi).
+
+With Import, report interactions query the stored snapshot; source changes appear after refresh. With DirectQuery, interactions can query the source, but cached results and dashboard-tile schedules mean it is not a guarantee that every click runs fresh warehouse SQL. Publishing DirectQuery creates a hosted model definition; publishing Import also uploads its imported data. [Microsoft storage-mode explanation](https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-directquery-about).
+
+An imported daily/category average cannot safely become an overall average just by averaging the displayed cells. Similarly, summing exported distinct counts can overcount overlapping URLs. Query the correct total through dbt, or design/reconcile the imported model's aggregation contract. Your fixed last-seven-days metric evaluates its date logic when the warehouse query/export runs; an imported answer does not automatically move to the new day without refresh.
+
+**Platform boundary:** the currently documented dbt Semantic Layer supports BigQuery, Snowflake, Databricks, Redshift, Postgres and Trino; Fabric is explicitly unsupported at present. General dbt transformation-adapter support is a separate capability. A Power BI connection to a Fabric source therefore needs a separately designed reporting route; it is not this direct dbt connector architecture. [dbt supported-platform FAQ](https://docs.getdbt.com/docs/use-dbt-semantic-layer/sl-faqs).
+
 ## 2. Prepare the definitions for flexible filtering
 
 Keep `articles_published` unfiltered. Your metric named `articles_published_selected_categories` permanently restricts its result to Investing/Shares; selecting Property in a report cannot override that restriction.

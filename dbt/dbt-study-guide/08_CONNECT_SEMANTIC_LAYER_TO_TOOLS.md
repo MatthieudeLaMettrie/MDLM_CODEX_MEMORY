@@ -100,6 +100,8 @@ The `rss_marketing_overview` saved query in [guide 07](07_PUBLISH_TO_BUSINESS_US
 
 ## C. Power BI
 
+For execution location and storage-mode tradeoffs, read [where calculations run: DirectQuery versus Import](07_PUBLISH_TO_BUSINESS_USERS.md#where-calculations-run-directquery-versus-import). The direct dbt route uses DirectQuery; importing article rows or exported results creates a different calculation/storage path. Current dbt Semantic Layer platform support excludes Fabric.
+
 ### Connect the authoring computer
 
 1. Obtain the official installer from the [dbt connector page](https://docs.getdbt.com/docs/platform-integrations/semantic-layer/power-bi).
