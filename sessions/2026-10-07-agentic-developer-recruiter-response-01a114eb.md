@@ -3,6 +3,22 @@
 Date: 2026-10-07 (Australia/Sydney)
 Task identifier: 01a114eb-3d00-72d0-b756-1739bbcdafaa
 
+## Fabric IQ and cross-platform follow-up
+
+User asked what Fabric IQ is and which GCP, Snowflake and Databricks tools serve comparable roles. They proposed model -> grounded data agent -> marketing/sales instructions -> Foundry/Copilot Studio through Fabric IQ -> testing, saying they had used the general workflow before.
+
+Confirmed the broad sequence while adding model business preparation, direct agent testing and data-agent publishing before catalog connection; final consumer identity and channel/application testing remain necessary. Explained Fabric IQ as the broader business-context framework/workload, distinct from similarly named catalog/MCP integration tools. Ontology is optional for the semantic-model-backed reporting path, and either outer-agent product is optional.
+
+Extended the existing guide with three instruction layers and illustrative marketing templates: model Prep for AI for DAX/business definitions, Fabric data-agent routing/presentation, and outer-agent tool-use/role behavior. Documented that DAX generation ignores agent-level instructions, persona prompts do not define measures or permissions, and causal explanations require evidence beyond observed change. Added acceptance-question examples without claiming live execution.
+
+Compared functional counterparts using current primary documentation: GCP LookML plus Conversational Analytics (or direct BigQuery context) with API/A2A/ADK integration; Snowflake semantic views plus Cortex Analyst/Cortex Agents with REST or managed MCP; Databricks Unity Catalog semantics/metric views plus Genie Agents (formerly Genie Spaces), Conversation API and managed MCP. Distinguished SQL generation from orchestration/execution in Snowflake and broad Fabric IQ/ontology capabilities from the narrower reporting workflow. Updated README and durable memory. No tenant resources, agents, permissions or historical production claims were changed.
+
+Validation: reviewed official vendor documentation and the guide changes; publication checks are recorded by Git history and the final response. Current names, preview status and integration availability are date-specific. Historical client rollout and exact personal implementation scope remain unconfirmed.
+
+User additionally requested a production deployment section explaining where to publish after successful testing. Added section 14 covering Fabric workspace publication/sharing, direct M365 Copilot Agent Store (documented preview), Copilot Studio channels, and Foundry custom application/Teams/M365 routes. Included concrete steps, environment/source-binding checks, user authentication and release version behavior. Official Foundry docs now distinguish the current per-agent stable endpoint/identity from legacy Agent Applications; recorded this distinction rather than recommending legacy endpoint creation as the default. Foundry organization-wide publication requires Microsoft 365 administrator approval; this is a downstream product step, not permission to edit this guide. No live publication/deployment was attempted.
+
+Local validation passed: git diff --check, 16 balanced Markdown fences, 14 numbered sections and review of the task-owned diff. No cloud execution was required or performed for the documentation change.
+
 ## Request and sources
 
 User asked how to answer two recruiter questions using the local resume `Matthieu de La Mettrie Resume 3.docx` and position description `AI Agentic Developer PD.docx`: identify production enterprise agent deployments and personal implementation versus architecture; confirm willingness to remain hands-on in a developer role.

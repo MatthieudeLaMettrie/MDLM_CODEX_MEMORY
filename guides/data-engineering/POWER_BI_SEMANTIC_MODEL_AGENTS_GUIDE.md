@@ -174,3 +174,205 @@ Sources: [Fabric IQ portal setup](https://learn.microsoft.com/en-us/fabric/data-
 Building a model in Desktop and publishing it is a valid starting point for enterprise agent work. A precise description could be: "I built and published Power BI semantic models, connected a Fabric data agent for natural-language reporting, and validated its DAX responses against existing reports." Add Copilot Studio or Foundry only if you also implemented that respective agent connection. Production, pilot and prototype status must reflect the actual rollout and users.
 
 For an existing Desktop report, the shortest learning route is: publish to an appropriately configured workspace, prepare the model, create/test/publish the Fabric data agent, then add the outer agent if needed. A lakehouse/warehouse migration is not a prerequisite for a model-backed agent.
+
+## 10. What Fabric IQ means in this architecture
+
+Fabric IQ provides business context over enterprise data: what entities such as Customer, Campaign and Order mean, how they relate, and how trusted business metrics are defined. Microsoft's framework combines OneLake data, Power BI semantic models for analytics, and ontologies for broader operational context. An ontology describes entity types, properties, relationships and rules bound to business data. The IQ workload and ontology are currently documented as preview.
+
+For example, a semantic model can define Net Revenue by Campaign and Month. An ontology can describe how Customer places Order, Order relates to Campaign, and Campaign belongs to Marketing Channel. Ontology is useful for richer cross-domain relationships; it is not a required extra step for this guide's agent querying a Power BI semantic model.
+
+Fabric IQ is broader than a connector. The similarly named integration tools expose Fabric capabilities to an outer agent:
+
+- Foundry: Fabric IQ (OneLake Catalog), through which you select the published Fabric data agent.
+- Copilot Studio's documented tool-based experience: Fabric IQ Data MCP, through which you select the published data agent.
+- MCP is the tool-calling protocol in these integrations. It does not replace your semantic model, its measures or its access controls.
+
+Your reporting path remains: outer agent -> Fabric tool -> Fabric data agent -> DAX query against hosted semantic model -> results returned to the user. Grounding gives the agent access to model context and query results; publishing this model does not train or fine-tune an LLM.
+
+Sources: [Fabric IQ overview](https://learn.microsoft.com/en-us/fabric/iq/overview), [ontology overview](https://learn.microsoft.com/en-us/fabric/iq/ontology/overview), [Foundry data-agent connection](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-foundry-fabric-iq), [Copilot Studio tool connection](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-microsoft-copilot-studio-tool).
+
+## 11. Confirmed workflow, with the missing publishing step
+
+The user's proposed sequence is broadly correct. Use this expanded sequence:
+
+1. Build the semantic model in Fabric, or build it in Power BI Desktop and publish it to the cloud workspace. The agent uses the hosted model. A report is useful for comparison but not mandatory for querying the model.
+2. Prepare business definitions: relationships, date logic, explicit measures, meaningful descriptions, model Prep for AI and permissions. Implement KPI calculations in measures rather than relying on a persona prompt to invent them.
+3. Create the Fabric data agent, attach the semantic model and select the relevant tables.
+4. Configure instructions at the appropriate layers described below. Test the data agent directly and reconcile its generated DAX/results with trusted reporting.
+5. Publish the Fabric data agent and arrange consumer access. The catalog integrations discover published agents, not an unpublished draft.
+6. Optionally attach it to either Foundry or Copilot Studio using the applicable Fabric IQ tool. Configure the outer agent to route business-data questions to this tool and configure user authentication.
+7. Test the complete experience, including tool selection, query correctness, ambiguous requests, restricted users and response formatting. Publish the Copilot Studio agent/channel, or configure the Foundry agent's active version and endpoint/application with sign-in and delegated access. Section 14 distinguishes the current Foundry endpoint model from the legacy Agent Application model.
+
+Neither an ontology nor both orchestration products are required for this particular reporting scenario. Sections 2-8 contain the detailed setup and prerequisite checks.
+
+## 12. Marketing and sales instructions: three different locations
+
+These examples are illustrative templates. Replace names, currencies, time conventions and available metrics with those actually implemented in your model. A role instruction guides behavior; it does not provide missing data, define a calculation reliably or grant access.
+
+### A. Semantic model: business definitions and DAX guidance
+
+Put model-specific guidance in Prep for AI, with suitable descriptions and verified answers. The Fabric data agent's DAX generation uses this model context and ignores agent-level instructions for DAX generation. Agent-level model-specific source instructions and sample question/query pairs are not supported for semantic-model sources.
+
+```text
+This model covers marketing campaign performance and sales.
+Use the model's approved measures for Net Revenue, Attributed Revenue,
+Ad Spend and ROAS; do not substitute a different formula.
+
+Net Revenue excludes tax and reflects returns as defined by its measure.
+ROAS is Attributed Revenue divided by Ad Spend at the requested filter
+context. Do not average campaign-level ROAS to get total ROAS.
+If spend is zero, use the measure's blank/undefined behavior.
+
+Unless the user specifies otherwise, interpret dates using the model's
+Calendar Date and calendar months. Monetary values are in AUD.
+Campaign-attributed revenue and total sales revenue are different metrics.
+Do not interpret missing attribution as zero total sales.
+```
+
+First implement and validate those measures and conventions. The text documents them. If the actual model uses fiscal months, order date or a different revenue definition, change this example accordingly.
+
+Source: [semantic-model best practices for Fabric data agents](https://learn.microsoft.com/en-us/fabric/data-science/semantic-model-best-practices).
+
+### B. Fabric data agent: scope, source routing and presentation
+
+```text
+Answer marketing and sales reporting questions using the available sources.
+Route revenue, campaign performance and advertising-spend questions to
+Marketing_Sales_Model.
+Identify the metric, reporting period, applied filters and currency in
+the answer. Present comparisons in a concise table when appropriate.
+State when a requested metric or breakdown is unavailable.
+```
+
+Keep calculation guidance in the model. These agent instructions guide source selection and presentation around the query.
+
+### C. Foundry or Copilot Studio: role and tool use
+
+```text
+You assist marketing and sales analysts.
+For questions about our actual performance, call the connected
+Marketing_Sales_Data_Agent before giving numerical answers.
+Use its returned results and retain their metric definitions, units,
+time periods and filters. Do not invent figures or silently change scope.
+
+Ask for clarification when the requested period or meaning of revenue
+is ambiguous. If the tool cannot answer, explain the missing data or access.
+Summarize the main result, then provide the supporting comparison.
+Separate measured changes from possible explanations; do not claim a
+causal effect of a campaign solely from a change in revenue.
+```
+
+The routing description on the tool also matters. For example: "Queries approved marketing and sales metrics by campaign, channel and calendar period from the published semantic model." Only list dimensions and measures the tool actually supports.
+
+Sources: [agent instructions](https://learn.microsoft.com/en-us/fabric/data-science/how-to-create-data-agent), [Foundry connection](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-foundry-fabric-iq), [Copilot Studio connection](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-microsoft-copilot-studio-tool).
+
+### Validate more than fluent wording
+
+Maintain a small set of questions with independently checked expected results. Examples:
+
+- Net Revenue by campaign for September 2026: compare each campaign and the total against the same model measure with identical filters.
+- September versus August 2026: verify both periods, absolute change and percentage change, including a blank/zero comparison period.
+- ROAS by channel: verify attribution, spend and the measure's aggregation behavior, not an average of row-level ratios.
+- "Which campaign performed best?": verify that the agent asks whether best means revenue, ROAS or another available measure.
+- Restricted consumer: verify row-level access through the final app/channel, not only through a maker account.
+- "Why did sales fall?": verify that observed movement is separated from hypotheses that need additional evidence.
+
+These are proposed acceptance cases, not tests executed against the user's tenant.
+
+## 13. Closest functional equivalents in GCP, Snowflake and Databricks
+
+This is a comparison by function, not a claim that each vendor has one exact equivalent of the whole Fabric IQ workload. Product names and integrations below were checked against official documentation on 2026-10-07.
+
+| Platform | Governed business definitions | Data-question agent | Connection to a wider agent/app |
+| --- | --- | --- | --- |
+| Microsoft | Power BI semantic model; optionally Fabric IQ ontology for broader entity relationships | Fabric data agent | Fabric IQ catalog/MCP tools in Foundry or Copilot Studio |
+| Google Cloud | Looker LookML models/Explores over warehouse data, such as BigQuery | Conversational Analytics data agents, powered by Gemini; the API also supports direct BigQuery sources | Conversational Analytics API; A2A endpoints and ADK integrations for orchestration |
+| Snowflake | Semantic views containing business entities, dimensions, facts, metrics and relationships | Cortex Analyst generates SQL; Cortex Agents orchestrate tools and execute the reporting workflow | Cortex Agents REST API or a Snowflake-managed MCP server exposing the agent |
+| Databricks | Unity Catalog semantics, including metric views; broader business context through Genie Ontology | Genie Agents, formerly Genie Spaces | Genie Conversation API or managed MCP tools exposing a Genie Agent |
+
+Google Cloud's closest match to your specific Power BI-model workflow is LookML -> Conversational Analytics data agent -> API/outer agent. Looker is the semantic-model product here. Direct BigQuery grounding is another path, but it does not automatically create the governed metric definitions of a LookML model.
+
+Sources: [Looker Conversational Analytics](https://docs.cloud.google.com/looker/docs/conversational-analytics-overview), [Conversational Analytics API](https://docs.cloud.google.com/gemini/data-agents/conversational-analytics-api/overview), [ADK integration examples](https://docs.cloud.google.com/gemini/data-agents/conversational-analytics-api/tutorials-demos-and-tools).
+
+Snowflake's comparable workflow is semantic view -> Cortex Agent with a Cortex Analyst tool -> chat/app or MCP client. Cortex Analyst on its own returns generated SQL; an agent or application handles execution and answer delivery. Snowflake recommends exposing Cortex Agents as the client-facing MCP tool for governed business questions. Its managed MCP Cortex Analyst tool supports semantic views rather than legacy staged semantic-model YAML files.
+
+Sources: [Cortex Analyst](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst), [Cortex Agents](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents), [managed MCP server](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp).
+
+Databricks' comparable workflow is curated Unity Catalog data and metric definitions -> Genie Agent with selected datasets, example SQL and instructions -> chat/API/MCP. Current documentation calls these Genie Agents; older material calls them Genie Spaces. Unity Catalog semantics includes the human-authored business layer used within Genie Ontology. Managed MCP integration is documented as preview. Avoid treating an arbitrary LLM over raw tables as equivalent to this curated workflow.
+
+Sources: [Unity Catalog semantics](https://docs.databricks.com/aws/en/uc-semantics/), [metric views](https://docs.databricks.com/aws/en/uc-semantics/metric-views), [Genie Agents](https://docs.databricks.com/aws/en/genie-agents/), [managed MCP tools](https://docs.databricks.com/aws/en/agents/mcp-tools/managed-mcp).
+
+No cloud resources, agents or permissions were changed for this documentation update. The examples do not establish which components the user historically implemented or whether those implementations reached production.
+
+## 14. Deployment to production: where do you publish the agent?
+
+Choose where users will interact with the agent. The Fabric data agent remains a Fabric workspace item. Publishing it creates the version consumers and integrations query. A user-facing channel or application is a separate distribution choice; Fabric IQ itself is not the final user interface.
+
+| Desired user experience | What you release | Where users access it |
+| --- | --- | --- |
+| Analysts chat in Fabric | Publish and share the Fabric data agent in the production workspace | Shared Fabric data-agent item/link |
+| Users ask data questions directly in Microsoft 365 Copilot | Publish the Fabric data agent and enable Publish to Agent Store | Microsoft 365 Copilot Agent Store, including the documented Teams experience; this direct integration is documented as preview |
+| A tailored business assistant with multiple tools | Publish the Copilot Studio outer agent and configure a supported channel | Teams, Microsoft 365 Copilot or a website, according to harness/channel/tool support and authentication |
+| A Foundry agent used in a custom application | Select a tested version behind its stable agent endpoint; configure access; release the application that calls it | An authenticated internal website, portal or application |
+| A Foundry agent used in Teams/Microsoft 365 Copilot | Publish the Foundry agent to Teams and Microsoft Copilot | Agent/app catalogs and the selected organization's distribution scope |
+
+Sources: [Fabric publishing and ALM](https://learn.microsoft.com/en-us/fabric/data-science/how-to-create-data-agent), [Fabric sharing](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-sharing), [direct Microsoft 365 consumption](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-microsoft-365-copilot), [Copilot Studio publishing](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/publication-fundamentals-publish-channels), [Foundry endpoint model](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/migrate-agent-applications), [Foundry channel publishing](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/publish-copilot).
+
+### A. Publish the production Fabric data agent
+
+1. Use an appropriately configured production workspace with the intended hosted semantic model, refresh connections and capacity. Development/test/production workspaces are an environment-separation pattern, not three names created automatically by Publish.
+2. Promote the tested model and agent configuration. Fabric documents Git integration and deployment-pipeline support for data agents. Verify supported dependencies and target source bindings; do not assume promotion copied credentials, refreshed data or granted consumer permissions.
+3. Open the data agent in production. Confirm its selected semantic model and tables point to the intended production items. Repeat the agreed questions against production data with a consumer account.
+4. Select Publish, enter a purpose/capabilities description and complete publishing. Confirm the Published version works. Draft edits are separate and need republishing to reach consumers.
+5. Grant users/groups access to the agent and the required model Read permission/RLS membership. Share the item link for users consuming it in Fabric, or select this production published agent in the outer agent's tool configuration.
+6. If direct Microsoft 365 Copilot consumption is the chosen route, enable Publish to Agent Store during publication and verify discovery/use in Copilot. Confirm tenant settings, licensing and source permissions. This route can avoid a custom Copilot Studio or Foundry outer agent.
+
+Sources: [publish and deployment support](https://learn.microsoft.com/en-us/fabric/data-science/how-to-create-data-agent), [sharing and permissions](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-sharing), [Microsoft 365 Copilot route](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-microsoft-365-copilot).
+
+### B. Release through Copilot Studio
+
+1. Use the intended production Power Platform environment and agent. Reconfigure/verify the Fabric IQ tool connection so it selects the published production data agent, with User authentication for this reporting pattern.
+2. Save and test the complete draft, including the production tool call.
+3. Select Publish and wait for a successful/live state.
+4. Configure the desired channel, such as Teams and Microsoft 365 Copilot. Make the agent available to the intended audience, following the channel's sharing/catalog and administrator approval process for organization-wide distribution.
+5. Install/open the agent from that channel as an ordinary consumer and verify the data results and access restrictions. A publishing success message alone does not establish channel discovery or working data authentication.
+6. For updates, test the draft and publish it again. Preserve a known-good configuration/version as the release recovery point.
+
+Copilot Studio publishing supports multiple channel choices, but the particular harness, Fabric integration and user authentication must support the chosen destination. Section 7 explains why older connected-agent channel limitations should not be generalized to the newer tool route. An anonymous website deployment does not provide the delegated user identity required by this enterprise reporting pattern.
+
+Sources: [current harness publication](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/publication-fundamentals-publish-channels), [standard harness publication and authentication](https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-fundamentals-publish-channels), [Fabric tool integration](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-microsoft-copilot-studio-tool).
+
+### C. Release through Foundry
+
+Foundry's publishing model is changing. In the current agent object model, a new agent gets its own identity and stable endpoint when created. You select the agent version that endpoint serves; there is no extra Agent Application creation step to obtain the endpoint. Older agents can still use the legacy Agent Application/deployment publishing experience. Check which experience your agent uses before following an older tutorial.
+
+For a custom application:
+
+1. In the production Foundry project, configure the outer agent with the production Fabric data agent/tool and test it.
+2. Pin the stable endpoint's Active version to a tested version for a controlled release. Always use latest can instead cause new versions to receive traffic automatically.
+3. Configure permitted callers and the applicable authentication. For Fabric calls, retain the delegated user's data identity; authorization to call the outer agent does not grant access to the underlying semantic model.
+4. Connect the application backend/client flow to the stable agent endpoint using the documented authentication and SDK/API for that agent model. Deploy the actual web/API application to its hosting platform. Creating an agent endpoint does not create a website for users.
+5. Validate the real application with authorized and restricted accounts, review traces/failures and establish monitoring. For updates or rollback, change the active version to the validated release/previous version.
+
+For Teams/Microsoft 365 Copilot:
+
+1. Confirm the tested Active version in the agent's Details tab.
+2. Select Publish > Teams and Microsoft Copilot. Complete name, version and descriptions; the flow creates/configures the required Azure Bot Service resource and app package.
+3. Choose Direct publish and the intended audience. Just you supports initial testing; People in your organization submits the agent for Microsoft 365 administrator approval and tenant distribution.
+4. After approval/installation, test from Teams/Copilot with normal consumers. Check tool authentication and source permissions independently from channel access.
+5. In the current endpoint model, changing the Active version updates which agent version serves users without republishing its Teams/M365 metadata. Republish display properties when changing catalog name/description or other app metadata.
+
+Sources: [new versus legacy publishing model](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/migrate-agent-applications), [active version and channel publication](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/publish-copilot), [legacy Agent Applications](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/agent-applications), [Fabric delegated authentication](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-foundry-fabric-iq).
+
+### D. A concrete production example
+
+For an internal Marketing and Sales assistant, a reasonable proposed route is:
+
+1. Production Fabric workspace: published `Marketing_Sales_Model` and published `Marketing_Sales_Data_Agent`.
+2. Production Copilot Studio environment: outer assistant connected to that published agent through Fabric IQ Data MCP.
+3. Teams: published assistant available to the intended marketing/sales users.
+4. Each user's data query: authorized against the model with that user's effective access and RLS.
+
+If users only need data Q&A in Microsoft 365 Copilot, consider the direct Fabric-to-Agent-Store route instead. If the assistant requires a custom application and coded integrations, use the Foundry endpoint route. These are deployment choices, not evidence of the user's historical production deployments.
+
+For all routes, production operation includes reliable refresh/source connectivity, the validated question set, consumer access tests, an owner, monitoring/feedback and a recoverable release. Publishing is one release action; it does not automatically supply all those operational arrangements. Preview integrations retain their documented limitations when used with production data.
