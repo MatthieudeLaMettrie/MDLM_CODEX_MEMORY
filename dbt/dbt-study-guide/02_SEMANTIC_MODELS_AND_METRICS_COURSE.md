@@ -134,6 +134,26 @@ Entity types include `primary`, `unique`, `foreign` and `natural`. For the ordin
 
 Dimensions have qualified names such as `article__language`. Read that as “the language attribute associated with article”. `metric_time` is the standard query-time axis mapped to the relevant metric's aggregation time dimension. It need not be a physical column named `metric_time`. [Dimensions reference](https://docs.getdbt.com/docs/build/dimensions).
 
+### Your columns: identity, publication date and category
+
+Checked **8 October 2026** against your supplied configuration. The `columns:` block annotates physical output columns of `fei_rss_source_brz` with their semantic roles. Each outer `name` matches a model column; the nested entity/dimension name is its semantic name. Ordinary column properties also support documentation and tests. This block is not a SQL projection: leaving `Content` or `Article_Title` out does not remove those fields from the relation. [Column properties](https://docs.getdbt.com/reference/resource-properties/columns).
+
+| Physical column | Semantic name | Role in this model | Business use |
+|---|---|---|---|
+| `URL` | `article` | Primary entity: intended unique, non-null identity of an article row | Identify articles and describe compatible joins to other semantic models |
+| `Date_Published` | `date_published` | Time dimension at day grain | Group/filter metrics by publication period |
+| `Categories` | `categories` | Categorical dimension | Group/filter metrics by category, such as Investing or Shares |
+
+`semantic_model.enabled: true` enables semantic metadata for the underlying dbt model; `name: rss_articles` gives that semantic model its name. It does not create a separate warehouse article table. [Semantic model configuration](https://docs.getdbt.com/docs/build/semantic-models).
+
+The `article` entity supplies the scope for dimension references: `article__categories` and `article__date_published`. Thus a metric filter uses `Dimension('article__categories')`, while a metric SQL expression such as `expr: URL` uses the physical column. Your count is determined by `agg: count_distinct` plus `expr: URL`; declaring a primary entity alone does not define a count. The description's phrase “natural key” describes the business identifier; the configured entity type here remains `primary`. [Entity configuration](https://docs.getdbt.com/docs/build/entities).
+
+`agg_time_dimension: date_published` selects the default analytical clock for the model's simple metrics unless overridden by a metric. It points to the semantic alias mapped to `Date_Published`. In this model, `metric_time` represents that publication clock. `granularity: day` permits day and coarser groupings such as month; it does not provide hourly detail or automatically add a date filter/day grouping to every query. [Time dimensions](https://docs.getdbt.com/docs/build/dimensions).
+
+For “Articles Published by category during 1–7 October”, the metric supplies the distinct-URL calculation, `categories` supplies the grouping/selection, and `date_published` supplies the period. An ungrouped metric query can instead return a combined total. A description saying Categories may contain several values does not split a string into multiple categories; that needs explicit upstream modeling if such values exist.
+
+Your URL tests are commented out. The primary declaration neither checks those tests nor repairs duplicates/nulls; enabling tests would check the intended key contract. Metric expressions can use an existing `Content`/`Article_Title` column without making it a dimension. Add a dimension when that attribute should be exposed for semantic grouping/filtering, rather than merely used in an aggregation expression.
+
 ### Aggregation is a business choice
 
 - **Sum:** total characters across articles.
