@@ -104,7 +104,7 @@ flowchart LR
 
 ## 7. Keep facts and dimensions separate: complete YAML example
 
-Assume the fact contains Sale_Line_Key, Order_Key, Product_Key, Sale_Date, Quantity and Sales_Amount. The dimension contains Product_Key, Product_Name and Category. The two SQL models must already produce these fields and compatible key types; they do not need to join to each other beforehand.
+Assume the fact contains Sale_Line_Key, Order_Key, Product_Key, Sale_Date, Quantity and Sales_Amount. The dimension contains Product_Key, Product_Name, Category and Brand. The two SQL models must already produce these fields and compatible key types; they do not need to join to each other beforehand.
 
 The standalone example uses suffixed names to avoid colliding with your real models. Its YAML is [sales_products.yml](examples/sales-products-star/sales_products.yml). Here is the complete semantic configuration:
 
@@ -177,6 +177,10 @@ models:
         dimension:
           name: category
           type: categorical
+      - name: Brand
+        dimension:
+          name: brand
+          type: categorical
 ```
 
 Both keys share the **entity name `product`**. That is how the semantic graph recognizes the business relationship; matching physical column names alone is insufficient. The physical keys could have different names if each is mapped to the shared entity. The product relation has no metrics here, so it needs no invented sale-date default. [Semantic model specification](https://docs.getdbt.com/docs/build/semantic-models).
@@ -205,6 +209,51 @@ group by p.Category
 ```
 
 This is reconciliation SQL for BigQuery. MetricFlow can produce more elaborate SQL; the semantic intent is the same. A ratio calculates from the aggregated numerator/denominator, not from a precomputed average of row prices.
+
+### Dynamic date and brand filters in the command
+
+Keep `demo_sales_revenue` as the general metric and supply selections with `--where`. These filters apply for that query; they do not rewrite the metric YAML. A query filter adds to any permanent metric filter rather than overriding it. The current platform command reference marks `--start-time`/`--end-time` unavailable for dbt platform/dbt v2, so these examples use `--where`. [MetricFlow commands](https://docs.getdbt.com/docs/build/metricflow-commands).
+
+**1. Sales after 30 June 2026, grouped by product category:**
+
+```bash
+dbt sl query --metrics demo_sales_revenue --group-by product__category --where "{{ TimeDimension('sale_line__sale_date', 'day') }} > '2026-06-30'"
+```
+
+`Sale_Date` is a DATE at day grain here. Strictly after 30 June means 1 July onward. Use `>= '2026-06-30'` instead if you want to include 30 June. The `sale_line` prefix is the fact's primary entity; `sale_date` is the semantic alias, not the physical `Sale_Date` name.
+
+**2. Sales for either Coca Cola or Pepsi, grouped by product category:**
+
+```bash
+dbt sl query --metrics demo_sales_revenue --group-by product__category --where "{{ Dimension('product__brand') }} IN ('Coca Cola', 'Pepsi')"
+```
+
+`IN` means either brand. One row's single Brand value cannot equal both names at once. `product__brand` uses the product entity and brand alias; Brand does not have to appear in `--group-by` to filter it. This is exact value membership: inspect whether your source stores `Coca Cola`, `Coca-Cola`, or another spelling/case, and use its actual value.
+
+**3. Both selections: Coca Cola or Pepsi sales after 30 June:**
+
+```bash
+dbt sl query --metrics demo_sales_revenue --group-by product__category --where "{{ TimeDimension('sale_line__sale_date', 'day') }} > '2026-06-30' AND {{ Dimension('product__brand') }} IN ('Coca Cola', 'Pepsi')"
+```
+
+Conceptually the combined warehouse query includes `WHERE s.Sale_Date > '2026-06-30' AND p.Brand IN ('Coca Cola', 'Pepsi')` before aggregation. MetricFlow generates the product join because category/brand attributes are needed. Add `product__brand` to the output grouping to compare the brands separately:
+
+```bash
+dbt sl query --metrics demo_sales_revenue --group-by product__category,product__brand --where "{{ TimeDimension('sale_line__sale_date', 'day') }} > '2026-06-30' AND {{ Dimension('product__brand') }} IN ('Coca Cola', 'Pepsi')"
+```
+
+These single-line commands work in Bash without continuation escaping and can also be pasted into PowerShell. If you split a command over lines, Bash uses a trailing backslash; PowerShell uses a backtick.
+
+**Prerequisite:** your product SQL model must output a real Brand column and declare it as the categorical `brand` dimension shown in the full YAML above. If Brand is absent from your source/model, supply it through the product transformation first. Rebuild the changed SQL model, parse the updated definitions and make the updated semantic metadata available to the environment you query. For the teaching fixture, run:
+
+```bash
+dbt build --select dim_products_semantic_demo fct_sales_semantic_demo
+dbt parse
+dbt sl list dimensions --metrics demo_sales_revenue
+dbt sl list dimension-values --metrics demo_sales_revenue --dimension product__brand
+```
+
+The included fixture remains three technology products, now with invented Brand labels `Example Computing`, `Example Peripherals` and `Example Cables`. It contains no Coca Cola/Pepsi products, so beverage filters yield no matching sales; this does not indicate a broken join. Try its actual brand labels to check the example, then adapt the models to real beverage data. The date-only filter includes all four fixture sales lines and retains revenue 2280. No live dbt or warehouse query has been executed here.
 
 ## 8. The SQL-prejoined alternative
 
