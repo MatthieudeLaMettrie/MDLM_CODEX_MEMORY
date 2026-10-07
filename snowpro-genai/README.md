@@ -1,8 +1,18 @@
 # SnowPro Specialty: Gen AI (GES-C02)
 
-For a hands-on path from account/trial activation and role grants through a working retrieval-augmented generation example, use [Enable Cortex AI and build a RAG lab](ENABLE_CORTEX_AND_RAG.md).
+## Recommended study order
 
-Start with [the study guide](STUDY_GUIDE.md), follow the [course companion and four-week route](COURSE_COMPANION.md), then take [the original practice set](PRACTICE_EXAM.md) closed-book. For the full AI Function, governance, cost and ML treatment, read the [AI/ML deep dive](AI_ML_DEEP_DIVE.md). Use the [310-page AI/ML documentation atlas](AI_ML_DOC_ATLAS.md) and the [C02 PDF link index](OFFICIAL_DOC_INDEX.md) to investigate misses. This material began on 2026-09-24 from the official Snowflake C02 study guide dated 2026-04-30, the supplied Snowflake GenAI course datasheet, and current Snowflake documentation. It is an independent study aid, not an official Snowflake exam or a guarantee of a pass.
+| Step | File | What to do |
+| ---: | --- | --- |
+| **1** | [STUDY_GUIDE.md](STUDY_GUIDE.md) | Read the four exam domains, product choices, syntax traps, governance, and billing map. This is the main exam guide. |
+| **2** | [COURSE_COMPANION.md](COURSE_COMPANION.md) | Follow the four-week route and its 13 units, labs, capstone, and recall checks. |
+| **3** | [ENABLE_CORTEX_AND_RAG.md](ENABLE_CORTEX_AND_RAG.md) | Set up a test account/role, check AI Function access, and work through the Search and RAG lab while studying the related units. |
+| **4** | [AI_ML_DEEP_DIVE.md](AI_ML_DEEP_DIVE.md) | Go deeper on functions, access, models, cost, guardrails, and evaluation. Focus first on topics you could not explain from steps 1–3. |
+| **5** | [PRACTICE_EXAM.md](PRACTICE_EXAM.md) | Take the 28 original questions closed-book. Review every miss against the study guide and official docs, then take Snowflake's official practice exam separately. |
+| **6** | [OFFICIAL_DOC_INDEX.md](OFFICIAL_DOC_INDEX.md) | Use the official C02 PDF's grouped source links to resolve a specific missed exam objective. |
+| **7** | [AI_ML_DOC_ATLAS.md](AI_ML_DOC_ATLAS.md) | Use this broader 310-page documentation map when you need a particular Snowflake AI/ML topic. It is a reference index, not a cover-to-cover assignment. |
+
+Steps 6–7 are reference tools: open them whenever a question or lab exposes a gap. The core loop is **study → practise in Snowflake → test yourself → repair misses**. This material began on 2026-09-24 from the official Snowflake C02 study guide dated 2026-04-30, the supplied Snowflake GenAI course datasheet, and Snowflake documentation. It is an independent study aid, not an official Snowflake exam or a guarantee of a pass.
 
 ## Exam map
 
@@ -15,12 +25,11 @@ Start with [the study guide](STUDY_GUIDE.md), follow the [course companion and f
 
 The question counts approximate the blueprint with a 28-question set. The guide's five sample questions are **not** reproduced here. The official practice exam is linked from the [Snowflake practice exam page](https://learn.snowflake.com/en/certifications/snowpro-practice-exams/); use it separately.
 
-## How to use this
+## Study method
 
-1. Read the four domain chapters and reproduce the syntax examples from memory.
-2. Build the small lab in the guide using a Snowflake account, keeping costs and privileges in view. Examples here were checked against documentation but have **not** been run in a Snowflake account.
-3. Attempt all 28 questions before opening the answer key. For each miss, write the product choice, exact syntax or privilege, billing unit, and the linked documentation page.
-4. Revisit Snowflake's official study guide and current docs just before booking. Snowflake products, names, pricing, availability, and privilege rules change.
+- Reproduce important syntax examples from memory and work through the small labs in a Snowflake test account. Repository SQL was checked against documentation but has **not** been run in a Snowflake account.
+- Attempt the 28 questions before opening the answer key. For each miss, record the product choice, exact syntax or privilege, billing unit, and official documentation page.
+- Revisit Snowflake's official study guide and current docs just before booking. Product names, prices, availability, and privilege rules can change.
 
 The [course companion](COURSE_COMPANION.md) turns the two-day GenAI syllabus into 13 study units, a flexible four-week sequence, labs, a capstone, and ten closed-book checks. Its topic map is our interpretation; the course datasheet does not define C02 exam weights or promise exam coverage.
 
@@ -40,7 +49,7 @@ Snowflake's free [AI and Agents Learning Track](https://learn.snowflake.com/en/p
 | 4. [Snowflake X GenAI: LLM Functions](https://learn.snowflake.com/en/courses/OD-SXGA2/) | 4 hours | Domain 2 hands-on function introduction. Public description names older function surfaces; verify current `AI_` syntax. |
 | 5. [Generative and Agentic AI for Executives](https://learn.snowflake.com/en/courses/OD-SXGAEX/) | 0.5 hour | Broad strategy and responsible-governance context; low priority for exact syntax/RBAC/billing questions. |
 
-For C02 preparation, start with modules 3 and 4 if you need an introduction, then use the [study guide](STUDY_GUIDE.md) and its lab to cover Search, Analyst, Agents, document processing, privileges, and billing in depth. Add module 1 for CoCo familiarity and module 2 if you want the desktop workflow. The track's public descriptions do not establish complete coverage of the certification objectives or current SQL signatures.
+If you want an introductory Snowflake course alongside step 1, consider track modules 3 and 4. Add module 1 for CoCo familiarity and module 2 if you want the desktop workflow. The track's public descriptions do not establish complete coverage of the certification objectives or current SQL signatures.
 
 Other official options: [Snowflake GenAI Training](https://learn.snowflake.com/en/courses/ILT-GENAI/) is a paid two-day/16-hour instructor-led course with labs. The [official SnowPro practice exams](https://learn.snowflake.com/en/certifications/snowpro-practice-exams/) follow the live exams' domain specifications and weightings; check purchase/access terms before starting, as Snowflake currently says an attempt must be completed within 24 hours and cannot be retaken once submitted. The earlier supplied `training.snowflake.com` catalog URL contained a login-session parameter and could not be read through the public web tool; stable public course pages are linked here.
 
