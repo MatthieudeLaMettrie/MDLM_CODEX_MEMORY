@@ -856,6 +856,7 @@ Start with the smallest failing query: one simple metric, no groupings. Add day,
 |---|---|---|
 | Unknown YAML property | Runtime/spec mismatch or indentation | Compare legacy/latest paths and environment version |
 | Metric not listed | Unparsed edit, wrong environment or disabled node | Parse; confirm serving/development environment; inspect metric name |
+| `dbt1005`: dimension name is in an incorrect format | Filter uses a physical column or unqualified semantic name | Replace `Dimension('Categories')` with `Dimension('article__categories')` for the supplied RSS model |
 | Missing column | Semantic expression differs from SQL output | Preview model output and compiled expression |
 | Unsupported dimension | Wrong qualified name or invalid join path | List dimensions for this metric; inspect entity types |
 | No aggregation time dimension | Missing/default name mismatch | Verify time dimension and exact `agg_time_dimension` name |
@@ -870,6 +871,21 @@ Start with the smallest failing query: one simple metric, no groupings. Add day,
 | Dev works, Prod differs | Source, code, schema, credentials or deployment | Compare deployed commit, relation and data-as-of time |
 | `--target dev` fails in Studio | That output does not exist | Omit it and use Studio credentials |
 | BI total differs | Consumer re-aggregates averages/ratios/distincts | Query total at requested grain; inspect report calculation |
+
+### Worked failure: selected-category filter cannot parse
+
+The supplied run reported `InvalidConfig (dbt1005)` while parsing `articles_published_selected_categories`, followed by `Invalid Semantic Manifest`. Its filter still contained `Dimension('Categories')`; the parser requires `<primary entity name>__<dimension_name>`. Both messages concern the same invalid filter in this run, before an article count can be calculated.
+
+For the supplied YAML, `article` is the primary entity and `categories` is the dimension alias. Replace the filter in the active model YAML with:
+
+```yaml
+filter: |
+  {{ Dimension('article__categories') }} IN ('Investing', 'Shares')
+```
+
+Use two underscores. `Categories` remains the physical column name; `rss_articles` is the semantic model name and is not the prefix here. Save the YAML and rerun the original command. If the new error still prints `Dimension('Categories')`, search the dbt project for that exact text and verify the saved file, branch and environment used by the run. A corrected guide file does not update the separate live dbt project. [Dimension scope](https://docs.getdbt.com/docs/build/dimensions).
+
+The user supplied a failing log, not a successful retry; the correction has not been executed against their live environment.
 
 Useful SQL probes, adapted to the real relation:
 
