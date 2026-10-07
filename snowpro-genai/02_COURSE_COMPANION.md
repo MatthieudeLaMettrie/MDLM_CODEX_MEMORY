@@ -1,12 +1,12 @@
 # Snowflake GenAI course companion for GES-C02
 
-Prepared 2026-09-24 from the five-page *Snowflake GenAI* instructor-led course datasheet supplied as `standard_genai_datasheet_24J23.pdf` (course code 26F15, two days), the official GES-C02 study guide, and the Snowflake documentation linked below. This is an independent learning plan. The course syllabus is **not** the exam blueprint: it includes broader product and implementation topics. For the exam's exact domain objectives and 18% / 38% / 29% / 15% weights, use the [four-domain guide](STUDY_GUIDE.md).
+Prepared 2026-09-24 from the five-page *Snowflake GenAI* instructor-led course datasheet supplied as `standard_genai_datasheet_24J23.pdf` (course code 26F15, two days), the official GES-C02 study guide, and the Snowflake documentation linked below. This is an independent learning plan. The course syllabus is **not** the exam blueprint: it includes broader product and implementation topics. For the exam's exact domain objectives and 18% / 38% / 29% / 15% weights, use the [four-domain guide](01_STUDY_GUIDE.md).
 
 ## How to use this companion
 
 Work each unit in order. For every product, be able to explain **when to use it, what input it accepts, what permission it needs, what it bills, and how to check the result**. Write those five answers from memory before opening the docs. Use a test account and synthetic data for labs; many features consume credits when enabled. Where the datasheet names a feature but gives no API detail, the links below point to current docs rather than inventing course content.
 
-If time is short, prioritize units 2–4, 6–8, 11–12, and the [syntax/billing sections](STUDY_GUIDE.md) of the exam guide. The other units broaden architectural understanding and cover syllabus topics that may support scenario questions. Do the [28-question practice set](PRACTICE_EXAM.md) only after the first closed-book pass.
+If time is short, prioritize units 2–4, 6–8, 11–12, and the [syntax/billing sections](01_STUDY_GUIDE.md) of the exam guide. The other units broaden architectural understanding and cover syllabus topics that may support scenario questions. Do the [28-question practice set](05_PRACTICE_EXAM.md) only after the first closed-book pass.
 
 | Course topic | Main C02 domain | Required result |
 | --- | --- | --- |
@@ -27,7 +27,7 @@ This is a sequence, **not** a fixed booking schedule. Compress or extend it arou
 | Week 1: foundations and functions | Units 1–4; run simple AI functions on synthetic rows; compare OCR, layout and field extraction | Explain each function's input/output, exact `AI_TRANSLATE` argument count, and page versus token billing |
 | Week 2: retrieval and analytics | Units 5–7; stage documents, create Search; define a semantic view; try Analyst | Answer one document question with source citation and one metric question with reviewed SQL |
 | Week 3: agents and governance | Units 8–12; connect Search and Analyst in an Agent; review permissions, traces and usage | Explain a mixed-data answer, every charged component, and where a direct CoWork upload lives |
-| Week 4: proof and repair | Unit 13 capstone; take official practice exam and the [original practice set](PRACTICE_EXAM.md); maintain error log | Resolve every miss against an official reference; reproduce syntax and billing map without notes |
+| Week 4: proof and repair | Unit 13 capstone; take official practice exam and the [original practice set](05_PRACTICE_EXAM.md); maintain error log | Resolve every miss against an official reference; reproduce syntax and billing map without notes |
 
 ### 1. Enterprise GenAI foundations
 
@@ -80,7 +80,7 @@ Production pattern: put source files in a governed internal or external stage; i
 
 Search builds an index over selected text, then supports retrieval with keyword and semantic signals and reranking. Source data and a refresh warehouse feed the index. The `ON` column is searched; `ATTRIBUTES` can be filtered; `TARGET_LAG` expresses desired freshness. Include source ID, page, and permitted citation metadata in the indexed result. Test both exact keywords and paraphrases, then inspect whether the cited chunk actually supports the answer. A service can incur serving charges even when no one asks questions. [Search overview and create/query syntax](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-search/cortex-search-overview) · [Search cost](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-search/cortex-search-costs)
 
-**Lab:** Build a small Search service over three synthetic policies with a document ID and category attribute. Compare top results for “refund deadline” and “how long do I have to return an item?” Record precision, source ID, index size, refresh work, and idle serving usage. Review the [Search example in the exam guide](STUDY_GUIDE.md).
+**Lab:** Build a small Search service over three synthetic policies with a document ID and category attribute. Compare top results for “refund deadline” and “how long do I have to return an item?” Record precision, source ID, index size, refresh work, and idle serving usage. Review the [Search example in the exam guide](01_STUDY_GUIDE.md).
 
 ### 7. Cortex Analyst and the semantic layer
 
@@ -147,7 +147,7 @@ Build this only with synthetic data and a test role. Save a short design/measure
 5. Create an Agent with the Search service and semantic view. Ask the two mixed questions and inspect the tool trace. Test a role that lacks one tool and record actual behavior.
 6. Compare answers with your ground truth. Record accuracy, unsupported claims, latency and all cost components. Review role grants, cross-region setting, guardrail behavior and usage views. Remove charge-bearing test services when finished.
 
-For exact SQL shapes, see the [exam guide](STUDY_GUIDE.md), and use each linked reference immediately before executing: product syntax and feature availability change. No SQL in this repository has been executed in a Snowflake account.
+For exact SQL shapes, see the [exam guide](01_STUDY_GUIDE.md), and use each linked reference immediately before executing: product syntax and feature availability change. No SQL in this repository has been executed in a Snowflake account.
 
 ## Closed-book retrieval questions
 
@@ -182,4 +182,4 @@ For exact SQL shapes, see the [exam guide](STUDY_GUIDE.md), and use each linked 
 
 - The supplied datasheet is a **course topic list**, with no exam weights or exact SQL signatures. The [official C02 PDF](https://learn.snowflake.com/en/certifications/snowpro-GenAI-C02/?pdf_name=SnowProGenAIStudyGuideC02.pdf) remains the exam map. The 26F15 datasheet adds CoCo, CoWork, MCP, CKE, fine-tuning and TruLens detail that may be broader than the C02 tested scope.
 - Product names drift: *Snowflake Intelligence* in the April 2026 blueprint corresponds to current CoWork documentation; *Cortex Code* appears in the blueprint while current product docs say CoCo. Some current SQL object names still retain earlier names. Read the actual question's wording and check live references for operations.
-- Pricing, region availability, privilege requirements and function parameters can change. Recheck the [pricing page](https://docs.snowflake.com/en/user-guide/snowflake-cortex/pricing), [AI Functions reference](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql), and [official documentation index](OFFICIAL_DOC_INDEX.md) just before booking.
+- Pricing, region availability, privilege requirements and function parameters can change. Recheck the [pricing page](https://docs.snowflake.com/en/user-guide/snowflake-cortex/pricing), [AI Functions reference](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql), and [official documentation index](06_OFFICIAL_DOC_INDEX.md) just before booking.

@@ -2,11 +2,11 @@
 
 Prepared 2026-09-24. Blueprint: Snowflake's *SnowPro Specialty: Gen AI Exam Study Guide*, last updated 2026-04-30, supplied as `SnowProGenAIStudyGuideC02.pdf`. Official documentation is the source of truth for syntax and current behavior. This guide prioritizes the exam blueprint while flagging changes in live docs. Product labels and charges can change before the test; recheck the [pricing](https://docs.snowflake.com/en/user-guide/snowflake-cortex/pricing) and [AI cost governance](https://docs.snowflake.com/en/user-guide/snowflake-cortex/governance-and-availability/ai-cost-management-and-governance) pages before booking.
 
-For a module-by-module route based on the supplied Snowflake GenAI course datasheet, use the [course companion](COURSE_COMPANION.md). It adds guided labs, a capstone, and a distinction between the broader course syllabus and this exam blueprint.
+For a module-by-module route based on the supplied Snowflake GenAI course datasheet, use the [course companion](02_COURSE_COMPANION.md). It adds guided labs, a capstone, and a distinction between the broader course syllabus and this exam blueprint.
 
-For current coverage of all listed AI Functions, the complete access path, model RBAC, guardrails, cost-view changes, and Snowflake ML, use the [AI/ML deep dive](AI_ML_DEEP_DIVE.md) and its [documentation atlas](AI_ML_DOC_ATLAS.md).
+For current coverage of all listed AI Functions, the complete access path, model RBAC, guardrails, cost-view changes, and Snowflake ML, use the [AI/ML deep dive](04_AI_ML_DEEP_DIVE.md) and its [documentation atlas](07_AI_ML_DOC_ATLAS.md).
 
-For account/trial activation, role grants, model and regional checks, and a RAG walkthrough, use [Enable Cortex AI and build a RAG lab](ENABLE_CORTEX_AND_RAG.md).
+For account/trial activation, role grants, model and regional checks, and a RAG walkthrough, use [Enable Cortex AI and build a RAG lab](03_ENABLE_CORTEX_AND_RAG.md).
 
 ## One-page memory sheet
 
@@ -215,4 +215,4 @@ As checked in the current parsing guide, `AI_PARSE_DOCUMENT` accepts files up to
 4. Define a small semantic view over structured invoice rows; add one verified query and one custom instruction. Ask a question through Analyst, then combine Analyst and Search in an Agent if your account and privileges permit.
 5. Inspect query history and feature usage views; measure answer accuracy, cost, latency, permissions, and whether any retrieved text exposed data outside the intended audience. Clean up the test service and compute pool when done.
 
-See the [source index](OFFICIAL_DOC_INDEX.md) for official Snowflake resource URLs embedded in the supplied PDF's four domain resource sections; the core links above were individually checked during this pass, while the larger index is an extraction for follow-up reading.
+See the [source index](06_OFFICIAL_DOC_INDEX.md) for official Snowflake resource URLs embedded in the supplied PDF's four domain resource sections; the core links above were individually checked during this pass, while the larger index is an extraction for follow-up reading.

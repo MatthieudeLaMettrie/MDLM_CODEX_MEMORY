@@ -2,7 +2,7 @@
 
 Generated 2026-09-25 from Snowflake's official `llms.txt` section indexes.
 This is a **page inventory**, not a claim that every page is examined in depth or that every detail is on the GES-C02 exam.
-Each entry was fetched to check availability and read its Markdown headings. Use the [deep-dive guide](AI_ML_DEEP_DIVE.md) for the synthesized study notes.
+Each entry was fetched to check availability and read its Markdown headings. Use the [deep-dive guide](04_AI_ML_DEEP_DIVE.md) for the synthesized study notes.
 The first three sections come from live official section indexes; the final two add ML Function and SQL reference pages linked by the user's entry points. The table links open normal documentation pages; the `llms.txt` and `.md` URLs are used only to build the inventory. Run `python build_ai_ml_doc_atlas.py` to refresh.
 
 | Collection | Indexed pages |

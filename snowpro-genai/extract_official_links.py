@@ -1,7 +1,7 @@
 """Extract official Snowflake links from a supplied C02 study-guide PDF.
 
 Usage: python extract_official_links.py path/to/SnowProGenAIStudyGuideC02.pdf
-Requires pypdf. Writes OFFICIAL_DOC_INDEX.md beside this script.
+Requires pypdf. Writes 06_OFFICIAL_DOC_INDEX.md beside this script.
 """
 
 from collections import defaultdict
@@ -53,7 +53,7 @@ def main() -> None:
         "# Official Snowflake resource links from the C02 PDF",
         "",
         "Extracted from the official study-guide PDF dated 2026-04-30.",
-        "These are the distinct official Snowflake documentation, developer-guide, quickstart, and Snowflake-authored reading URLs embedded in its four domain resource pages, grouped by PDF page. Some pages redirect, change, or become legacy; extraction does **not** mean every linked page was individually validated in this study pass. The main [study guide](STUDY_GUIDE.md) cites the pages checked for its specific claims. Third-party reading assets are omitted.",
+        "These are the distinct official Snowflake documentation, developer-guide, quickstart, and Snowflake-authored reading URLs embedded in its four domain resource pages, grouped by PDF page. Some pages redirect, change, or become legacy; extraction does **not** mean every linked page was individually validated in this study pass. The main [study guide](01_STUDY_GUIDE.md) cites the pages checked for its specific claims. Third-party reading assets are omitted.",
         "",
         "The complete Snowflake documentation catalog is much larger than this exam scope. Use this list as the official guide's reading map, and recheck live pages at exam time.",
         "",
@@ -72,7 +72,7 @@ def main() -> None:
         parts.append("")
     parts.insert(2, f"{count} domain-link entries across the four PDF resource sections (duplicates across domains retained).")
     parts.insert(3, "")
-    output = Path(__file__).with_name("OFFICIAL_DOC_INDEX.md")
+    output = Path(__file__).with_name("06_OFFICIAL_DOC_INDEX.md")
     output.write_text("\n".join(parts), encoding="utf-8")
     print(f"Wrote {output} ({count} entries)")
 

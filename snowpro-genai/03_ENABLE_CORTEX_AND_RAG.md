@@ -1,6 +1,6 @@
 # Enable Cortex AI and build a RAG lab
 
-Checked against Snowflake documentation on 2026-09-25. This practical companion to the [GES-C02 study guide](STUDY_GUIDE.md) uses instructional SQL templates. Replace account-specific names and recheck current documentation. No Snowflake account was available to run these examples.
+Checked against Snowflake documentation on 2026-09-25. This practical companion to the [GES-C02 study guide](01_STUDY_GUIDE.md) uses instructional SQL templates. Replace account-specific names and recheck current documentation. No Snowflake account was available to run these examples.
 
 ## Account, billing, and access
 
@@ -77,7 +77,7 @@ ALTER ACCOUNT SET ENABLE_CORTEX_ANALYST = TRUE;
 GRANT DATABASE ROLE SNOWFLAKE.CORTEX_ANALYST_USER TO ROLE <analyst_role>;
 ```
 
-For governance, approve model/region access and data classification; limit table, stage, Search, and Agent privileges; inspect `PUBLIC` inheritance; and monitor spend. [Budgets, shared resource budgets, and per-user quotas](https://docs.snowflake.com/en/user-guide/snowflake-cortex/governance-and-availability/ai-cost-management-and-governance) differ by feature. Quotas can block per-user use shortly after a limit; budgets are evaluated periodically and are not instantaneous hard caps. Check the [pricing page](https://docs.snowflake.com/en/user-guide/snowflake-cortex/pricing) and [cost section](AI_ML_DEEP_DIVE.md) for the product used.
+For governance, approve model/region access and data classification; limit table, stage, Search, and Agent privileges; inspect `PUBLIC` inheritance; and monitor spend. [Budgets, shared resource budgets, and per-user quotas](https://docs.snowflake.com/en/user-guide/snowflake-cortex/governance-and-availability/ai-cost-management-and-governance) differ by feature. Quotas can block per-user use shortly after a limit; budgets are evaluated periodically and are not instantaneous hard caps. Check the [pricing page](https://docs.snowflake.com/en/user-guide/snowflake-cortex/pricing) and [cost section](04_AI_ML_DEEP_DIVE.md) for the product used.
 
 ## RAG: retrieve, then generate from evidence
 
