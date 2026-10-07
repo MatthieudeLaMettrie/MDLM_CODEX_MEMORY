@@ -455,6 +455,108 @@ Reconcile using the same relation, filters, clock, grain and null policy. Inspec
 
 The engine generates more elaborate SQL when joins, rolling windows or multiple metrics require it. Longer SQL is not itself evidence of a wrong calculation.
 
+### Add business logic: last seven days and two publishers
+
+Choose where the rule belongs:
+
+| Need | Where to put it |
+|---|---|
+| The user chooses different dates/publishers each time | A query `--where` filter on the existing metric |
+| The business wants a stable named definition for chosen publishers or a current-date KPI | A new simple metric with `filter` |
+| A chart needs the trailing-seven-day value at every historical date | A cumulative metric with `window: 7 days` and a time spine |
+
+Filters restrict input rows before the simple aggregation. Keep `articles_published` as the general metric, and add new names for fixed business rules. Do not replace the general definition just to answer one report question. [Simple metric filters](https://docs.getdbt.com/docs/build/simple).
+
+#### Expose the publisher as a dimension
+
+Your supplied YAML does not declare a publisher dimension. If the SQL model outputs a column named `Publisher`, add this entry under its existing `columns:` list:
+
+```yaml
+- name: Publisher
+  dimension:
+    name: publisher
+    type: categorical
+```
+
+`Publisher` is an assumed physical column name, not a verified column. Replace it with your actual column. If publisher is absent, add a reliable publisher attribute upstream first. In the examples, `Publisher A` and `Publisher B` are placeholders for the exact stored values. Standardize inconsistent spelling/case upstream if necessary.
+
+#### Define two reusable metrics
+
+Add these entries to the existing model-level `metrics:` list in your latest-format YAML. They are additions, not a second declaration of `fei_rss_source_brz`.
+
+```yaml
+- name: articles_published_last_7_calendar_days
+  label: Articles published in seven calendar days including today
+  type: simple
+  agg: count_distinct
+  expr: URL
+  filter: |
+    {{ TimeDimension('article__date_published', 'day') }}
+      >= DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 6 DAY)
+    AND {{ TimeDimension('article__date_published', 'day') }}
+      < DATE_ADD(CURRENT_DATE('Australia/Sydney'), INTERVAL 1 DAY)
+
+- name: articles_published_selected_publishers
+  label: Articles published by Publisher A or Publisher B
+  type: simple
+  agg: count_distinct
+  expr: URL
+  filter: |
+    {{ Dimension('article__publisher') }} IN ('Publisher A', 'Publisher B')
+```
+
+These date predicates use BigQuery SQL and assume the semantic date reflects the intended Sydney business calendar. If `Date_Published` is a timestamp, model the agreed business date explicitly before relying on this interpretation. [Time dimension configuration](https://docs.getdbt.com/docs/build/dimensions), [BigQuery date functions](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions).
+
+The first metric counts **today plus the preceding six calendar dates**. For example, when Sydney's current date is 7 October, it includes 1–7 October and excludes 30 September and 8 October. It excludes future calendar dates but does not impose a precise current-instant cutoff within today. It is a current-date KPI: grouping it by historical date yields daily counts only inside the current seven-date range, not a rolling series for all history.
+
+If the requirement is the **previous seven completed calendar days**, use `>= DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 7 DAY)` and `< CURRENT_DATE('Australia/Sydney')`: on 7 October, that covers 30 September–6 October. An exact **last 168 hours** requires a timestamp clock and timestamp bounds, not this daily dimension. Do not use an inclusive lower bound of today minus seven days together with an inclusive today upper bound: that covers eight calendar dates.
+
+The second metric includes articles from **either** chosen publisher, across all dates unless the query adds a time filter. `IN` expresses OR membership. `publisher = 'A' AND publisher = 'B'` would require the same single-valued column to equal both names and normally returns no rows. To count articles from those publishers in the last seven calendar days, combine the two predicates with `AND` in another named metric's `filter`, or filter the publisher metric at query time.
+
+#### Apply the rules at query time instead
+
+After declaring the publisher dimension and parsing, a one-off publisher request can keep the general metric:
+
+```shell
+dbt parse
+dbt sl query --metrics articles_published --where "{{ Dimension('article__publisher') }} IN ('Publisher A', 'Publisher B')"
+```
+
+That returns their combined distinct count. Add `--group-by article__publisher` if you want one row per publisher. To combine the date and publisher rules without another metric:
+
+```shell
+dbt sl query --metrics articles_published --where "{{ TimeDimension('article__date_published', 'day') }} >= DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 6 DAY) AND {{ TimeDimension('article__date_published', 'day') }} < DATE_ADD(CURRENT_DATE('Australia/Sydney'), INTERVAL 1 DAY) AND {{ Dimension('article__publisher') }} IN ('Publisher A', 'Publisher B')"
+```
+
+Use the dimension names returned by discovery in your actual environment. These commands require supported platform setup; use the corresponding `mf` workflow for independently configured local MetricFlow. Dynamic current-date predicates evaluate when the warehouse query executes; an export or cached result can retain an earlier answer until refreshed. [Query filters and time-dimension syntax](https://docs.getdbt.com/docs/build/metricflow-commands).
+
+For independent reconciliation, assuming `Date_Published` is DATE and `Publisher` exists:
+
+```sql
+select count(distinct URL) as articles_last_7_days_selected_publishers
+from {{ ref('fei_rss_source_brz') }}
+where Date_Published >= date_sub(current_date('Australia/Sydney'), interval 6 day)
+  and Date_Published < date_add(current_date('Australia/Sydney'), interval 1 day)
+  and Publisher in ('Publisher A', 'Publisher B')
+```
+
+#### For a historical rolling chart
+
+Use the cumulative definition already explained in lesson 9 rather than a filter relative to today:
+
+```yaml
+metrics:
+  - name: articles_published_rolling_7d
+    label: Articles published over trailing seven days
+    type: cumulative
+    input_metric: articles_published
+    window: 7 days
+```
+
+Configure and build an adequate time spine, query by `metric_time__day`, and inspect the generated SQL/window boundaries. Each returned date has its own trailing window. This YAML fragment uses a top-level advanced metric block. [Cumulative metrics](https://docs.getdbt.com/docs/build/cumulative).
+
+Validate the new definitions with parse and semantic validation, then reconcile sample outputs with SQL. Publisher column/value names and timestamp interpretation need confirmation before live implementation; no warehouse or MetricFlow queries were executed for these examples.
+
 ## Lesson 9 — The five metric types
 
 | Type | Question | FEI or general example |
