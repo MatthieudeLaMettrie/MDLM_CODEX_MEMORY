@@ -28,6 +28,70 @@ These tools can work together, but are not interchangeable:
 
 For example, ADF can land database CDC events as immutable JSON files in ADLS; Auto Loader can ingest those files; AUTO CDC can maintain Silver current state; Gold can aggregate it; CDF can expose later table changes to another consumer. Each arrow still needs an agreed contract.
 
+### When to use each: start with four questions
+
+1. **Do I need a repeatable source → clean → reporting process?** Design a data pipeline. This is the overall workflow; Lakeflow declarative pipelines are one Databricks implementation. Use a job/workflow to coordinate external delivery checks, pipeline updates and consumer publication where needed.
+2. **Is the next input a newly delivered cloud file?** Consider Auto Loader for ongoing incremental file ingestion. A one-off file read can be simpler when there is no continuing delivery requirement.
+3. **Does an existing business record change or disappear?** Establish CDC semantics: key, operation and authoritative sequence. Capture those changes through a supported source connector/extractor, then apply them using AUTO CDC or another reviewed implementation. AUTO CDC does not independently connect to every operational database or discover its transaction log.
+4. **Has the change already happened inside a Delta table, and must another consumer receive it?** Consider CDF. Read retained table changes and apply them according to the downstream contract; do not mistake the feed itself for a completed target synchronization.
+
+These questions address different boundaries. A project can need all four. A batch pipeline can use CDC/CDF; choosing them does not require an always-running stream. Conversely, frequent execution does not make an ordinary repeated full extract a CDC feed. [Pipeline execution model](https://docs.databricks.com/aws/en/ldp/concepts/pipelines) · [AUTO CDC](https://docs.databricks.com/aws/en/ldp/cdc) · [CDF](https://learn.microsoft.com/en-us/azure/databricks/tables/features/change-data-feed) · [Auto Loader](https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/)
+
+### Scenario 1: store sales arrive as new files every 15 minutes
+
+**Situation:** stores export distinct new transactions to an ADLS landing directory. Reporting needs sales by store/day. The files do not contain corrections or deletions.
+
+**Proposed design:** Auto Loader ingests newly delivered files into Bronze. A pipeline parses amounts/dates, checks event IDs and routes invalid rows to quarantine; Silver holds accepted sales and Gold calculates store totals. A job runs updates on the agreed schedule after delivery readiness checks.
+
+**Use:** pipeline + Auto Loader. **Add CDC** only when the source actually supplies corrections/deletes that must change current state. **Add CDF** when another consumer needs changes from a maintained Delta table. Auto Loader's file progress cannot identify the same transaction copied into another filename. Sections 4 and 8 provide the fake-file/quality examples.
+
+### Scenario 2: an operational order is corrected and then cancelled
+
+**Situation:** a SQL database stores O001 at 120.00. A correction changes it to 135.00; a cancellation later deletes or marks it inactive. A dashboard must reflect current orders rather than count each correction as another sale.
+
+**Proposed design:** a supported extractor captures source changes with order key, operation and source ordering. Land/stream the change messages, then use AUTO CDC SCD1 in a pipeline to maintain Silver current state. Gold queries that state. If the changes arrive as files, Auto Loader handles file ingestion before CDC application.
+
+**Use:** CDC + pipeline; Auto Loader depends on transport. A business cancellation may be a status update rather than a physical database delete: implement the business rule that decides whether it remains in reporting. Section 6 demonstrates authoritative sequencing, stale correction handling and a delete event with expected totals.
+
+### Scenario 3: Silver orders already change in Delta; another system must follow
+
+**Situation:** Databricks has a maintained Silver Delta orders table. A second mart, cache or downstream integration needs the changed rows rather than another full scan/export.
+
+**Proposed design:** read Silver's CDF from a consistent bootstrap/resume boundary. Upsert inserts/postimages by order key and propagate deletes. Preserve consumer progress and make retries safe for the selected sink. A target table inside Databricks can use the CDF-to-AUTO CDC pattern in section 7. A Synapse/external target needs its own supported transport and application logic.
+
+**Use:** CDF + consumer pipeline. Auto Loader is useful only if a file boundary is part of that design. CDF is finite history; an outage beyond retained versions requires a controlled re-bootstrap rather than silently resuming at the latest version.
+
+### Scenario 4: investigate how an order's value changed
+
+**Situation:** an analyst asks why O001 moved from 120.00 to 135.00 and whether it was subsequently deleted.
+
+**Proposed design:** read available CDF preimages/postimages/deletes and persist required change evidence to a separately governed archive before source history expires. If the reporting requirement is historical supplier/store attributes with effective intervals, use an appropriate SCD2 history design and temporal joins.
+
+**Use:** CDF + archival pipeline for Delta change evidence; CDC/SCD2 for the modeled historical-state requirement. Neither automatically provides a human actor/reason field, permanent retention or a complete compliance audit. Obtain business actor/reason from the originating system where required. Section 5 provides the fake CDF history/archive.
+
+### Scenario 5: a small complete supplier snapshot arrives nightly
+
+**Situation:** a source provides a small, authoritative full supplier list once per day, with no reliable change-event interface. Nightly freshness is sufficient.
+
+**Proposed design:** a scheduled batch pipeline validates delivery completeness, keys and schema, then replaces/reconciles the isolated current-state target under the chosen release strategy. If history is needed, compare complete snapshots under an explicit policy or use supported snapshot CDC capabilities.
+
+**Use:** a batch pipeline can be enough. A regular file landing can use Auto Loader, but file ingestion alone does not infer which suppliers were deleted. Absence means deletion only when the source guarantees that this is a complete authoritative snapshot; it cannot be inferred safely from a partial extract. CDF becomes useful if a downstream consumer needs changes from the resulting Delta table.
+
+### One combined architecture
+
+This is an illustrative integration, not an implemented production system:
+
+```mermaid
+flowchart LR
+    A[Operational database] -->|Source CDC extractor| B[Immutable change files in ADLS]
+    B -->|Auto Loader| C[Bronze change messages]
+    C -->|Pipeline with AUTO CDC| D[Silver current orders]
+    D -->|Pipeline aggregation| E[Gold reporting]
+    D -->|CDF reader and consumer logic| F[Another mart or external integration]
+```
+
+The **source CDC extractor** captures business changes; **Auto Loader** discovers files; **AUTO CDC** applies ordered changes; **CDF** exposes changes from the maintained table; the **pipeline** connects repeatable processing stages. Choose only the mechanisms required by the source, transport, change semantics and consumers.
+
 ## 2. One fake business story, three representations
 
 Three orders initially exist:
