@@ -202,6 +202,8 @@ Record recovery time objective and recovery point objective against retained sou
 
 ## 9. Delta change data feed is downstream change evidence
 
+For concrete fake-table inserts, corrections, deletes, CDF reads/archiving, AUTO CDC and Auto Loader examples, use [12 — Practical examples](12_PIPELINES_CDF_CDC_AUTO_LOADER_EXAMPLES.md). For pipeline setup, dataset types, expectations and older DLT syntax, use [11 — Lakeflow pipelines and DLT](11_LAKEFLOW_PIPELINES_AND_DLT_GUIDE.md).
+
 CDF exposes row-level changes from a Delta table; it is different from obtaining CDC directly from the operational database. Use it for downstream incremental consumers only with a defined bootstrap, offset and retention plan. The explicit enablement pattern below uses the longstanding CDF interface; new automatic CDF capabilities require their own availability checks.
 
 ```sql

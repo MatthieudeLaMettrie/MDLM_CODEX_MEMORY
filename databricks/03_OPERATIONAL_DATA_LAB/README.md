@@ -51,6 +51,8 @@ The oracle selects global latest state across accepted events independently of t
 
 ## 3. Set up in a dedicated development namespace
 
+For the meaning of a volume, managed/external choices, setup, permissions and suitable file contents, read [10 — Unity Catalog volumes](../10_UNITY_CATALOG_VOLUMES_GUIDE.md) before these steps.
+
 1. Use an existing Unity Catalog catalog ending in `_dev`, such as `training_dev`. Ask the platform owner to configure its managed storage and appropriate development permissions if you do not have them. The sample intentionally rejects production-style catalog names.
 2. Use compatible compute and record runtime/access mode. Volume access, Delta and tolerant SQL casts are required. Intended classic baseline is DBR 15.4 LTS or a later supported version; verify exact functions/features on your runtime. Do not install another PySpark over Databricks' provided runtime.
 3. Inspect whether the lab's four tables already exist. Use an unused dev catalog or inspect/reset only the documented lab tables before starting. Existing unrelated tables must not be reused.

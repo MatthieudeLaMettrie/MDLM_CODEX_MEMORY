@@ -113,6 +113,8 @@ E02's Azure page repeatedly timed out in the browsing tool during authoring. Its
 
 ## How to use this index
 
+The 61-entry core index is supplemented by source links beside the explanations in [10 — Volumes](10_UNITY_CATALOG_VOLUMES_GUIDE.md), [11 — Pipelines and DLT](11_LAKEFLOW_PIPELINES_AND_DLT_GUIDE.md) and [12 — Fake-table pattern examples](12_PIPELINES_CDF_CDC_AUTO_LOADER_EXAMPLES.md). Guide 11 explicitly incorporates the requested AWS pipeline-concepts page; Azure storage/identity guidance remains the course default.
+
 Start with the failing boundary and the [workbook case](07_TROUBLESHOOTING_PRACTICE.md), then open the narrowest relevant page. Write down the rule, its runtime/feature conditions and the check that proves it applies. Add that evidence to your master notebook. Do not substitute copying a long page for reproducing the small behavior you need to understand.
 
 Keep your locked certification sequence in the [existing curriculum](../learning/certifications/AI_STUDY_CURRICULUM.md). This course adds practical Databricks data engineering materials; it does not assign another credential or imply full coverage of a live exam blueprint.
