@@ -1,4 +1,4 @@
-# Debugging workbook: attempt before explanation
+# 04 — Debugging workbook: attempt before explanation
 
 Twenty original scenarios. These are reasoning exercises, not actual exam questions. Code has not been run against your warehouse. Each case supplies its own assumptions; do not assume an adapter unless stated. If information is insufficient, identify exactly what evidence you need rather than inventing it.
 

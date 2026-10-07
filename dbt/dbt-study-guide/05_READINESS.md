@@ -1,4 +1,4 @@
-# Readiness and a flexible preparation window
+# 05 — Readiness and a flexible preparation window
 
 Your baseline is not yet assessed. Course completion and prior project work are useful experience, but neither is a measured readiness result. Start with workbook Cases 1–3 and record time, confidence and hints.
 

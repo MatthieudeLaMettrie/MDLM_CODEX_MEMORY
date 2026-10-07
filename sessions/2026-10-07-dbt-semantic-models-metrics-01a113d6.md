@@ -24,3 +24,13 @@ Passed Markdown relative-link/anchor and fence checks, YAML parsing with duplica
 ## Publication and next steps
 
 Commit and push only course/lab/navigation/memory/session artifacts to current main under standing authorization; verify remote hash afterward. Git output and final response provide publication evidence. User can begin the course immediately; later live tailoring requires existing YAML, model output columns, runtime and any query error without secrets.
+
+## Follow-up: requested folder and numbered learning order
+
+User requested saving the course under dbt/dbt-study-guide and organizing it like snowpro-genai, with numbers showing where to begin. Read current memory/session records and inspected both folder layouts. Working tree was clean on main after the initial published course commit 0384787.
+
+Moved the course and its complete lab into the requested folder. Numbered the study materials: 00_START_HERE.md, 01_CORE_GUIDE.md, 02_SEMANTIC_MODELS_AND_METRICS_COURSE.md, 03_SEMANTIC_MODELS_LAB/, 04_PRACTICE.md, 05_READINESS.md, 06_SOURCES.md. Added a folder README with the full sequence and a focused 02-course -> 03-lab -> course exercises/capstone route. Kept the initial core diagnostic before explanations and sources available at any stage. Matched SnowPro's guide/lab/practice/reference structure; did not modify SnowPro itself.
+
+Updated current navigation, relocated relative links, document titles and durable memory. Preserved substantive lessons, lab SQL/YAML/CSV, progress data and historical verification. Original creation paths above remain historical descriptions; current paths are in this follow-up and memory. Passed checks for 105 relative links/anchors, balanced Markdown fences and the complete 00–06 path. Confirmed all eight lab data/SQL/YAML assets, progress.csv and verification.json are unchanged compared with the initial commit. Reviewed Git diff and whitespace before publication to current main. No warehouse or dbt runtime checks are needed for this file-organization-only change.
+
+The first push was rejected because remote main concurrently received the SnowPro numbered-path changes. Fetched and reviewed those commits, their memory changes and session note; rebased the unpublished dbt organization commit onto remote main without conflict. Preserved both sets of numbering changes and reran navigation checks before publishing.

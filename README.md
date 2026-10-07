@@ -14,7 +14,7 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 ## Study guides
 
-- [dbt semantic models and metrics: practical course](dbt/SEMANTIC_MODELS_AND_METRICS_COURSE.md) — FEI RSS examples, 16 lessons, both YAML specifications, reproducible BigQuery lab, queries, debugging and capstone.
+- [02 — dbt semantic models and metrics: practical course](dbt/dbt-study-guide/02_SEMANTIC_MODELS_AND_METRICS_COURSE.md) — FEI RSS examples, 16 lessons, both YAML specifications, reproducible BigQuery lab, queries, debugging and capstone. Follow the [00 → 06 numbered learning path](dbt/dbt-study-guide/README.md) for the full dbt sequence.
 
 - [Data and dbt concepts: indexing, joins, React/Next.js, incremental strategies and freshness](guides/data-engineering/DATA_AND_DBT_CONCEPTS_GUIDE.md) — use cases, SQL/YAML examples, diagrams and platform distinctions.
 

@@ -1,6 +1,8 @@
-# dbt semantic models and metrics: a practical course
+# 02 — dbt semantic models and metrics: a practical course
 
 Prepared for Matthieu • 7 October 2026 • Beginner to practical implementation
+
+[Numbered learning path](README.md) · Next hands-on step: [03 — BigQuery lab](03_SEMANTIC_MODELS_LAB/README.md).
 
 **Start here:** a dbt SQL model prepares data; a semantic model explains what that data means; a metric defines the number a business wants to calculate. MetricFlow turns a request for those metrics and dimensions into warehouse SQL.
 
@@ -181,7 +183,7 @@ Platform `dbt sl` commands and self-hosted `mf` commands are distinct workflows.
 
 ## Lesson 6 — Build a small BigQuery lab
 
-The accompanying [lab files](semantic-models-lab/README.md) contain synthetic data, SQL, tests, a daily time spine and **two alternative semantic configurations**. They are study assets in this repository, not an installed dbt project. They do not alter your private `dbt_cert` project.
+The accompanying [03 — lab files](03_SEMANTIC_MODELS_LAB/README.md) contain synthetic data, SQL, tests, a daily time spine and **two alternative semantic configurations**. They are study assets in this repository, not an installed dbt project. They do not alter your private `dbt_cert` project.
 
 ### A. Understand the data
 
@@ -511,7 +513,7 @@ An article count of zero can mean no qualifying articles. A missing average mean
 
 `published_date` answers “When was the article published?” Ingestion time answers “When did this source row arrive?” A dbt processing timestamp answers “When did this transformation process the row?” Metrics do not replace source freshness checks.
 
-If stale source data is rebuilt today, the metrics can still describe stale business data. Display an appropriate data-as-of signal separately. See the [existing freshness guide](../guides/data-engineering/DATA_AND_DBT_CONCEPTS_GUIDE.md).
+If stale source data is rebuilt today, the metrics can still describe stale business data. Display an appropriate data-as-of signal separately. See the [existing freshness guide](../../guides/data-engineering/DATA_AND_DBT_CONCEPTS_GUIDE.md).
 
 ## Lesson 11 — Join semantic models without inflating results
 

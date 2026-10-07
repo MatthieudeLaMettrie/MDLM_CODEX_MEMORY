@@ -1,19 +1,23 @@
-# Your dbt learning guide
+# 00 — Start here: your dbt learning guide
 
 Prepared 22 September 2026. Designed for someone who has completed dbt courses and built projects, with extra emphasis on debugging and evidence of readiness.
 
+Organized into a numbered learning path on 7 October 2026. Open the [folder overview](README.md) for the complete **00 → 06** sequence. For semantic models and metrics specifically, start with [02 — the course](02_SEMANTIC_MODELS_AND_METRICS_COURSE.md), then work through [03 — the BigQuery lab](03_SEMANTIC_MODELS_LAB/README.md) alongside its lessons.
+
 ## Start with an attempt
 
-Before reading the explanations, attempt Cases 1–3 in [the practice workbook](PRACTICE.md). Spend about ten minutes. Reply in this task with your diagnosis, evidence, fix, verification and confidence. Answers are intentionally withheld; ask for a hint or solution when you want one.
+Before reading the core explanations, attempt Cases 1–3 in [04 — the practice workbook](04_PRACTICE.md). Spend about ten minutes. Reply in this task with your diagnosis, evidence, fix, verification and confidence. Answers are intentionally withheld; ask for a hint or solution when you want one.
 
 ## Your materials
 
 | Material | Use it for |
 |---|---|
-| [Core guide](CORE_GUIDE.md) | Connected explanations, command choices, examples, source links and common failure mechanisms |
-| [Practice workbook](PRACTICE.md) | Twenty deliberate-fault scenarios; diagnosis before hints or answers |
-| [Readiness plan](READINESS.md) | A flexible 7–10 day sequence, marking rubric and retest criteria |
-| [Source provenance](SOURCES.md) | Official references and retrieval dates |
+| [01 — Core guide](01_CORE_GUIDE.md) | Connected explanations, command choices, examples, source links and common failure mechanisms |
+| [02 — Semantic models and metrics course](02_SEMANTIC_MODELS_AND_METRICS_COURSE.md) | Sixteen FEI RSS lessons, diagrams, YAML formats, metric queries, troubleshooting and capstone |
+| [03 — BigQuery semantic-model lab](03_SEMANTIC_MODELS_LAB/README.md) | Synthetic article data, SQL/YAML alternatives and expected results |
+| [04 — Practice workbook](04_PRACTICE.md) | Twenty deliberate-fault scenarios; diagnosis before hints or answers |
+| [05 — Readiness plan](05_READINESS.md) | A flexible 7–10 day sequence, marking rubric and retest criteria |
+| [06 — Source provenance](06_SOURCES.md) | Official references and retrieval dates; metrics references are also in 02 |
 | [Progress log](progress.csv) | Record attempts, hints, confidence and evidence of improvement |
 | [Collected reading index](../dbt-learning-flow/guide/START_HERE.md) | Browse the wider source library by topic |
 | [Coverage report](../dbt-learning-flow/data/coverage.json) | Inspect unsuccessful URLs and collection limitations |

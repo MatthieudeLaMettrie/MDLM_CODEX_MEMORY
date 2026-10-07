@@ -1,6 +1,6 @@
-# RSS semantic metrics lab
+# 03 — RSS semantic metrics lab
 
-Read [the course](../SEMANTIC_MODELS_AND_METRICS_COURSE.md), especially lessons 5–8, before copying files. These are teaching assets, not a complete dbt project. The SQL is for BigQuery. No warehouse execution has been performed.
+Read [02 — the course](../02_SEMANTIC_MODELS_AND_METRICS_COURSE.md), especially lessons 5–8, before copying files. Return to the [numbered learning path](../README.md) for the broader sequence. These are teaching assets, not a complete dbt project. The SQL is for BigQuery. No warehouse execution has been performed.
 
 ## Install in your existing development project
 

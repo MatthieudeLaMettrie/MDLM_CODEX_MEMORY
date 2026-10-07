@@ -1,4 +1,4 @@
-# dbt: core concepts and troubleshooting
+# 01 — dbt core concepts and troubleshooting
 
 This guide targets the concepts relevant to the dbt Analytics Engineering exam currently listed as version 1.11. All examples are original teaching examples unless stated otherwise. They are not actual exam questions or warehouse-tested labs. Live source pages may include later features; read their version notes.
 

@@ -1,4 +1,4 @@
-# Source provenance
+# 06 — Source provenance
 
 These are the official references cited by the core guide. Dates are retrieval dates, not publication dates. A saved live page is not a version-pinned 1.11 reference. The written guide is a curated synthesis, not an individual summary of every collected page.
 

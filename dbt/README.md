@@ -1,14 +1,16 @@
 # dbt learning and certification preparation
 
-**[Start the learning guide](dbt-study-guide/START_HERE.md)**
+**[Start the numbered learning path: 00 → 06](dbt-study-guide/README.md)**
 
-**[Semantic models and metrics: full practical course](SEMANTIC_MODELS_AND_METRICS_COURSE.md)** — 16 lessons using your FEI RSS lineage, latest and legacy YAML, a BigQuery lab, troubleshooting, 20 exercises and a capstone.
+**[02 — Semantic models and metrics: full practical course](dbt-study-guide/02_SEMANTIC_MODELS_AND_METRICS_COURSE.md)** — 16 lessons using your FEI RSS lineage, latest and legacy YAML, a [03 — BigQuery lab](dbt-study-guide/03_SEMANTIC_MODELS_LAB/README.md), troubleshooting, 20 exercises and a capstone.
 
 **[dbt Cloud + BigQuery setup and deployment field guide](DBT_BIGQUERY_CLOUD_GUIDE.md)** — a living record of this project's development and production setup, Git workflow, and resolved errors.
 
-- [Core reference](dbt-study-guide/CORE_GUIDE.md): source-linked explanations across the exam domains, emphasizing troubleshooting.
-- [Twenty debugging exercises](dbt-study-guide/PRACTICE.md): attempt before requesting hints; no answer key included.
-- [Readiness plan](dbt-study-guide/READINESS.md): adapt the suggested 7–10 days to measured gaps.
+- [00 — Start here](dbt-study-guide/00_START_HERE.md): orientation and diagnostic.
+- [01 — Core reference](dbt-study-guide/01_CORE_GUIDE.md): source-linked explanations across the exam domains, emphasizing troubleshooting.
+- [04 — Twenty debugging exercises](dbt-study-guide/04_PRACTICE.md): attempt before requesting hints; no answer key included.
+- [05 — Readiness plan](dbt-study-guide/05_READINESS.md): adapt the suggested 7–10 days to measured gaps.
+- [06 — Official references](dbt-study-guide/06_SOURCES.md): source provenance for the core guide.
 - [Collection workflow](dbt-learning-flow/README.md): repeatable Python collector with Markdown/HTML support.
 - [Public reading index](dbt-learning-flow/guide/START_HERE.md) and [coverage report](dbt-learning-flow/data/coverage.json).
 
