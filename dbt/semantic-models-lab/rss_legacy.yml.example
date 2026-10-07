@@ -1,0 +1,78 @@
+# Choose this OR rss_latest.yml.example, never both.
+# Legacy semantic_models / measures format; validate against your runtime.
+version: 2
+models:
+  - name: fct_rss_articles_lab
+    description: One row per article URL; synthetic publication-date lab.
+    columns:
+      - name: article_url
+        data_tests: [unique, not_null]
+      - name: published_date
+        data_tests: [not_null]
+      - name: publisher
+        data_tests: [not_null]
+      - name: language
+        data_tests: [not_null]
+      - name: article_length_chars
+        description: Character count; missing lengths remain NULL.
+
+semantic_models:
+  - name: rss_articles_lab
+    description: Semantic metadata for canonical synthetic articles.
+    model: ref('fct_rss_articles_lab')
+    defaults:
+      agg_time_dimension: published_date
+    entities:
+      - name: article
+        type: primary
+        expr: article_url
+    dimensions:
+      - name: published_date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: publisher
+        type: categorical
+      - name: language
+        type: categorical
+    measures:
+      - name: article_count_measure
+        agg: count_distinct
+        expr: article_url
+      - name: article_length_mean_measure
+        agg: average
+        expr: article_length_chars
+      - name: article_characters_measure
+        agg: sum
+        expr: article_length_chars
+      - name: known_length_count_measure
+        agg: count
+        expr: article_length_chars
+
+metrics:
+  - name: articles_published
+    label: Articles published
+    type: simple
+    type_params:
+      measure: article_count_measure
+  - name: avg_article_length
+    label: Average article length in characters
+    type: simple
+    type_params:
+      measure: article_length_mean_measure
+  - name: total_article_characters
+    label: Total known article characters
+    type: simple
+    type_params:
+      measure: article_characters_measure
+  - name: articles_with_length
+    label: Articles with a known length
+    type: simple
+    type_params:
+      measure: known_length_count_measure
+  - name: length_coverage
+    label: Fraction of articles with known length
+    type: ratio
+    type_params:
+      numerator: articles_with_length
+      denominator: articles_published

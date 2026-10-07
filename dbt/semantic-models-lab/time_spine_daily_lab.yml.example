@@ -1,0 +1,10 @@
+version: 2
+models:
+  - name: time_spine_daily_lab
+    description: One row per calendar day in 2026 for the deterministic lab.
+    time_spine:
+      standard_granularity_column: date_day
+    columns:
+      - name: date_day
+        granularity: day
+        data_tests: [unique, not_null]

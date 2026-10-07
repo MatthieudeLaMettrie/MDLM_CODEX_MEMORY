@@ -1,0 +1,26 @@
+# dbt semantic models and metrics course
+
+Date: 2026-10-07 (Australia/Sydney)
+Task identifier: 01a113d6-b790-7580-8187-69fc923348ed
+
+## Request and context
+
+User requested a full guide/course on dbt semantic models and metrics using the screenshot at Pictures/Screenshots/Screenshot 2026-10-07 114856.png, and a file in MDLM_CODEX_MEMORY. Questions were permitted if needed. Existing BigQuery/FEI context was sufficient for a course; live implementation details remain unverified.
+
+Read MEMORY.md, the three latest filename-ordered notes, AGENTS.md and navigation files. Verified clean working tree on main with the configured requested GitHub origin. Inspected the supplied screenshot: TEST_ANALYTICS Production catalogue lineage shows fei_rss_source_brz -> rss_articles -> articles_published / avg_article_length, with article primary entity described as an article URL natural key. Screenshot does not expose formulas, YAML format or execution results.
+
+## Changes and decisions
+
+- Created dbt/SEMANTIC_MODELS_AND_METRICS_COURSE.md: 16 lessons, flexible 10–14-hour route, plain explanations, diagrams, screenshot interpretation, grain/identity contracts, entities/dimensions/measures, latest and legacy YAML, querying, five metric types, time spine/timezones/freshness, joins/fanout, saved queries/exports/BI, release and governance, troubleshooting, 20 exercises with solutions withheld, capstone and rubric.
+- Added dbt/semantic-models-lab/ with deterministic synthetic CSV, BigQuery SQL models, daily calendar, alternative semantic YAML examples, negative-length test and independent reconciliation SQL. Expected overall count 5, known lengths 4, total characters 1500, average 375, coverage 0.8. Missing day and missing length are intentional teaching cases.
+- Used current official dbt documentation. Latest spec availability listed for v1 Latest, v2 and v1.12; legacy examples retained separately. Warned against mixed syntax, duplicate metric/model declarations and assuming plain Core supplies hosted dbt sl access.
+- Preserved Bronze/Silver/Gold context and Studio target caveat. Recommended grain cleanup based on actual data, not folder name. No rename or modification of live dbt_cert authorized or performed.
+- Linked course from root and dbt README and recorded availability in durable memory.
+
+## Validation and limits
+
+Passed Markdown relative-link/anchor and fence checks, YAML parsing with duplicate-key rejection (three lab alternatives/configuration files and all course YAML blocks), synthetic overall/publisher/language arithmetic, metric-reference parity between both formats, and Git whitespace checks. Reviewed the authored changes against current official references, correcting the integrations link to its current platform-integrations path. PyYAML 6.0.3 was installed only in a temporary validation folder; sandbox networking and access required approved escalated commands. No project dependency was changed. These checks are local documentation/fixture checks, not dbt schema validation. No dbt compilation, MetricFlow query, warehouse execution, hosted account check or deployment performed. Current runtime/release track and real source columns are required before adapting the lab to the live project.
+
+## Publication and next steps
+
+Commit and push only course/lab/navigation/memory/session artifacts to current main under standing authorization; verify remote hash afterward. Git output and final response provide publication evidence. User can begin the course immediately; later live tailoring requires existing YAML, model output columns, runtime and any query error without secrets.

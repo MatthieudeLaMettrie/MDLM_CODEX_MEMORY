@@ -1,0 +1,65 @@
+# Choose this OR rss_legacy.yml.example, never both.
+# Latest semantic YAML spec: confirm environment support before use.
+version: 2
+models:
+  - name: fct_rss_articles_lab
+    description: One row per article URL; synthetic publication-date lab.
+    semantic_model:
+      enabled: true
+      name: rss_articles_lab
+    agg_time_dimension: published_date
+    columns:
+      - name: article_url
+        description: Canonical article identifier in this synthetic dataset.
+        data_tests: [unique, not_null]
+        entity:
+          name: article
+          type: primary
+      - name: published_date
+        description: Publication calendar date under the lab Sydney date policy.
+        data_tests: [not_null]
+        granularity: day
+        dimension:
+          type: time
+      - name: publisher
+        data_tests: [not_null]
+        dimension:
+          type: categorical
+      - name: language
+        data_tests: [not_null]
+        dimension:
+          type: categorical
+      - name: article_length_chars
+        description: Character count; missing lengths remain NULL.
+    metrics:
+      - name: articles_published
+        label: Articles published
+        description: Distinct canonical articles grouped by publication date when time is requested.
+        type: simple
+        agg: count_distinct
+        expr: article_url
+      - name: avg_article_length
+        label: Average article length in characters
+        description: Article-weighted mean among known lengths; NULL lengths excluded.
+        type: simple
+        agg: average
+        expr: article_length_chars
+      - name: total_article_characters
+        label: Total known article characters
+        type: simple
+        agg: sum
+        expr: article_length_chars
+      - name: articles_with_length
+        label: Articles with a known length
+        description: Count non-NULL lengths; valid only at tested article grain.
+        type: simple
+        agg: count
+        expr: article_length_chars
+
+metrics:
+  - name: length_coverage
+    label: Fraction of articles with known length
+    description: Known-length article count divided by distinct article count.
+    type: ratio
+    numerator: articles_with_length
+    denominator: articles_published

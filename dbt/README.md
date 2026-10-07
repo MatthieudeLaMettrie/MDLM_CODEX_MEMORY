@@ -2,6 +2,8 @@
 
 **[Start the learning guide](dbt-study-guide/START_HERE.md)**
 
+**[Semantic models and metrics: full practical course](SEMANTIC_MODELS_AND_METRICS_COURSE.md)** — 16 lessons using your FEI RSS lineage, latest and legacy YAML, a BigQuery lab, troubleshooting, 20 exercises and a capstone.
+
 **[dbt Cloud + BigQuery setup and deployment field guide](DBT_BIGQUERY_CLOUD_GUIDE.md)** — a living record of this project's development and production setup, Git workflow, and resolved errors.
 
 - [Core reference](dbt-study-guide/CORE_GUIDE.md): source-linked explanations across the exam domains, emphasizing troubleshooting.

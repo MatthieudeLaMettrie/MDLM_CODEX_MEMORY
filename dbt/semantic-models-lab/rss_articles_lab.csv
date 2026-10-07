@@ -1,0 +1,6 @@
+article_url,published_date,publisher,language,article_length_chars
+https://example.test/a,2026-10-01,Alpha,en,100
+https://example.test/b,2026-10-01,Alpha,fr,300
+https://example.test/c,2026-10-02,Beta,en,900
+https://example.test/d,2026-10-02,Beta,fr,
+https://example.test/e,2026-10-04,Alpha,en,200
