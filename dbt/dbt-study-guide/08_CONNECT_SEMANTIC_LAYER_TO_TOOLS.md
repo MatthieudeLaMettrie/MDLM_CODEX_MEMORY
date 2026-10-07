@@ -100,6 +100,8 @@ The `rss_marketing_overview` saved query in [guide 07](07_PUBLISH_TO_BUSINESS_US
 
 ## C. Power BI
 
+For the sales/product model and detailed date/brand/category slicer steps, use [11 — Power BI connection and user slicers](11_POWER_BI_CONNECTION_AND_SLICERS.md).
+
 For execution location and storage-mode tradeoffs, read [where calculations run: DirectQuery versus Import](07_PUBLISH_TO_BUSINESS_USERS.md#where-calculations-run-directquery-versus-import). The direct dbt route uses DirectQuery; importing article rows or exported results creates a different calculation/storage path. Current dbt Semantic Layer platform support excludes Fabric.
 
 ### Connect the authoring computer

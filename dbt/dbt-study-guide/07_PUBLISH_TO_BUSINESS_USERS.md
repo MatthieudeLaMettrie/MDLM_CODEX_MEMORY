@@ -4,6 +4,8 @@ Checked against official documentation on 7 October 2026. Read after lesson 12 o
 
 Continue with [08 — Connect the Semantic Layer to six interfaces](08_CONNECT_SEMANTIC_LAYER_TO_TOOLS.md) for numbered setup steps, storage locations, Tableau, Data Studio and a React/backend API example.
 
+For the separate sales/product model, follow [11 — Power BI connection and user slicers](11_POWER_BI_CONNECTION_AND_SLICERS.md): a detailed deployment, date/brand/category UI, gateway and app publication walkthrough.
+
 ## 1. What the marketing specialist receives
 
 Publish an **RSS Content Performance** report or spreadsheet query template. You maintain the model and formulas; the marketer chooses categories and dates through visible controls.

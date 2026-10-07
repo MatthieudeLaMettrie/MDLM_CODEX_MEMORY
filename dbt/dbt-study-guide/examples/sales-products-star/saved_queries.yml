@@ -1,0 +1,16 @@
+version: 2
+
+saved_queries:
+  - name: demo_sales_marketing
+    label: Sales Marketing Overview
+    description: Sales metrics with day, product brand and category controls.
+    query_params:
+      metrics:
+        - demo_sales_revenue
+        - demo_units_sold
+        - demo_distinct_sales_orders
+        - demo_average_order_value
+      group_by:
+        - "TimeDimension('metric_time', 'day')"
+        - "Dimension('product__brand')"
+        - "Dimension('product__category')"

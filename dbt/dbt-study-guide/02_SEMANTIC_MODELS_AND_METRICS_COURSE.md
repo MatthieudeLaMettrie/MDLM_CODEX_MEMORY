@@ -865,6 +865,8 @@ For the marketing specialist's category/date filtering workflow, follow [07 — 
 
 Then use [08 — Connect the Semantic Layer to six interfaces](08_CONNECT_SEMANTIC_LAYER_TO_TOOLS.md) for the common deployment setup, storage explanation and Power BI, Excel, Google Sheets, Tableau, Data Studio and custom React/API steps.
 
+For the sales/product example, [11 — Power BI connection and user slicers](11_POWER_BI_CONNECTION_AND_SLICERS.md) walks through the deployment, DirectQuery connection, date/brand/category selectors, gateway and app publication.
+
 A **metric definition** says how to calculate a number. A **saved query** says which metrics, groupings and filters to request together. An **export** persists that query's result into a warehouse relation when executed.
 
 Example saved query, using the lab metric and dimension:

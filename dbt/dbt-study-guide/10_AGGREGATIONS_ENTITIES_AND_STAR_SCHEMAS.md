@@ -4,6 +4,8 @@ Checked **8 October 2026**. This answers your Power BI comparison: you can keep 
 
 Read with course [lesson 4, components](02_SEMANTIC_MODELS_AND_METRICS_COURSE.md#lesson-4--entities-dimensions-measures-and-metrics), [lesson 9, metric types](02_SEMANTIC_MODELS_AND_METRICS_COURSE.md#lesson-9--the-five-metric-types) and [lesson 11, joins](02_SEMANTIC_MODELS_AND_METRICS_COURSE.md#lesson-11--join-semantic-models-without-inflating-results).
 
+Next, use [11 — Power BI connection and user slicers](11_POWER_BI_CONNECTION_AND_SLICERS.md) to publish this model with date/brand/category controls.
+
 ## 1. Entity, dimension and metric
 
 | Concept | Meaning | Product/sales example | RSS example |
