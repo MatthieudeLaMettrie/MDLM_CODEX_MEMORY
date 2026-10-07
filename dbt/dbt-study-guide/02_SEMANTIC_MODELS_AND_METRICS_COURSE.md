@@ -835,6 +835,8 @@ An SCD publisher dimension with multiple historical rows also needs validity int
 
 ## Lesson 12 — Saved queries, exports and BI tools
 
+For the marketing specialist's category/date filtering workflow, follow [07 — Publish metrics to business users](07_PUBLISH_TO_BUSINESS_USERS.md). It covers your chosen tools, Power BI and Excel/Google Sheets, with deployment, connector setup, consumer sharing and aggregation checks.
+
 A **metric definition** says how to calculate a number. A **saved query** says which metrics, groupings and filters to request together. An **export** persists that query's result into a warehouse relation when executed.
 
 Example saved query, using the lab metric and dimension:

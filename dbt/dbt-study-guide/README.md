@@ -13,13 +13,14 @@
 | **04** | [Debugging practice workbook](04_PRACTICE.md) | Attempt the twenty core dbt cases; use lesson 15 of the semantic course for twenty additional metric exercises |
 | **05** | [Readiness plan](05_READINESS.md) | Score your reasoning, target gaps and retest independently |
 | **06** | [Official source references](06_SOURCES.md) | Investigate gaps; use the semantic course's own official reference library for metrics |
+| **07** | [Publish metrics to business users](07_PUBLISH_TO_BUSINESS_USERS.md) | After lesson 12, connect Power BI or Excel/Google Sheets; provide category/date controls and publish a tested consumer experience |
 
 The numbers describe the default learning sequence. Use references whenever you need them. The lab starts after course lesson 5 and accompanies lessons 6–10; you do not have to finish all 16 lessons before trying it.
 
 ## If you are here for semantic models and metrics
 
 1. Open **02**, read lessons 1–5, then use **03** alongside lessons 6–10.
-2. Finish lessons 11–14 for joins, BI consumption, deployment and debugging.
+2. Finish lessons 11–14 for joins, BI consumption, deployment and debugging. Use **07** after lesson 12 for a detailed business-user handoff.
 3. Attempt lesson 15's exercises, then complete lesson 16's FEI RSS capstone.
 4. Return to **01** or **04** when a foundational dbt concept blocks you.
 
