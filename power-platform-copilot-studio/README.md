@@ -2,7 +2,7 @@
 
 ## Recommended study order
 
-The filenames are numbered `01` to `06` so this order is visible in the GitHub folder.
+The filenames are numbered `01` to `07` so this order is visible in the GitHub folder.
 
 | Step | File | What to do |
 | ---: | --- | --- |
@@ -12,6 +12,7 @@ The filenames are numbered `01` to `06` so this order is visible in the GitHub f
 | **4** | [04_AI_ENGINEER_PLAYBOOK.md](04_AI_ENGINEER_PLAYBOOK.md) | Platform choice, identity, ALM, governance, cost, quality, failure modes, and the JB readiness checklist. |
 | **5** | [05_PRACTICE_CHECKS.md](05_PRACTICE_CHECKS.md) | Fourteen closed-book checks with answers and a lab. |
 | **6** | [06_OFFICIAL_DOC_INDEX.md](06_OFFICIAL_DOC_INDEX.md) | The Microsoft Learn pages used, and what was not read. |
+| **7** | [07_FOUNDRY_AGENT_WITH_FABRIC_TOOL.md](07_FOUNDRY_AGENT_WITH_FABRIC_TOOL.md) | Step-by-step: add the Fabric data agent tool to a Foundry agent in the new portal, test, code sample, MCP alternative, unattended-use caveat, troubleshooting. Do after step 2. |
 
 Steps 1–4 are the path; step 5 tests it; step 6 is a reference. The loop is **study → try in a dev tenant → test yourself → repair misses**.
 

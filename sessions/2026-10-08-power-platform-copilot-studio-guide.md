@@ -18,6 +18,7 @@ Date: 2026-10-08 (Australia/Sydney)
 - Unresolved licensing conflict between the Fabric page and the Copilot Studio page about builder licences.
 
 5. (2026-10-09) Screenshot of the Agents list: what is the difference between the *GitHub Copilot* and *Standard* values in the Powered by column? Answered from the Microsoft Learn harness pages; added a Harnesses section to file 01 and the doc index. It is a runtime choice, not the GitHub Copilot coding product. The Fabric/MCP/licensing pages cited earlier describe the standard harness; behaviour on the GitHub Copilot harness is unverified. User's agents: FEI_AGENT and Power BI Support Assistant show GitHub Copilot, Test_Agent_PDP shows Standard.
+6. (2026-10-09) Four screenshots of the user's Foundry project (`jb-newsletter`, prompt agent `jbnewsletteragentv1`, Foundry IQ Knowledge page, Fabric data agent MCP tab) and a request for step-by-step creation of a Foundry agent with the Fabric tool. Added file 07 from the current Foundry and Fabric docs. Findings: Fabric belongs in the agent's tools, not left-nav Knowledge (Foundry IQ is AI Search); the data agent is already published and exposes an MCP server; docs conflict on whether service principals work (Foundry page says no, Fabric MCP page says yes), so unattended runs are unverified; correct MCP audience for the data agent URL unverified; Teams/M365 publishing of the Fabric tool unverified. Nothing executed; no IDs recorded.
 
 ## Changes
 
