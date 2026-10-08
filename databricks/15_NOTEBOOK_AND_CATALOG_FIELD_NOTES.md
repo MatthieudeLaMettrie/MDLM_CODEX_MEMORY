@@ -175,7 +175,7 @@ Where you look depends on what ran. UI labels change between releases and this w
 | **Pipeline event log as a table** | Query it with SQL (below). It can be published to a Unity Catalog table through the pipeline's settings so it can be queried and alerted on long term |
 | **Notebook run interactively** | There is no event log. The error appears in the failing cell's output, which shows the first error and the Python/Spark stack trace. Use the **Spark UI** and **driver logs** on the compute for lower-level detail |
 | **Notebook or task run by a job** | **Jobs & Pipelines → Jobs → the job → Runs → the run**. The task output shows the error and the executed notebook with its cell output |
-| **Notebook that is a pipeline source file** | Its errors appear in the **pipeline** update and event log, not as ordinary cell output. A bare `SELECT` there gives the "not supported in a DLT pipeline" error ([section 4](#4-pipeline-error-statement-is-not-supported-in-a-dlt-pipeline)) |
+| **Notebook that is a pipeline source file** | Its errors appear in the **pipeline** update and event log, not as ordinary cell output. A bare `SELECT` there gives the "not supported in a DLT pipeline" error (see section 4 above) |
 | **SQL query** | **Query History** shows the failed statement, error message and duration |
 | **Delta table changes** | `DESCRIBE HISTORY <table>` or Catalog → table → **History** |
 
