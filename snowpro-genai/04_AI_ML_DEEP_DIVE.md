@@ -9,7 +9,7 @@ Checked 2026-09-25 against [Snowflake AI and ML](https://docs.snowflake.com/en/g
 | Enrich many rows with a specific AI task | Cortex AI Functions in SQL/Python | Managed functions optimized for throughput and batch processing |
 | Low-latency model inference from an app | Cortex REST API | Interactive inference endpoint; application owns prompt and state |
 | Retrieve facts from changing text | Cortex Search | Managed search index; hybrid retrieval and reranking |
-| Ask natural-language questions of structured business data | Cortex Analyst | Generates SQL from a semantic view/model; review SQL and metric definitions |
+| Ask natural-language questions of structured business data | Cortex Analyst (now recommended as a Cortex Agent tool) | Generates SQL from a semantic view/model; review SQL and metric definitions. See [the semantic layer](08_SEMANTIC_LAYER.md) |
 | Route a question among Search, Analyst and tools | Cortex Agents | Managed planning, tool calls, and final response; caller/tool permissions matter |
 | Give business users an Agent chat interface | Snowflake CoWork | Conversational surface, formerly called Snowflake Intelligence in older material |
 | Assist a developer with Snowflake code and workflows | Snowflake CoCo | Snowsight, Desktop, CLI; formerly Cortex Code in older material |
@@ -74,7 +74,7 @@ The current overview includes text and image classification/completion, document
 
 ## 3. Governance: follow the whole access path
 
-For AI Functions, think **account privilege AND database role**. Users need `USE AI FUNCTIONS ON ACCOUNT` or a specific `USE AI FUNCTION <name> ON ACCOUNT` privilege, plus `SNOWFLAKE.CORTEX_USER` or `SNOWFLAKE.AI_FUNCTIONS_USER` where applicable. The blanket privilege and `CORTEX_USER` are granted to `PUBLIC` by default in documented setups. `AI_FUNCTIONS_USER` is narrower and covers scalar functions, **not** `AI_AGG` or `AI_SUMMARIZE_AGG`; the privilege page also calls out an aggregate-function exception when the role lacks `CORTEX_USER`, so check the current page for an exact grant design. The account privilege and role are separate gates. [AI Function privileges](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql-privileges-and-access)
+For AI Functions, think **account privilege AND database role**. Users need `USE AI FUNCTIONS ON ACCOUNT` or a specific `USE AI FUNCTION <name> ON ACCOUNT` privilege, plus `SNOWFLAKE.CORTEX_USER` or `SNOWFLAKE.AI_FUNCTIONS_USER` where applicable. The blanket privilege and `CORTEX_USER` are granted to `PUBLIC` by default in documented setups. `AI_FUNCTIONS_USER` is narrower, is not granted to `PUBLIC` by default, and covers scalar functions, **not** `AI_AGG` or `AI_SUMMARIZE_AGG`. The privilege page also states the reverse exception: a role with `USE AI FUNCTIONS` but without `CORTEX_USER` can still call `AI_AGG` and `AI_SUMMARIZE_AGG`. The account privilege and role are separate gates. [AI Function privileges](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql-privileges-and-access)
 
 | Gate | Test question | Current answer |
 | --- | --- | --- |

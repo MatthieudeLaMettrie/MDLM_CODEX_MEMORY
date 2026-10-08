@@ -86,7 +86,7 @@
 | 10 | B | At least two unique categories are required. [AI_CLASSIFY](https://docs.snowflake.com/en/sql-reference/functions/ai_classify) |
 | 11 | A | `AI_EMBED` takes model then input and returns `VECTOR`. [AI_EMBED](https://docs.snowflake.com/en/sql-reference/functions/ai_embed) |
 | 12 | C | L2 is a distance, minimized for nearer vectors. [VECTOR_L2_DISTANCE](https://docs.snowflake.com/en/sql-reference/functions/vector_l2_distance) |
-| 13 | A | Use the supported structured-output `response_format`. [Structured outputs](https://docs.snowflake.com/en/user-guide/snowflake-cortex/complete-structured-outputs) |
+| 13 | A | Use the supported structured-output `response_format`. [Structured outputs](https://docs.snowflake.com/en/sql-reference/functions/ai_complete-structured-outputs) |
 | 14 | B | Relevant prior messages maintain multi-turn context, with token tradeoffs. [Analyst REST API](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst/rest-api) |
 | 15 | A | `AI_TRANSCRIBE` handles staged media transcription. [AISQL](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql) |
 | 16 | A | Container Services needs images, compute pool, and a service spec/service. [SPCS tutorial](https://docs.snowflake.com/en/developer-guide/snowpark-container-services/tutorials/tutorial-1#create-a-service) |
