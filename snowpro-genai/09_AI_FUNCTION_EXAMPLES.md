@@ -581,7 +581,7 @@ SELECT SNOWFLAKE.CORTEX.SPLIT_TEXT_RECURSIVE_CHARACTER('hello world are you here
 SELECT c.value::STRING AS chunk
 FROM (SELECT PARSE_JSON(AI_PARSE_DOCUMENT(
               TO_FILE('@MY_DB.MY_SCHEMA.DOC_STAGE', 'policy.pdf'), {'mode': 'LAYOUT'})):content::STRING AS txt) d,
-     LATERAL FLATTEN(SNOWFLAKE.CORTEX.SPLIT_TEXT_RECURSIVE_CHARACTER(d.txt, 'markdown', 1500, 200)) c;
+     LATERAL FLATTEN(input => SNOWFLAKE.CORTEX.SPLIT_TEXT_RECURSIVE_CHARACTER(d.txt, 'markdown', 1500, 200)) c;
 ```
 
 **Exam traps:** `format` is `'none'` (only your separators) or `'markdown'` (also splits on headers, code blocks and tables). `overlap` must be smaller than `chunk_size`. The chunk size is in **characters**, not tokens. The function returns an array, so `FLATTEN` it into rows.

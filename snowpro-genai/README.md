@@ -2,7 +2,7 @@
 
 ## Recommended study order
 
-The filenames are numbered `01` to `09` so this order is visible in the GitHub folder.
+The filenames are numbered `01` to `10` so this order is visible in the GitHub folder.
 
 | Step | File | What to do |
 | ---: | --- | --- |
@@ -15,8 +15,9 @@ The filenames are numbered `01` to `09` so this order is visible in the GitHub f
 | **7** | [07_AI_ML_DOC_ATLAS.md](07_AI_ML_DOC_ATLAS.md) | Use this broader 310-page documentation map when you need a particular Snowflake AI/ML topic. It is a reference index, not a cover-to-cover assignment. |
 | **8** | [08_SEMANTIC_LAYER.md](08_SEMANTIC_LAYER.md) | Learn the semantic layer: what semantic views are, how to build, query, secure, deploy, and tune them, with a known-answer lab, exam traps, and 12 checks. Best read alongside course Unit 7 (step 2), before the practice exam. |
 | **9** | [09_AI_FUNCTION_EXAMPLES.md](09_AI_FUNCTION_EXAMPLES.md) | One clear example and exam trap for every function in Snowflake's AI Functions sidebar, including `AI_FUNCTION_EVALUATION`, `AI_FUNCTION_OPTIMIZATION`, `FINETUNE`, `SENTIMENT` and the helper functions. Use it alongside step 1 or 4. |
+| **10** | [10_SQL_FUNCTIONS_ESSENTIALS.md](10_SQL_FUNCTIONS_ESSENTIALS.md) | The non-AI functions worth knowing from Snowflake's full function list, in one file with examples: conditional, date, string/regex, JSON/arrays, window/`QUALIFY`, vectors, `SEARCH`, chunking, legacy `SNOWFLAKE.CORTEX` names (with the AI replacement for each), data quality and system helpers. |
 
-Steps 8 and 9 were added after the numbered path existed, so their numbers do not reflect reading order: study step 8 before step 5, and use step 9 as a syntax workbook any time after step 1. Steps 6–7 are reference tools: open them whenever a question or lab exposes a gap. The core loop is **study → practise in Snowflake → test yourself → repair misses**. This material began on 2026-09-24 from the official Snowflake C02 study guide dated 2026-04-30, the supplied Snowflake GenAI course datasheet, and Snowflake documentation. It is an independent study aid, not an official Snowflake exam or a guarantee of a pass.
+Steps 8 to 10 were added after the numbered path existed, so their numbers do not reflect reading order: study step 8 before step 5, and use steps 9 and 10 as syntax workbooks any time after step 1. Steps 6–7 are reference tools: open them whenever a question or lab exposes a gap. The core loop is **study → practise in Snowflake → test yourself → repair misses**. This material began on 2026-09-24 from the official Snowflake C02 study guide dated 2026-04-30, the supplied Snowflake GenAI course datasheet, and Snowflake documentation. It is an independent study aid, not an official Snowflake exam or a guarantee of a pass.
 
 ## Exam map
 
