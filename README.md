@@ -34,6 +34,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 - [SnowPro Specialty: Gen AI (GES-C02) study guide and practice set](snowpro-genai/README.md) — official-blueprint coverage, syntax and billing sheets, a lab, 28 original questions, and Snowflake documentation links.
 
+- [Function reference: Fabric T-SQL, Databricks SQL and PySpark](functions-reference/README.md) — AI functions plus the functions worth knowing on each platform, with examples, traps, and a Snowflake/Fabric/Databricks/PySpark cross-walk; Snowflake's equivalents are in the SnowPro guide (files 09 and 10).
+
 - [Power Platform and Copilot Studio: admin, agents on Fabric, MCP and flows](power-platform-copilot-studio/README.md) — 01–06 numbered path: environments and the inactivity cleanup (disabled developer environment worked example), licensing, DLP, external models, Fabric data agent via Copilot Studio and Foundry, Power BI semantic models, MCP authentication, flows, engineer playbook, JB checklist, 14 checks.
 
 - [Azure Foundry SDK, Azure AI Search, and RAG study course](learning/rag/AZURE_FOUNDRY_RAG_STUDY_COURSE.md) — architecture, current Python agent calls, labs, and evaluation exercises.
