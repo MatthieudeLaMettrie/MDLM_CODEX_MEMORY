@@ -20,17 +20,18 @@ Prepared **7 October 2026** using current official documentation. The teaching e
 | **11** | [Lakeflow pipelines and DLT](11_LAKEFLOW_PIPELINES_AND_DLT_GUIDE.md) | Map legacy DLT APIs, define streaming/materialized datasets, validate quality and reason about refresh/recovery |
 | **12** | [Pipelines, CDF, CDC and Auto Loader examples](12_PIPELINES_CDF_CDC_AUTO_LOADER_EXAMPLES.md) | Work through fake order tables, file deliveries, corrections, deletes, stale events and expected reconciliations |
 | **13** | [Managed and external storage](13_MANAGED_AND_EXTERNAL_STORAGE_GUIDE.md) | Distinguish locations, credentials, tables and volumes; choose ownership/lifecycle and set up each approach |
+| **14** | [Pipeline operations and optimisation](14_PIPELINE_OPERATIONS_AND_OPTIMISATION.md) | Monitor delivery and correctness, diagnose/fix 15 worked incidents, recover safely and measure query/ingestion/compute/cost improvements |
 
 Use 04–06 alongside the related lessons. The default path is numbered so the order is also visible in the GitHub file listing. References are available whenever you need them.
 
-Read **10** before the volume/upload setup in lab **03** if volumes are new to you. Read **11** alongside **04**, then use **12** for concrete pattern comparisons and fake-table exercises. Use **13** to choose managed/external storage and understand external-location setup. These are supplementary practical guides; existing 00–09 filenames remain stable.
+Read **10** before the volume/upload setup in lab **03** if volumes are new to you. Read **11** alongside **04**, then use **12** for concrete pattern comparisons and fake-table exercises. Use **13** to choose managed/external storage and understand external-location setup. Continue with **14** for monitoring, worked fixes, recovery and measured optimisation. These are supplementary practical guides; existing 00–09 filenames remain stable.
 
 ## What the course covers
 
 | Your requested responsibility | Coverage | Evidence you will produce |
 |---|---|---|
 | Design and maintain ETL workflows | 01 §§3–6; 02 lessons 3–8; 03 lab | Source contract, executable transformations, reconciled output |
-| Collaborate on reliability and efficiency | 02 lessons 12–16; 06; 08 | Ownership map, runbook, release evidence, measured performance |
+| Collaborate on reliability and efficiency | 02 lessons 12–16; 06; 08; 14 | Ownership map, runbook, release evidence, measured performance |
 | Cleanse and prepare datasets | 01 §§5–6; 03; 07 cases 5–9 | Explicit types, quarantine reasons, uniqueness and join checks |
 | Investigate Delta merge failures | 04 §§2–5; 07 cases 1–4 | Candidate-key analysis, sequencing policy, verified repair |
 | Investigate PySpark errors | 01 §5; 07 cases 5–9, 22–23 | First failing stage, schema/plan evidence, minimal fix |
@@ -38,7 +39,7 @@ Read **10** before the volume/upload setup in lab **03** if volumes are new to y
 | Investigate ingestion/orchestration failures | 04 §§6–8; 05; 06; 07 cases 10–13, 19–21 | Checkpoint/source evidence, retry boundaries, replay proof |
 | Integrate Azure Synapse and Databricks | 05; 07 cases 19–21 | Explicit transfer direction, reader compatibility, both-side access checks |
 | Maintain Bronze, Silver and Gold | 01; 03; 08 | Layer responsibilities, grain, incremental and delete behavior |
-| Preserve schema, quality and performance | 04; 05; 08 | Versioned contracts, quality gates, representative benchmark |
+| Preserve schema, quality and performance | 04; 05; 08; 14 | Versioned contracts, quality gates, representative benchmark |
 
 ## What has been validated
 

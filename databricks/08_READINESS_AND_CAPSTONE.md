@@ -4,6 +4,8 @@
 
 Readiness here means you can build, explain, verify and recover a bounded data product. It is an authored practical rubric, not a certification passing score or employer acceptance policy. Reading completion, elapsed study days and prior credentials do not automatically establish current delivery readiness.
 
+Use [14 — Pipeline operations and optimisation](14_PIPELINE_OPERATIONS_AND_OPTIMISATION.md) for worked incident fixes, monitoring evidence, recovery choices and the optimisation benchmark worksheet before the operating handoff.
+
 ## 1. Score reasoning and evidence separately
 
 For each workbook attempt, score six items 0–2:

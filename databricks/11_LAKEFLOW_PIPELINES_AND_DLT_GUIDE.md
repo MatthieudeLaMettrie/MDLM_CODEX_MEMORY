@@ -255,6 +255,8 @@ Guide 04 contains a current-state CDC definition. Lab 03 demonstrates why sequen
 
 ## 10. Operate, diagnose and promote the pipeline
 
+For detailed monitoring SQL/UI steps, 15 worked incident fixes, recovery choices and query-to-cost improvements, continue with [14 — Pipeline operations and optimisation](14_PIPELINE_OPERATIONS_AND_OPTIMISATION.md). It uses the fake orders from guide 12 and distinguishes completed updates from complete, correct consumer delivery.
+
 Use the graph to locate the first failed dependency. Use the pipeline event log for update progress, errors, lineage and quality evidence; these observations serve different questions. Query event-log fields against the current documented schema rather than assuming a pipeline's UI success implies every business reconciliation passed. [Pipeline event log](https://docs.databricks.com/aws/en/ldp/monitor-event-logs)
 
 The following investigation sequence is our engineering checklist, not a claim that the platform automatically validates these contracts:

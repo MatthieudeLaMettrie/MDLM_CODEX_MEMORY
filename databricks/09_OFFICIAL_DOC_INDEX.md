@@ -113,7 +113,7 @@ E02's Azure page repeatedly timed out in the browsing tool during authoring. Its
 
 ## How to use this index
 
-The 61-entry core index is supplemented by source links beside the explanations in [10 — Volumes](10_UNITY_CATALOG_VOLUMES_GUIDE.md), [11 — Pipelines and DLT](11_LAKEFLOW_PIPELINES_AND_DLT_GUIDE.md), [12 — Fake-table pattern examples](12_PIPELINES_CDF_CDC_AUTO_LOADER_EXAMPLES.md) and [13 — Managed/external storage](13_MANAGED_AND_EXTERNAL_STORAGE_GUIDE.md). Guide 11 explicitly incorporates the requested AWS pipeline-concepts page; Azure storage/identity guidance remains the course default.
+The 61-entry core index is supplemented by source links beside the explanations in [10 — Volumes](10_UNITY_CATALOG_VOLUMES_GUIDE.md), [11 — Pipelines and DLT](11_LAKEFLOW_PIPELINES_AND_DLT_GUIDE.md), [12 — Fake-table pattern examples](12_PIPELINES_CDF_CDC_AUTO_LOADER_EXAMPLES.md), [13 — Managed/external storage](13_MANAGED_AND_EXTERNAL_STORAGE_GUIDE.md) and [14 — Pipeline operations and optimisation](14_PIPELINE_OPERATIONS_AND_OPTIMISATION.md). Guide 14 adds event-log/system-table monitoring, profiles, recovery, statistics/layout and compute/cost references. Guide 11 explicitly incorporates the requested AWS pipeline-concepts page; Azure storage/identity guidance remains the course default.
 
 Start with the failing boundary and the [workbook case](07_TROUBLESHOOTING_PRACTICE.md), then open the narrowest relevant page. Write down the rule, its runtime/feature conditions and the check that proves it applies. Add that evidence to your master notebook. Do not substitute copying a long page for reproducing the small behavior you need to understand.
 

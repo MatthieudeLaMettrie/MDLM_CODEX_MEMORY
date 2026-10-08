@@ -200,6 +200,8 @@ Choose alert thresholds from actual business expectations and baseline behavior.
 
 ## 9. Release review checklist with concrete evidence
 
+Use [14 — Pipeline operations and optimisation](14_PIPELINE_OPERATIONS_AND_OPTIMISATION.md) for operational dashboards/queries, worked fixes, recovery and a representative benchmark worksheet. Its release checks connect resolved configuration with data reconciliation and consumer publication.
+
 Before promotion, provide a reviewer with the exact commit and target, resolved identities/paths, deployment plan, schema/contract diff, representative data checks, replay/delete/late-arrival evidence, failure-repair drill, performance/cost observation and rollback/publication plan. Keep access changes reviewed under the platform's normal ownership process.
 
 In this repository, publication of the course and sample files is authorized; deployment of cloud resources is a separate learner activity. The course's [verification record](verification.json) names the checks actually performed, and the [capstone](08_READINESS_AND_CAPSTONE.md) defines the missing runtime evidence.
