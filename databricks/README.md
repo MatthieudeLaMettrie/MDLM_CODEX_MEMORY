@@ -23,6 +23,8 @@ Prepared **7 October 2026** using current official documentation. The teaching e
 | **14** | [Pipeline operations and optimisation](14_PIPELINE_OPERATIONS_AND_OPTIMISATION.md) | Monitor delivery and correctness, diagnose/fix 15 worked incidents, recover safely and measure query/ingestion/compute/cost improvements |
 | **15** | [Field notes: volume files, dropping catalogs/schemas, pipeline SQL errors](15_NOTEBOOK_AND_CATALOG_FIELD_NOTES.md) | Read Excel/CSV from a volume, safely drop a catalog or schema, and fix the "not supported in a DLT pipeline" error |
 | **16** | [CDC/CDF retail-table walkthrough](16_CDC_CDF_RETAIL_TABLE_WALKTHROUGH.md) | Locate/check/read CDF on your screenshot's table, test fake corrections/deletes and include AUTO CDC in a separate pipeline |
+| **17** | [CDF and CDC explained](17_CDF_AND_CDC_EXPLAINED.md) | Understand what CDC and CDF are, how they differ and combine, with use cases and when to choose each |
+| **18** | [Pipeline monitoring and troubleshooting runbook](18_PIPELINE_MONITORING_AND_TROUBLESHOOTING_RUNBOOK.md) | Check health, query the event log, diagnose common failures and recover safely |
 
 Use 04–06 alongside the related lessons. The default path is numbered so the order is also visible in the GitHub file listing. References are available whenever you need them.
 

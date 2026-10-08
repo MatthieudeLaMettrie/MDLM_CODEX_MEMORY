@@ -16,3 +16,9 @@ Added [databricks/15_NOTEBOOK_AND_CATALOG_FIELD_NOTES.md](../databricks/15_NOTEB
 ## Validation and unresolved issues
 
 Documentation only. No SQL or notebook code was run, and no Databricks workspace was accessed; syntax comes from general knowledge and was not re-checked against current docs, notably the native `format("excel")` reader. `databricks/validate_materials.py` passed its local structure/reference checks (YAML parsing skipped, no PyYAML). Next step: try the readers and pipeline fix in the trial workspace.
+
+## Follow-up: CDF/CDC explainer and monitoring runbook
+
+User asked what CDF and CDC are (clearly, with use cases) and for a pipeline monitoring/troubleshooting file, both added to the repo. Existing lessons 12 (fake-table examples) and 14 (operations deep dive) already covered these in depth, so the new files are short plain-language entry points that link to them. A remote session had meanwhile published lesson 16 (retail-table CDC/CDF walkthrough); pulled it and numbered the new files 17 and 18 to avoid a collision.
+
+Added [17_CDF_AND_CDC_EXPLAINED.md](../databricks/17_CDF_AND_CDC_EXPLAINED.md) (definitions, worked order story, AUTO CDC SCD1/SCD2, enabling/reading CDF, use cases, comparison table, decision guide, mistakes, quiz) and [18_PIPELINE_MONITORING_AND_TROUBLESHOOTING_RUNBOOK.md](../databricks/18_PIPELINE_MONITORING_AND_TROUBLESHOOTING_RUNBOOK.md) (health definition, where to look, event-log queries, troubleshooting sequence, common-problems table, recovery options, alerting, pre-flight checklist). Documentation only: no SQL/Python executed and no workspace accessed; event-log field paths and the AUTO CDC SQL syntax are unverified against current docs and the files say so.
