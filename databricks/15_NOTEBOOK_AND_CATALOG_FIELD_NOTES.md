@@ -90,3 +90,44 @@ For append-only streaming sources use `CREATE OR REFRESH STREAMING TABLE … AS 
 - An `.xlsx` in a volume cannot be queried from SQL directly. Load it (section 1), then `df.write.saveAsTable("mdlm_db_trial.dev.<table>")` and reference that table from the pipeline.
 
 See [11 — Lakeflow pipelines](11_LAKEFLOW_PIPELINES_AND_DLT_GUIDE.md) for the current Lakeflow Spark Declarative Pipelines naming and dataset types.
+
+## 5. Seeing the operations on a table
+
+"Operation" can mean two things.
+
+**Which operations were run on the table (Delta history):**
+
+```sql
+DESCRIBE HISTORY mdlm_db_trial.dev.fct_retail_sales_item_v LIMIT 5;
+```
+
+One row per commit: `version`, `timestamp`, `userName`, `operation` (`CREATE TABLE`, `WRITE`, `MERGE`, `UPDATE`, `DELETE`, `OPTIMIZE`, `VACUUM`…), `operationParameters`, `operationMetrics` (rows inserted/updated/deleted, files written). UI: Catalog → table → **History** tab. Delta tables only: a view has no history, so run it on the underlying table. Check what an object is with `DESCRIBE EXTENDED <name>`.
+
+**Which rows were inserted, updated or deleted (Change Data Feed):** must be enabled *before* the changes you want to see.
+
+```sql
+SHOW TBLPROPERTIES mdlm_db_trial.dev.fct_retail_sales_item_v;
+ALTER TABLE mdlm_db_trial.dev.fct_retail_sales_item_v
+  SET TBLPROPERTIES (delta.enableChangeDataFeed = true);
+SELECT * FROM table_changes('mdlm_db_trial.dev.fct_retail_sales_item_v', 1, 5);
+```
+
+`_change_type` holds `insert`, `update_preimage`, `update_postimage` or `delete`. If you land your own CDC feed with an `operation` column, it is an ordinary column: `SELECT operation, COUNT(*) FROM feed GROUP BY operation`. See [17 — CDF and CDC explained](17_CDF_AND_CDC_EXPLAINED.md).
+
+## 6. Publishing an AI/BI dashboard beyond Databricks
+
+Researched 8 October 2026 from Databricks documentation search results; **no dashboard was published or embedded in this session**, so verify the steps in your workspace and with your admin.
+
+| Option | What it does | Notes |
+|---|---|---|
+| **Publish and share inside Databricks** | Viewers open the published dashboard in the workspace | Publish with *shared data permissions* (queries run with the publisher's credentials) or *individual permissions* (each viewer needs access to the underlying data) |
+| **Embed with an iframe** | Puts the published dashboard in an external website or application | Only **published** dashboards can be embedded. A workspace admin must first define the allowed embedding surfaces. Users with at least CAN EDIT generate the iframe code from the **Share** dialog (an `/embed/dashboardsv3/` URL on your workspace host). Sharing settings still apply: viewers need explicit access, and basic embedding means viewers sign in with their Databricks credentials |
+| **Scheduled email subscriptions** | Emails a PDF/image snapshot of the dashboard on a schedule | Controlled by a workspace setting (dashboard email subscriptions). Subscriber limits apply (a Databricks reply mentioned 100). Scheduled subscriptions cannot set per-recipient filters, so use row-level security on the dataset for per-person views |
+| **Download PDF** | Manual export from the dashboard UI | At the time of the source thread there was no PDF export API; check current docs |
+| **Link or screenshot** | Share the workspace URL | Recipients still need workspace access |
+
+**SharePoint:** the likely route is the iframe/embed approach, with SharePoint's embed web part, which typically requires the host domain to be approved. This part is *unverified*: confirm with your SharePoint and Databricks admins, and expect viewers to need Databricks access. **Public anonymous viewing** is not the default: the documented model requires explicit access or a separately configured OAuth/service-principal pattern (described in a third-party article, not official docs).
+
+Dashboards are separate from Power BI: to publish in Power BI, connect Power BI to the tables instead, or embed the Databricks dashboard link or iframe.
+
+Sources: [Embed a dashboard (Microsoft Learn)](https://learn.microsoft.com/en-ca/azure/databricks/dashboards/embed) · [Embed a dashboard (Databricks docs)](https://docs.databricks.com/aws/en/dashboards/embedding/) · [Dashboard email subscriptions setting (SDK docs)](https://databricks-sdk-py.readthedocs.io/en/latest/workspace/settings/dashboard_email_subscriptions.html)
