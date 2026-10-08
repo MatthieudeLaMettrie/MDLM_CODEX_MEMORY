@@ -17,6 +17,8 @@ Date: 2026-10-08 (Australia/Sydney)
 - The user's environment was disabled by the inactivity cleanup on 2026-10-03; developer environments are deleted 15 days after disabling.
 - Unresolved licensing conflict between the Fabric page and the Copilot Studio page about builder licences.
 
+5. (2026-10-09) Screenshot of the Agents list: what is the difference between the *GitHub Copilot* and *Standard* values in the Powered by column? Answered from the Microsoft Learn harness pages; added a Harnesses section to file 01 and the doc index. It is a runtime choice, not the GitHub Copilot coding product. The Fabric/MCP/licensing pages cited earlier describe the standard harness; behaviour on the GitHub Copilot harness is unverified. User's agents: FEI_AGENT and Power BI Support Assistant show GitHub Copilot, Test_Agent_PDP shows Standard.
+
 ## Changes
 
 - Added `power-platform-copilot-studio/` (README plus files 01–06: admin and environments, Fabric and data agents, MCP/connectors/flows, AI engineer playbook, 14 practice checks with a lab, official doc index).

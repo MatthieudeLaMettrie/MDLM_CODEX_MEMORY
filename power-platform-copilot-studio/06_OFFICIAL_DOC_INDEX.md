@@ -18,6 +18,7 @@ Part of the [Power Platform / Copilot Studio guide](README.md). Pages read on 20
 | Fabric to Copilot Studio | [Consume a data agent in Copilot Studio](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-microsoft-copilot-studio) | Steps, authentication modes, limits. |
 | Fabric to Foundry | [Consume a data agent in Foundry](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-foundry) | Connection keys, identity, one-agent limit. |
 | MCP | [Connect to an existing MCP server](https://learn.microsoft.com/en-us/microsoft-copilot-studio/mcp-add-existing-server-to-agent) | Authentication, OAuth types, custom connector. |
+| Harnesses | [Harnesses in Copilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/harnesses-overview) and [Compare harnesses](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/choose-harness) | GitHub Copilot versus standard harness. |
 | Community | [Fabric Data Agent connection fails silently](https://learn.microsoft.com/en-us/answers/questions/5772696/copilot-studio-fabric-data-agent-connection-fails) | Unofficial symptom report. |
 
 ## Not read in this pass

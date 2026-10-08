@@ -94,6 +94,26 @@ From the [external model page](https://learn.microsoft.com/en-us/power-platform/
 4. For cross-region processing: Environment → **Generative AI features** → Edit → **Move data across regions**. Data already moved cannot be pulled back by clearing the box.
 5. Anthropic models in Copilot Studio are currently outside EU Data Boundary commitments, and FedRAMP is not achieved for them.
 
+## Harnesses: "GitHub Copilot" versus "Standard"
+
+The agent list's *Powered by* column shows the agent's **harness**, the runtime between the model and your configuration ([overview](https://learn.microsoft.com/en-us/microsoft-copilot-studio/harnesses-overview), [comparison](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/choose-harness)). It is **not** the GitHub Copilot coding product: Microsoft states customer data is not sent to or processed by the GitHub Copilot service.
+
+| | Standard | GitHub Copilot |
+| --- | --- | --- |
+| Style | Topics, rules, agent flows you define | Takes a goal, plans, retries, adapts |
+| Best for | Short, bounded, predictable work; high-traffic chat | Long-running, multi-step, multi-tool work |
+| Context | Spread across topics, variables, tools, subagents | Larger shared context, persistent memory, sandbox with files |
+| Files | Not a focus | Creates and edits Word, Excel, PowerPoint, PDF |
+| Skills and memory | Not a focus | Yes |
+| Deterministic parts | Topics | Workflows |
+| Latency and cost | Lower | Higher; justified only by value |
+| Billing | Existing Copilot Studio licensing | Usage-based Copilot Credits |
+| Maturity | Established channels and features | Newest capabilities and reasoning models; validate features and channels |
+
+Migrating is re-architecture, not conversion; Microsoft advises moving only for a clear scenario-level benefit. A third harness, Copilot chat, extends Microsoft Copilot Chat with enterprise knowledge.
+
+**Caveat for this guide:** the MCP, licensing and Fabric pages cited here are labelled as describing the *standard harness* (the MCP and licensing pages say so). Whether the Fabric data agent connection, generative-orchestration setting and licensing behave identically on a GitHub Copilot harness agent was not verified.
+
 ## Where are "Apps"?
 
 Power Apps are not part of Copilot Studio. They are built at make.powerapps.com in the same environment, and the environment page lists them under **Resources → Power Apps**. The Copilot Studio left navigation shown in the screenshots (Home, Agents, Workflows) has no Apps item. I did not find documentation saying it should. If you cannot see apps, check the maker portal first, then your Power Apps licence and environment role.
