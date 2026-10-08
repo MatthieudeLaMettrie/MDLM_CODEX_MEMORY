@@ -131,3 +131,68 @@ Researched 8 October 2026 from Databricks documentation search results; **no das
 Dashboards are separate from Power BI: to publish in Power BI, connect Power BI to the tables instead, or embed the Databricks dashboard link or iframe.
 
 Sources: [Embed a dashboard (Microsoft Learn)](https://learn.microsoft.com/en-ca/azure/databricks/dashboards/embed) · [Embed a dashboard (Databricks docs)](https://docs.databricks.com/aws/en/dashboards/embedding/) · [Dashboard email subscriptions setting (SDK docs)](https://databricks-sdk-py.readthedocs.io/en/latest/workspace/settings/dashboard_email_subscriptions.html)
+
+## 7. Using Genie Code to build, fix and review pipelines
+
+Researched 8 October 2026 from Databricks documentation search results. **Nothing was run or tried in a workspace.** Agent mode for pipelines is documented as **Public Preview** and needs partner-powered AI features enabled for the account and workspace; check the full requirements page.
+
+**Two similarly named tools:**
+
+| Tool | Where | Purpose |
+|---|---|---|
+| **Genie Agents** (formerly Genie spaces) | Left sidebar | Business users ask data questions in plain English and get SQL answers/charts. Does not build or fix pipelines |
+| **Genie Code** | Pipeline editor, notebooks, SQL Editor | AI coding assistant; **Agent mode** plans, writes, runs and fixes code |
+
+A third-party blog says Genie Code replaced Databricks Assistant in March 2026. This was not confirmed on Databricks' own pages, so treat it as unverified.
+
+**What Agent mode can do (Lakeflow Spark Declarative Pipelines / Lakeflow Pipelines Editor):**
+- Create a pipeline: explore data, generate code, run updates and iterate from one prompt.
+- Fix a failing pipeline: diagnose errors and work through multiple files until resolved.
+- Change an existing pipeline: add tables, transformations or expectations.
+- Migrate dbt and Informatica projects into a pipeline (Beta). Other SQL dialects use a separate code-converter tool.
+- In notebooks and the SQL Editor: data exploration and analysis.
+
+**How:** open the pipeline in the Lakeflow Pipelines Editor, open the Genie Code panel, switch to **Agent mode**, give a specific prompt, review and approve its plan, let it run an update, then check the diff.
+
+Example prompts:
+- "Create a pipeline that reads `mdlm_db_trial.dev.fct_retail_sales_item_v`, cleans it into a Silver materialized view, and adds a Gold daily sales summary."
+- "The last update failed. Diagnose the error and fix it."
+- "Add expectations that fail the update if `order_id` is null or `amount` is negative."
+
+**Monitoring and optimisation:** no dedicated feature was found in the sources. It can still be asked in chat (for example to write an event-log query or suggest query changes), but treat answers as suggestions and verify them with the Spark UI and your own measurements ([14](14_PIPELINE_OPERATIONS_AND_OPTIMISATION.md)).
+
+**Safety:** it only acts within your permissions; use dev first; read generated code before running (watch `DROP`, full refresh, deletes); do not paste secrets; verify data with counts and reconciliation rather than "no errors".
+
+Sources: [Use Genie Code for pipeline development](https://docs.databricks.com/aws/en/ldp/de-agent) · [Genie Code overview](https://docs.databricks.com/genie-code)
+
+## 8. Where to see errors: the event log, notebook output and job runs
+
+Where you look depends on what ran. UI labels change between releases and this was **not verified in a workspace**, so confirm the names in yours.
+
+| What ran | Where to see the error |
+|---|---|
+| **Pipeline (Lakeflow / DLT)** | Open the pipeline in **Jobs & Pipelines**. Select an update to see its state and error message, click a failed table in the pipeline graph for its details, and use the **event log / logs** panel for the full list of events. The Lakeflow Pipelines Editor shows errors for the latest run beside the code |
+| **Pipeline event log as a table** | Query it with SQL (below). It can be published to a Unity Catalog table through the pipeline's settings so it can be queried and alerted on long term |
+| **Notebook run interactively** | There is no event log. The error appears in the failing cell's output, which shows the first error and the Python/Spark stack trace. Use the **Spark UI** and **driver logs** on the compute for lower-level detail |
+| **Notebook or task run by a job** | **Jobs & Pipelines → Jobs → the job → Runs → the run**. The task output shows the error and the executed notebook with its cell output |
+| **Notebook that is a pipeline source file** | Its errors appear in the **pipeline** update and event log, not as ordinary cell output. A bare `SELECT` there gives the "not supported in a DLT pipeline" error ([section 4](#4-pipeline-error-statement-is-not-supported-in-a-dlt-pipeline)) |
+| **SQL query** | **Query History** shows the failed statement, error message and duration |
+| **Delta table changes** | `DESCRIBE HISTORY <table>` or Catalog → table → **History** |
+
+**Querying a pipeline's event log:**
+
+```sql
+-- by pipeline ID (copy it from the pipeline's settings or URL)
+SELECT timestamp, event_type, level, message
+FROM event_log("<pipeline_id>")
+WHERE level IN ('ERROR', 'WARN')
+ORDER BY timestamp DESC
+LIMIT 50;
+
+-- by table, where the event log is published or the table is owned by the pipeline
+SELECT * FROM event_log(TABLE(mdlm_db_trial.dev.my_materialized_view)) ORDER BY timestamp DESC LIMIT 20;
+```
+
+Run `SELECT * ... LIMIT 5` first to confirm field names in your version. Further queries and a troubleshooting sequence are in [18 — Monitoring and troubleshooting runbook](18_PIPELINE_MONITORING_AND_TROUBLESHOOTING_RUNBOOK.md).
+
+**Practical order:** read the first ERROR in the pipeline update, then look at the failing table's details, then query the event log for the full chain. Read the *earliest* error: later errors are usually consequences.

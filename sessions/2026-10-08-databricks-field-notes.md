@@ -26,3 +26,7 @@ Added [17_CDF_AND_CDC_EXPLAINED.md](../databricks/17_CDF_AND_CDC_EXPLAINED.md) (
 ## Follow-up: table operations and dashboard publishing
 
 User asked how to see the operation on a table and whether a Databricks dashboard can be published to a website or SharePoint. Added sections 5 and 6 to [15_NOTEBOOK_AND_CATALOG_FIELD_NOTES.md](../databricks/15_NOTEBOOK_AND_CATALOG_FIELD_NOTES.md): `DESCRIBE HISTORY` (operations on the table) versus CDF `_change_type` (per-row operations), and dashboard options (publish, iframe embed needing admin-approved surfaces, email subscriptions, PDF). One standard web search informed section 6. Not executed or tested; SharePoint embedding is explicitly unverified.
+
+## Follow-up: Genie Code and where errors/event logs live
+
+User asked whether Genie AI can create/fix/monitor/optimise pipelines and where to find the event log for notebook or pipeline errors. A standard web search showed Genie Code Agent mode (Public Preview) builds and fixes Lakeflow pipelines, distinct from Genie Agents (data Q&A). Added sections 7 and 8 to [15_NOTEBOOK_AND_CATALOG_FIELD_NOTES.md](../databricks/15_NOTEBOOK_AND_CATALOG_FIELD_NOTES.md): Genie Code usage and safety, and a table of where to see errors (pipeline update/event log, notebook output, job runs, Query History, table history). Documentation only; UI labels and the Genie Code rename claim are unverified in a workspace.
