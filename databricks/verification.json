@@ -7,24 +7,25 @@
   "local_validation": {
     "python_version": "3.14.4",
     "yaml_parser": "PyYAML 6.0.3 from an existing isolated temporary directory; no project dependency installed",
-    "markdown_files_checked": 16,
-    "relative_links_checked": 129,
+    "markdown_files_checked": 18,
+    "relative_links_checked": 142,
     "markdown_fences": "balanced",
     "python_files_ast_checked": 3,
-    "python_documentation_blocks_ast_checked": 17,
+    "python_documentation_blocks_ast_checked": 21,
     "yaml_files_checked_with_duplicate_key_rejection": 2,
     "yaml_documentation_blocks_checked": 1,
     "json_files_parsed": 2,
     "bundle_file_references_and_task_sequence": "passed local checks; not CLI schema validation",
-    "learning_path": "00-14 assets, 16 lessons and 28 practice cases checked; operations supplement includes 15 worked incidents",
+    "learning_path": "00-16 assets, 16 lessons and 28 practice cases checked; concurrent field notes 15 preserved, retail walkthrough 16; operations supplement includes 15 worked incidents",
     "supplementary_fake_fixtures": "JSON/SQL message fixtures checked locally: file totals 245/270, latest-state 240 across 5,040 delivery permutations, wrong-metric totals 530/405 and quality-example 165; not Spark execution",
     "fixture_oracle": "passed expected counts, Decimal amounts, day/store attribution, reverse ordering, exact/stale re-delivery, tombstone and contradiction checks",
     "git_whitespace": "passed before publication",
-    "operations_query_fixture": "SQLite translation of the self-contained SQL checked expected 3 rows/240, duplicate-dimension 4 rows/375, inner-join 2 rows/215 and unknown-store 25; relational arithmetic only, not Databricks SQL or performance validation"
+    "operations_query_fixture": "SQLite translation of the self-contained SQL checked expected 3 rows/240, duplicate-dimension 4 rows/375, inner-join 2 rows/215 and unknown-store 25; relational arithmetic only, not Databricks SQL or performance validation",
+    "retail_cdf_cdc_fixture": "SQLite translation of separate demo DML yields 2 rows/1550; expected CDF-image arithmetic 5150/3350; Decimal state oracle verifies A=1250/C=300/B deleted over all 720 permutations of six fake CDC events; not Delta CDF/AUTO CDC execution"
   },
   "source_review": {
     "method": "Official Microsoft Azure Databricks, Azure Synapse/ADF, Databricks AWS pipeline/Auto Loader, Delta Lake and Apache Spark pages accessed through web research",
-    "scope": "Selected topic and syntax review, including pipeline operations/monitoring, current Beta event-table/rewind conditions, profiles, Auto Loader, AQE, statistics/layout, incremental refresh and billing; not a complete documentation crawl",
+    "scope": "Selected topic and syntax review, including pipeline operations/monitoring, current Beta event-table/rewind conditions, profiles, Auto Loader, AQE, statistics/layout, incremental refresh and billing; not a complete documentation crawl; screenshot-specific properties/history/CDF mode/read/AUTO CDC references checked",
     "retrieval_limit": "Azure bundles/settings timed out; official search entry and related resources/sharing/modes/run-as/CLI pages were used"
   },
   "cloud_validation": {

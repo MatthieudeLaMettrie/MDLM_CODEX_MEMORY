@@ -22,10 +22,11 @@ Prepared **7 October 2026** using current official documentation. The teaching e
 | **13** | [Managed and external storage](13_MANAGED_AND_EXTERNAL_STORAGE_GUIDE.md) | Distinguish locations, credentials, tables and volumes; choose ownership/lifecycle and set up each approach |
 | **14** | [Pipeline operations and optimisation](14_PIPELINE_OPERATIONS_AND_OPTIMISATION.md) | Monitor delivery and correctness, diagnose/fix 15 worked incidents, recover safely and measure query/ingestion/compute/cost improvements |
 | **15** | [Field notes: volume files, dropping catalogs/schemas, pipeline SQL errors](15_NOTEBOOK_AND_CATALOG_FIELD_NOTES.md) | Read Excel/CSV from a volume, safely drop a catalog or schema, and fix the "not supported in a DLT pipeline" error |
+| **16** | [CDC/CDF retail-table walkthrough](16_CDC_CDF_RETAIL_TABLE_WALKTHROUGH.md) | Locate/check/read CDF on your screenshot's table, test fake corrections/deletes and include AUTO CDC in a separate pipeline |
 
 Use 04–06 alongside the related lessons. The default path is numbered so the order is also visible in the GitHub file listing. References are available whenever you need them.
 
-Read **10** before the volume/upload setup in lab **03** if volumes are new to you. Read **11** alongside **04**, then use **12** for concrete pattern comparisons and fake-table exercises. Use **13** to choose managed/external storage and understand external-location setup. Continue with **14** for monitoring, worked fixes, recovery and measured optimisation. These are supplementary practical guides; existing 00–09 filenames remain stable.
+Read **10** before the volume/upload setup in lab **03** if volumes are new to you. Read **11** alongside **04**, then use **12** for concrete pattern comparisons and fake-table exercises. Use **13** to choose managed/external storage and understand external-location setup. Continue with **14** for monitoring, worked fixes, recovery and measured optimisation; **16** walks through CDC/CDF using your retail-table screenshot and an isolated demo. These are supplementary practical guides; existing 00–09 filenames remain stable.
 
 ## What the course covers
 

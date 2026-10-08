@@ -117,4 +117,6 @@ The 61-entry core index is supplemented by source links beside the explanations 
 
 Start with the failing boundary and the [workbook case](07_TROUBLESHOOTING_PRACTICE.md), then open the narrowest relevant page. Write down the rule, its runtime/feature conditions and the check that proves it applies. Add that evidence to your master notebook. Do not substitute copying a long page for reproducing the small behavior you need to understand.
 
+[16 — Retail-table CDC/CDF walkthrough](16_CDC_CDF_RETAIL_TABLE_WALKTHROUGH.md) adds screenshot-specific UI/SQL steps and references for properties/history, feed modes, `table_changes` and AUTO CDC application.
+
 Keep your locked certification sequence in the [existing curriculum](../learning/certifications/AI_STUDY_CURRICULUM.md). This course adds practical Databricks data engineering materials; it does not assign another credential or imply full coverage of a live exam blueprint.

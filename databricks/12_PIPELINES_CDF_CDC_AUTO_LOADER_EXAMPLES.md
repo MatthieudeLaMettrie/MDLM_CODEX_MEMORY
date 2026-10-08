@@ -4,6 +4,8 @@ This cookbook uses **fake retail order tables** to show realistic engineering pa
 
 Follow the examples independently in order. They demonstrate different mechanisms, not several writers updating the same table. SQL setup runs in a SQL notebook/editor; ordinary Python streams run in a compatible notebook/job; `dp` definitions run as ETL pipeline source. Use your approved development catalog if it differs from `training_dev`, changing all matching identifiers/paths.
 
+For where to find CDF/CDC in the UI and how to include them using your `mdlm_db_trial.dev.fct_retail_sales_item` screenshot, see [16 — Retail-table walkthrough](16_CDC_CDF_RETAIL_TABLE_WALKTHROUGH.md). It provides read-only checks, a separate fake-table mutation demo and CDF-to-AUTO-CDC pipeline code.
+
 ## 1. Select a pattern from the actual business requirement
 
 The following are proposed engineering use cases, not reports of deployments at your workplace.
