@@ -1,6 +1,6 @@
 # Original GES-C02 practice set
 
-28 original single-answer questions. Approximate domain weighting: 5 overview, 11 functions, 8 governance, 4 document processing. These are learning questions based on official objectives and documentation, **not** Snowflake practice-exam items or claimed real exam questions. Set a timer, answer before reading the key, and verify any disputed item in the linked docs. Syntax examples describe documented signatures as checked 2026-09-24; they were not run in an account.
+32 original single-answer questions (28 blueprint-weighted plus a 4-question supplement on newer functions). Approximate domain weighting of the first 28: 5 overview, 11 functions, 8 governance, 4 document processing. These are learning questions based on official objectives and documentation, **not** Snowflake practice-exam items or claimed real exam questions. Set a timer, answer before reading the key, and verify any disputed item in the linked docs. Syntax examples describe documented signatures as checked 2026-09-24; they were not run in an account.
 
 ## Questions
 
@@ -68,6 +68,16 @@
 
 **28.** A pipeline must process newly arrived staged files and keep structured invoice fields for analytics. Which design aligns with Snowflake components? A. Stage/directory metadata → `AI_EXTRACT` → persist results; streams/tasks can orchestrate downstream table changes B. `AI_COMPLETE` alone without file reference or storage C. A public URL to each file as the only source of truth D. A semantic view that automatically parses all PDFs without a function
 
+### Supplement: evaluation, sentiment and fine-tuning
+
+**29.** A team wants a repeatable quality score for an `AI_COMPLETE` classification prompt against 500 labeled rows. Which feature fits? A. `AI_FUNCTION_EVALUATION` B. `AI_COUNT_TOKENS` C. `AI_SIMILARITY` D. `AI_REDACT`
+
+**30.** Which meter appears for an `AI_FUNCTION_OPTIMIZATION` run, in addition to Cortex inference tokens? A. Search serving B. `SERVERLESS_EXPERIMENTS` C. Per-1,000 Analyst messages D. Page-based parsing
+
+**31.** `AI_SENTIMENT(text, ['Cost','Quality'])` returns `unknown` for `Cost`. What does that mean? A. Cost was neutral B. Cost was not mentioned C. The call failed D. Cost was mixed
+
+**32.** What must the training query of `SNOWFLAKE.CORTEX.FINETUNE('CREATE', ...)` return? A. `input` and `label` columns B. `prompt` and `completion` columns C. A single VARIANT column D. An embedding VECTOR
+
 ---
 
 ## Answer key and why
@@ -102,6 +112,10 @@
 | 26 | B | `OCR` is the documented default. [AI_PARSE_DOCUMENT](https://docs.snowflake.com/en/sql-reference/functions/ai_parse_document) |
 | 27 | B | `page_split` produces indexed per-page content for supported formats. [AI_PARSE_DOCUMENT](https://docs.snowflake.com/en/sql-reference/functions/ai_parse_document) |
 | 28 | A | Stages hold files; `AI_EXTRACT` extracts fields; streams/tasks can orchestrate processing. [AI_EXTRACT](https://docs.snowflake.com/en/sql-reference/functions/ai_extract) · [streams](https://docs.snowflake.com/en/user-guide/streams-intro) |
+| 29 | A | Evaluation scores a function against a labeled dataset. [AI_FUNCTION_EVALUATION](https://docs.snowflake.com/en/sql-reference/functions/ai_function_evaluation) |
+| 30 | B | Experiments run on serverless compute metered as `SERVERLESS_EXPERIMENTS`, plus inference tokens. [AI_FUNCTION_OPTIMIZATION](https://docs.snowflake.com/en/sql-reference/functions/ai_function_optimization) |
+| 31 | B | `unknown` means not mentioned; it is distinct from `neutral`. [AI_SENTIMENT](https://docs.snowflake.com/en/sql-reference/functions/ai_sentiment) |
+| 32 | B | The training query returns `prompt` and `completion`. [FINETUNE CREATE](https://docs.snowflake.com/en/sql-reference/functions/finetune-create) |
 
 ### Review rule
 

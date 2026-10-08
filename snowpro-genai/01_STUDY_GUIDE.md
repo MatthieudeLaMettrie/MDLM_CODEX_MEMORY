@@ -97,8 +97,15 @@ The blueprint also names **Cortex Knowledge Extensions**, which make curated kno
 | `AI_FILTER`, `AI_AGG` | Semantic filtering and aggregation | AI-assisted table operations; cost depends on processed inputs |
 | `AI_TRANSCRIBE` | Audio/video transcription | File on stage |
 | `AI_REDACT` | PII redaction | Verify output and governance fit |
-| `AI_COUNT_TOKENS` | Estimate token count | Helper; does not itself invoke generation |
+| `AI_COUNT_TOKENS` | Estimate input token count | Estimates **input** only; does not itself invoke generation |
+| `AI_MULTI_EMBED` | Embeddings for text/image/audio/video | Returns an object with an array of segment embeddings, not a bare `VECTOR` |
+| `AI_FUNCTION_EVALUATION` (preview) | Score a function against labeled data | Experiment: `CREATE EXPERIMENT ... TYPE = 'AI_FUNCTION_EVALUATION'`, then `EXECUTE EXPERIMENT`; billed as `SERVERLESS_EXPERIMENTS` plus tokens |
+| `AI_FUNCTION_OPTIMIZATION` (preview) | Search for a better prompt/model | Same experiment pattern; single `AI_COMPLETE` function, up to 1,000 rows; original is never changed |
+| `SNOWFLAKE.CORTEX.FINETUNE` (preview) | Fine-tune a base model | `'CREATE'`, `'SHOW'`, `'DESCRIBE'`, `'CANCEL'`; training query returns `prompt` and `completion` |
+| `SNOWFLAKE.CORTEX.SENTIMENT` | Older sentiment | Returns a FLOAT (-1 to 1), English only; `AI_SENTIMENT` returns an object with aspects |
 | `TO_FILE`, `PROMPT`, split-text helpers | Pass staged files, construct prompts, chunk text | Support a larger workflow |
+
+One clear example of **every** function in the sidebar: [09_AI_FUNCTION_EXAMPLES.md](09_AI_FUNCTION_EXAMPLES.md).
 
 [AI functions overview](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql) · [all function references](https://docs.snowflake.com/en/sql-reference/functions-all)
 
@@ -173,6 +180,7 @@ Snowflake's live pricing page distinguishes **AI Credits** from **Platform Credi
 | Cortex Search | Index serving per GB-month plus embedding tokens on insert/update | Refresh warehouse, stored index, and possible cloud services; serving can cost money even with zero queries |
 | AI functions | Generally model/function-specific tokens, AI Credits | Input/output treatment differs by function; warehouse running time can add cost |
 | `AI_PARSE_DOCUMENT` | Pages, with mode-dependent rate | It is a page-billed exception to the generic token mental model |
+| `AI_FUNCTION_EVALUATION` / `AI_FUNCTION_OPTIMIZATION` (preview) | Serverless compute metered as `SERVERLESS_EXPERIMENTS` | Plus Cortex inference tokens for the AI calls the experiment makes |
 | Snowpark Container Services | Compute pool service time plus other associated resources | Model Registry storage/deployment and warehouse activity may add costs |
 | Provisioned Throughput | Reserved throughput/capacity model | Evaluate utilization against on-demand usage |
 

@@ -2,7 +2,7 @@
 
 ## Recommended study order
 
-The filenames are numbered `01` to `07` so this order is visible in the GitHub folder.
+The filenames are numbered `01` to `09` so this order is visible in the GitHub folder.
 
 | Step | File | What to do |
 | ---: | --- | --- |
@@ -10,12 +10,13 @@ The filenames are numbered `01` to `07` so this order is visible in the GitHub f
 | **2** | [02_COURSE_COMPANION.md](02_COURSE_COMPANION.md) | Follow the four-week route and its 13 units, labs, capstone, and recall checks. |
 | **3** | [03_ENABLE_CORTEX_AND_RAG.md](03_ENABLE_CORTEX_AND_RAG.md) | Set up a test account/role, check AI Function access, and work through the Search and RAG lab while studying the related units. |
 | **4** | [04_AI_ML_DEEP_DIVE.md](04_AI_ML_DEEP_DIVE.md) | Go deeper on functions, access, models, cost, guardrails, and evaluation. Focus first on topics you could not explain from steps 1–3. |
-| **5** | [05_PRACTICE_EXAM.md](05_PRACTICE_EXAM.md) | Take the 28 original questions closed-book. Review every miss against the study guide and official docs, then take Snowflake's official practice exam separately. |
+| **5** | [05_PRACTICE_EXAM.md](05_PRACTICE_EXAM.md) | Take the 32 original questions closed-book (28 blueprint-weighted plus a 4-question supplement). Review every miss against the study guide and official docs, then take Snowflake's official practice exam separately. |
 | **6** | [06_OFFICIAL_DOC_INDEX.md](06_OFFICIAL_DOC_INDEX.md) | Use the official C02 PDF's grouped source links to resolve a specific missed exam objective. |
 | **7** | [07_AI_ML_DOC_ATLAS.md](07_AI_ML_DOC_ATLAS.md) | Use this broader 310-page documentation map when you need a particular Snowflake AI/ML topic. It is a reference index, not a cover-to-cover assignment. |
 | **8** | [08_SEMANTIC_LAYER.md](08_SEMANTIC_LAYER.md) | Learn the semantic layer: what semantic views are, how to build, query, secure, deploy, and tune them, with a known-answer lab, exam traps, and 12 checks. Best read alongside course Unit 7 (step 2), before the practice exam. |
+| **9** | [09_AI_FUNCTION_EXAMPLES.md](09_AI_FUNCTION_EXAMPLES.md) | One clear example and exam trap for every function in Snowflake's AI Functions sidebar, including `AI_FUNCTION_EVALUATION`, `AI_FUNCTION_OPTIMIZATION`, `FINETUNE`, `SENTIMENT` and the helper functions. Use it alongside step 1 or 4. |
 
-Step 8 was added after the numbered path existed, so its number does not reflect reading order: study it before step 5. Steps 6–7 are reference tools: open them whenever a question or lab exposes a gap. The core loop is **study → practise in Snowflake → test yourself → repair misses**. This material began on 2026-09-24 from the official Snowflake C02 study guide dated 2026-04-30, the supplied Snowflake GenAI course datasheet, and Snowflake documentation. It is an independent study aid, not an official Snowflake exam or a guarantee of a pass.
+Steps 8 and 9 were added after the numbered path existed, so their numbers do not reflect reading order: study step 8 before step 5, and use step 9 as a syntax workbook any time after step 1. Steps 6–7 are reference tools: open them whenever a question or lab exposes a gap. The core loop is **study → practise in Snowflake → test yourself → repair misses**. This material began on 2026-09-24 from the official Snowflake C02 study guide dated 2026-04-30, the supplied Snowflake GenAI course datasheet, and Snowflake documentation. It is an independent study aid, not an official Snowflake exam or a guarantee of a pass.
 
 ## Exam map
 
@@ -31,7 +32,7 @@ The question counts approximate the blueprint with a 28-question set. The guide'
 ## Study method
 
 - Reproduce important syntax examples from memory and work through the small labs in a Snowflake test account. Repository SQL was checked against documentation but has **not** been run in a Snowflake account.
-- Attempt the 28 questions before opening the answer key. For each miss, record the product choice, exact syntax or privilege, billing unit, and official documentation page.
+- Attempt the 32 questions before opening the answer key. For each miss, record the product choice, exact syntax or privilege, billing unit, and official documentation page.
 - Revisit Snowflake's official study guide and current docs just before booking. Product names, prices, availability, and privilege rules can change.
 
 The [course companion](02_COURSE_COMPANION.md) turns the two-day GenAI syllabus into 13 study units, a flexible four-week sequence, labs, a capstone, and ten closed-book checks. Its topic map is our interpretation; the course datasheet does not define C02 exam weights or promise exam coverage.

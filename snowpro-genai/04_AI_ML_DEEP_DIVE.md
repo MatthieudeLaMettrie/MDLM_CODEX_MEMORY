@@ -24,7 +24,7 @@ Other surfaces in the documentation tree: **Cortex AI Gateway** is a preview, ac
 
 ## 2. Cortex AI Functions: exact task and argument shape
 
-The overview currently lists **15 task functions** and the `TO_FILE`, `AI_COUNT_TOKENS`, and `PROMPT` helpers. Some functions or modalities may be in preview; check each reference and [regional availability](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql-regional-availability). The table shows the core signature, omitting some optional error-handling arguments for readability. Follow each reference before execution.
+The Snowflake function-reference sidebar (checked 2026-10-09) lists **18 `AI_` entries**: the 15 task functions in the table below, `AI_COUNT_TOKENS`, and two preview, experiment-based quality tools, `AI_FUNCTION_EVALUATION` and `AI_FUNCTION_OPTIMIZATION` (see the quality subsection in section 4). It also lists the older `SNOWFLAKE.CORTEX.FINETUNE` and `SNOWFLAKE.CORTEX.SENTIMENT` entries and a **Helper functions** group (`PROMPT`, `TO_FILE`, `SPLIT_TEXT_RECURSIVE_CHARACTER`, `AGENT_RUN`, `DATA_AGENT_RUN`, `THREAD_MESSAGES`). Runnable examples for every one are in [09_AI_FUNCTION_EXAMPLES.md](09_AI_FUNCTION_EXAMPLES.md). Some functions or modalities may be in preview; check each reference and [regional availability](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql-regional-availability). The table shows the core signature, omitting some optional error-handling arguments for readability. Follow each reference before execution.
 
 | Function | Core call or input | Output / exam distinction |
 | --- | --- | --- |
@@ -107,11 +107,14 @@ The [model-access page](https://docs.snowflake.com/en/user-guide/snowflake-corte
 | Standalone Analyst API | Per 1,000 messages, legacy Platform Credit path | Warehouse running generated SQL |
 | Analyst through Agent | Agent token-based AI Credit path | Warehouse and other invoked tools |
 | Cortex Fine-tuning | Training on a legacy Platform Credit path | Later inference is separately billed |
+| `AI_FUNCTION_EVALUATION` / `AI_FUNCTION_OPTIMIZATION` (preview) | Serverless compute metered as `SERVERLESS_EXPERIMENTS` | Plus Cortex inference tokens for every AI call the experiment makes |
 | ML Functions / custom Snowflake ML | Training, inference/compute and stored model assets | Container/runtime/service resources as used |
 
 For token accounting, [AI Function costs](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql-cost) says generation usually bills input **and** output, while embedding/similarity bill input. Classification labels, descriptions and examples are repeated input for each record. The page currently states audio equivalence of 50 tokens per second and treats pages processed by `AI_EXTRACT` as 970 input tokens per page; these are operational details to recheck before use. `AI_COUNT_TOKENS` adds warehouse work but no model-inference token charge. Snowflake recommends a warehouse no larger than MEDIUM for AI Function calls because a larger one does not speed the managed model. [AI pricing](https://docs.snowflake.com/en/user-guide/snowflake-cortex/pricing)
 
 **Usage-view drift:** the dedicated function-cost page still names `CORTEX_FUNCTIONS_USAGE_HISTORY` and `CORTEX_FUNCTIONS_QUERY_USAGE_HISTORY`, while the newer [AI cost-governance matrix](https://docs.snowflake.com/en/user-guide/snowflake-cortex/governance-and-availability/ai-cost-management-and-governance) marks those views for deprecation and points to `CORTEX_AI_FUNCTIONS_USAGE_HISTORY`. For current reporting, use the matrix's service-type, date and overlap notes. `CORTEX_AGENT_USAGE_HISTORY`, `CORTEX_SEARCH_DAILY_USAGE_HISTORY`, `SNOWFLAKE_COWORK_USAGE_HISTORY`, standalone Analyst history, and `CORTEX_AI_GUARDRAILS_USAGE_HISTORY` each answer a different question. Search embeddings can appear in AI Function history, so summing views directly can double-count. `METERING_DAILY_HISTORY` can answer the older blueprint's daily `AI_SERVICES` question, but current AI Credit reporting needs the modern view matrix. Budgets alert/react periodically; per-user quotas are the built-in blocking control and can overshoot briefly. [Cost governance](https://docs.snowflake.com/en/user-guide/snowflake-cortex/governance-and-availability/ai-cost-management-and-governance)
+
+**Measure and improve a function's quality (preview).** `AI_FUNCTION_EVALUATION` scores an AI function against a labeled Snowflake **dataset** with a chosen metric (`exact_match`, `fuzzy_match`, `contains_match`, `redaction_match`, `llm_judge`, `custom`) and reports an aggregate score plus cost and tokens. `AI_FUNCTION_OPTIMIZATION` searches for a better prompt/model configuration of an existing function (one `AI_COMPLETE` call, up to 1,000 dataset rows, one metric per run), reports a quality-versus-cost frontier, and lets you promote a winning run with `CREATE AI FUNCTION ... FROM EXPERIMENT`. Both are experiments: `CREATE EXPERIMENT ... TYPE = '...' FROM SPECIFICATION $$ yaml $$;` then `EXECUTE EXPERIMENT <name>;`. Needs `CREATE EXPERIMENT` on the schema and `SNOWFLAKE.CORTEX_USER` or `SNOWFLAKE.AI_FUNCTIONS_USER`. Billing: serverless compute metered as `SERVERLESS_EXPERIMENTS` **plus** Cortex inference tokens. Neither changes the original function. Examples: [09_AI_FUNCTION_EXAMPLES.md](09_AI_FUNCTION_EXAMPLES.md#17-ai_function_evaluation-preview).
 
 Observe **quality as well as spend**. Native Agent/CoWork monitoring exposes threads, traces and evaluations; Analyst has evaluations and SQL/log review; Search has request monitoring. Custom RAG/agent apps can use TruLens to send traces and evaluations to Snowflake AI Observability. Keep a fixed test set with expected evidence, SQL, answer, role, cost and latency, then rerun it after model, semantic-view, prompt, tool or source changes. [AI Observability](https://docs.snowflake.com/en/user-guide/snowflake-cortex/ai-observability) · [Agent monitoring](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-monitor) · [Analyst evaluations](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst-evaluations) · [TruLens](https://docs.snowflake.com/en/user-guide/snowflake-cortex/ai-observability/trace-applications-trulens)
 
@@ -135,6 +138,8 @@ Observe **quality as well as spend**. Native Agent/CoWork monitoring exposes thr
 8. Name the AI Function usage view favored by the current cost-governance matrix. Why is summing it with Search history unsafe?
 9. Which controls PII text, harmful `AI_COMPLETE` output, and prompt injection in Agent tool outputs?
 10. Which Snowflake capability manages reusable ML features, which versions models, and which monitors model drift?
+11. What is the difference between `AI_FUNCTION_EVALUATION` and `AI_FUNCTION_OPTIMIZATION`, and what two things do both bill for?
+12. `AI_SENTIMENT` returned `unknown` for the aspect `Cost`. Does that mean neutral? How does `SNOWFLAKE.CORTEX.SENTIMENT` differ in return type?
 
 <details>
 <summary>Answers</summary>
@@ -149,6 +154,8 @@ Observe **quality as well as spend**. Native Agent/CoWork monitoring exposes thr
 8. `CORTEX_AI_FUNCTIONS_USAGE_HISTORY`; Search embedding costs can appear in both histories.
 9. `AI_REDACT`; Cortex Guard via `AI_COMPLETE` options; account-level Cortex AI Guardrails via `AI_SETTINGS`, respectively.
 10. Feature Store; Model Registry; ML Observability.
+11. Evaluation *scores* an existing function against labeled data; optimization *searches* for a better prompt/model and lets you promote a winner. Both bill serverless compute (`SERVERLESS_EXPERIMENTS`) plus Cortex inference tokens.
+12. No. `unknown` means the aspect was not mentioned; `neutral` means it was mentioned without leaning either way. The older function returns one FLOAT from -1 to 1 (English only), not an object with aspects.
 
 </details>
 
