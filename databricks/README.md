@@ -21,6 +21,7 @@ Prepared **7 October 2026** using current official documentation. The teaching e
 | **12** | [Pipelines, CDF, CDC and Auto Loader examples](12_PIPELINES_CDF_CDC_AUTO_LOADER_EXAMPLES.md) | Work through fake order tables, file deliveries, corrections, deletes, stale events and expected reconciliations |
 | **13** | [Managed and external storage](13_MANAGED_AND_EXTERNAL_STORAGE_GUIDE.md) | Distinguish locations, credentials, tables and volumes; choose ownership/lifecycle and set up each approach |
 | **14** | [Pipeline operations and optimisation](14_PIPELINE_OPERATIONS_AND_OPTIMISATION.md) | Monitor delivery and correctness, diagnose/fix 15 worked incidents, recover safely and measure query/ingestion/compute/cost improvements |
+| **15** | [Field notes: volume files, dropping catalogs/schemas, pipeline SQL errors](15_NOTEBOOK_AND_CATALOG_FIELD_NOTES.md) | Read Excel/CSV from a volume, safely drop a catalog or schema, and fix the "not supported in a DLT pipeline" error |
 
 Use 04–06 alongside the related lessons. The default path is numbered so the order is also visible in the GitHub file listing. References are available whenever you need them.
 

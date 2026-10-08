@@ -1,0 +1,18 @@
+# Databricks field notes: volume files, drop catalog/schema, pipeline SQL error
+
+Date: 2026-10-08 (Australia/Sydney)
+Task identifier: not available (Claude Code session)
+
+## Request and evidence
+
+User asked four things in sequence, with two workspace screenshots and one pasted error: how to read a volume file in a Databricks notebook; how to drop a catalog; how to drop only a schema; and how to fix a pipeline error saying a `SELECT` is not supported in a DLT pipeline. Finally, user asked for these findings to be added to `databricks/` in this repository.
+
+Screenshots showed catalog `mdlm_db_trial` (schemas default, dev, uat, prod; `uat`/`prod` empty), volume `/Volumes/mdlm_db_trial/dev/dev_volume` containing `fct_retail_sales_item_v.xlsx` (5.19 KB), and a pipeline notebook with `df = spark.read.` unfinished.
+
+## Changes and decisions
+
+Added [databricks/15_NOTEBOOK_AND_CATALOG_FIELD_NOTES.md](../databricks/15_NOTEBOOK_AND_CATALOG_FIELD_NOTES.md) and linked it as lesson 15 in the databricks README table. Key points: `.xlsx` needs pandas+openpyxl (or the newer native Excel reader), not plain `spark.read`; `DROP CATALOG/SCHEMA ... CASCADE` also deletes volumes and uploaded files; pipeline SQL files may only contain dataset definitions (`CREATE ... MATERIALIZED VIEW` / `STREAMING TABLE`), so a bare `SELECT` must be wrapped.
+
+## Validation and unresolved issues
+
+Documentation only. No SQL or notebook code was run, and no Databricks workspace was accessed; syntax comes from general knowledge and was not re-checked against current docs, notably the native `format("excel")` reader. `databricks/validate_materials.py` passed its local structure/reference checks (YAML parsing skipped, no PyYAML). Next step: try the readers and pipeline fix in the trial workspace.
