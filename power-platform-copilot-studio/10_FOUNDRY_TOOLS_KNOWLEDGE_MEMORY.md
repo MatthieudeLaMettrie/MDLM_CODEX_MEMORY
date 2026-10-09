@@ -91,7 +91,7 @@ Source: [What is Memory?](https://learn.microsoft.com/en-us/azure/foundry/agents
 2. It is available only in listed regions: Australia East, Brazil South, Canada East, East US 2, France Central, Italy North, Japan East, Korea Central, North Central US, Norway East, South Africa North, South India, Sweden Central, Switzerland North, UAE North, UK South, West US, West US 2, West US 3.
 3. Both the chat and embedding models must be deployable in the project's region.
 
-**Observed in the JB project (2026-10-09):** the Memory section showed two messages: *Memory is not available in this project region* and *Memory is currently supported only for Azure OpenAI models* (the agent used a Claude model). The second matches the docs. The first conflicts with the docs if the project is in East US 2, which the resource name suggests. The actual region was not verified. Check the Foundry resource's region in the Azure portal; if it is not on the list, memory needs a project in a supported region, and the agent needs an Azure OpenAI model.
+**Observed in the JB project (2026-10-09):** the Memory section showed *Memory is not available in this project region* and *Memory is currently supported only for Azure OpenAI models* (the agent used a Claude model). Both are now explained. The resource details show the region is **East US**, not East US 2 (the `eus2` in the resource name is only a name), and East US is **not** on the memory region list. The agent's model is also not Azure OpenAI. Fixing it needs a project in a supported region (for example East US 2) with an Azure OpenAI chat model and an embedding model deployed there. See [13](13_FOUNDRY_RESOURCE_IAM_AND_OPERATIONS_RUNBOOK.md).
 
 ## Use-case guide
 

@@ -12,7 +12,7 @@ Observed 2026-10-09 in the user's own Foundry project and Fabric workspace. Part
 | 4 | The data agent was then added as an **MCP tool** with the URL and no authentication | Playground returned `401 TokenIsMissing`. MCP needs a token supplied by a Fabric IQ connection or `user-entra-token` connection. |
 | 5 | MCP tool removed; **Microsoft Fabric data agent** tool added with corrected IDs; agent reached version 7 | The agent answered, and its trace showed `fabric_dataagent_preview_call` |
 | 6 | The model was `claude-opus-5-5` (Global Standard) | Fabric tool worked with a Claude model even though the docs' model table lists none |
-| 7 | Memory panel: "not available in this project region" and "supported only for Azure OpenAI models" | See [10](10_FOUNDRY_TOOLS_KNOWLEDGE_MEMORY.md): region claim unresolved, model claim matches docs |
+| 7 | Memory panel: "not available in this project region" and "supported only for Azure OpenAI models" | Resolved in [13](13_FOUNDRY_RESOURCE_IAM_AND_OPERATIONS_RUNBOOK.md): the region is East US (not on the memory list) and the model is not Azure OpenAI |
 
 ## What the working agent revealed
 
@@ -28,11 +28,11 @@ Observed 2026-10-09 in the user's own Foundry project and Fabric workspace. Part
 - Confusing `ctid` (tenant) with the workspace GUID.
 - Treating a missing tool in the docs' model table as proof it will not work. Test, then record.
 - Sharing the agent before checking what data it can surface.
-- Assuming a project is in a given region from a resource-name suffix; confirm in the Azure portal.
+- Assuming a project is in a given region from a resource-name suffix. The name said `eus2` but the region is East US; read Manage, Resource details.
 
 ## Open items
 
-- Confirm the Foundry resource region (memory, tool and model availability).
+- Region is East US (confirmed); decide whether memory justifies a new resource in a supported region.
 - Decide model for memory (Azure OpenAI) versus Claude for reasoning; they cannot be combined in one agent for memory today per the portal message.
 - Run an evaluation set against known warehouse answers ([11](11_FOUNDRY_GUARDRAILS_EVALUATION_FINETUNING.md)).
 - Create a guardrail with tool call and tool response points and PII control.

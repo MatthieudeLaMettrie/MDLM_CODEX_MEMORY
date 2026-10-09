@@ -68,7 +68,7 @@ Deployment type decides where the *inference* is processed:
 | Standard / Regional Provisioned | The deployment's own region |
 | Developer | Any region, no residency guarantee, fine-tuned model evaluation only, 24 hour life |
 
-The JB agent's model showed **Global Standard**, so prompts and completions may be processed outside the project's region. That is acceptable only if JB's data policy allows it.
+The JB project is in **East US**. The agent's model showed **Global Standard**, so prompts and completions may be processed outside the project's region. That is acceptable only if JB's data policy allows it.
 
 Other region rules:
 - With private networking the Foundry resource must be in the same region as its virtual network; AI Search, Storage and Cosmos DB can be elsewhere (with cost implications).

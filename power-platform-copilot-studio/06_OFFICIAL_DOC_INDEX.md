@@ -34,6 +34,10 @@ Part of the [Power Platform / Copilot Studio guide](README.md). Pages read on 20
 | Guardrails | [Guardrails and controls overview](https://learn.microsoft.com/en-us/azure/foundry/guardrails/guardrails-overview) | Risks, intervention points, override. |
 | Evaluations | [Run evaluations from the portal](https://learn.microsoft.com/en-us/azure/foundry/how-to/evaluate-generative-ai-app) | Targets, evaluators, steps. |
 | Fine-tuning | [Fine-tuning considerations](https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/fine-tuning-considerations) | Methods (search summary only). |
+| Foundry RBAC | [Role-based access control for Foundry](https://learn.microsoft.com/en-us/azure/foundry/concepts/rbac-foundry) | Roles, scopes, assignment, role IDs. |
+| Evaluation permissions | [Permissions for evaluation workflows](https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/evaluation-permissions) | Roles for evaluations, traces, storage. |
+| Tracing | [Set up tracing for agents](https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/trace-agent-setup) | Application Insights connection. |
+| Publishing | [Agent applications in Foundry](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/agent-applications) | Publish, identity, invoke roles. |
 | Community | [Fabric Data Agent connection fails silently](https://learn.microsoft.com/en-us/answers/questions/5772696/copilot-studio-fabric-data-agent-connection-fails) | Unofficial symptom report. |
 
 ## Not read in this pass
