@@ -22,6 +22,7 @@ The filenames are numbered `01` to `14` so this order is visible in the GitHub f
 | **14** | [14_ACCESS_SETUP_FOUNDRY_AND_FABRIC.md](14_ACCESS_SETUP_FOUNDRY_AND_FABRIC.md) | Step-by-step access setup: Azure RBAC Foundry User and Fabric permissions (data agent sharing, warehouse, lakehouse, semantic model, SQL database, KQL), groups, RLS and CLS, testing, least-privilege plan. |
 | **15** | [15_DEV_TEST_PROD_AND_PUBLISHING.md](15_DEV_TEST_PROD_AND_PUBLISHING.md) | Dev, test, prod process for Foundry and Copilot Studio agents and workflows, CI/CD sketch, publishing to Teams, Microsoft 365 Copilot, Slack, website and third parties, identity per channel, release checklist. |
 | **16** | [16_SDK_AGENTS_DEV_TEST_PROD.md](16_SDK_AGENTS_DEV_TEST_PROD.md) | Code-first agents: OpenAI Agents SDK, Claude Agent SDK and Client SDK, Foundry SDK, A2A server/client examples, LangChain, LangGraph. Install, first agent, dev/test/prod, hosting, publishing, JB fit. |
+| **17** | [17_DEPLOY_DEMO_APP_TO_WEBSITE_AND_CHANNELS.md](17_DEPLOY_DEMO_APP_TO_WEBSITE_AND_CHANNELS.md) | Taking the local demo to a real site: identity patterns, production changes, Azure Container Apps steps, SharePoint embed, Teams, Slack, order of work for JB. |
 
 Steps 1–4 are the path; step 5 tests it; step 6 is a reference. Steps 7–12 are the Foundry and Fabric build: read 8 first, then 7, 9, 10 and 11; 12 is the worked example and 13 is the operations runbook (settings, IAM, monitoring, publishing). The loop is **study → try in a dev tenant → test yourself → repair misses**.
 
