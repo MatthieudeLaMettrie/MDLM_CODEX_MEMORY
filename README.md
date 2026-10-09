@@ -14,6 +14,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 ## Study guides
 
+- [Semantic layer → AI agent → publishing: Databricks and Snowflake](guides/data-engineering/SEMANTIC_LAYER_AI_AGENTS_AND_PUBLISHING_GUIDE.md) — Genie Agent over a metric view and Cortex Agent over a semantic view, step by step; prerequisites and per-user permissions; publishing in-platform (Genie One/CoWork), Teams/M365 Copilot/Copilot Studio, SharePoint/website (iframe or API), Power BI/Tableau and cross-org sharing; rollout order and troubleshooting.
+
 - [Semantic layers in Databricks and Snowflake: metric views vs semantic views](guides/data-engineering/SEMANTIC_LAYERS_DATABRICKS_SNOWFLAKE_GUIDE.md) — semantic layer vs semantic model, dim/fact relationships compared with Power BI and Tableau, one synthetic star schema built twice with known answers, vocabulary map (incl. dbt), grain-behaviour difference, Genie/Cortex Agent benchmark, deployment, tests, mistakes and exercises.
 
 - [Agents over Power BI semantic models: Desktop and Fabric setup](guides/data-engineering/POWER_BI_SEMANTIC_MODEL_AGENTS_GUIDE.md) — both authoring paths, architecture diagrams, Prep for AI, Fabric IQ, instruction templates, permissions, Copilot Studio/Foundry connections, production deployment, and GCP/Snowflake/Databricks equivalents.
