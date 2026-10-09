@@ -11,7 +11,7 @@ Azure RBAC on the Foundry resource/project   -> "may I use the agent and call it
 Fabric permissions on data agent + sources    -> "may I read this data?"
 ```
 
-Neither grants the other. Missing Azure RBAC gives 401 or 403 from Foundry. Missing Fabric permission gives `unauthorized`, a failed tool call, or empty results.
+Neither grants the other. Note: Foundry Agent Consumer works for the project-level agent endpoint only; callers of a **published Agent Application** need Foundry User on the application (see [15](15_DEV_TEST_PROD_AND_PUBLISHING.md) section 4.2). Missing Azure RBAC gives 401 or 403 from Foundry. Missing Fabric permission gives `unauthorized`, a failed tool call, or empty results.
 
 Evaluation order in Fabric ([permission model](https://learn.microsoft.com/en-us/fabric/security/permission-model)): 1 Entra authentication, 2 Fabric access (workspace role or item permission), 3 data security (SQL permissions, OneLake security, semantic model roles, RLS and CLS).
 

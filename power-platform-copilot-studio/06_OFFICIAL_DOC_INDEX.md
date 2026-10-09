@@ -44,6 +44,11 @@ Part of the [Power Platform / Copilot Studio guide](README.md). Pages read on 20
 | Lakehouse sharing | [Lakehouse sharing](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-sharing) | Read, ReadAll, SQL endpoint data. |
 | OneLake security | [OneLake security overview](https://learn.microsoft.com/en-us/fabric/onelake/security/get-started-security) | Roles, RLS, CLS, access modes (search summary). |
 | Community | [Fabric Data Agent connection fails silently](https://learn.microsoft.com/en-us/answers/questions/5772696/copilot-studio-fabric-data-agent-connection-fails) | Unofficial symptom report. |
+| Foundry | [Agent applications](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/agent-applications) | File 15: publish, identity, Foundry User on application, stateless Responses, one protocol. |
+| Foundry | [Publish to Microsoft Copilot and Teams](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/publish-copilot) | File 15: scopes, admin approval, manifest, version selector. |
+| Copilot Studio | [Publish channels](https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-fundamentals-publish-channels) | File 15: channel list, authentication options, testing. |
+| Copilot Studio | [Solutions overview](https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-solutions-overview) and [export and import](https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-solutions-import-export) | File 15: ALM, pipelines, what does not transfer. |
+| Copilot Studio | [Azure Bot Service channels](https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-connect-bot-to-azure-bot-service-channels) | File 15: Slack via relay bot and Direct Line. |
 
 ## Not read in this pass
 
