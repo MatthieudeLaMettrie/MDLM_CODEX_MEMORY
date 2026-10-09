@@ -189,6 +189,28 @@ Facts and cautions ([agent applications](https://learn.microsoft.com/en-us/azure
 6. **Routines** (scheduled runs) run unattended and so face the same identity question.
 7. Guests in JB's tenant can build in Foundry, but they cannot use Copilot Studio.
 
+## Part H2. Agent Configuration pane (Display name, Description, Starter prompts, Voice)
+
+Seen in the Playground's right-hand **Configuration** pane (screenshot, 2026-10-09). Sources: [configure and share your agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-agent). **The docs I read do not describe these three fields**, so what they affect is partly inferred.
+
+| Field | What to enter | Notes |
+| --- | --- | --- |
+| **Display name** | Friendly name, for example "JB Newsletter Assistant" | The agent's `name` (for example `jbnewsletteragentv1`) is **immutable, max 63 characters**; Display name is the label people see. Where it shows (preview web app, Teams, Microsoft 365) is not documented in what I read. |
+| **Description** | One or two sentences saying what it answers and what it does not | Write it for people and for orchestrators. A separate **agent card** (description, skills, examples) exists for A2A discovery but is configurable only through REST or SDK, not the portal. |
+| **Starter prompts** | Up to three example questions | Clickable suggestions for users. Use questions you have verified against the warehouse (they double as test cases). |
+| **Voice mode** | Toggle in the left panel (preview) | Pane says "Voice mode is disabled. Please enable it in the agent settings." Needs a voice-capable model; not tested, and unlikely to suit a Claude text deployment (unverified). |
+
+Example for the JB agent:
+- Display name: JB Newsletter Assistant
+- Description: Answers questions about articles, publishing cadence and article counts from the JB warehouse. Does not give contact details or answer outside that data.
+- Starter prompts: "How many articles were published last month?"; "Which topics were most covered this quarter?"; "What date range does the data cover?"
+
+Behaviour that matters:
+1. **Every saved change creates a new immutable agent version.**
+2. The default routing is **Always use latest**: the stable endpoint, and any Teams or Microsoft 365 channel, serves the newest version immediately. **Pin** a specific version (Publish dropdown, version selector) before sharing with end users. Only one version serves traffic; there is no traffic splitting.
+3. Protocols (Responses, Activity, A2A, MCP preview) and authorization schemes (Entra, BotServiceRbac, BotServiceTenant) are **not configurable in the portal**; use REST or SDK. API keys are not supported for agent endpoints; callers need Entra with Foundry Agent Consumer or higher.
+4. A PATCH to protocols or schemes **replaces** the whole list, so include every protocol and scheme you want to keep.
+
 ## Part I. Closing checklist for this project
 
 - [ ] Region confirmed East US; decide whether memory justifies a new resource in a supported region.
