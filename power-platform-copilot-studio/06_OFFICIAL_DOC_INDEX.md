@@ -38,6 +38,11 @@ Part of the [Power Platform / Copilot Studio guide](README.md). Pages read on 20
 | Evaluation permissions | [Permissions for evaluation workflows](https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/evaluation-permissions) | Roles for evaluations, traces, storage. |
 | Tracing | [Set up tracing for agents](https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/trace-agent-setup) | Application Insights connection. |
 | Publishing | [Agent applications in Foundry](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/agent-applications) | Publish, identity, invoke roles. |
+| Fabric permissions | [Permission model](https://learn.microsoft.com/en-us/fabric/security/permission-model) | Workspace roles, item, compute, OneLake security. |
+| Data agent sharing | [Fabric data agent sharing](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-sharing) | Minimum source permissions, sharing options. |
+| Warehouse sharing | [Share a warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/share-warehouse-manage-permissions) | Read, ReadData, T-SQL GRANT. |
+| Lakehouse sharing | [Lakehouse sharing](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-sharing) | Read, ReadAll, SQL endpoint data. |
+| OneLake security | [OneLake security overview](https://learn.microsoft.com/en-us/fabric/onelake/security/get-started-security) | Roles, RLS, CLS, access modes (search summary). |
 | Community | [Fabric Data Agent connection fails silently](https://learn.microsoft.com/en-us/answers/questions/5772696/copilot-studio-fabric-data-agent-connection-fails) | Unofficial symptom report. |
 
 ## Not read in this pass

@@ -2,7 +2,7 @@
 
 ## Recommended study order
 
-The filenames are numbered `01` to `13` so this order is visible in the GitHub folder.
+The filenames are numbered `01` to `14` so this order is visible in the GitHub folder.
 
 | Step | File | What to do |
 | ---: | --- | --- |
@@ -19,6 +19,7 @@ The filenames are numbered `01` to `13` so this order is visible in the GitHub f
 | **11** | [11_FOUNDRY_GUARDRAILS_EVALUATION_FINETUNING.md](11_FOUNDRY_GUARDRAILS_EVALUATION_FINETUNING.md) | Guardrails (intervention points, risks, override rule), evaluations (approaches, evaluators, starter set), fine-tuning methods. |
 | **12** | [12_JB_NEWSLETTER_FIELD_LOG.md](12_JB_NEWSLETTER_FIELD_LOG.md) | What actually happened building the JB agent: errors, fixes, what the agent revealed, open items. |
 | **13** | [13_FOUNDRY_RESOURCE_IAM_AND_OPERATIONS_RUNBOOK.md](13_FOUNDRY_RESOURCE_IAM_AND_OPERATIONS_RUNBOOK.md) | Step-by-step runbook from the Foundry resource settings and region, through IAM roles, deployments, guardrails, Application Insights, evaluations and publishing, with the JB project's actual state. |
+| **14** | [14_ACCESS_SETUP_FOUNDRY_AND_FABRIC.md](14_ACCESS_SETUP_FOUNDRY_AND_FABRIC.md) | Step-by-step access setup: Azure RBAC Foundry User and Fabric permissions (data agent sharing, warehouse, lakehouse, semantic model, SQL database, KQL), groups, RLS and CLS, testing, least-privilege plan. |
 
 Steps 1–4 are the path; step 5 tests it; step 6 is a reference. Steps 7–12 are the Foundry and Fabric build: read 8 first, then 7, 9, 10 and 11; 12 is the worked example and 13 is the operations runbook (settings, IAM, monitoring, publishing). The loop is **study → try in a dev tenant → test yourself → repair misses**.
 
