@@ -2,7 +2,7 @@
 
 ## Recommended study order
 
-The filenames are numbered `01` to `07` so this order is visible in the GitHub folder.
+The filenames are numbered `01` to `12` so this order is visible in the GitHub folder.
 
 | Step | File | What to do |
 | ---: | --- | --- |
@@ -13,8 +13,13 @@ The filenames are numbered `01` to `07` so this order is visible in the GitHub f
 | **5** | [05_PRACTICE_CHECKS.md](05_PRACTICE_CHECKS.md) | Fourteen closed-book checks with answers and a lab. |
 | **6** | [06_OFFICIAL_DOC_INDEX.md](06_OFFICIAL_DOC_INDEX.md) | The Microsoft Learn pages used, and what was not read. |
 | **7** | [07_FOUNDRY_AGENT_WITH_FABRIC_TOOL.md](07_FOUNDRY_AGENT_WITH_FABRIC_TOOL.md) | Step-by-step: add the Fabric data agent tool to a Foundry agent in the new portal, test, code sample, MCP alternative, unattended-use caveat, troubleshooting. Do after step 2. |
+| **8** | [08_FABRIC_ADMIN_AND_TENANT_CHECKLIST.md](08_FABRIC_ADMIN_AND_TENANT_CHECKLIST.md) | The same-tenant rule, the Fabric tenant settings to enable, capacity and region rules, permissions per user, authentication facts, one-page pre-flight. Read before any Fabric connection. |
+| **9** | [09_FOUNDRY_PLATFORM_AND_SERVICES.md](09_FOUNDRY_PLATFORM_AND_SERVICES.md) | Foundry portal map, resource model, services you can add, why region matters, deployment types, roles, limits. |
+| **10** | [10_FOUNDRY_TOOLS_KNOWLEDGE_MEMORY.md](10_FOUNDRY_TOOLS_KNOWLEDGE_MEMORY.md) | Every tool with examples, toolboxes, knowledge options, how to set up Azure AI Search and Foundry IQ step by step, memory and its model and region limits. |
+| **11** | [11_FOUNDRY_GUARDRAILS_EVALUATION_FINETUNING.md](11_FOUNDRY_GUARDRAILS_EVALUATION_FINETUNING.md) | Guardrails (intervention points, risks, override rule), evaluations (approaches, evaluators, starter set), fine-tuning methods. |
+| **12** | [12_JB_NEWSLETTER_FIELD_LOG.md](12_JB_NEWSLETTER_FIELD_LOG.md) | What actually happened building the JB agent: errors, fixes, what the agent revealed, open items. |
 
-Steps 1–4 are the path; step 5 tests it; step 6 is a reference. The loop is **study → try in a dev tenant → test yourself → repair misses**.
+Steps 1–4 are the path; step 5 tests it; step 6 is a reference. Steps 7–12 are the Foundry and Fabric build: read 8 first, then 7, 9, 10 and 11; 12 is the worked example. The loop is **study → try in a dev tenant → test yourself → repair misses**.
 
 ## Related material
 
