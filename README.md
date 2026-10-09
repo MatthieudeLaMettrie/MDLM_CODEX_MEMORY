@@ -14,6 +14,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 ## Study guides
 
+- [Semantic layers in Databricks and Snowflake: metric views vs semantic views](guides/data-engineering/SEMANTIC_LAYERS_DATABRICKS_SNOWFLAKE_GUIDE.md) — one synthetic star schema built twice with known answers, vocabulary map (incl. dbt), grain-behaviour difference, Genie/Cortex Agent benchmark, deployment, tests, mistakes and exercises.
+
 - [Agents over Power BI semantic models: Desktop and Fabric setup](guides/data-engineering/POWER_BI_SEMANTIC_MODEL_AGENTS_GUIDE.md) — both authoring paths, architecture diagrams, Prep for AI, Fabric IQ, instruction templates, permissions, Copilot Studio/Foundry connections, production deployment, and GCP/Snowflake/Databricks equivalents.
 
 - [Databricks data engineering: 00–16 numbered course](databricks/README.md) — 16 lessons, executable development lab, ETL and medallion architecture, Delta/PySpark troubleshooting, Azure Synapse integration, bundles/orchestration, Unity Catalog volumes and managed/external storage, Lakeflow/DLT pipelines, fake-table CDF/CDC/Auto Loader examples, screenshot-based retail CDC/CDF setup, operations/monitoring/optimisation with 15 worked incidents, 28 incident exercises and capstone.
