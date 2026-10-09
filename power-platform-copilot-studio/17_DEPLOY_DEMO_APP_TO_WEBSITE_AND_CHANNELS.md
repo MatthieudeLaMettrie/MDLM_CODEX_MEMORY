@@ -109,3 +109,7 @@ The on-behalf-of (user token exchange) test needs a small web app with Entra sig
 **Setup for the test (JB admin)**: Entra admin center, App registrations, New registration (name, single tenant, no redirect URI); copy client ID and tenant ID; Certificates and secrets, New client secret, copy the **Value** once. Azure: Foundry project, Access control (IAM), add **Foundry User** for the app. Fabric: tenant setting allowing service principals to call Fabric APIs (scope to a security group holding the app), then share the published data agent and sources with the app. Delete the secret and registration after the test if not needed.
 
 **Script**: `examples/foundry_identity_test.py` prints which identity the token carries, calls the agent read-only, and gives a verdict `TOOL_OK`, `TOOL_ERROR` or `NO_TOOL_CALL` with next steps. Verdict logic and token decoding checked with mocked responses; never run against a real tenant.
+
+## 10. Built since this was written
+
+The hardened app is in `examples/hardened_app/` (tests pass against a mocked agent; not run against a real tenant) and the full Entra walkthrough is [18](18_ENTRA_APP_REGISTRATION_STEP_BY_STEP.md).

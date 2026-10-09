@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assistant</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>Assistant</h1>
+    <div class="who"><span id="user"></span> <a href="/.auth/logout">Sign out</a></div>
+  </header>
+  <p class="note">AI-generated answers can be wrong. Check important numbers against the source data.</p>
+  <main id="log" aria-live="polite"></main>
+  <form id="form" autocomplete="off">
+    <input id="q" type="text" maxlength="1500" placeholder="Ask a question" autofocus>
+    <button id="send" type="submit">Send</button>
+    <button id="reset" type="button">New chat</button>
+  </form>
+  <script src="/static/app.js"></script>
+</body>
+</html>

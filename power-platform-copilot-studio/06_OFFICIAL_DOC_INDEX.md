@@ -54,6 +54,9 @@ Part of the [Power Platform / Copilot Studio guide](README.md). Pages read on 20
 | Microsoft | [Foundry SDK quickstart](https://learn.microsoft.com/en-us/azure/foundry/quickstarts/get-started-code) | File 16: azure-ai-projects 2.x, create_version, conversations. |
 | A2A | [Python tutorial](https://a2a-protocol.org/latest/tutorials/python/1-introduction/) and [specification](https://a2a-protocol.org/latest/specification/) | File 16: agent card, task states, server and client code. |
 | LangChain | [Agents](https://docs.langchain.com/oss/python/langchain/agents), [LangGraph overview](https://docs.langchain.com/oss/python/langgraph/overview), [persistence](https://docs.langchain.com/oss/python/langgraph/persistence), [deploy](https://docs.langchain.com/oss/python/langgraph/deploy) | File 16: create_agent, middleware, checkpointers, LangSmith Deployment. |
+| Entra | [Register an app](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app) | File 18: portal steps, account types, secrets, roles. |
+| Fabric | [REST API identity support](https://learn.microsoft.com/en-us/rest/api/fabric/articles/identity-support) | File 18: tenant setting Service principals can use Fabric APIs. |
+| Azure | [Container Apps authentication](https://learn.microsoft.com/en-us/azure/container-apps/authentication) and [Entra provider](https://learn.microsoft.com/en-us/azure/container-apps/authentication-entra) | File 18 and hardened app: Easy Auth, headers, redirect URI, CLI. |
 
 ## Not read in this pass
 
