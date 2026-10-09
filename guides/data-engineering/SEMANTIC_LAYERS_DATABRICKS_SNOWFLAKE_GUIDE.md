@@ -35,6 +35,20 @@ flowchart LR
   SV --> SQ
 ```
 
+### Semantic layer vs semantic model
+
+The two terms are often used interchangeably, but they sit at different levels:
+
+| | Semantic layer | Semantic model |
+| --- | --- | --- |
+| What it is | An **architectural idea**: one governed place where business meaning (joins, metric formulas, names, descriptions) lives between raw tables and every consumer | A **concrete object** that implements part of that layer for one domain or audience |
+| How many | One per organisation or platform, ideally | Usually several: "Sales", "Marketing", "Support" |
+| Examples | "Our semantic layer is in Snowflake" · "We use the dbt Semantic Layer" | Power BI semantic model (formerly "dataset"), Tableau published data source, dbt `semantic_model`, Databricks metric view, Snowflake semantic view, LookML model/Explore |
+
+A semantic layer is therefore **made of one or more semantic models**, plus the governance around them: Git, grants, certification and tests. Vendor names add confusion. dbt calls each YAML block a `semantic_model` and the hosted query service the "dbt Semantic Layer". Snowflake calls the object a semantic *view*, and its legacy stage-based YAML file a semantic *model*. Power BI's object has been called a semantic model since 2023.
+
+One practical difference matters more than the naming. A **BI-tool semantic model** (Power BI, Tableau) serves mainly that tool's reports. A **warehouse-native semantic model** (Databricks, Snowflake, dbt) can serve SQL users, notebooks, several BI tools and AI agents from one definition.
+
 ### Vocabulary map
 
 | Idea | Databricks metric view | Snowflake semantic view | dbt MetricFlow |
@@ -88,6 +102,78 @@ If a platform gives a different number, check the grain and the joins before you
 4. **List the 5–15 business questions** the model must answer. Each becomes a dimension, a metric or a benchmark test.
 5. **Decide each metric's formula, grain and null behavior in plain words first.** For example: "Net sales = sum of quantity × unit price × (1 − discount) per line. Returned orders are included unless filtered."
 6. **Write descriptions and synonyms for humans and agents.** Descriptions are the strongest accuracy lever in both platforms' AI features.
+
+### Relationships between dimension and fact tables: Power BI and Tableau vs code
+
+The concept is identical everywhere: each **fact** row points to **one** dimension row through a key, which makes the link many-to-one. What differs is *how* you declare the link, and what the tool does when the link is wrong.
+
+```mermaid
+flowchart LR
+  F["order_lines (fact)<br/>many rows per order"] -- "order_id → order_id<br/>many-to-one" --> O["orders<br/>1 row per order"]
+  O -- "customer_id → customer_id<br/>many-to-one" --> C["customers (dim)<br/>1 row per customer"]
+```
+
+| Tool | Where you define it | The `order_lines → orders → customers` link | Cardinality and direction |
+| --- | --- | --- | --- |
+| **Power BI** | Model view: drag `order_lines[order_id]` onto `orders[order_id]` (or Manage relationships) | Two relationship lines | You set *Many-to-one* and *Cross-filter direction: Single* (dim filters fact). Only one **active** path between two tables; others are inactive and used with `USERELATIONSHIP` in DAX. |
+| **Tableau** | Data Source page, logical layer: drag tables onto the canvas and connect matching fields ("noodles") | Two relationships with matching fields | Performance options (cardinality, referential integrity) are optional hints. Tableau picks the join type per viz and aggregates each measure at its own table's level of detail, which avoids most double counting. The *physical* layer still supports classic joins. |
+| **Snowflake semantic view** | `TABLES` with `PRIMARY KEY`, then `RELATIONSHIPS` | `lines_to_orders AS order_lines (order_id) REFERENCES orders`, `orders_to_customers AS orders (customer_id) REFERENCES customers` | Inferred: the referenced column must be a declared primary or unique key, so the many side is the referencing table. Grain is enforced at query time. |
+| **Databricks metric view** | `joins:` under the single `source` (the fact) | `- name: orders` with `on: source.order_id = orders.order_id`, and nested `- name: customers` with `on: orders.customer_id = customers.customer_id` | `cardinality: many_to_one` by default; `one_to_many` from Runtime 18.1. Nesting gives a snowflake schema. **Not enforced:** a duplicate key silently multiplies rows. |
+| **dbt MetricFlow** | `entities:` on each semantic model | `order` entity: `primary` on orders, `foreign` on order_lines. `customer` entity: `primary` on customers, `foreign` on orders. | Joins are derived from matching entity names. MetricFlow allows only safe (fan-out-free) joins. |
+
+#### The same relationship, written three ways
+
+```sql
+-- Snowflake (inside CREATE SEMANTIC VIEW)
+TABLES (
+  customers   AS SV_CUSTOMERS   PRIMARY KEY (customer_id),
+  orders      AS SV_ORDERS      PRIMARY KEY (order_id),
+  order_lines AS SV_ORDER_LINES PRIMARY KEY (order_id, line_no) )
+RELATIONSHIPS (
+  lines_to_orders     AS order_lines (order_id)  REFERENCES orders,
+  orders_to_customers AS orders      (customer_id) REFERENCES customers )
+```
+
+```yaml
+# Databricks metric view
+source: mdlm_db_trial.semantic_lab.order_lines
+joins:
+  - name: orders
+    source: mdlm_db_trial.semantic_lab.orders
+    on: source.order_id = orders.order_id
+    joins:
+      - name: customers
+        source: mdlm_db_trial.semantic_lab.customers
+        on: orders.customer_id = customers.customer_id
+```
+
+```yaml
+# dbt semantic models (entities only)
+semantic_models:
+  - name: order_lines
+    # order_line_id: a surrogate key built upstream in SQL, e.g. dbt_utils.generate_surrogate_key(['order_id','line_no'])
+    entities: [{name: order_line, type: primary, expr: order_line_id},
+               {name: order, type: foreign, expr: order_id}]
+  - name: orders
+    entities: [{name: order, type: primary, expr: order_id},
+               {name: customer, type: foreign, expr: customer_id}]
+  - name: customers
+    entities: [{name: customer, type: primary, expr: customer_id}]
+```
+
+#### Mindset changes coming from Power BI or Tableau
+
+1. **No diagram view, so draw it first.** Sketch the star on paper, with one arrow per fact → dim key, then translate each arrow into one `REFERENCES` line or one `joins:` entry. Snowsight and Catalog Explorer show the result, but you author it as code in Git.
+2. **No relationship means no join.** Power BI's autodetect and Tableau's field matching suggest links. In Snowflake and Databricks, an agent will not invent a join you did not declare. That is a feature, because it prevents guessed joins.
+3. **The key must really be unique.** Power BI refuses a many-to-one relationship when the "one" side has duplicates. Snowflake relies on declared keys, and Databricks trusts your `on` clause. Run the uniqueness checks in section 7 before you trust any total.
+4. **Filter direction becomes grain.** Power BI asks "which way do filters flow?". The warehouse tools ask "at which table's grain is this metric aggregated?". A dimension filters a fact (the single direction). Grouping a coarse metric by a finer dimension is like Power BI's "both directions", and that is where Snowflake refuses and Databricks quietly returns non-additive numbers (section 5).
+5. **Role-playing dimensions** (for example, order date and ship date both pointing at one date table) need **two separate links**:
+   - Power BI: one active relationship and one inactive one, used with `USERELATIONSHIP` in DAX.
+   - Databricks: two `joins` entries with different `name`s on the same source table.
+   - Snowflake: the same physical table declared twice as two logical tables with different aliases, each with its own relationship.
+
+   Confirm the Snowflake pattern against the current `CREATE SEMANTIC VIEW` validation rules before you rely on it.
+6. **Many-to-many needs a bridge table** in all of them. Power BI's native many-to-many relationship has no direct equivalent in Snowflake or Databricks.
 
 ## 4. Build it in Databricks: Unity Catalog metric view
 

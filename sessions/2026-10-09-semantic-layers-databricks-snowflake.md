@@ -28,3 +28,11 @@ The user asked whether another guide could be created on building semantic layer
 ## Next steps
 
 Run section 4 in the `mdlm_db_trial` trial workspace and section 6 in the Snowflake lab account, then record actual results against section 2.
+
+## Follow-up (same day): layer vs model, and relationships
+
+- User asked for status (guide was complete and pushed in 368a2f4; the earlier final reply had wrongly said "No response requested" instead of reporting) and asked: is a semantic layer different from a semantic model, and how are dim/fact relationships created compared with Power BI or Tableau?
+- Explained, then on the user's "yes" added two subsections to the guide (no renumbering):
+  - Section 1 "Semantic layer vs semantic model": layer = architectural idea; model = concrete object (Power BI semantic model, Tableau data source, dbt semantic_model, Databricks metric view, Snowflake semantic view, LookML); vendor naming confusion; BI-tool vs warehouse-native models.
+  - Section 3 "Relationships between dimension and fact tables": comparison table (Power BI, Tableau logical layer, Snowflake RELATIONSHIPS, Databricks joins, dbt entities), the fixture relationship written in Snowflake/Databricks/dbt, and six mindset changes (draw first, no relationship = no join, key uniqueness, filter direction vs grain, role-playing dims, bridge tables for many-to-many).
+- Unverified: Snowflake role-playing pattern (same table as two logical tables) flagged for confirmation against validation rules; Power BI/Tableau descriptions from general product knowledge, not re-checked against docs this session.
