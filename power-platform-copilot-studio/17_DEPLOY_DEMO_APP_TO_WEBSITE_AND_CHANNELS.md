@@ -89,3 +89,15 @@ Same shape: a gateway or bot that calls your backend; see [16](16_SDK_AGENTS_DEV
 - Managed identity with the Fabric tool (docs say service principals are unsupported).
 - SharePoint, Teams tab and Container Apps authentication specifics (general knowledge, not read here).
 - Costs and quotas.
+
+## 8. Addendum: how to run the identity test, and why not a public shared-account site
+
+**Identity test without deploying anything.** A managed identity behaves like a service principal for this test, so test locally with a service principal:
+1. JB admin creates an app registration in JB's tenant (guest consultants usually cannot) and a client secret; the secret goes in environment variables or Key Vault, never in code or the repo.
+2. Azure: give the service principal Foundry User on the project.
+3. Fabric: JB admin enables the tenant setting that lets service principals use Fabric APIs (scope it to a security group), adds the service principal to that group, then shares the published data agent and the source items with it.
+4. Run the demo's call using `ClientSecretCredential(tenant_id, client_id, client_secret)` instead of `DeviceCodeCredential`.
+5. Read the result: answer plus a `fabric_dataagent_preview_call` item means service identity works for the Fabric tool; an unauthorized or tool error means it does not (the docs say service principals are not supported for this tool, so an error is expected).
+The on-behalf-of (user token exchange) test needs a small web app with Entra sign-in and is a second step.
+
+**Public or "anyone" access with a shared service account: do not.** The agent can reach the warehouse including a contact table with personal data; a shared identity removes per-user row and column security, anyone can run up model cost (Claude Opus class pricing), prompt injection can steer the agent into revealing data, and a shared user account breaks MFA and Conditional Access. Use authenticated users (Entra group) for internal use. For a public audience build a separate agent over curated, public-only data with no warehouse tool, rate limits and bot protection.
