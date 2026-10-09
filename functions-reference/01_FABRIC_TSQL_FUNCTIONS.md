@@ -164,6 +164,73 @@ CROSS APPLY OPENJSON(AI_EXTRACT(reviews_text, 'sentiment', 'time_reported', 'pro
 - `AI_TRANSLATE` takes a **code** (`'de'`), has **no source-language argument**, and supports only ten languages.
 - There is **no document, image, or audio** function and **no embeddings** function in the Warehouse. Text only.
 - Always check for `NULL`; wrap updates in `ISNULL(ai_function(...), original)`.
+- AI functions are **per row** and see only the values you pass. They cannot aggregate across a table, so never use them for medians, sums or counts (see the worked example below); use `MEDIAN`, `QUANTILE` and the other aggregates, then pass the result as text.
+
+### Don't use an AI function for a calculation (worked example)
+
+A real mistake: asking the model for a median over a table.
+
+```sql
+-- WRONG: runs once PER ROW, and each call sees only that row's value
+SELECT AI_GENERATE_RESPONSE('what is the median Price', [sale_price_aud])
+FROM [dbo].[gld_market_sale];
+```
+
+Why it fails:
+
+| Problem | Detail |
+| --- | --- |
+| **No table-wide view** | `AI_GENERATE_RESPONSE(prompt, data)` is a scalar function. The `data` argument is that one row's value, so the model can never see the other prices and cannot compute a median |
+| **Cost and speed** | One external model call per row, at roughly 10-100 rows per second. A large table means a long, billable query for a meaningless result |
+| **Wrong data type** | `data` is documented as text. A numeric column may raise an error or, under the default `NULL ON ERROR`, silently return `NULL` |
+| **Wrong tool** | An LLM is not a reliable calculator. Even with every number in the prompt it can return a plausible but wrong answer |
+| **Square brackets** | `[sale_price_aud]` is just a T-SQL **delimited identifier** (a column), not an array of values |
+
+Use the aggregates built for it. `MEDIAN` and `QUANTILE` are Fabric-only (section 3) and are exact:
+
+```sql
+-- Exact median of the whole column
+SELECT MEDIAN(sale_price_aud) AS median_price
+FROM dbo.gld_market_sale;
+
+-- QUANTILE(p, column): the median plus other percentiles in one pass
+SELECT QUANTILE(0.5, sale_price_aud) AS median_price,
+       QUANTILE(0.9, sale_price_aud) AS p90_price
+FROM dbo.gld_market_sale;
+
+-- Per group (suburb is a hypothetical column), or the group median beside every row
+SELECT suburb, MEDIAN(sale_price_aud) AS median_price
+FROM dbo.gld_market_sale
+GROUP BY suburb;
+
+SELECT *, MEDIAN(sale_price_aud) OVER (PARTITION BY suburb) AS suburb_median
+FROM dbo.gld_market_sale;
+```
+
+Both return `NULL` if every value is `NULL`, need a numeric column, and do not support `DISTINCT`.
+
+**If you want the model to comment on a number, compute the number first, then pass it as text.** Do the arithmetic in SQL and let the model do the language:
+
+```sql
+WITH stats AS (
+    SELECT suburb,
+           MEDIAN(sale_price_aud)                AS median_price,
+           COUNT(*)                              AS sales
+    FROM dbo.gld_market_sale
+    GROUP BY suburb
+)
+SELECT suburb,
+       median_price,
+       AI_GENERATE_RESPONSE(
+           'In one sentence, describe this suburb market for a buyer:',
+           CONCAT('Suburb: ', suburb,
+                  '. Median sale price AUD: ', CAST(median_price AS VARCHAR(20)),
+                  '. Number of sales: ', CAST(sales AS VARCHAR(10)))
+           NULL ON ERROR) AS commentary
+FROM stats;                                    -- one model call per SUBURB, not per sale
+```
+
+Rule of thumb: **SQL for numbers, AI functions for text.** Aggregate down to few rows *before* calling an AI function, and always cast non-text values to text for the `data` argument.
 
 ### In SQL database in Fabric: chunking and embeddings
 
