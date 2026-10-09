@@ -101,6 +101,20 @@ A published data agent is itself an MCP server exposing **one tool**. The URL is
 - Foundry's MCP page shows a project connection with `--auth-type user-entra-token` for a Fabric MCP endpoint using audience `https://analysis.windows.net/powerbi/api`. That example targets a different Fabric endpoint, so **the correct audience for the data agent URL is unverified**; test it.
 - Use this route if you need tasks or want one tool surface shared across clients. Use the Fabric tool above first: it is simpler and documented for this exact case.
 
+## Field note 2026-10-09: 401 `TokenIsMissing` on the data agent MCP URL
+
+Symptom: a Foundry MCP tool pointing at `https://api.fabric.microsoft.com/v1/mcp/workspaces/<ws>/dataagents/<id>/agent` failed with `401`, `errorCode: TokenIsMissing`, "Access token is required". Meaning: Foundry sent **no Authorization header**, so the tool was added as an MCP server with no authentication (or an empty key). The Fabric endpoint requires a bearer token on every request and does not support dynamic client registration.
+
+Fixes, in order of preference ([Fabric IQ page](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/fabric-iq), [MCP authentication page](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/mcp-authentication)):
+
+1. Remove the MCP tool and use the **Microsoft Fabric data agent** tool (steps above). No token handling needed.
+2. Keep MCP but use the **Fabric IQ** connection (Settings, Connections, New connection, Fabric IQ) with managed OAuth, or bring-your-own Entra app: scope `https://analysis.windows.net/powerbi/api/DataAgent.Execute.All` plus `offline_access`, admin consent granted, redirect URL from Foundry added to the app. Each user then completes a one-time consent (`CONSENT_REQUIRED` or an `oauth_consent_request` link).
+3. A remote-tool connection with `--auth-type user-entra-token --audience https://analysis.windows.net/powerbi/api` (the docs' example for a data agent URL over a workspace private link).
+
+Resolved from the docs: the audience for the data agent URL through a Foundry connection is the Power BI API resource above. A **direct MCP client** (not a Foundry connection) may use a user or service-principal token requested with scope `https://api.fabric.microsoft.com/.default`; through a Foundry connection the auth is delegated (user). So the earlier "service principal" conflict is explained: service principals work for direct clients, not for the Foundry connection or the Fabric data agent tool.
+
+Later 401 causes: admin consent missing, wrong client ID/secret/scopes. A 404 means the URL or GUID is wrong or the item is unpublished. For slow queries enable background mode with a model that supports it (the page names gpt-5.4 and gpt-5.5).
+
 ## What this means for unattended use
 
 The Foundry page says service principals are not supported for the Fabric data agent, and the agent's own Entra identity is not a user. The Fabric MCP page says the token "can represent either a user identity or a service principal". These conflict. Until resolved, assume a **scheduled or unattended** newsletter run cannot rely on the Fabric tool; it needs a signed-in user, or a different route (for example querying the warehouse with an approved service principal).
