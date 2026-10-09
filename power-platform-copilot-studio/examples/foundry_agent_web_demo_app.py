@@ -37,7 +37,7 @@ def chat(body: Ask):
     return {"answer": r.output_text, "conversation_id": conv_id}
 
 
-PAGE = """<!doctype html><meta charset=utf-8><title>Agent demo</title>
+PAGE = r"""<!doctype html><meta charset=utf-8><title>Agent demo</title>
 <body style="font-family:sans-serif;max-width:720px;margin:2rem auto">
 <h2>Agent demo</h2><div id=log style="white-space:pre-wrap;border:1px solid #ccc;padding:1rem;min-height:200px"></div>
 <p><input id=q style="width:80%" placeholder="Ask a question"> <button onclick=send()>Send</button></p>
