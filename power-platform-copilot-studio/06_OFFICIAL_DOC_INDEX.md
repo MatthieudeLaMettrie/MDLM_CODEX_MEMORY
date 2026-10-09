@@ -49,6 +49,11 @@ Part of the [Power Platform / Copilot Studio guide](README.md). Pages read on 20
 | Copilot Studio | [Publish channels](https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-fundamentals-publish-channels) | File 15: channel list, authentication options, testing. |
 | Copilot Studio | [Solutions overview](https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-solutions-overview) and [export and import](https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-solutions-import-export) | File 15: ALM, pipelines, what does not transfer. |
 | Copilot Studio | [Azure Bot Service channels](https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-connect-bot-to-azure-bot-service-channels) | File 15: Slack via relay bot and Direct Line. |
+| OpenAI | [Agents SDK](https://openai.github.io/openai-agents-python/) | File 16: install, primitives, minimal agent. |
+| Anthropic | [Agent SDK overview](https://code.claude.com/docs/en/agent-sdk/overview), [quickstart](https://code.claude.com/docs/en/agent-sdk/quickstart), [hosting](https://code.claude.com/docs/en/agent-sdk/hosting), [permissions](https://code.claude.com/docs/en/agent-sdk/permissions) | File 16: install, providers incl. Foundry, hosting patterns, permission modes. |
+| Microsoft | [Foundry SDK quickstart](https://learn.microsoft.com/en-us/azure/foundry/quickstarts/get-started-code) | File 16: azure-ai-projects 2.x, create_version, conversations. |
+| A2A | [Python tutorial](https://a2a-protocol.org/latest/tutorials/python/1-introduction/) and [specification](https://a2a-protocol.org/latest/specification/) | File 16: agent card, task states, server and client code. |
+| LangChain | [Agents](https://docs.langchain.com/oss/python/langchain/agents), [LangGraph overview](https://docs.langchain.com/oss/python/langgraph/overview), [persistence](https://docs.langchain.com/oss/python/langgraph/persistence), [deploy](https://docs.langchain.com/oss/python/langgraph/deploy) | File 16: create_agent, middleware, checkpointers, LangSmith Deployment. |
 
 ## Not read in this pass
 
