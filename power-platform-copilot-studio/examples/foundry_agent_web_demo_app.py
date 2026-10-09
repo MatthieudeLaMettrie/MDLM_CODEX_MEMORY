@@ -11,9 +11,9 @@ from pydantic import BaseModel
 from azure.identity import DeviceCodeCredential
 from azure.ai.projects import AIProjectClient
 
-TENANT_ID = "<tenant-guid>"
-ENDPOINT = "https://<resource>.services.ai.azure.com/api/projects/<project>"
-AGENT = "<agent-name>"
+TENANT_ID = "30a73c0f-1703-4d60-94f9-d540409677ae"
+ENDPOINT  = "https://jb-pdp-newsletter-eus2.services.ai.azure.com/api/projects/jb-newsletter"
+AGENT     = "jbnewsletteragentv1"
 
 cred = DeviceCodeCredential(tenant_id=TENANT_ID)
 project = AIProjectClient(endpoint=ENDPOINT, credential=cred)
