@@ -36,3 +36,9 @@ Run section 4 in the `mdlm_db_trial` trial workspace and section 6 in the Snowfl
   - Section 1 "Semantic layer vs semantic model": layer = architectural idea; model = concrete object (Power BI semantic model, Tableau data source, dbt semantic_model, Databricks metric view, Snowflake semantic view, LookML); vendor naming confusion; BI-tool vs warehouse-native models.
   - Section 3 "Relationships between dimension and fact tables": comparison table (Power BI, Tableau logical layer, Snowflake RELATIONSHIPS, Databricks joins, dbt entities), the fixture relationship written in Snowflake/Databricks/dbt, and six mindset changes (draw first, no relationship = no join, key uniqueness, filter direction vs grain, role-playing dims, bridge tables for many-to-many).
 - Unverified: Snowflake role-playing pattern (same table as two logical tables) flagged for confirmation against validation rules; Power BI/Tableau descriptions from general product knowledge, not re-checked against docs this session.
+
+## Follow-up: running the Databricks lab
+
+- User asked to run the Databricks lab in the trial workspace. No Databricks CLI/SDK/profile on this (work) laptop and the Claude in Chrome extension was not connected.
+- User chose the paste-and-run option (no credentials stored on the work laptop). Added `guides/data-engineering/semantic-layers-lab/databricks_metric_view_lab.sql`: creates `mdlm_db_trial.semantic_lab`, the three tables and the `sales_metrics` metric view, and ends with a 23-check PASS/FAIL grid; an optional separate view tests the guide's unverified `format` block. Cleanup is commented out. Linked from guide section 4.
+- Status: waiting for the user to run it and paste back results; nothing executed in Databricks yet.

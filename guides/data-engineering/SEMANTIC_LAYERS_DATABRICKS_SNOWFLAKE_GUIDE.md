@@ -187,6 +187,8 @@ semantic_models:
 
 These steps use your trial catalog `mdlm_db_trial` and a throwaway `semantic_lab` schema. Change the names if needed.
 
+**Shortcut:** [`semantic-layers-lab/databricks_metric_view_lab.sql`](semantic-layers-lab/databricks_metric_view_lab.sql) runs steps 1–4 in one go in the SQL editor and ends with a 23-row PASS/FAIL grid against section 2.
+
 ```sql
 CREATE SCHEMA IF NOT EXISTS mdlm_db_trial.semantic_lab;
 USE mdlm_db_trial.semantic_lab;
