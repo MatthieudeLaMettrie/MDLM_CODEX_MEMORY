@@ -2,6 +2,8 @@
 
 32 original single-answer questions (28 blueprint-weighted plus a 4-question supplement on newer functions). Approximate domain weighting of the first 28: 5 overview, 11 functions, 8 governance, 4 document processing. These are learning questions based on official objectives and documentation, **not** Snowflake practice-exam items or claimed real exam questions. Set a timer, answer before reading the key, and verify any disputed item in the linked docs. Syntax examples describe documented signatures as checked 2026-09-24; they were not run in an account.
 
+Questions 33-49 are a **supplement on the semantic layer** at the end of this file ([08_SEMANTIC_LAYER.md](08_SEMANTIC_LAYER.md)); they sit outside the 28-question blueprint weighting.
+
 ## Questions
 
 ### Domain 1: overview
@@ -120,3 +122,65 @@
 ### Review rule
 
 For every miss, write one sentence explaining **why the chosen distractor is wrong** and one short SQL/API/privilege/cost example. Re-attempt missed items 24 hours later. Do not use a high score on this small set as proof of exam readiness; add the official practice exam and a live lab.
+
+---
+
+## Supplement: semantic layer (questions 33-49)
+
+17 extra single-answer questions on semantic views, based on [08_SEMANTIC_LAYER.md](08_SEMANTIC_LAYER.md) and the linked Snowflake pages, checked 2026-10-09. They mostly map to Domain 1, with some Domain 3 (privileges). They are original learning questions, not Snowflake exam items. Answer first, then check the key below. Assume the lab view `SALES_SV` from file 08 where a view is named.
+
+**33.** How do YAML and SQL DDL relate for semantic views? A. YAML creates a stage-based semantic model and DDL creates a semantic view, so they are different object types B. YAML is only for Cortex Analyst and DDL is only for SQL queries C. They are two authoring formats that produce the same kind of semantic view object D. DDL is deprecated in favour of YAML
+
+**34.** Which function must wrap a defined metric when you query the view name with standard SQL, for example `SELECT region, ___(net_sales) FROM SALES_SV GROUP BY region`? A. `AGG` B. `SUM` C. `METRIC` D. `SEMANTIC_VIEW`
+
+**35.** Which combination is **not** allowed in a single `SEMANTIC_VIEW(...)` clause? A. `DIMENSIONS` and `METRICS` B. `DIMENSIONS` and a `WHERE` filter on a dimension C. `METRICS` and a derived metric D. `FACTS` and `METRICS`
+
+**36.** Why does `DIMENSIONS order_lines.product METRICS orders.order_count` fail? A. `product` is a private dimension B. The dimension's table has a finer grain than the metric's table C. Facts are required in the same clause D. `AGG()` is missing
+
+**37.** A role has `SELECT` on `SALES_SV` but no privilege on the base tables. It runs `SELECT * FROM SEMANTIC_VIEW(SALES_SV METRICS orders.order_count)`. What happens? A. It fails: `SELECT` on every base table is required B. It fails: `REFERENCES` on the view is required C. It works only if the role owns the view D. It works: semantic views run with owner's rights, so `SELECT` on the view suffices
+
+**38.** The same role asks a Cortex Agent, which has `SALES_SV` as an Analyst tool, a sales question and gets no usable answer. Which explanation fits the documentation? A. The Agent runs generated SQL against the physical tables as the user's default role, which therefore needs base-table access B. Agents cannot use semantic views C. The role needs `AI_FUNCTIONS_USER` D. `MAX_STALENESS` is not set
+
+**39.** Which DDL clause tells Cortex Analyst to reject, or ask a clarifying question about, certain user questions? A. `AI_SQL_GENERATION` B. `AI_VERIFIED_QUERIES` C. `AI_QUESTION_CATEGORIZATION` D. `COMMENT`
+
+**40.** What must the SQL in a verified query use? A. Physical table names only B. Cortex Search service names C. Dimension names only D. The logical table and column names defined in the semantic view
+
+**41.** Which statement about a derived metric is correct? A. It omits the logical-table prefix and can combine metrics from different tables B. It must be prefixed with the table that owns the first metric C. It can aggregate other metrics, such as `SUM(orders.order_count)` D. It can be used inside a regular (non-derived) metric
+
+**42.** How do you convert a legacy stage-based YAML model into a semantic view, validating first? A. `ALTER SEMANTIC VIEW ... SET YAML` B. Call `SYSTEM$CREATE_SEMANTIC_VIEW_FROM_YAML` with `TRUE` as the third argument to validate, then call it again to create C. `GRANT` the stage file to the view D. Rename the stage file to `.sv.yaml`
+
+**43.** How do masking and row access policies interact with semantic views? A. They can be attached directly to semantic-view dimensions B. Semantic views ignore them C. They cannot be set on semantic-view attributes, but policies on the base tables and columns propagate and are enforced D. They apply only to Cortex Agents, not SQL queries
+
+**44.** What is true of sample values defined on a dimension? A. They are stored as metadata, are not masked by masking policies, and are visible through `GET_DDL` to roles with `REFERENCES` or `OWNERSHIP` B. They are masked by any masking policy on the column C. They are visible only to `ACCOUNTADMIN` D. They are not stored in the view
+
+**45.** Materializations have been added to a semantic view, but Agent latency is unchanged. Why? A. `MAX_STALENESS` is below 120 seconds B. Agents need an `IMMUTABLE WHERE` condition C. Materializations apply only to facts D. Materializations speed up semantic SQL (the `SEMANTIC_VIEW` clause or standard SQL on the view), whereas Agent and Analyst queries run physical SQL on the base tables
+
+**46.** When is attaching a Cortex Search service to a semantic-view dimension recommended? A. Numeric measure columns B. High-cardinality text columns, such as product or customer names C. Date columns D. Long free-text notes
+
+**47.** An Agent has several semantic views as tools. Which statement is correct? A. It joins across the views when it needs to B. The views must share one description C. Each view is queried independently, with no joins across views, and distinct descriptions help it choose D. Only one semantic view per Agent is supported
+
+**48.** What privileges let a provider share a semantic view through a share? A. `GRANT REFERENCES` and `GRANT SELECT` on the semantic view to the share B. `USAGE` on the view only C. Semantic views cannot be shared D. Sharing works only via a stage
+
+**49.** In the Cortex Analyst REST API, which field passes a native semantic view, as opposed to a legacy staged YAML model? A. `semantic_model_file` B. `semantic_view` C. `semantic_stage` D. `view_name`
+
+### Supplement answer key
+
+| # | Answer | Reason and official documentation |
+| ---: | :---: | --- |
+| 33 | C | YAML and DDL have near-complete feature parity and produce the same object. The legacy distinction is the stage-based model. [YAML vs DDL](https://docs.snowflake.com/en/user-guide/views-semantic/yaml-vs-ddl) |
+| 34 | A | Defined metrics must be passed to `AGG()` in standard SQL. `SUM` of a metric would be an aggregation of a metric. [Querying](https://docs.snowflake.com/en/user-guide/views-semantic/querying) |
+| 35 | D | You cannot specify `FACTS` and `METRICS` in the same clause. [SEMANTIC_VIEW](https://docs.snowflake.com/en/sql-reference/constructs/semantic_view) |
+| 36 | B | The dimension's table must be related to the metric's table and have an equal or coarser grain. Use `SHOW SEMANTIC DIMENSIONS ... FOR METRIC`. [Querying](https://docs.snowflake.com/en/user-guide/views-semantic/querying) |
+| 37 | D | Querying needs only `SELECT` on the semantic view, as with standard views. [Querying privileges](https://docs.snowflake.com/en/user-guide/views-semantic/querying) |
+| 38 | A | Agents run with the default role and generate physical SQL, so the role also needs base-table access. [Dev best practices](https://docs.snowflake.com/en/user-guide/views-semantic/best-practices-dev) · [Agent setup](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-setup) |
+| 39 | C | `AI_QUESTION_CATEGORIZATION` governs question handling. `AI_SQL_GENERATION` governs the SQL. [Custom instructions](https://docs.snowflake.com/en/user-guide/views-semantic/custom-instructions) |
+| 40 | D | Verified SQL uses logical names, not the underlying dataset's. [Verified queries](https://docs.snowflake.com/en/user-guide/views-semantic/verified-query-repository) |
+| 41 | A | A derived metric is view-scoped, so you omit the table name. It cannot aggregate metrics, and only another derived metric may use it. [SQL guide](https://docs.snowflake.com/en/user-guide/views-semantic/sql) |
+| 42 | B | Passing `TRUE` as the third argument validates without creating. Conversion is one file at a time. [SQL guide](https://docs.snowflake.com/en/user-guide/views-semantic/sql) |
+| 43 | C | Policies cannot be set on semantic-view attributes but propagate from base tables. [Dev best practices](https://docs.snowflake.com/en/user-guide/views-semantic/best-practices-dev) |
+| 44 | A | Metadata is not covered by masking policies, so non-sensitive sample values are advised. [Dev best practices](https://docs.snowflake.com/en/user-guide/views-semantic/best-practices-dev) |
+| 45 | D | Cortex Analyst, Agent and CoWork queries that run physical SQL do not benefit. [Materializations](https://docs.snowflake.com/en/user-guide/views-semantic/materializations) |
+| 46 | B | Use Search for high-cardinality text (roughly more than 10 distinct values). Avoid it for numeric, date and paragraph text. [Modeling](https://docs.snowflake.com/en/user-guide/views-semantic/best-practices-modeling) |
+| 47 | C | Agents do not join across separate semantic views; distinct descriptions improve selection. [Modeling](https://docs.snowflake.com/en/user-guide/views-semantic/best-practices-modeling) |
+| 48 | A | Grant both `REFERENCES` and `SELECT` on the view to the share. [Sharing](https://docs.snowflake.com/en/user-guide/views-semantic/sharing-semantic-views) |
+| 49 | B | `semantic_view` takes the fully qualified view name; `semantic_model_file` is the legacy staged YAML path. [Analyst REST API](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst/rest-api) |

@@ -33,3 +33,7 @@ Review the whole `snowpro-genai` guide, check it is correct, add anything missin
 ## Next steps
 
 Run the 08 lab in a trial account, then take the practice exam. Consider adding semantic-layer questions to 05 (not done, to preserve the 28-question blueprint balance).
+
+## Follow-up (2026-10-09): practice questions
+
+The user asked to add some questions. Appended a 17-question semantic-layer supplement (Q33-49, with answer key and doc links) to snowpro-genai/05_PRACTICE_EXAM.md; the original 28-question blueprint set is unchanged. README step 5 now mentions the supplement. Answers were derived from the same live-doc pages used for 08; no Snowflake execution.
