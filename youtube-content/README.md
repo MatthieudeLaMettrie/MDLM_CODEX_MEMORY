@@ -10,6 +10,7 @@ Created 11 October 2026.
 |---|---|
 | [VIDEO_PLANNER.md](VIDEO_PLANNER.md) | The 50 video concepts by platform, with a hook, priority, readiness and a link to the supporting guide |
 | [video-planner.csv](video-planner.csv) | The same list as a spreadsheet: sort/filter it, and track status, demand checks, publish date and video URL |
+| [CHANNEL_BRANDING.md](CHANNEL_BRANDING.md) | Channel name, taglines, two channel descriptions, banner text and layout, keywords, a video description template and a pre-launch check |
 | [PRODUCTION_CHECKLIST.md](PRODUCTION_CHECKLIST.md) | A 10-minute video structure, title and thumbnail rules, a demand check, and a safety check before publishing |
 
 Ready-made demo material for the first videos already exists in [`databricks/video-demo-auto-loader/`](../databricks/video-demo-auto-loader/README.md) (Auto Loader, schema evolution, CDC and Azure file events, with sample CSVs).
@@ -46,4 +47,4 @@ Ready-made demo material for the first videos already exists in [`databricks/vid
 
 ## Still open
 
-- Channel handle and banner/description text (not written yet).
+- Channel handle availability check, and your choice among the drafts in [CHANNEL_BRANDING.md](CHANNEL_BRANDING.md) (descriptions, tagline, banner).

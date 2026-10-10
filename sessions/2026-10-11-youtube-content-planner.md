@@ -26,3 +26,7 @@ User asked to brainstorm channel names, then chose "Data and AI in Less than 10 
 ## Follow-up: final channel name
 
 User asked for names in the same direction as "Data and AI in Less than 10 minutes", I offered about 20 shorter variants (none checked for availability) and recommended "Data & AI in 10". User chose it. Updated the folder README and MEMORY.md to replace the earlier name. Still open: availability and handle check, channel description and banner text.
+
+## Follow-up: channel branding drafts
+
+User asked for the channel description and banner text. Wrote [CHANNEL_BRANDING.md](../youtube-content/CHANNEL_BRANDING.md): taglines, two channel descriptions (character counts checked locally against an assumed 1,000-character limit), optional about-me line, banner text and layout with the commonly documented 2560 x 1440 size and central safe area, keywords, profile picture advice, a video description template with a non-affiliation line, and a pre-publish check. These are drafts. YouTube limits and image sizes were not verified against current YouTube documentation, and the handle was not checked. Added the file to the folder README.
