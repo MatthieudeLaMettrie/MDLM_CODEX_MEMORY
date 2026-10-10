@@ -38,6 +38,12 @@ Ready-made demo material for the first videos already exists in [`databricks/vid
 - **Languages: English only.** French versions are not needed.
 - **Recording: on a personal laptop** with a personal account and trial workspace. This removes the work-laptop concern, but the checklist still applies: no employer data, tenant names or secrets on screen.
 
+## Channel name
+
+- **Chosen 11 October 2026: "Data and AI in Less than 10 minutes".** It states the format and the topics directly.
+- It is long for a channel name. Availability on YouTube was **not checked**. Before creating the channel, check the name and the handle (for example a short handle such as `@DataAndAIin10`, which is only an idea, not a verified available handle), and confirm no active channel uses a similar name.
+- Consider a short display form for thumbnails and banners, such as "Data & AI in <10 min".
+
 ## Still open
 
-- **Channel name:** not decided.
+- Channel handle and banner/description text (not written yet).

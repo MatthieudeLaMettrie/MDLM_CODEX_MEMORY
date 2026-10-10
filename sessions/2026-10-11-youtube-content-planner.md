@@ -18,3 +18,7 @@ Link existence checked locally. No YouTube data, search volume or analytics were
 ## Follow-up: user answers
 
 User answered the three open questions: audience is all three (unsure which, so all), French versions not necessary, and recording will be on a personal laptop. Channel name was not answered and stays open. Added an `audience` column (Beginner 20, Practitioner 25, Certification 5; assigned by judgement) to the planner and CSV, recorded the decisions in the folder README and MEMORY.md, and replaced the work-laptop warning in the checklist with a lighter personal-laptop check (still no employer data, tenant names or secrets on screen).
+
+## Follow-up: channel name
+
+User asked to brainstorm channel names, then chose "Data and AI in Less than 10 minutes". I had offered about 20 options across styles but had not checked availability of any, and have not checked this one. Recorded the choice in the folder README and MEMORY.md, noted that the name is long and suggested checking the handle and a short display form. Still open: handle, banner and description text.
