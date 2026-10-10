@@ -4,6 +4,15 @@
 
 Written 10 October 2026 for a YouTube walkthrough. **The sample files and arithmetic were checked locally. The Databricks steps and code were not run in a workspace**, and menu names change between releases, so rehearse the whole thing once before recording and adjust any label that differs.
 
+## The video series
+
+| # | Video | Guide | Sample data |
+|---|---|---|---|
+| 1 | Auto Loader and a Lakeflow pipeline (this file) | [README.md](README.md) | `data/retail_sales_2026-10-01..03.csv` |
+| 2 | Schema evolution: a file arrives with a new column | [02_SCHEMA_EVOLUTION_VIDEO.md](02_SCHEMA_EVOLUTION_VIDEO.md) | `data/retail_sales_2026-10-04_new_column.csv` |
+| 3 | CDC: inserts, updates, deletes and out-of-order events with AUTO CDC | [03_CDC_VIDEO.md](03_CDC_VIDEO.md) | `data/cdc/sales_cdc_001.csv`, `sales_cdc_002.csv` |
+| 4 | Azure Blob with file-notification (file events) mode | [04_AZURE_FILE_NOTIFICATION_VIDEO.md](04_AZURE_FILE_NOTIFICATION_VIDEO.md) | reuses video 1 files |
+
 ## What you will show
 
 "Auto Loader" is Databricks' incremental file ingestion feature (the "data loader" in your notes). You drop files in a folder, and it ingests **only the files it hasn't seen**, remembering progress in a checkpoint. You will:

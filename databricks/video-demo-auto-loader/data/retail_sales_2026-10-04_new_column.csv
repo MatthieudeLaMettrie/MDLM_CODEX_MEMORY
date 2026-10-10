@@ -1,0 +1,6 @@
+sale_id,sale_date,store_id,product_id,product_name,quantity,unit_price,discount_pct
+S1022,2026-10-04,ST01,P100,Espresso Beans 1kg,2,24.50,10
+S1023,2026-10-04,ST01,P101,Oat Milk 1L,5,3.20,0
+S1024,2026-10-04,ST02,P102,Sourdough Loaf,4,6.00,25
+S1025,2026-10-04,ST03,P104,Dark Chocolate 100g,10,3.90,20
+S1026,2026-10-04,ST03,P103,Greek Yoghurt 500g,3,4.80,0
