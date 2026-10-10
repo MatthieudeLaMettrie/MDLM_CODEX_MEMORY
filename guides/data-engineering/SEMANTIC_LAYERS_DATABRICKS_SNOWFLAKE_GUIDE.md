@@ -47,6 +47,8 @@ The two terms are often used interchangeably, but they sit at different levels:
 
 A semantic layer is therefore **made of one or more semantic models**, plus the governance around them: Git, grants, certification and tests. Vendor names add confusion. dbt calls each YAML block a `semantic_model` and the hosted query service the "dbt Semantic Layer". Snowflake calls the object a semantic *view*, and its legacy stage-based YAML file a semantic *model*. Power BI's object has been called a semantic model since 2023.
 
+For nine real-life scenarios (retail, banking, SaaS, hospital, post-acquisition, airline, agency, small business and your FEI RSS project), plus a quiz and an ownership table, see [Semantic layer vs semantic model: scenarios](SEMANTIC_LAYER_VS_SEMANTIC_MODEL_SCENARIOS.md).
+
 One practical difference matters more than the naming. A **BI-tool semantic model** (Power BI, Tableau) serves mainly that tool's reports. A **warehouse-native semantic model** (Databricks, Snowflake, dbt) can serve SQL users, notebooks, several BI tools and AI agents from one definition.
 
 ### Vocabulary map
