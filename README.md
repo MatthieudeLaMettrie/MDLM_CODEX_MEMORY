@@ -56,6 +56,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 - [JavaScript and Python runtimes: Node.js, npm and npx](guides/programming/RUNTIME_STUDY_GUIDE.html) — download/open the HTML file in a browser for diagrams, examples, runtime comparisons and an interactive quiz. Works offline and includes print styling.
 
+- [YouTube content planner: 50 short IT and AI video concepts](youtube-content/README.md) — Databricks, Snowflake, BigQuery, Fabric, dbt, Power BI, Claude, OpenAI, Gemini and cross-platform ideas, with priority, readiness, supporting guides, a sortable CSV and a production/safety checklist. Views are not guaranteed; demand was not checked.
+
 ## Project records
 
 - [Working instructions](AGENTS.md)
@@ -72,4 +74,5 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 - `guides/` — continuity, email, programming, and data engineering guides.
 - `projects/` — project-specific records.
 - `dbt/`, `snowpro-genai/` and `databricks/` — numbered subject study collections.
+- `youtube-content/` — YouTube video planner (50 concepts), production checklist and tracking CSV; separate from the study guides.
 - `sessions/` — dated session records.
