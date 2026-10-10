@@ -25,6 +25,7 @@ Prepared **7 October 2026** using current official documentation. The teaching e
 | **16** | [CDC/CDF retail-table walkthrough](16_CDC_CDF_RETAIL_TABLE_WALKTHROUGH.md) | Locate/check/read CDF on your screenshot's table, test fake corrections/deletes and include AUTO CDC in a separate pipeline |
 | **17** | [CDF and CDC explained](17_CDF_AND_CDC_EXPLAINED.md) | Understand what CDC and CDF are, how they differ and combine, with use cases and when to choose each |
 | **18** | [Pipeline monitoring and troubleshooting runbook](18_PIPELINE_MONITORING_AND_TROUBLESHOOTING_RUNBOOK.md) | Check health, query the event log, diagnose common failures and recover safely |
+| **19** | [Video demo: Auto Loader and a Lakeflow pipeline](video-demo-auto-loader/README.md) | Step-by-step demo with three sample CSVs (one initial, two added later), notebook and pipeline versions, Azure Blob option and a video outline |
 
 Use 04–06 alongside the related lessons. The default path is numbered so the order is also visible in the GitHub file listing. References are available whenever you need them.
 
