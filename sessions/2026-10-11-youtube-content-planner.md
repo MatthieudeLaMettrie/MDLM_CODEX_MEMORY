@@ -14,3 +14,7 @@ Told the user views cannot be guaranteed and that search demand and competition 
 ## Validation and unresolved issues
 
 Link existence checked locally. No YouTube data, search volume or analytics were consulted. Next step: user runs the demand check on the High/Ready ideas, answers the open questions and picks the first video.
+
+## Follow-up: user answers
+
+User answered the three open questions: audience is all three (unsure which, so all), French versions not necessary, and recording will be on a personal laptop. Channel name was not answered and stays open. Added an `audience` column (Beginner 20, Practitioner 25, Certification 5; assigned by judgement) to the planner and CSV, recorded the decisions in the folder README and MEMORY.md, and replaced the work-laptop warning in the checklist with a lighter personal-laptop check (still no employer data, tenant names or secrets on screen).

@@ -32,10 +32,12 @@ Ready-made demo material for the first videos already exists in [`databricks/vid
 
 `Idea` → `Demand checked` → `Scripted` → `Rehearsed` → `Recorded` → `Published`
 
-## Questions to settle (optional)
+## Decisions (11 October 2026)
 
-These are not blocking, and the defaults are in the planner. Answer when you decide:
+- **Audience: all three**: beginners, working data engineers and certification candidates. Each video in the planner is tagged **Beginner**, **Practitioner** or **Certification** (50 ideas: 20 Beginner, 25 Practitioner, 5 Certification). Aim each video at **one** audience and say who it is for in the first 30 seconds. A common pattern is two Beginner or Practitioner videos for every Certification video, but that ratio is a suggestion only.
+- **Languages: English only.** French versions are not needed.
+- **Recording: on a personal laptop** with a personal account and trial workspace. This removes the work-laptop concern, but the checklist still applies: no employer data, tenant names or secrets on screen.
 
-- What is the **channel name and audience** (beginners, working data engineers, or certification candidates)?
-- Do you want **French-language** versions, given your French-language projects?
-- Are you comfortable showing your **employer's workspace**? This laptop is a work machine, so a personal trial workspace and a personal account are safer for recording.
+## Still open
+
+- **Channel name:** not decided.

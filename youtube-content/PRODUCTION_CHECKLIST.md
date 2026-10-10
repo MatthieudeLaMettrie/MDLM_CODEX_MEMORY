@@ -21,6 +21,8 @@ Written 11 October 2026. These are practical rules of thumb, not guarantees. Non
 
 ## 3. The 10-minute structure (aim for 6 to 8)
 
+Name the audience in the hook: "This is for beginners", "for data engineers fixing X" or "for anyone taking exam Y". The planner tags each idea with its audience.
+
 | Time | Section | Purpose |
 |---|---|---|
 | 0:00–0:30 | **Hook and answer** | State the problem and the result up front |
@@ -49,10 +51,10 @@ Rules: no long intros, no channel promotion before the answer, cut dead time, sa
 
 ## 6. Before you publish: safety check
 
-This laptop is a **work machine** and its OneDrive path shows an employer name. Record on a personal trial workspace and personal account where possible.
+You plan to record on a **personal laptop** with personal accounts, which avoids most employer risks. Check anyway:
 
 - [ ] No access tokens, passwords, API keys, connection strings or secrets visible, including in browser autofill.
-- [ ] No real company data, customer names, emails or tenant/workspace URLs on screen.
+- [ ] No real company data, customer names, emails or tenant/workspace URLs on screen. This includes any employer data you might have copied to the personal laptop.
 - [ ] Notifications are off and browser bookmarks and tabs are clean.
 - [ ] If you use screenshots or sample data, they are your own or synthetic.
 - [ ] You are allowed to show the tool and any employer-related material.

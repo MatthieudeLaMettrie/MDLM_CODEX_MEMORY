@@ -55,7 +55,7 @@ This repository preserves context so future tasks can continue without relying o
 
 ## YouTube channel plans
 
-- User plans short (10 minutes max) YouTube videos on IT and AI tools (Databricks, Snowflake, BigQuery, Fabric, dbt, Power BI, Claude, OpenAI, Gemini). 2026-10-11: created [youtube-content/](youtube-content/README.md) with a 50-idea planner (17 High, 29 Medium, 4 Low priority; 10 Ready, 12 Partly, 28 Needs research), a CSV tracker and a production/safety checklist. No view guarantee: search demand and competition were not checked. Open questions for the user: channel name and audience, French versions, and recording on a personal workspace because this laptop is a work machine. Databricks Auto Loader series demo material lives in databricks/video-demo-auto-loader/. Session: sessions/2026-10-11-youtube-content-planner.md.
+- User plans short (10 minutes max) YouTube videos on IT and AI tools (Databricks, Snowflake, BigQuery, Fabric, dbt, Power BI, Claude, OpenAI, Gemini). 2026-10-11: created [youtube-content/](youtube-content/README.md) with a 50-idea planner (17 High, 29 Medium, 4 Low priority; 10 Ready, 12 Partly, 28 Needs research), a CSV tracker and a production/safety checklist. No view guarantee: search demand and competition were not checked. Decisions 2026-10-11: audience is all three (Beginner/Practitioner/Certification, each idea tagged), English only (no French versions), recording on a personal laptop and personal accounts. Channel name still undecided. Databricks Auto Loader series demo material lives in databricks/video-demo-auto-loader/. Session: sessions/2026-10-11-youtube-content-planner.md.
 
 ## Certification and career planning
 
