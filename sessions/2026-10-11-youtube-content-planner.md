@@ -22,3 +22,7 @@ User answered the three open questions: audience is all three (unsure which, so 
 ## Follow-up: channel name
 
 User asked to brainstorm channel names, then chose "Data and AI in Less than 10 minutes". I had offered about 20 options across styles but had not checked availability of any, and have not checked this one. Recorded the choice in the folder README and MEMORY.md, noted that the name is long and suggested checking the handle and a short display form. Still open: handle, banner and description text.
+
+## Follow-up: final channel name
+
+User asked for names in the same direction as "Data and AI in Less than 10 minutes", I offered about 20 shorter variants (none checked for availability) and recommended "Data & AI in 10". User chose it. Updated the folder README and MEMORY.md to replace the earlier name. Still open: availability and handle check, channel description and banner text.

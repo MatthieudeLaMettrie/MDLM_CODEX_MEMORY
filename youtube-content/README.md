@@ -40,9 +40,9 @@ Ready-made demo material for the first videos already exists in [`databricks/vid
 
 ## Channel name
 
-- **Chosen 11 October 2026: "Data and AI in Less than 10 minutes".** It states the format and the topics directly.
-- It is long for a channel name. Availability on YouTube was **not checked**. Before creating the channel, check the name and the handle (for example a short handle such as `@DataAndAIin10`, which is only an idea, not a verified available handle), and confirm no active channel uses a similar name.
-- Consider a short display form for thumbnails and banners, such as "Data & AI in <10 min".
+- **Chosen 11 October 2026: "Data & AI in 10"**. It replaces the earlier choice, "Data and AI in Less than 10 minutes", which was too long for thumbnails and banners.
+- The "10" is a promise to viewers: keep videos at **10 minutes or under**, aim for 6 to 8.
+- Availability on YouTube was **not checked**. Before creating the channel, check the name and a handle such as `@DataAndAIin10` (an idea only, not a verified available handle), and confirm no active channel uses a similar name. Also check LinkedIn and GitHub.
 
 ## Still open
 
