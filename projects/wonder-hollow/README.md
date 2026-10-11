@@ -28,7 +28,7 @@ a public counting playlist was added, the channel description/website links were
 and the Home tab was enabled. No private video was made public. Search indexing and traffic
 improvement were not measured. The uploader and writer changes improve future uploads.
 Keep these three states separate: deployed website, configured future uploads, and
-applied channel metadata/presentation changes, and outstanding thumbnails/retention/indexing work.
+applied channel metadata/presentation changes, prepared thumbnails awaiting owner verification, and outstanding retention/indexing measurement.
 
 - [SEO and YouTube findings, copy and priorities](SEO_AND_YOUTUBE.md)
 - [Deployment, verification evidence and operational rules](DEPLOYMENT.md)
@@ -77,3 +77,5 @@ subsequent authorised metadata/presentation edits are recorded in
 [the change log](CHANNEL_CHANGES_2026-10-11.json); video visibility did not change. Reporting baseline and next actions are in
 [SEO_AND_YOUTUBE.md](SEO_AND_YOUTUBE.md). Connection availability must still be checked
 in future sessions. vidIQ remains unconnected. Never request credentials in chat.
+
+Future opening validation and three locked-art thumbnails were deployed in PR #8 (4774710), with 193 tests passing. YouTube custom thumbnail upload is blocked by owner phone verification; no thumbnails were applied. See [thumbnail and opening handoff](THUMBNAILS_AND_OPENINGS.md).
