@@ -80,3 +80,12 @@ browser) from the chat's @ mention menu and approve the Studio website request.
 Connection is not confirmed by providing these instructions. No credentials or private
 analytics were accessed. Local skill-file read failed during process startup; official
 OpenAI documentation was used as fallback.
+
+## Extension download and @Browser follow-up
+
+Owner reported downloading the extension and mentioned @Browser. Refreshed inventory
+returned no apps or browsers. Attempting createBrowserTab("iab", Studio URL, visible true)
+returned "Browser is not available: iab". No Studio data was accessed.
+Next setup check: desktop Settings > Computer Use, enable installed Chrome browser;
+select Chrome from the @ menu using the signed-in profile. @Browser selects the in-app
+browser and does not establish access to the Chrome extension profile.
