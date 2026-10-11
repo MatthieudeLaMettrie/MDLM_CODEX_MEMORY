@@ -248,3 +248,8 @@ Count-to-8 Qvp0b5w5Otc still has original auto-generated thumbnail in Studio. Ow
 ## Sitemap XML appearance clarification — 2026-10-11
 
 Owner pasted the browser's XML display notice and the full urlset for homepage, learning.html and privacy.html. The supplied XML uses the sitemap namespace and absolute canonical HTTPS URLs; it has the intended basic sitemap structure. Browser text saying no style information is normal for unstyled XML, not a sitemap error. A stylesheet and optional lastmod/changefreq/priority fields are not needed to fix that display notice. Do not add cosmetic styling as an indexing fix. Owner-visible content plus prior runner exact-file checks does not prove Google successfully ingested it. Refreshed Search Console: still Sitemap could not be read, last read 11/10/2026, 0 discovered pages/videos; cause remains unestablished. Next recheck processing and investigate persistent fetch failure rather than claiming XML display notice is the cause.
+
+
+Wonder Hollow update 2026-10-12: Search Console sitemap now Success, 3 discovered pages (index inclusion not yet verified; overview processing). Fresh mobile PSI 76 performance, LCP 7.5s, FCP 0.8s, TBT 70ms, CLS 0; SEO/accessibility/best-practices 100 in the lab, no field data. Image-delivery estimate 2,038 KiB savings and hero fetchpriority=high recommendation. Next priorities: responsive image delivery, three verified public counting watch pages, useful topic pages/offline parent activities. Review only, no website changes this turn. All three counting thumbnails already applied.
+
+See [website optimisation review](WEBSITE_OPTIMISATION_2026-10-12.md).

@@ -163,3 +163,6 @@ Wonder Hollow Search Console latest 2026-10-11: URL-prefix property is now acces
 
 
 Wonder Hollow final thumbnail status 2026-10-11: all three prepared counting thumbnails are applied and saved in YouTube Studio (count-to-3 EoPN3GzdScw, count-to-5 hJB4JJgrj8E, count-to-8 Qvp0b5w5Otc). Public visibility and Made for Kids preserved. Search Console sitemap refresh still says Sitemap could not be read, zero discovered pages/videos; runner hosting verification passed and homepage indexing request was accepted, but indexing and sitemap ingestion remain unconfirmed. Next recheck processing and compare subsequent CTR/retention; no measured lift.
+
+
+Wonder Hollow update 2026-10-12: Search Console sitemap now Success, 3 discovered pages (index inclusion not yet verified; overview processing). Fresh mobile PSI 76 performance, LCP 7.5s, FCP 0.8s, TBT 70ms, CLS 0; SEO/accessibility/best-practices 100 in the lab, no field data. Image-delivery estimate 2,038 KiB savings and hero fetchpriority=high recommendation. Next priorities: responsive image delivery, three verified public counting watch pages, useful topic pages/offline parent activities. Review only, no website changes this turn. All three counting thumbnails already applied.
