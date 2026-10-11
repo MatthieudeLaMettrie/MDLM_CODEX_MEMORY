@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-11",
+  "channelId": "UCJgcjXB6PllJdLjKIlOwMxw",
+  "channelBefore": {
+    "description": "",
+    "profileLinks": [],
+    "homeTabEnabled": false
+  },
+  "channelAfter": {
+    "description": "Wonder Hollow makes gentle preschool learning videos for children aged 3–5. Join Mossy the koala, Tilly the quokka, Rufus the kookaburra and Bimble the bilby to explore counting, letter sounds, science, nature and feelings, one idea at a time.\n\nWatch together with a grown-up, pause to answer and try an activity away from the screen.\n\nFor parents and carers:\nFree preschool learning games: https://wonder-hollow.com/\nLearning topics and activities: https://wonder-hollow.com/learning.html",
+    "profileLinks": [
+      {
+        "title": "Free preschool learning games",
+        "url": "https://wonder-hollow.com/"
+      },
+      {
+        "title": "Parent guide and activities",
+        "url": "https://wonder-hollow.com/learning.html"
+      }
+    ],
+    "homeTabEnabled": true
+  },
+  "videoEdits": [
+    {
+      "id": "hJB4JJgrj8E",
+      "before": {
+        "title": "Four, Then Five",
+        "description": "After three comes four, then five, one for each finger. Bimble and Tilly hold up fingers and sort groups to find which ones show five.\n\nTry this after the video: Count five toys into a box, one at a time."
+      },
+      "after": {
+        "title": "Counting to 5 for Preschoolers | Four, Then Five | Wonder Hollow",
+        "opening": "Practise counting to five in this gentle preschool learning video for ages 3–5.",
+        "description": "Practise counting to five in this gentle preschool learning video for ages 3–5.\n\nAfter three comes four, then five, one for each finger. Bimble and Tilly hold up fingers and sort groups to find which ones show five.\n\nTry this after the video: Count five toys into a box, one at a time.\n\nFor parents and carers: Watch together, pause to count along and try the activity away from the screen.\nFree preschool learning games: https://wonder-hollow.com/\nParent guide and activities: https://wonder-hollow.com/learning.html\nMore gentle learning videos: https://www.youtube.com/@WonderHollowLearning"
+      }
+    },
+    {
+      "id": "EoPN3GzdScw",
+      "before": {
+        "title": "One, Two, Three",
+        "description": "We can count things: one, two, three. Bimble and Tilly sing a counting song and find things to count all around them.\n\nTry this after the video: Find three of something in your house and count them out loud."
+      },
+      "after": {
+        "title": "Counting to 3 Song for Preschoolers | One, Two, Three | Wonder Hollow",
+        "opening": "Learn to count one, two, three with a gentle counting song for preschool children aged 3–5.",
+        "description": "Learn to count one, two, three with a gentle counting song for preschool children aged 3–5.\n\nBimble and Tilly sing a counting song and find things to count all around them.\n\nTry this after the video: Find three of something in your house and count them out loud.\n\nFor parents and carers: Watch together, pause to count along and try the activity away from the screen.\nFree preschool learning games: https://wonder-hollow.com/\nParent guide and activities: https://wonder-hollow.com/learning.html\nMore gentle learning videos: https://www.youtube.com/@WonderHollowLearning"
+      }
+    },
+    {
+      "id": "Qvp0b5w5Otc",
+      "before": {
+        "title": "One Whole Hand And More",
+        "description": "A gentle counting song from Wonder Hollow. Mossy holds up one whole hand and shows that after five come six, seven and eight, growing finger by finger onto the other hand. Rufus guesses purple, pancakes and eleventy, tumbles into the moss, and laughs while the children put him right. A short refrain returns three times so little ones can join in and count along.\n\nTry this after the video: Line up eight pebbles, blocks, or spoons and count them one by one."
+      },
+      "after": {
+        "title": "Counting to 8 Song for Preschoolers | Wonder Hollow",
+        "opening": "Count from five to eight with a gentle counting song for preschool children aged 3–5.",
+        "description": "Count from five to eight with a gentle counting song for preschool children aged 3–5.\n\nIn One Whole Hand And More, Mossy holds up one whole hand and shows that after five come six, seven and eight, growing finger by finger onto the other hand. Rufus guesses purple, pancakes and eleventy, tumbles into the moss, and laughs while the children put him right. A short refrain returns three times so little ones can join in and count along.\n\nTry this after the video: Line up eight pebbles, blocks, or spoons and count them one by one.\n\nFor parents and carers: Watch together, pause to count along and try the activity away from the screen.\nFree preschool learning games: https://wonder-hollow.com/\nParent guide and activities: https://wonder-hollow.com/learning.html\nMore gentle learning videos: https://www.youtube.com/@WonderHollowLearning"
+      }
+    }
+  ],
+  "playlist": {
+    "id": "PLGtG87TvU0mQ",
+    "title": "Counting & Numbers for Preschoolers | Wonder Hollow",
+    "visibility": "public",
+    "videos": [
+      "hJB4JJgrj8E",
+      "EoPN3GzdScw",
+      "Qvp0b5w5Otc"
+    ]
+  },
+  "unchanged": [
+    "video visibility",
+    "Made for Kids",
+    "thumbnails",
+    "audio",
+    "captions"
+  ],
+  "limitation": "Studio requires owner verification before video-description external URLs become clickable."
+}

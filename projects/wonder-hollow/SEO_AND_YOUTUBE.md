@@ -174,3 +174,41 @@ links; enable the Home tab and organise topic playlists; pilot accurate topic-fi
 titles/thumbnails on the three counting videos with baseline records; review their
 actual opening/audio before changing pacing. Measure comparable subsequent windows
 without claiming a causal lift from this baseline.
+
+## Channel improvements applied 2026-10-11
+
+Owner explicitly requested "make the improvements" and "link it to the Website".
+Used the connected Chrome Studio UI. Published a preschool/age/learning-topic channel
+description, added profile links "Free preschool learning games" to https://wonder-hollow.com/
+and "Parent guide and activities" to https://wonder-hollow.com/learning.html, and enabled
+the Home tab. Studio reported Changes published / All changes saved.
+
+Saved topic-first titles and parent-facing descriptions for:
+- hJB4JJgrj8E: Four, Then Five → Counting to 5 for Preschoolers | Four, Then Five | Wonder Hollow
+- EoPN3GzdScw: One, Two, Three → Counting to 3 Song for Preschoolers | One, Two, Three | Wonder Hollow
+- Qvp0b5w5Otc: One Whole Hand And More → Counting to 8 Song for Preschoolers | Wonder Hollow
+
+Read existing Studio descriptions to verify counting topics and whether each video was
+a song. Preserved story context and offline activities, added ages 3–5 and parent guidance,
+and included website, guide and official channel URLs. These were metadata-only edits,
+not a review or change of the rendered audio. Original wording is in the Codex rollback
+record projects/wonder-hollow/CHANNEL_CHANGES_2026-10-11.json.
+
+Created a public playlist "Counting & Numbers for Preschoolers | Wonder Hollow" and
+saved membership for the three already-public videos:
+https://www.youtube.com/playlist?list=PLGtG87TvU0mQ
+Public channel showed this playlist with 3 videos. Its description includes parent
+context and website/guide links. No private video visibility or Made for Kids setting changed.
+
+Verification: live website's YouTube link opened the correct @WonderHollowLearning channel;
+public channel Home tab displayed, with the new description and homepage link. About
+dialog showed both configured profile links. Public channel also displayed edited titles
+and the public 3-video counting playlist. Studio showed successful saves for video edits.
+Screenshots of published Studio and public channel were captured in the conversation.
+
+Limitation: Studio displays "To make external links clickable, first complete a one-off
+verification" beside video descriptions. Profile website links are published, but
+clickable video-description URLs require the owner's YouTube verification. No identity,
+phone or account-verification process was attempted. Thumbnails, published audio, captions,
+other video metadata and Search Console were not changed in this follow-up.
+No traffic or retention improvement is measured; use the prior dated baseline.

@@ -23,10 +23,12 @@ The website SEO foundations were implemented, merged and deployed. PR #7 merged 
 `25eccb319a09b5a1646b6a016c4db1ccbe73e665`. Firebase deployment and exact live-file
 checks succeeded. Both full CI runs passed 192 tests.
 
-Existing YouTube videos were not edited or made public. Search indexing and traffic
+Three public counting videos now have clearer titles and linked parent-facing descriptions;
+a public counting playlist was added, the channel description/website links were published,
+and the Home tab was enabled. No private video was made public. Search indexing and traffic
 improvement were not measured. The uploader and writer changes improve future uploads.
 Keep these three states separate: deployed website, configured future uploads, and
-outstanding existing-channel optimisation.
+applied channel metadata/presentation changes, and outstanding thumbnails/retention/indexing work.
 
 - [SEO and YouTube findings, copy and priorities](SEO_AND_YOUTUBE.md)
 - [Deployment, verification evidence and operational rules](DEPLOYMENT.md)
@@ -71,6 +73,7 @@ live requests later verified the website; those failures were not evidence of do
 
 Chrome browser access to the signed-in Wonder Hollow Studio tab was confirmed from Codex
 Desktop on 2026-10-11. Dashboard, Content, Analytics and Customisation were read;
-no existing metadata or visibility changed. Reporting baseline and next actions are in
+subsequent authorised metadata/presentation edits are recorded in
+[the change log](CHANNEL_CHANGES_2026-10-11.json); video visibility did not change. Reporting baseline and next actions are in
 [SEO_AND_YOUTUBE.md](SEO_AND_YOUTUBE.md). Connection availability must still be checked
 in future sessions. vidIQ remains unconnected. Never request credentials in chat.
