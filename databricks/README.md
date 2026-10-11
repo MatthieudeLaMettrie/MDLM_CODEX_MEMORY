@@ -26,6 +26,7 @@ Prepared **7 October 2026** using current official documentation. The teaching e
 | **17** | [CDF and CDC explained](17_CDF_AND_CDC_EXPLAINED.md) | Understand what CDC and CDF are, how they differ and combine, with use cases and when to choose each |
 | **18** | [Pipeline monitoring and troubleshooting runbook](18_PIPELINE_MONITORING_AND_TROUBLESHOOTING_RUNBOOK.md) | Check health, query the event log, diagnose common failures and recover safely |
 | **19** | [Video demo: Auto Loader and a Lakeflow pipeline](video-demo-auto-loader/README.md) | Step-by-step demo with three sample CSVs (one initial, two added later), notebook and pipeline versions, Azure Blob option and a video outline; follow-up guides for schema evolution, CDC and Azure file-notification mode |
+| **20** | [Data engineer skills map and PySpark essentials](20_DATA_ENGINEER_SKILLS_MAP_AND_PYSPARK_ESSENTIALS.md) | Where Auto Loader and CDC/CDF fit among core skills, PySpark basics on the retail sample, and a video outline |
 
 Use 04–06 alongside the related lessons. The default path is numbered so the order is also visible in the GitHub file listing. References are available whenever you need them.
 
