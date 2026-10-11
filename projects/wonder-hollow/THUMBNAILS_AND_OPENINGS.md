@@ -38,3 +38,10 @@ Next: complete the third thumbnail, open Wonder Hollow's correct Search Console 
 
 
 Search Console account clarification (2026-10-11): owner confirmed the same account already signed in. No matching Wonder Hollow property was visible there. Prepared Add website → URL prefix https://wonder-hollow.com/; Continue has not been pressed and no ownership/property verification was submitted. The live setup dialog was retained for the owner's ownership confirmation. Sitemap submission remains outstanding. Two YouTube thumbnails are saved (3 and 5); count-to-8 still awaits a successful download/upload.
+
+
+## Final counting thumbnail applied — 2026-10-11
+
+Owner confirmed the instructed local save. Uploaded C:\Users\mettrma\Downloads\Qvp0b5w5Otc.jpg through the connected Chrome file chooser to the existing public counting-to-8 video. Clicked Save; Studio reported Changes saved / All changes saved. Screenshot confirmed the correct count-to-8 locked-art image in the sidebar and Thumbnail field, disabled Save button, and public visibility. Existing Made for Kids setting preserved. All three pilot thumbnails (EoPN3GzdScw, hJB4JJgrj8E, Qvp0b5w5Otc) are now applied; earlier pending/no-thumbnail statements are historical and superseded.
+
+Refreshed Wonder Hollow's sitemap detail report: still Sitemap could not be read, last read 11/10/2026, zero discovered pages/videos. Successful runner hosting checks and Google's accepted homepage recrawl request remain valid, but sitemap ingestion and actual index inclusion are not yet confirmed. Next: recheck Google's sitemap/indexing processing after time for refresh, investigate if fetch failure persists, and compare subsequent thumbnail CTR and opening retention with the dated baseline. No measured traffic lift. Saved Studio and Search Console tabs retained as results.

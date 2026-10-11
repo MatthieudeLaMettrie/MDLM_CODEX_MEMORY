@@ -160,3 +160,6 @@ Search Console account clarification (2026-10-11): owner confirmed the same acco
 
 
 Wonder Hollow Search Console latest 2026-10-11: URL-prefix property is now accessible. Sitemap submitted and retried once, accepted but fetch status remains Couldn't fetch; runner redeploy/live checks succeeded (38101882213 attempt 2, job 114375162315), including both-domain sitemap exact matches. Historical homepage crawl lacked canonical and selected www; current live test sees the corrected non-www canonical and allows indexing. Homepage indexing request accepted; indexed status not proved. Count-to-8 thumbnail remains original, awaiting owner download confirmation. No traffic gain measured.
+
+
+Wonder Hollow final thumbnail status 2026-10-11: all three prepared counting thumbnails are applied and saved in YouTube Studio (count-to-3 EoPN3GzdScw, count-to-5 hJB4JJgrj8E, count-to-8 Qvp0b5w5Otc). Public visibility and Made for Kids preserved. Search Console sitemap refresh still says Sitemap could not be read, zero discovered pages/videos; runner hosting verification passed and homepage indexing request was accepted, but indexing and sitemap ingestion remain unconfirmed. Next recheck processing and compare subsequent CTR/retention; no measured lift.
