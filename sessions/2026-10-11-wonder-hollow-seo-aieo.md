@@ -89,3 +89,7 @@ returned "Browser is not available: iab". No Studio data was accessed.
 Next setup check: desktop Settings > Computer Use, enable installed Chrome browser;
 select Chrome from the @ menu using the signed-in profile. @Browser selects the in-app
 browser and does not establish access to the Chrome extension profile.
+
+Follow-up: owner sent @Browser again. Inventory remained empty and opening the in-app
+Studio tab again returned "Browser is not available: iab". No channel data was accessed;
+Chrome extension browser selection remains the next setup step.
