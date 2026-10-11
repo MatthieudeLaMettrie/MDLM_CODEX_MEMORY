@@ -106,3 +106,43 @@ in the same signed-in profile; desktop Settings > Computer Use > Google Chrome (
 browsers if necessary); Manage status and enabled toggle; selecting Chrome from the @
 menu; sending exact Studio URL and approving site access. If missing, restart Chrome and
 desktop app, update app and retry in a new chat. Setup guidance is not proof of access.
+
+## Studio access and baseline confirmed 2026-10-11
+
+Owner reported the connection working from Codex Desktop. Browser inventory now exposed
+the signed-in Chrome Studio tab for Wonder Hollow; the channel dashboard, Content,
+Analytics and Customisation pages were read. Earlier unavailable-browser notes are historical.
+No channel metadata or visibility was changed in this follow-up. Search Console remains unread.
+
+Reporting period: **12 September–9 October 2026 (28 days)**.
+- Overview: 436 views, 3.2 watch hours, +4 subscribers; current subscriber count 7.
+- Content report: 434 views (a different report scope), 12,936 thumbnail impressions,
+  2.4% thumbnail CTR and 0:26 average view duration.
+- Traffic sources: Suggested videos 82.5%; Browse 7.6%; Other YouTube features 4.6%;
+  Channel pages 1.6%; Direct/unknown 1.4%; Others 2.3%.
+- 97.9% of thumbnail impressions came from YouTube recommending the content.
+- Search-query control reported insufficient data; do not claim zero search traffic.
+- Four, Then Five: 196 period views, 0:27 average duration, 11.6% average viewed.
+  One, Two, Three: 139 views, 0:20, 9.7%.
+  One Whole Hand And More: 41 views, 0:26, 11.0%.
+- Intro report (latest videos, last 365 days): 22% still watching at 0:30 for
+  Four, Then Five; 19% for One, Two, Three. This is not the same window as the 28-day totals.
+
+Channel profile description is empty (DOM value verified), with no configured external
+link visible. Home tab is switched off (aria-checked=false). Layout inventory shows
+Videos (26) and Created playlists (1), whose tile says 27; this does not establish
+27 public videos. Content showed many older episodes Public, including Two Hands Hold
+Ten Fingers, The Shadow Walk and One Whole Hand And More. Newest French Numbers Un,
+Deux, Trois for Preschoolers | Wonder Hollow (X1ruZT-fDE8) is Private; keep human review.
+This is a visible sample, not an exhaustive public-visibility audit.
+
+Interpretation: YouTube already supplies impressions. Improving topic clarity and
+thumbnail clicks, and especially the first 30 seconds, appears more urgent than
+adding AI-specific files. Counting videos dominate observed period views; this does
+not prove search demand or explain the early drop-off.
+
+Next actions: apply the prepared parent-facing channel description and website/guide
+links; enable the Home tab and organise topic playlists; pilot accurate topic-first
+titles/thumbnails on the three counting videos with baseline records; review their
+actual opening/audio before changing pacing. Measure comparable subsequent windows
+without claiming a causal lift from this baseline.

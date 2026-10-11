@@ -69,8 +69,8 @@ GitHub connector access worked. Local command execution failed before process st
 with `setup refresh had errors`. Initial web-tool fetches failed, but deployment-runner
 live requests later verified the website; those failures were not evidence of downtime.
 
-No YouTube Studio/analytics connector was connected, and browser inventory had no
-accessible sessions. vidIQ was discovered as available and suggested, but was not
-installed or connected. A confirmed connection or a shared signed-in Studio browser
-session is needed for private channel data. Do not infer analytics access from the
-production uploader's credentials or request that secrets be pasted into chat.
+Chrome browser access to the signed-in Wonder Hollow Studio tab was confirmed from Codex
+Desktop on 2026-10-11. Dashboard, Content, Analytics and Customisation were read;
+no existing metadata or visibility changed. Reporting baseline and next actions are in
+[SEO_AND_YOUTUBE.md](SEO_AND_YOUTUBE.md). Connection availability must still be checked
+in future sessions. vidIQ remains unconnected. Never request credentials in chat.
