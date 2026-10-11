@@ -65,6 +65,7 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 - [Certification roadmap and research findings](learning/certifications/CERTIFICATION_ROADMAP.md)
 - [Locked continuous AI curriculum and resources](learning/certifications/AI_STUDY_CURRICULUM.md)
 - [French Expats Investment ETF data project](projects/fei/ETF_DATA_FEI_PROJECT.md)
+- [Wonder Hollow website and YouTube](projects/wonder-hollow/README.md) — deployed SEO foundations, AI discovery decisions, YouTube priorities, access status and verified Firebase deployment runbook.
 - [Session notes](sessions/)
 
 ## Folder map
