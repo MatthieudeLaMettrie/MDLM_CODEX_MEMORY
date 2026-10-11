@@ -10,6 +10,8 @@ website and channel. The separate Data & AI in 10 channel is documented in
 | Source repository | https://github.com/MatthieudeLaMettrie/Wonder_Hollow (private) |
 | Main branch | main |
 | YouTube channel | https://www.youtube.com/@WonderHollowLearning (owner confirmed) |
+| YouTube channel ID | `UCJgcjXB6PllJdLjKIlOwMxw` (owner supplied) |
+| YouTube Studio | https://studio.youtube.com/channel/UCJgcjXB6PllJdLjKIlOwMxw |
 | Firebase Hosting project | wonder-hollow-44ad1 |
 | Hosting alias | https://wonder-hollow-44ad1.web.app/ |
 | GA4 measurement ID already installed | G-31DSDRF6FG |

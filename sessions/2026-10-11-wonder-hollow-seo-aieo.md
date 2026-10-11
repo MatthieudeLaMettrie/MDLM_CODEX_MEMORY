@@ -61,3 +61,10 @@ Studio/analytics connection or signed-in shared browser. Confirm reviewed videos
 public; improve existing titles, descriptions, thumbnails, playlists and captions using
 actual data. Record a baseline and measure later. Dedicated watch pages need verified
 public metadata and transcript review.
+
+## Exact Studio channel supplied
+
+Owner supplied https://studio.youtube.com/channel/UCJgcjXB6PllJdLjKIlOwMxw for Wonder Hollow. Channel ID: `UCJgcjXB6PllJdLjKIlOwMxw`.
+Recorded as owner-supplied identity; no private Studio page or analytics was read.
+Browser inventory was empty and getBrowser reported "No browser is available".
+Access still requires a connected signed-in browser session or a confirmed analytics connector.
