@@ -24,3 +24,14 @@ Channel profile links, playlist and metadata improvements from the earlier follo
 ## Upload resume after owner verification — 2026-10-11
 
 Owner said verification was done. Reloaded counting-to-3 Studio details and reached the upload file chooser without the previous phone-verification dialog. File selection failed because the Chrome ChatGPT extension requires Details → Allow access to file URLs. No thumbnail was applied; Save remained disabled. Studio still displayed the one-off verification notice for clickable external description links, so those are not confirmed enabled. Owner was given the extension-setting handoff; the Studio tab was retained. Next: enable file access, apply/save all three prepared thumbnails, inspect Search Console sitemap/indexing, then compare subsequent CTR and retention against the recorded baseline. No new traffic gains measured.
+
+
+## Two thumbnails applied; indexing access handoff — 2026-10-11
+
+Owner enabled Chrome extension file-URL access. The extension reconnected under browser ID 2; file selection now works. Applied and saved the prepared custom thumbnails for EoPN3GzdScw (count to 3) and hJB4JJgrj8E (count to 5). Studio reported All changes saved for both. The count-to-5 details page was reopened and visually confirmed with the correct image in the sidebar/player. Existing public visibility and Made for Kids settings were preserved. This supersedes earlier statements that no thumbnails were applied.
+
+The count-to-8 Qvp0b5w5Otc image remains prepared but unapplied: downloadMedia timed out twice (15 and 25 seconds), despite the image being visibly loaded with natural width 1280. Local download path is unconfirmed. A chrome://downloads inspection attempt was blocked by browser URL policy; no workaround attempted. Leave the hosted image for owner download/manual upload or resume through permitted upload controls after a confirmed local download. Image: https://wonder-hollow.com/assets/thumbnails/Qvp0b5w5Otc.jpg.
+
+Search Console was accessible in the current signed-in account, but its property selector returned No matching property for wonder. Owner had previously reported setup; this may be in another account. Asked which account was used; do not assert Search Console was never configured. No Wonder Hollow indexing, sitemap submission or performance data was inspected. Metrics shown for another site's default property were not used for Wonder Hollow. No Search Console changes made. External-link verification warning remained on the counting-to-3 page during upload but was absent on freshly loaded counting-to-5/8 pages; public link clickability has not been checked, so do not claim final verification failure or success.
+
+Next: complete the third thumbnail, open Wonder Hollow's correct Search Console property, check sitemap/indexing, and compare later CTR/retention against the existing dated baseline. No traffic uplift measured.

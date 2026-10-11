@@ -151,3 +151,6 @@ This repository preserves context so future tasks can continue without relying o
 
 
 Wonder Hollow upload follow-up (2026-10-11): owner reports phone verification completed; Studio now opens the thumbnail file chooser, but the Chrome ChatGPT extension blocks file selection until Allow access to file URLs is enabled. No thumbnails applied. External description-link verification notice remains visible; clickability unconfirmed. Resume uploads after owner enables extension file access.
+
+
+Wonder Hollow latest 2026-10-11: Chrome file access enabled; custom thumbnails applied and Studio-saved for counting-to-3 EoPN3GzdScw and counting-to-5 hJB4JJgrj8E. Count-to-8 Qvp0b5w5Otc remains unapplied due repeated browser download timeouts. Search Console accessible but wonder property is absent from current account selector; owner asked which account holds it. No indexing metrics or traffic gains verified. Earlier no-thumbnail statements are superseded for the first two videos.
