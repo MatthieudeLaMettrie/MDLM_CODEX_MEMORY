@@ -97,3 +97,12 @@ Chrome extension browser selection remains the next setup step.
 Owner next sent @Browser with the exact Studio URL. Opening that URL through the in-app
 browser still returned "Browser is not available: iab". Supplying the URL did not establish
 browser access. No Studio data or channel settings were read or changed.
+
+## Chrome step-by-step guidance
+
+Owner has Studio open in Chrome and requested detailed connection steps. Rechecked
+https://learn.chatgpt.com/docs/chrome-extension. Guidance covers installed/enabled extension
+in the same signed-in profile; desktop Settings > Computer Use > Google Chrome (More
+browsers if necessary); Manage status and enabled toggle; selecting Chrome from the @
+menu; sending exact Studio URL and approving site access. If missing, restart Chrome and
+desktop app, update app and retry in a new chat. Setup guidance is not proof of access.
