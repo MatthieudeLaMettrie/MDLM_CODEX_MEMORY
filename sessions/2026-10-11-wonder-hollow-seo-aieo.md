@@ -68,3 +68,15 @@ Owner supplied https://studio.youtube.com/channel/UCJgcjXB6PllJdLjKIlOwMxw for W
 Recorded as owner-supplied identity; no private Studio page or analytics was read.
 Browser inventory was empty and getBrowser reported "No browser is available".
 Access still requires a connected signed-in browser session or a confirmed analytics connector.
+
+## Browser connection instructions researched
+
+Owner asked how to share their signed-in Studio session. Official OpenAI documentation:
+https://learn.chatgpt.com/docs/chrome-extension
+Setup: desktop Settings > Computer Use, select browser, follow plugin/extension install
+flow; browser should show Manage and its toggle must be on. Use the same browser profile
+where Studio is signed in and the extension is installed. Select Chrome (or the relevant
+browser) from the chat's @ mention menu and approve the Studio website request.
+Connection is not confirmed by providing these instructions. No credentials or private
+analytics were accessed. Local skill-file read failed during process startup; official
+OpenAI documentation was used as fallback.
