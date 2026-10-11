@@ -204,3 +204,8 @@ A deterministic Pillow renderer composites unchanged locked character PNGs into 
 Resume after owner confirms verification: recheck Studio eligibility, upload the corresponding JPEG to each existing public video's Thumbnail / Upload file control, save and verify each result. Preserve visibility and Made for Kids settings. One local download (counting-to-3) succeeded; subsequent browser download attempts timed out/reset the browser runtime, so local availability of the other files is unconfirmed. Hosted URLs above remain usable.
 
 Channel profile links, playlist and metadata improvements from the earlier follow-up remain applied. Search Console has not been inspected. No traffic, CTR, ranking or retention gains have been measured. Keep baseline windows comparable when checking results.
+
+
+## Upload resume after owner verification — 2026-10-11
+
+Owner said verification was done. Reloaded counting-to-3 Studio details and reached the upload file chooser without the previous phone-verification dialog. File selection failed because the Chrome ChatGPT extension requires Details → Allow access to file URLs. No thumbnail was applied; Save remained disabled. Studio still displayed the one-off verification notice for clickable external description links, so those are not confirmed enabled. Owner was given the extension-setting handoff; the Studio tab was retained. Next: enable file access, apply/save all three prepared thumbnails, inspect Search Console sitemap/indexing, then compare subsequent CTR and retention against the recorded baseline. No new traffic gains measured.

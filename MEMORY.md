@@ -148,3 +148,6 @@ This repository preserves context so future tasks can continue without relying o
 - Curated guide cites 34 official references and contains twenty original debugging cases plus a readiness plan. Official exam page listed dbt 1.11 when checked on 2026-09-22; live docs include later versions. Examples have not been warehouse-tested; enrolled dbt Learn lessons/transcripts were not collected.
 - Git includes authored content, collector, nine tests, reading index, source metadata and historical coverage. Raw downloaded pages, generated packets and imports stay local and can be regenerated. No AI service or recurring automation configured.
 - Task: 01a0c682-332f-7fa2-8a8a-ae93f9dad156. Publication session: sessions/2026-09-23-dbt-learning-guide-01a0c682.md. Keep broader roadmap decisions in their existing strategic records.
+
+
+Wonder Hollow upload follow-up (2026-10-11): owner reports phone verification completed; Studio now opens the thumbnail file chooser, but the Chrome ChatGPT extension blocks file selection until Allow access to file URLs is enabled. No thumbnails applied. External description-link verification notice remains visible; clickability unconfirmed. Resume uploads after owner enables extension file access.
