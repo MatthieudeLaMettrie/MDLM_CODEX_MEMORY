@@ -375,6 +375,8 @@ Neither behavior is "better". Databricks is more flexible and puts responsibilit
 
 ## 6. Build it in Snowflake: semantic view
 
+**Shortcut:** [`semantic-layers-lab/snowflake_semantic_view_lab.sql`](semantic-layers-lab/snowflake_semantic_view_lab.sql) builds everything below in one run and ends with a 21-row PASS/FAIL grid, plus a deliberate grain-rule failure. Note that it replaces any existing `SALES_SV` from SnowPro 08.
+
 The full walkthrough, with privileges, verified queries, custom instructions, Autopilot and governance, is in [SnowPro 08, section 4](../../snowpro-genai/08_SEMANTIC_LAYER.md#4-build-one-lab-with-known-answers). Summary:
 
 1. **Privileges:** `CREATE SEMANTIC VIEW` on the schema, `USAGE` on the database and schema, and `SELECT` on the base tables.

@@ -69,7 +69,7 @@ flowchart TB
 Follow the [semantic layers guide](SEMANTIC_LAYERS_DATABRICKS_SNOWFLAKE_GUIDE.md):
 
 - Databricks: section 4, or the one-shot script [`semantic-layers-lab/databricks_metric_view_lab.sql`](semantic-layers-lab/databricks_metric_view_lab.sql), which builds `sales_metrics` with `net_sales`, `gross_sales`, `order_count`, `avg_order_value` and `completed_net_sales`.
-- Snowflake: section 6, or [SnowPro 08 section 4](../../snowpro-genai/08_SEMANTIC_LAYER.md#4-build-one-lab-with-known-answers), which builds `SALES_SV` with the same metrics, a `completed` filter, custom instructions and a verified query.
+- Snowflake: section 6, the one-shot script [`semantic-layers-lab/snowflake_semantic_view_lab.sql`](semantic-layers-lab/snowflake_semantic_view_lab.sql), or [SnowPro 08 section 4](../../snowpro-genai/08_SEMANTIC_LAYER.md#4-build-one-lab-with-known-answers), which builds `SALES_SV` with the same metrics, a `completed` filter, custom instructions and a verified query.
 
 Before adding any agent, **prove the metrics with SQL** against the expected answers: total net sales 880.00, 4 orders, AOV 220.00, East 680.00. An agent cannot be more correct than the layer underneath it.
 
