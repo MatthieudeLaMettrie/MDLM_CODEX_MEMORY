@@ -223,3 +223,14 @@ Next: complete the third thumbnail, open Wonder Hollow's correct Search Console 
 
 
 Search Console account clarification (2026-10-11): owner confirmed the same account already signed in. No matching Wonder Hollow property was visible there. Prepared Add website → URL prefix https://wonder-hollow.com/; Continue has not been pressed and no ownership/property verification was submitted. The live setup dialog was retained for the owner's ownership confirmation. Sitemap submission remains outstanding. Two YouTube thumbnails are saved (3 and 5); count-to-8 still awaits a successful download/upload.
+
+
+## Search Console verified, sitemap submitted and homepage recrawl requested — 2026-10-11
+
+After owner's completion, refreshed Search Console and found the https://wonder-hollow.com/ URL-prefix property in the confirmed account. Overview reports are processing; no performance totals available yet. Submitted sitemap.xml: Google confirmed Sitemap submitted successfully, but the row showed Unknown / Couldn't fetch / 0 discovered pages and videos. Details say Sitemap could not be read. Submission acceptance is not successful ingestion or indexing.
+
+Investigated: browser sitemap navigation returned ERR_BLOCKED_BY_CLIENT; web tool could not fetch sitemap/robots; local curl could not start because of the existing exec helper failure. Re-ran the existing website deployment job 114359323942 (run 38101882213, attempt 2). Replacement job 114375162315 succeeded, redeployed the website and exact live-file checks passed, including sitemap.xml on custom and Firebase domains plus real 404s. This verifies hosting from the runner; it does not establish why Google's initial fetch failed. Retried sitemap once after that successful check; submission accepted again. Fetch/ingestion success remains outstanding; recheck later, avoid repeated submissions without new evidence.
+
+Homepage URL Inspection: Google's 5 October 2026 crawl had no user canonical and selected https://www.wonder-hollow.com/; current https://wonder-hollow.com/ URL was not indexed (Duplicate without user-selected canonical). That historical crawl predates the 11 October canonical changes. Live test on 11 October at 14:05 showed URL is available to Google, successful smartphone fetch, crawl/indexing allowed, and user-declared canonical https://wonder-hollow.com/. Requested indexing; Google confirmed Indexing requested and priority crawl queue placement. Index inclusion/canonical selection is not yet proved.
+
+Count-to-8 Qvp0b5w5Otc still has original auto-generated thumbnail in Studio. Owner asked where the new image is; supplied https://wonder-hollow.com/assets/thumbnails/Qvp0b5w5Otc.jpg and Save image as → Downloads → Qvp0b5w5Otc.jpg instructions. Await confirmed local save to upload it. Count-to-3/5 custom thumbnails remain applied. Preserved Studio/image handoff and Search Console result tabs. No visibility change, new paid episode or traffic uplift claimed.

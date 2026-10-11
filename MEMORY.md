@@ -157,3 +157,6 @@ Wonder Hollow latest 2026-10-11: Chrome file access enabled; custom thumbnails a
 
 
 Search Console account clarification (2026-10-11): owner confirmed the same account already signed in. No matching Wonder Hollow property was visible there. Prepared Add website → URL prefix https://wonder-hollow.com/; Continue has not been pressed and no ownership/property verification was submitted. The live setup dialog was retained for the owner's ownership confirmation. Sitemap submission remains outstanding. Two YouTube thumbnails are saved (3 and 5); count-to-8 still awaits a successful download/upload.
+
+
+Wonder Hollow Search Console latest 2026-10-11: URL-prefix property is now accessible. Sitemap submitted and retried once, accepted but fetch status remains Couldn't fetch; runner redeploy/live checks succeeded (38101882213 attempt 2, job 114375162315), including both-domain sitemap exact matches. Historical homepage crawl lacked canonical and selected www; current live test sees the corrected non-www canonical and allows indexing. Homepage indexing request accepted; indexed status not proved. Count-to-8 thumbnail remains original, awaiting owner download confirmation. No traffic gain measured.
