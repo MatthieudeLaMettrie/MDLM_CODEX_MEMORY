@@ -8,7 +8,7 @@ Created 11 October 2026.
 
 | File | Purpose |
 |---|---|
-| [VIDEO_PLANNER.md](VIDEO_PLANNER.md) | The 50 video concepts by platform, with a hook, priority, readiness and a link to the supporting guide |
+| [VIDEO_PLANNER.md](VIDEO_PLANNER.md) | The 51 video concepts by platform, with a hook, priority, readiness and a link to the supporting guide |
 | [video-planner.csv](video-planner.csv) | The same list as a spreadsheet: sort/filter it, and track status, demand checks, publish date and video URL |
 | [SERIES_PLAN.md](SERIES_PLAN.md) | What to publish first: Series 1 "Databricks pipelines in 10" (publish order), Series 2 "AI for data work", and the rest marked Later |
 | [CHANNEL_BRANDING.md](CHANNEL_BRANDING.md) | Channel name, taglines, two channel descriptions, banner text and layout, keywords, a video description template and a pre-launch check |
@@ -36,7 +36,7 @@ Ready-made demo material for the first videos already exists in [`databricks/vid
 
 ## Decisions (11 October 2026)
 
-- **Audience: all three**: beginners, working data engineers and certification candidates. Each video in the planner is tagged **Beginner**, **Practitioner** or **Certification** (50 ideas: 20 Beginner, 25 Practitioner, 5 Certification). Aim each video at **one** audience and say who it is for in the first 30 seconds. A common pattern is two Beginner or Practitioner videos for every Certification video, but that ratio is a suggestion only.
+- **Audience: all three**: beginners, working data engineers and certification candidates. Each video in the planner is tagged **Beginner**, **Practitioner** or **Certification** (51 ideas: 21 Beginner, 25 Practitioner, 5 Certification). Aim each video at **one** audience and say who it is for in the first 30 seconds. A common pattern is two Beginner or Practitioner videos for every Certification video, but that ratio is a suggestion only.
 - **Languages: English only.** French versions are not needed.
 - **Recording: on a personal laptop** with a personal account and trial workspace. This removes the work-laptop concern, but the checklist still applies: no employer data, tenant names or secrets on screen.
 

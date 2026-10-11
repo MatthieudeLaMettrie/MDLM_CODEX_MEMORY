@@ -17,6 +17,7 @@ Audience: Beginner first, then Practitioner. Material: your Auto Loader sample f
 | 1 | **Auto Loader explained in 10 minutes** | 1 | Beginner | [Video 1 guide](../databricks/video-demo-auto-loader/README.md) | Start here: three files, then only new ones load |
 | 2 | **Schema evolution: what happens when a file gets a new column** | extra | Practitioner | [Video 2 guide](../databricks/video-demo-auto-loader/02_SCHEMA_EVOLUTION_VIDEO.md) | Not one of the 50 ideas; a natural second step |
 | 3 | **CDC vs CDF with a live AUTO CDC demo** | 4 | Practitioner | [Video 3 guide](../databricks/video-demo-auto-loader/03_CDC_VIDEO.md) | Confirm AUTO CDC syntax first |
+| 3b (optional overview) | **Data Engineer Skills Map: What to Learn First (Databricks)** | 51 | Beginner | [Lesson 20](../databricks/20_DATA_ENGINEER_SKILLS_MAP_AND_PYSPARK_ESSENTIALS.md) | Placed after the hands-on videos so the channel starts with demos. Generic topic with heavy competition: run the demand check; PySpark code not yet run |
 | 4 | **Fix 5 common pipeline errors** | 2 | Practitioner | [Runbook](../databricks/18_PIPELINE_MONITORING_AND_TROUBLESHOOTING_RUNBOOK.md) | Strong search intent: use real error messages |
 | 5 | **Volumes vs managed tables vs external locations** | 3 | Beginner | [Volumes guide](../databricks/10_UNITY_CATALOG_VOLUMES_GUIDE.md) | Good for newcomers |
 | 6 | **Delta MERGE: "multiple source rows matched" and the fix** | 5 | Practitioner | [Delta guide](../databricks/04_DELTA_AND_STREAMING.md) | Reproduce the error first |

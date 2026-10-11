@@ -1,4 +1,4 @@
-# Video planner: 50 concepts
+# Video planner: 51 concepts
 
 [Back to the YouTube content folder](README.md) · [Production checklist](PRODUCTION_CHECKLIST.md) · [Sortable CSV](video-planner.csv)
 
@@ -25,6 +25,7 @@ Created 11 October 2026. **View counts cannot be guaranteed, and search volume a
 | 6 | Genie Code: build a pipeline from one prompt | Prompt, plan approval, run, review the diff | Practitioner | S1 #7 | High | Partly | [guide](../databricks/15_NOTEBOOK_AND_CATALOG_FIELD_NOTES.md) |
 | 7 | Unity Catalog permissions for beginners | Catalog, schema, volume grants and the run-as identity trap | Beginner | Later | Medium | Partly | [guide](../databricks/01_CORE_STUDY_GUIDE.md) |
 | 8 | Deploy dev to prod with bundles | One bundle, two targets, what breaks and why | Practitioner | S1 #8 | Medium | Partly | [guide](../databricks/06_BUNDLES_AND_ORCHESTRATION.md) |
+| 51 | Data Engineer Skills Map: What to Learn First (Databricks) | Where Auto Loader and CDC fit among SQL, modelling and PySpark; 3-minute PySpark demo | Beginner | S1 | Medium | Ready | [guide](../databricks/20_DATA_ENGINEER_SKILLS_MAP_AND_PYSPARK_ESSENTIALS.md) |
 
 ## Snowflake
 
@@ -137,5 +138,5 @@ Videos with ready material come first:
 
 ## Counts
 
-Priority: High 17, Medium 29, Low 4. Readiness: Ready 10, Partly 12, Needs research 28.
+Priority: High 17, Medium 30, Low 4. Readiness: Ready 11, Partly 12, Needs research 28.
 

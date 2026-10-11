@@ -49,3 +49,4 @@ id,platform,working_title,hook,audience,series,series_order,priority,readiness,s
 48,Cross-platform,AI agent vs workflow: stop overbuilding,When a fixed pipeline beats an agent,Beginner,Later,,Medium,Needs research,,Idea,8,,,
 49,Cross-platform,How I study for data certifications,"Your real stack, schedule and mistakes",Certification,Later,,Medium,Partly,guides/continuity/VISUAL_GUIDE.md,Idea,8,,,
 50,Cross-platform,Data engineer roadmap 2027 with AI tools,"What to learn, what AI changes",Beginner,Later,,Medium,Needs research,,Idea,8,,,
+51,Databricks,Data Engineer Skills Map: What to Learn First (Databricks),"Where Auto Loader and CDC fit among SQL, modelling and PySpark; 3-minute PySpark demo",Beginner,S1 Databricks pipelines in 10,3b,Medium,Ready,databricks/20_DATA_ENGINEER_SKILLS_MAP_AND_PYSPARK_ESSENTIALS.md,Idea,8,,,
