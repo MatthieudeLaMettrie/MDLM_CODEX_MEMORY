@@ -30,3 +30,6 @@ Durable lessons from the JB newsletter agent work on Foundry. Facts marked *veri
 5. Create the Entra registrations (doc 18), run the identity test, then deploy the hardened app.
 6. Remove subscription-level Contributor from guest consultants where not needed.
 7. Unverified: per-visitor on-behalf-of route, Teams per-user identity, memory supported region.
+
+## Website publishing: Copilot Studio vs Foundry
+Copilot Studio's Custom Website channel gives a hosted chat window and embed snippet; Foundry gives only an endpoint, so you build the front end. See [file 15, section 4.4a](15_DEV_TEST_PROD_AND_PUBLISHING.md) and the [Learn page](https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-fundamentals-publish-channels). Use sign-in for the JB agent because of the contact table.

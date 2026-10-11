@@ -63,3 +63,5 @@ Pages were fetched and read; no tenant, Fabric, Foundry or Copilot Studio resour
 20. Version 8 deleted (2026-10-09). Ran `foundry_delete_agent_version.py --version 8` (dry run): versions 8..1 existed, endpoint `version_selector` = `{"version_selection_rules": [{"type": "FixedRatio", "agent_version": "7", "traffic_percentage": 100}]}` (confirms the assumed shape), version 8 not protected. Then ran with `--yes` after the user said "delete it": output `Deleted: True`, selector still pinned to 7. Not re-listed afterwards; check the portal version list. Device-code sign-in as the user's PDP account; no secrets stored.
 
 21. Session close (2026-10-11). Insights consolidated in `power-platform-copilot-studio/19_INSIGHTS_AND_OPEN_ITEMS.md`; README and MEMORY.md updated. Portal confirmed version 8 is gone and version 7 is Active. Nothing run against real tenant except the read-only dry run and the version-8 deletion.
+
+22. Question: can Copilot Studio publish to a website like Foundry? Answered and recorded as section 4.4a of file 15 (with the Learn link) and linked from file 19. Answer from memory and existing doc 15; menu names not rechecked today.

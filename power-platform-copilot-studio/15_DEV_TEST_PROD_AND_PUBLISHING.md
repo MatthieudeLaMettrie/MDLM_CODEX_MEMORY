@@ -128,6 +128,22 @@ Prerequisites: Foundry Project Manager on the **resource** scope (the Publish bu
 5. Admins can restrict channels with **Agent access channels** in the Power Platform admin center and DLP policies; a blocked channel appears greyed with an information icon.
 6. Known limits: attachments are not processed (text only); Teams shows at most six suggested actions; satisfaction survey is text-only in Teams.
 
+### 4.4a Website: Copilot Studio versus Foundry (answer added 2026-10-11)
+
+Copilot Studio can publish to a website the Foundry way only in outcome, not in mechanism.
+
+| | Copilot Studio | Foundry |
+| --- | --- | --- |
+| What publishing gives you | A hosted chat window plus an embed snippet (iframe or web chat) | A secured agent endpoint (Responses or A2A), no chat window |
+| What you build | Paste the snippet into the page | A front end and a backend (see 4.6 and `examples/hardened_app/`) |
+| Visitor sign-in | Channel and agent authentication settings | You build it (for example Easy Auth) |
+
+Click path: publish the agent, then Channels, Custom Website, set authentication, copy the snippet. Do not use Demo Website beyond internal testing. Menu names are from memory of the docs and the Learn page below; confirm them in the tenant.
+
+JB caveat: the agent can reach the contact table (personal data). Use sign-in, not "No authentication", and finish guardrails first. Which identity the Fabric data agent uses when a visitor chats through Copilot Studio is unverified; test with a real user.
+
+Source: [Copilot Studio publish channels](https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-fundamentals-publish-channels) (also listed in file 06).
+
 ### 4.5 Slack and other Azure Bot Service channels
 
 Copilot Studio does not have a one-click Slack channel. The documented route is a **relay bot**:
