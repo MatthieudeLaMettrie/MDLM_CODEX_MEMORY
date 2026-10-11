@@ -154,3 +154,6 @@ Wonder Hollow upload follow-up (2026-10-11): owner reports phone verification co
 
 
 Wonder Hollow latest 2026-10-11: Chrome file access enabled; custom thumbnails applied and Studio-saved for counting-to-3 EoPN3GzdScw and counting-to-5 hJB4JJgrj8E. Count-to-8 Qvp0b5w5Otc remains unapplied due repeated browser download timeouts. Search Console accessible but wonder property is absent from current account selector; owner asked which account holds it. No indexing metrics or traffic gains verified. Earlier no-thumbnail statements are superseded for the first two videos.
+
+
+Search Console account clarification (2026-10-11): owner confirmed the same account already signed in. No matching Wonder Hollow property was visible there. Prepared Add website → URL prefix https://wonder-hollow.com/; Continue has not been pressed and no ownership/property verification was submitted. The live setup dialog was retained for the owner's ownership confirmation. Sitemap submission remains outstanding. Two YouTube thumbnails are saved (3 and 5); count-to-8 still awaits a successful download/upload.
