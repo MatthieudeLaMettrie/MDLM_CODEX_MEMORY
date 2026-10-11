@@ -93,3 +93,7 @@ browser and does not establish access to the Chrome extension profile.
 Follow-up: owner sent @Browser again. Inventory remained empty and opening the in-app
 Studio tab again returned "Browser is not available: iab". No channel data was accessed;
 Chrome extension browser selection remains the next setup step.
+
+Owner next sent @Browser with the exact Studio URL. Opening that URL through the in-app
+browser still returned "Browser is not available: iab". Supplying the URL did not establish
+browser access. No Studio data or channel settings were read or changed.
