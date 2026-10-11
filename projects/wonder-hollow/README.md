@@ -100,3 +100,6 @@ Refreshed Wonder Hollow's sitemap detail report: still Sitemap could not be read
 
 
 2026-10-12: sitemap now Success (3 discovered pages); new measured image/content optimisation priorities in [website optimisation review](WEBSITE_OPTIMISATION_2026-10-12.md). No new site code deployed in that review.
+
+
+2026-10-12 release: PR #9 (7e870dc) deployed responsive images, 3 topic guides and 3 public counting watch pages. 193 tests/live checks passed; mobile lab performance 76→89, LCP7.5→3.8s. Details and limits in [the optimisation record](WEBSITE_OPTIMISATION_2026-10-12.md).

@@ -167,3 +167,6 @@ Wonder Hollow final thumbnail status 2026-10-11: all three prepared counting thu
 
 
 Wonder Hollow update 2026-10-12: Search Console sitemap now Success, 3 discovered pages (index inclusion not yet verified; overview processing). Fresh mobile PSI 76 performance, LCP 7.5s, FCP 0.8s, TBT 70ms, CLS 0; SEO/accessibility/best-practices 100 in the lab, no field data. Image-delivery estimate 2,038 KiB savings and hero fetchpriority=high recommendation. Next priorities: responsive image delivery, three verified public counting watch pages, useful topic pages/offline parent activities. Review only, no website changes this turn. All three counting thumbnails already applied.
+
+
+Wonder Hollow release 2026-10-12: PR #9 merged 7e870dc and deployed (38182710528). Added responsive artwork/high-priority hero plus counting/phonics/science guides and 3 curated public counting watch pages; nine-page sitemap generated with future builds. 193 tests and live exact-file/resource/404 checks passed on both domains. Mobile lab performance 76→89, LCP7.5→3.8s, TBT70→20ms, CLS0; no field/traffic gain established. Expanded sitemap submission accepted, last observed Google read still 3 discovered pages. All three YouTube thumbnails remain applied. Do not derive public release dates or approval from ledger; transcripts/VideoObject dates deferred until verified.
