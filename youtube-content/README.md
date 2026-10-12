@@ -12,6 +12,7 @@ Created 11 October 2026.
 | [video-planner.csv](video-planner.csv) | The same list as a spreadsheet: sort/filter it, and track status, demand checks, publish date and video URL |
 | [SERIES_PLAN.md](SERIES_PLAN.md) | What to publish first: Series 1 "Databricks pipelines in 10" (publish order), Series 2 "AI for data work", and the rest marked Later |
 | [CHANNEL_BRANDING.md](CHANNEL_BRANDING.md) | Channel name, taglines, two channel descriptions, banner text and layout, keywords, a video description template and a pre-launch check |
+| [scripts/01_AUTO_LOADER_IN_10.md](scripts/01_AUTO_LOADER_IN_10.md) | Draft 9-minute script for Series 1 video 1, with title options, thumbnail text, description and a pre-recording checklist |
 | [PRODUCTION_CHECKLIST.md](PRODUCTION_CHECKLIST.md) | A 10-minute video structure, title and thumbnail rules, a demand check, and a safety check before publishing |
 
 Ready-made demo material for the first videos already exists in [`databricks/video-demo-auto-loader/`](../databricks/video-demo-auto-loader/README.md) (Auto Loader, schema evolution, CDC and Azure file events, with sample CSVs).
