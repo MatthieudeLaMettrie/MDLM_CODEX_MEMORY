@@ -6,6 +6,8 @@ Continue with [Part 2: step-by-step Azure Key Vault, service principal, GCP serv
 
 See [Part 3: Personal Access Tokens (PATs)](PERSONAL_ACCESS_TOKENS_GUIDE.md) for their purpose, provider-specific authentication formats, setup examples and lifecycle.
 
+See [Part 4: Python `os` and `sys` in depth](PYTHON_OS_SYS_GUIDE.md) for what the two modules are, why they matter and the functions to master, with seven runnable examples.
+
 All examples use environment variables or placeholders. The supplied password and private service keys are deliberately excluded. Rotate those exposed credentials, update their consumers, and invalidate affected sessions as appropriate. A Supabase **publishable** key is designed to be public; it is different from a private service key.
 
 The code is educational and syntax-checked, not tested against live accounts. Install only the packages needed for a section: `requests`, `azure-identity`, `azure-keyvault-secrets`, or `azure-communication-email`. `notebookutils` belongs to the Fabric runtime.
@@ -612,6 +614,8 @@ Try these without looking at the answers:
 Completion target: explain each layer, select a documented authentication method, keep its secrets outside source control, and distinguish login success from successful authorized API access.
 
 ## 11. Python helpers: os and sys
+
+This section is the short version. For the full treatment — every function worth mastering, seven tested examples, pitfalls and practice questions — see [Part 4: Python `os` and `sys`](PYTHON_OS_SYS_GUIDE.md).
 
 Both modules come with Python's standard library: use `import os` and `import sys`; no `pip install` is needed. In this guide they support configuration and runtime diagnostics. `requests` sends the HTTP requests.
 

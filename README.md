@@ -28,6 +28,8 @@ The guide contains three diagrams, step-by-step setup instructions, and a glossa
 
 - [Data and dbt concepts: indexing, joins, React/Next.js, incremental strategies and freshness](guides/data-engineering/DATA_AND_DBT_CONCEPTS_GUIDE.md) — use cases, SQL/YAML examples, diagrams and platform distinctions.
 
+- [Python `os` and `sys`: what they are, why they matter, what to master](guides/api/PYTHON_OS_SYS_GUIDE.md) — environment variables, paths, files, interpreter diagnostics, argv/exit codes, streams, modern companions, seven tested examples, pitfalls and practice questions.
+
 - [Personal Access Tokens (PATs): what, how and why](guides/api/PERSONAL_ACCESS_TOKENS_GUIDE.md) — credential/transport distinctions, GitHub setup, Azure DevOps/GitLab examples, Databricks considerations, alternatives, rotation and practice questions.
 
 - [Azure and GCP identity setup: Key Vault, service principals, service accounts and OAuth](guides/api/AZURE_GCP_IDENTITY_SETUP_GUIDE.md) — step-by-step console setup, permissions, local and hosted authentication, Google Sheets OAuth, connection checks and troubleshooting.
